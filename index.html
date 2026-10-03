@@ -1,26 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portfolio - Calon Programmer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order SyamNet</title>
 <style>
-body{font-family:sans-serif; background:#0f172a; color:white; text-align:center; padding:20px; margin:0}
-.card{background:#1e293b; padding:25px; border-radius:20px; max-width:400px; margin:20px auto}
-h1{color:#38bdf8}
-button{background:#38bdf8; color:#0f172a; border:none; padding:12px 24px; border-radius:10px; font-weight:bold; font-size:16px}
-a{color:#38bdf8; text-decoration:none}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f1f5f9}.top{background:#1d4ed8;color:#fff;padding:30px 20px;text-align:center}.box{max-width:420px;background:#fff;margin:-20px auto 30px;border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.12)}label{font-weight:bold;font-size:14px;margin-top:14px;display:block}input,select,textarea{width:100%;padding:13px;margin-top:6px;border:2px solid #dbeafe;border-radius:12px;font-size:15px}button{width:100%;background:#1d4ed8;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:bold;margin-top:20px;font-size:17px}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>Halo! Aku d13000196</h1>
-<p>Anak kelas 2 SMP dari Lampung</p>
-<p>Calon Programmer Website & Aplikasi</p>
-<button onclick="alert('Terima kasih sudah mampir! 🚀')">Sapa Aku!</button>
-<p style="margin-top:20px; font-size:13px; opacity:0.7">
-  Website ini aku bikin sendiri pakai HP.<br>
-  Dibuat tanggal 3 Okt 2026
-</p>
+<div class="top">
+<h2 style="margin:0">ORDER SYAMNET</h2>
+<p style="margin:6px 0 0">Form Order Otomatis ke WhatsApp</p>
 </div>
+<div class="box">
+<label>Paket Internet</label>
+<select id="paket">
+<option>Paket 10 Mbps - Rp 150.000</option>
+<option>Paket 20 Mbps - Rp 250.000</option>
+<option>Paket 50 Mbps - Rp 400.000 (LARIS)</option>
+</select>
+<label>Nama Pelanggan</label>
+<input id="nama" placeholder="Contoh: Budi">
+<label>Alamat Lengkap</label>
+<textarea id="alamat" rows="3" placeholder="Desa / Dusun / RT RW"></textarea>
+<label>No WhatsApp</label>
+<input id="wa" placeholder="08xxxxxxxxxx">
+<button onclick="order()">KIRIM PESANAN OTOMATIS</button>
+</div>
+<script>
+function order(){
+let p=document.getElementById('paket').value;
+let n=document.getElementById('nama').value;
+let a=document.getElementById('alamat').value;
+let w=document.getElementById('wa').value;
+if(n==''||a==''||w==''){alert('Lengkapi dulu semua data ya!');return;}
+let pesan="ORDER SYAMNET%0A%0A*Paket:* "+p+"%0A*Nama:* "+n+"%0A*Alamat:* "+a+"%0A*WA:* "+w;
+window.location.href="https://wa.me/6283879195047?text="+pesan;
+}
+</script>
 </body>
 </html>
