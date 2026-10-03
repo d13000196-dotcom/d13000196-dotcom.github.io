@@ -1,48 +1,122 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>DapOrderApk</title><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet"><style>
-*{box-sizing:border-box;font-family:'JetBrains Mono',monospace}
-body{margin:0;background:#0a0a0a;color:#fff;min-height:100vh}
-.h{position:sticky;top:0;z-index:10;background:#0a0a0a;border-bottom:2px solid #fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
-.wrap{max-width:600px;margin:0 auto;padding:14px;padding-bottom:90px}
-.box{border:2px solid #fff;border-radius:14px;background:#111;margin-top:16px;overflow:hidden}
-.box-t{padding:14px 16px;border-bottom:1.5px solid #222;display:flex;justify-content:space-between;align-items:center;letter-spacing:1px;font-size:12px;font-weight:800}
-.tag{border:1px solid #fff;border-radius:6px;padding:3px 10px;font-size:10px}
-table{width:100%;border-collapse:collapse}
-th{font-size:9px;color:#666;padding:10px 14px;text-align:left;border-bottom:1px solid #222;letter-spacing:1px}
-td{padding:14px;font-size:12px;border-bottom:1px solid #1a1a1a;font-weight:700}
-.p{color:#22c55e}
-.btn{border:1.5px solid #fff;background:#fff;color:#000;border-radius:6px;padding:6px 14px;font-weight:800;font-size:11px;cursor:pointer}
-.btn-g{background:#22c55e;border-color:#22c55e}
-#pay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;padding:16px}
-.pb{background:#111;border:2px solid #fff;border-radius:14px;padding:20px;max-width:360px;width:100%;text-align:center}
-</style></head><body>
-<div class="h"><b style="letter-spacing:3px"> DapOrderApk</b><span style="background:#22c55e;color:#000;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:800">STORE</span></div>
-<div class="wrap">
-
-<div class="box"><div class="box-t"><span>DARKVERSE</span><span class="tag">3 PAKET</span></div><table><tr><th>PACKAGE</th><th>PRICE</th><th></th></tr>
-<tr><td>Full Update</td><td class="p">Rp 50.000</td><td style="text-align:right"><button class="btn btn-g" onclick="op('DarkVerse Full Update',50000)">BUY</button></td></tr>
-<tr><td>Reseller</td><td class="p">Rp 80.000</td><td style="text-align:right"><button class="btn" onclick="op('DarkVerse Reseller',80000)">BUY</button></td></tr>
-<tr><td>Partner</td><td class="p">Rp 150.000</td><td style="text-align:right"><button class="btn" onclick="op('DarkVerse Partner',150000)">BUY</button></td></tr>
-</table></div>
-
-<div class="box"><div class="box-t"><span>TR4SVLOID</span><span class="tag">7 PAKET</span></div><table><tr><th>PACKAGE</th><th>PRICE</th><th></th></tr>
-<tr><td>1 Minggu</td><td class="p">Rp 10.000</td><td style="text-align:right"><button class="btn" onclick="op('TR4SVLOID 1 Minggu',10000)">BUY</button></td></tr>
-<tr><td>1 Bulan</td><td class="p">Rp 15.000</td><td style="text-align:right"><button class="btn" onclick="op('TR4SVLOID 1 Bulan',15000)">BUY</button></td></tr>
-<tr><td>Full Update</td><td class="p">Rp 25.000</td><td style="text-align:right"><button class="btn btn-g" onclick="op('TR4SVLOID Full Update',25000)">BUY</button></td></tr>
-<tr><td>Reseller</td><td class="p">Rp 55.000</td><td style="text-align:right"><button class="btn" onclick="op('TR4SVLOID Reseller',55000)">BUY</button></td></tr>
-<tr><td>VIP 1 Bulan</td><td class="p">Rp 30.000</td><td style="text-align:right"><button class="btn" onclick="op('TR4SVLOID VIP 1 Bulan',30000)">BUY</button></td></tr>
-<tr><td>VIP Permanen</td><td class="p">Rp 50.000</td><td style="text-align:right"><button class="btn btn-g" onclick="op('TR4SVLOID VIP Permanen',50000)">BUY</button></td></tr>
-<tr><td>Partner</td><td class="p">Rp 65.000</td><td style="text-align:right"><button class="btn" onclick="op('TR4SVLOID Partner',65000)">BUY</button></td></tr>
-</table></div>
-
-<div class="box"><div class="box-t"><span>X-GTR4SH</span><span class="tag">5 PAKET</span></div><table><tr><th>PACKAGE</th><th>PRICE</th><th></th></tr>
-<tr><td>Full Update</td><td class="p">Rp 20.000</td><td style="text-align:right"><button class="btn" onclick="op('X-GTR4SH Full Update',20000)">BUY</button></td></tr>
-<tr><td>Reseller</td><td class="p">Rp 30.000</td><td style="text-align:right"><button class="btn" onclick="op('X-GTR4SH Reseller',30000)">BUY</button></td></tr>
-<tr><td>Admin</td><td class="p">Rp 50.000</td><td style="text-align:right"><button class="btn" onclick="op('X-GTR4SH Admin',50000)">BUY</button></td></tr>
-<tr><td>Partner</td><td class="p">Rp 70.000</td><td style="text-align:right"><button class="btn" onclick="op('X-GTR4SH Partner',70000)">BUY</button></td></tr>
-<tr><td>Moderator</td><td class="p">Rp 100.000</td><td style="text-align:right"><button class="btn btn-g" onclick="op('X-GTR4SH Moderator',100000)">BUY</button></td></tr>
-</table></div>
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DapOrderApk - Platform Jual Beli Digital Otomatis #1</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Space Grotesk',sans-serif;background:#08080a;color:#fff;overflow-x:hidden}
+h1,h2{font-family:'Syne',sans-serif}
+.hero{background:radial-gradient(120% 120% at 0% 0%,#ff3b82 0%,transparent 50%),radial-gradient(120% 120% at 100% 0%,#8b5cf6 0%,transparent 50%),radial-gradient(100% 100% at 50% 100%,#06ffa5 0%,transparent 60%),#08080a;padding:20px}
+.nav{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:100px}
+.logo{font-weight:800;font-size:22px}.logo b{color:#06ffa5}
+.nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.btn{background:#fff;color:#000;padding:10px 22px;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex}
+.btn-neon{background:linear-gradient(90deg,#06ffa5,#8b5cf6);color:#fff;border:none}
+.hero-main{max-width:1280px;margin:60px auto 0;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:center}
+.hero-left h1{font-size:clamp(40px,6vw,76px);line-height:0.9;letter-spacing:-2px;margin-bottom:18px}
+.hero-left h1 span{background:linear-gradient(90deg,#06ffa5,#ff3b82,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-left p{opacity:0.7;line-height:1.6;max-width:560px;margin-bottom:24px}
+.qris-mock{max-width:360px;background:linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02));backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.15);border-radius:40px;padding:16px;margin:0 auto}
+.qris-inner{background:#0f0f11;border-radius:28px;padding:20px}
+.qris-card{background:#fff;color:#000;border-radius:20px;padding:16px;text-align:center}
+.section{max-width:1280px;margin:0 auto;padding:70px 20px}
+.label{color:#06ffa5;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.section h2{font-size:clamp(28px,4.5vw,52px);line-height:0.95;letter-spacing:-1px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:24px}
+.glass h3{margin:12px 0 6px;font-size:17px}.glass p{opacity:0.6;font-size:13px;line-height:1.5}
+.cat-tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin:20px 0}
+.cat{white-space:nowrap;padding:10px 18px;border-radius:100px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:13px;font-weight:700;cursor:pointer}
+.cat.active{background:#fff;color:#000}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:20px}
+.prod{background:#121214;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:18px;transition:0.25s}
+.prod:hover{border-color:#06ffa5;transform:translateY(-3px)}
+.prod .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.tag{font-size:9px;font-weight:800;letter-spacing:1px;padding:4px 9px;border-radius:100px;background:rgba(255,255,255,0.1)}
+.price{font-family:'Syne';font-size:20px;font-weight:800}
+.prod h3{font-size:14px;margin-bottom:4px}.prod p{font-size:11px;opacity:0.6;margin-bottom:12px}
+.buy{width:100%;padding:10px;border-radius:100px;border:none;background:#fff;color:#000;font-weight:700;font-size:13px;cursor:pointer}.buy:hover{background:#06ffa5}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px}
+.step{padding:20px;border-left:1px solid rgba(255,255,255,0.1);position:relative}.step b{position:absolute;top:-10px;left:-1px;background:#08080a;border:1px solid rgba(255,255,255,0.2);padding:2px 8px;border-radius:100px;font-size:10px;color:#06ffa5}
+.marquee{background:#06ffa5;color:#000;padding:10px 0;white-space:nowrap;font-weight:800;font-family:'Syne';overflow:hidden}
+.footer{border-top:1px solid rgba(255,255,255,0.08);padding:30px 20px;text-align:center;opacity:0.5;font-size:12px}
+@media(max-width:900px){.hero-main{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="marquee">🚀 DAPORDERAPK • 15 PRODUK • QRIS INSTAN • GARANSI • 2.847+ TRANSAKSI • BANDAR LAMPUNG • 🚀</div>
+<div class="hero">
+<div class="nav"><div class="logo"><b>DAP</b>ORDERAPK</div><div style="display:flex;gap:20px"><a href="#tentang">Tentang</a><a href="#produk">Produk 15</a><a href="#cara">Cara Kerja</a></div><a class="btn" href="#produk">🛒 Belanja 15 Produk</a></div>
+<div class="hero-main">
+<div class="hero-left">
+<div style="display:inline-flex;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px 14px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:20px">● LIVE • PLATFORM OTOMATIS AKTIF 24/7</div>
+<h1>Platform<br><span>Jual Beli Digital Otomatis</span><br>15 Produk.</h1>
+<p><b>DapOrderApk</b> adalah platform jual beli otomatis pertama dari Bandar Lampung. DarkVerse, TR4SVLOID, X-GTR4SH semua ada. Scan QRIS lu, bot kirim otomatis 10 detik.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-neon" href="#produk">Lihat 15 Produk →</a><a class="btn" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.15)" href="#tentang">Kenapa DapOrder?</a></div>
+<div style="display:flex;gap:28px;margin-top:32px"><div><b style="font-family:'Syne';font-size:24px">15</b><br><span style="font-size:10px;opacity:0.6">PRODUK AKTIF</span></div><div><b style="font-family:'Syne';font-size:24px">2.847+</b><br><span style="font-size:10px;opacity:0.6">TRANSAKSI</span></div><div><b style="font-family:'Syne';font-size:24px">10s</b><br><span style="font-size:10px;opacity:0.6">PROSES</span></div><div><b style="font-family:'Syne';font-size:24px">24/7</b><br><span style="font-size:10px;opacity:0.6">OTOMATIS</span></div></div>
 </div>
-<div id="pay" onclick="if(event.target==this)this.style.display='none'"><div class="pb"><div style="letter-spacing:2px;font-size:12px">QRIS PAYMENT</div><div id="de" style="font-size:11px;color:#888;margin-top:6px"></div><br><img src="qris.jpg" style="width:100%;border-radius:10px;border:1.5px solid #fff"><br><br><input id="wi" style="width:100%;background:#000;border:1.5px solid #fff;color:#fff;padding:12px;border-radius:8px" placeholder="ID / NAMA"><br><br><button style="width:100%;background:#22c55e;border:none;padding:12px;border-radius:8px;font-weight:800" onclick="ki()">CONFIRM PAYMENT</button></div></div>
-<script>let CN="",CH=0;function op(n,h){CN=n;CH=h;document.getElementById('de').innerText=n+" - Rp "+h.toLocaleString('id-ID');document.getElementById('pay').style.display='flex'}function ki(){let i=document.getElementById('wi').value;if(!i){alert('ISI ID DULU');return}window.open(`https://wa.me/6283879195047?text=CEK BOS DANA SUDAH MASUK BELUM%0A%0AProduk: ${CN}%0AHarga: Rp ${CH.toLocaleString('id-ID')}%0AID: ${i}`,'_blank')}</script>
-</body></html>
+<div class="qris-mock"><div class="qris-inner"><div class="qris-card"><div style="background:#06ffa5;color:#000;padding:4px 10px;border-radius:100px;font-size:9px;font-weight:800;display:inline-block;margin-bottom:8px">● QRIS ORIGINAL</div><div style="font-weight:800;font-size:14px">DapOrderApk QRIS</div><div style="width:170px;height:170px;margin:10px auto;background:#000;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:12px">GANTI DENGAN<br>qris.jpg LU</div><div style="font-size:10px;opacity:0.6">GoPay • OVO • Dana • ShopeePay</div><div style="margin-top:10px;background:#f5f5f5;border-radius:10px;padding:8px;display:flex;justify-content:space-between;font-size:11px"><span>Total</span><b>Rp 15.000 - 150.000</b></div></div><div style="margin-top:12px;background:rgba(6,255,165,0.1);border:1px solid #06ffa5;border-radius:14px;padding:10px;display:flex;gap:8px;align-items:center"><span style="background:#06ffa5;color:#000;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px">✓</span><div><div style="font-weight:700;font-size:12px">Pembayaran Auto Deteksi</div><div style="font-size:10px;opacity:0.7">Bot kirim ke WA otomatis</div></div></div></div></div>
+</div>
+</div>
+<div class="section" id="tentang">
+<div class="label">— TENTANG PLATFORM</div>
+<h2>Bukan toko biasa.<br>Kita adalah sistem otomatis.</h2>
+<p style="max-width:620px;opacity:0.6;line-height:1.6;font-size:14px">Latar belakang: DapOrderApk bikin platform jual beli otomatis yang terintegrasi QRIS lu langsung. 15 produk DarkVerse, TR4SVLOID, X-GTR4SH semua auto. Dari Bandar Lampung untuk Indonesia.</p>
+<div class="grid3">
+<div class="glass"><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#ff3b82,#8b5cf6);display:grid;place-items:center">⚡</div><h3>Platform Otomatis 100%</h3><p>Scan QRIS, bayar, bot kirim produk ke WA dalam 10 detik tanpa admin.</p></div>
+<div class="glass"><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#06ffa5,#0ea5e9);display:grid;place-items:center">🏪</div><h3>15 Produk Lengkap</h3><p>DarkVerse 3 varian, TR4SVLOID 7 varian, X-GTR4SH 5 varian.</p></div>
+<div class="glass"><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#facc15,#ff3b82);display:grid;place-items:center">🛡️</div><h3>Tanpa KTP & Garansi</h3><p>Gak perlu KYC kayak Mayar. Garansi seumur hidup + support 24/7.</p></div>
+</div>
+</div>
+<div class="section" id="produk" style="background:#0f0f11;border-radius:36px;margin:0 16px">
+<div class="label">— KATALOG LENGKAP 15 PRODUK</div>
+<h2>Semua aplikasi gacor dalam satu platform.</h2>
+<div class="cat-tabs"><div class="cat active" onclick="filterCat('all',this)">Semua (15)</div><div class="cat" onclick="filterCat('darkverse',this)">DarkVerse (3)</div><div class="cat" onclick="filterCat('tr4s',this)">TR4SVLOID (7)</div><div class="cat" onclick="filterCat('xgtr',this)">X-GTR4SH (5)</div></div>
+<div class="products" id="products"></div>
+</div>
+<div class="section" id="cara">
+<div class="label">— CARA KERJA 10 DETIK</div>
+<h2>Scan. Bayar. Jadi.</h2>
+<div class="timeline"><div class="step"><b>01</b><div style="font-size:32px">🛒</div><h3 style="font-size:14px;margin-top:8px">Pilih Produk</h3></div><div class="step"><b>02</b><div style="font-size:32px">📱</div><h3 style="font-size:14px;margin-top:8px">Scan QRIS Original</h3></div><div class="step"><b>03</b><div style="font-size:32px">🤖</div><h3 style="font-size:14px;margin-top:8px">Bot Auto Kirim</h3></div><div class="step"><b>04</b><div style="font-size:32px">🚀</div><h3 style="font-size:14px;margin-top:8px">Langsung Gacor</h3></div></div>
+<div style="margin-top:40px;background:linear-gradient(90deg,#06ffa5,#8b5cf6);border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px"><div><h3 style="color:#000;font-size:20px;font-family:'Syne'">Siap jualan otomatis?</h3><p style="color:#000;opacity:0.7;font-size:13px">15 produk siap jual. QRIS lu, sistem gue.</p></div><a class="btn" style="background:#000;color:#fff" href="#produk">Mulai Sekarang →</a></div>
+</div>
+<div class="footer">© 2026 DapOrderApk • 15 Produk • Bandar Lampung • QRIS Original • Tanpa KTP</div>
+<script>
+const allProducts=[
+{id:1,cat:'darkverse',name:'DarkVerse FULL UPDATE',price:50000,tag:'FULL'},
+{id:2,cat:'darkverse',name:'DarkVerse RESELLER',price:80000,tag:'RESELLER'},
+{id:3,cat:'darkverse',name:'DarkVerse PARTNER',price:150000,tag:'PARTNER'},
+{id:4,cat:'tr4s',name:'TR4SVLOID 1 MINGGU',price:10000,tag:'1 MINGGU'},
+{id:5,cat:'tr4s',name:'TR4SVLOID 1 BULAN',price:15000,tag:'1 BULAN'},
+{id:6,cat:'tr4s',name:'TR4SVLOID FULL UPDATE',price:25000,tag:'FULL UPDATE'},
+{id:7,cat:'tr4s',name:'TR4SVLOID RESELLER',price:55000,tag:'RESELLER'},
+{id:8,cat:'tr4s',name:'TR4SVLOID VIP 1 BULAN',price:30000,tag:'VIP 1 BULAN'},
+{id:9,cat:'tr4s',name:'TR4SVLOID VIP PERMANEN',price:50000,tag:'VIP PERMANEN'},
+{id:10,cat:'tr4s',name:'TR4SVLOID PARTNER',price:65000,tag:'PARTNER'},
+{id:11,cat:'xgtr',name:'X-GTR4SH FULL UPDATE',price:20000,tag:'FULL'},
+{id:12,cat:'xgtr',name:'X-GTR4SH RESELLER',price:30000,tag:'RESELLER'},
+{id:13,cat:'xgtr',name:'X-GTR4SH ADMIN',price:50000,tag:'ADMIN'},
+{id:14,cat:'xgtr',name:'X-GTR4SH PARTNER',price:70000,tag:'PARTNER'},
+{id:15,cat:'xgtr',name:'X-GTR4SH MODERATOR',price:100000,tag:'MODERATOR'},
+];
+let active='all';
+function render(){
+const list=allProducts.filter(p=>active==='all'||p.cat===active);
+document.getElementById('products').innerHTML=list.map(p=>`
+<div class="prod">
+<div class="top"><span class="tag">${p.tag}</span><span style="font-size:11px;opacity:0.5">${p.cat.toUpperCase()}</span></div>
+<div class="price">Rp ${p.price.toLocaleString('id-ID')}</div>
+<h3>${p.name}</h3>
+<p>DapOrderApk • Garansi update • Support 24/7 • Proses 10 detik</p>
+<button class="buy" onclick="orderWA('${p.name} - Rp ${p.price.toLocaleString('id-ID')}')">Beli →</button>
+</div>
+`).join('');
+}
+function filterCat(c,el){active=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');render();}
+function orderWA(p){let t=`Halo DapOrderApk! 🚀%0A%0ASaya mau order:%0A*${p}*%0A%0ASudah scan QRIS ✅%0AProses ya bos!`;window.open(`https://wa.me/6281234567890?text=${t}`,'_blank');}
+render();
+</script>
+</body>
+</html>
