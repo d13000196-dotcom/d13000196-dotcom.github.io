@@ -1,76 +1,68 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DapOrderApk - Order System</title>
-<!-- FIX EMOJI IOS -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DapOrderApk - Order System iOS</title>
 <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;background:#f5f7fb;color:#111827;-webkit-font-smoothing:antialiased}
-.header{background:rgba(255,255,255,0.82);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;z-index:10}
-.logo{font-weight:800;font-size:18px;letter-spacing:-0.5px}.logo span{color:#2563eb}
-.badge{font-size:10px;background:#dbeafe;color:#2563eb;padding:5px 10px;border-radius:20px;font-weight:700}
-.hero{background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;padding:22px;text-align:center}
-.hero h1{margin:0;font-size:21px;font-weight:800;letter-spacing:-0.3px}
-.container{max-width:460px;margin:0 auto;padding:12px}
-.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 8px 32px rgba(0,0,0,0.06);border:1px solid rgba(255,255,255,0.7)}
-.app-title{font-weight:800;font-size:14px;margin-bottom:10px;display:flex;gap:8px;align-items:center}
-.dot{width:28px;height:28px;border-radius:8px;background:#eff6ff;color:#2563eb;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
-.varian{border:1.5px solid #e5e7eb;border-radius:14px;padding:11px 12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:rgba(255,255,255,0.9);transition:.2s}
-.varian.active{border-color:#2563eb;background:#eff6ff;box-shadow:0 4px 16px rgba(37,99,235,0.15);transform:scale(1.01)}
-.varian b{font-size:13px}.harga{color:#2563eb;font-weight:800;font-size:13px}
-label{font-size:10px;font-weight:700;color:#6b7280;margin-top:10px;display:block;letter-spacing:0.6px}
-input{width:100%;padding:12px;margin-top:5px;border:1.5px solid #e5e7eb;border-radius:12px;background:rgba(255,255,255,0.9);outline:none}
-input:focus{border-color:#2563eb;box-shadow:0 0 0 4px rgba(37,99,235,0.1)}
-button.main{width:100%;background:#2563eb;color:#fff;border:0;padding:14px;border-radius:14px;font-weight:800;margin-top:12px;box-shadow:0 8px 20px rgba(37,99,235,0.3)}
-#qrisModal{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:99;padding:16px}
-.qris-box{background:rgba(255,255,255,0.96);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border-radius:28px;padding:18px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.8)}
-.qris-img{width:100%;border-radius:16px;border:2px solid #eef2f7;overflow:hidden;margin:10px 0} .qris-img img{width:100%;display:block}
-img.emoji{height:1.2em;width:1.2em;margin:0 .05em 0 .1em;vertical-align:-0.15em}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',Segoe UI,Roboto,sans-serif;background:#f2f4f8;color:#111827}
+.header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,0.8);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:0.5px solid rgba(0,0,0,0.08);padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:18px;letter-spacing:-0.6px}.logo span{color:#007AFF}
+.badge{font-size:10px;background:#e5f0ff;color:#007AFF;padding:7px 12px;border-radius:20px;font-weight:800}
+.hero{background:linear-gradient(135deg,#007AFF,#5AC8FA);color:#fff;padding:32px 20px;text-align:center;border-radius:0 0 28px 28px}
+.hero h1{margin:0;font-size:22px;font-weight:800}
+.hero p{margin:8px 0 0;opacity:.9;font-size:13px}
+.container{max-width:460px;margin:0 auto;padding:14px}
+.card{background:rgba(255,255,255,0.92);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-radius:22px;padding:16px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,0.06),0 0 0 0.5px rgba(0,0,0,0.05)}
+.app-title{font-weight:800;font-size:14px;margin-bottom:12px;display:flex;align-items:center;gap:9px}
+.dot{width:30px;height:30px;border-radius:9px;background:#eef6ff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:#007AFF}
+.varian{border:1.5px solid #e5e7eb;border-radius:14px;padding:13px 14px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.varian.active{border-color:#007AFF;background:#eef6ff;box-shadow:0 0 0 3px rgba(0,122,255,0.12)}
+.varian b{font-size:13px}.harga{color:#007AFF;font-weight:800;font-size:13px}
+label{font-size:10px;font-weight:800;color:#8e8e93;letter-spacing:0.8px;text-transform:uppercase}
+input{width:100%;padding:13px;margin-top:6px;border:1.5px solid #e5e7eb;border-radius:13px;font-size:15px;outline:none}
+input:focus{border-color:#007AFF;box-shadow:0 0 0 4px rgba(0,122,255,0.12)}
+button.main{width:100%;background:#007AFF;color:#fff;border:0;padding:15px;border-radius:14px;font-weight:700;font-size:16px;margin-top:14px;box-shadow:0 10px 20px rgba(0,122,255,0.3)}
+#qrisModal{position:fixed;inset:0;background:rgba(0,0,0,0.35);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;z-index:99}
+.qris-box{background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-radius:26px;padding:22px;max-width:360px;width:100%;text-align:center}
+img.emoji{height:1.25em;width:1.25em;margin:0 .05em 0 .1em;vertical-align:-0.2em}
 </style>
 </head>
 <body>
 <div class="header"><div class="logo">DAP<span>ORDERAPK</span></div><div class="badge">OFFICIAL STORE</div></div>
-<div class="hero"><h1>Form Order DapOrderApk</h1><p style="font-size:12px;margin:6px 0 0;opacity:0.9">Isi form dibawah, bayar QRIS otomatis</p></div>
+<div class="hero"><h1>🚀 Form Order DapOrderApk</h1><p>Isi form dibawah, bayar QRIS otomatis</p></div>
 <div class="container">
-<div class="card"><div class="app-title"><div class="dot">DV</div>DarkVerse - PREMIUM</div>
-<div class="varian" onclick="pilih(this,'DarkVerse','FULL UPDATE',50000)"><b>FULL UPDATE</b><span class="harga">Rp 50.000</span></div>
-<div class="varian" onclick="pilih(this,'DarkVerse','RESELLER',80000)"><b>RESELLER</b><span class="harga">Rp 80.000</span></div>
-<div class="varian" onclick="pilih(this,'DarkVerse','PARTNER',150000)"><b>PARTNER</b><span class="harga">Rp 150.000</span></div></div>
-<div class="card"><div class="app-title"><div class="dot">T4</div>TR4SVLOID - MOST WANTED</div>
-<div class="varian" onclick="pilih(this,'TR4SVLOID','1 MINGGU',10000)"><b>1 MINGGU</b><span class="harga">Rp 10.000</span></div>
-<div class="varian" onclick="pilih(this,'TR4SVLOID','1 BULAN',15000)"><b>1 BULAN</b><span class="harga">Rp 15.000</span></div>
-<div class="varian active" onclick="pilih(this,'TR4SVLOID','FULL UPDATE',25000)"><b>FULL UPDATE</b><span class="harga">Rp 25.000</span></div>
-<div class="varian" onclick="pilih(this,'TR4SVLOID','RESELLER',55000)"><b>RESELLER</b><span class="harga">Rp 55.000</span></div>
-<div class="varian" onclick="pilih(this,'TR4SVLOID','VIP 1 BULAN',30000)"><b>VIP 1 BULAN</b><span class="harga">Rp 30.000</span></div>
-<div class="varian" onclick="pilih(this,'TR4SVLOID','VIP PERMANEN',50000)"><b>VIP PERMANEN</b><span class="harga">Rp 50.000</span></div>
-<div class="varian" onclick="pilih(this,'TR4SVLOID','PARTNER',65000)"><b>PARTNER</b><span class="harga">Rp 65.000</span></div></div>
-<div class="card"><div class="app-title"><div class="dot">XG</div>X-GTR4SH - NEW</div>
-<div class="varian active" onclick="pilih(this,'X-GTR4SH','FULL UPDATE',20000)"><b>FULL UPDATE</b><span class="harga">Rp 20.000</span></div>
-<div class="varian" onclick="pilih(this,'X-GTR4SH','RESELLER',30000)"><b>RESELLER</b><span class="harga">Rp 30.000</span></div>
-<div class="varian" onclick="pilih(this,'X-GTR4SH','ADMIN',50000)"><b>ADMIN</b><span class="harga">Rp 50.000</span></div>
-<div class="varian" onclick="pilih(this,'X-GTR4SH','PARTNER',70000)"><b>PARTNER</b><span class="harga">Rp 70.000</span></div>
-<div class="varian" onclick="pilih(this,'X-GTR4SH','MODERATOR',100000)"><b>MODERATOR</b><span class="harga">Rp 100.000</span></div></div>
+<div class="card"><div class="app-title"><div class="dot">DV</div> DarkVerse - PREMIUM</div>
+<div class="varian" onclick="pilih(this,'DV','FULL UPDATE',50000)"><b>FULL UPDATE</b><span class="harga">Rp 50.000</span></div>
+<div class="varian" onclick="pilih(this,'DV','RESELLER',80000)"><b>RESELLER</b><span class="harga">Rp 80.000</span></div>
+<div class="varian" onclick="pilih(this,'DV','PARTNER',150000)"><b>PARTNER</b><span class="harga">Rp 150.000</span></div></div>
+<div class="card"><div class="app-title"><div class="dot">T4</div> TR4SVLOID - MOST WANTED</div>
+<div class="varian" onclick="pilih(this,'T4','1 MINGGU',10000)"><b>1 MINGGU</b><span class="harga">Rp 10.000</span></div>
+<div class="varian" onclick="pilih(this,'T4','1 BULAN',15000)"><b>1 BULAN</b><span class="harga">Rp 15.000</span></div>
+<div class="varian active" onclick="pilih(this,'T4','FULL UPDATE',25000)"><b>FULL UPDATE</b><span class="harga">Rp 25.000</span></div>
+<div class="varian" onclick="pilih(this,'T4','RESELLER',55000)"><b>RESELLER</b><span class="harga">Rp 55.000</span></div>
+<div class="varian" onclick="pilih(this,'T4','VIP 1 BULAN',30000)"><b>VIP 1 BULAN</b><span class="harga">Rp 30.000</span></div>
+<div class="varian" onclick="pilih(this,'T4','VIP PERMANEN',50000)"><b>VIP PERMANEN</b><span class="harga">Rp 50.000</span></div>
+<div class="varian" onclick="pilih(this,'T4','PARTNER',65000)"><b>PARTNER</b><span class="harga">Rp 65.000</span></div></div>
+<div class="card"><div class="app-title"><div class="dot">XG</div> X-GTR4SH</div>
+<div class="varian active" onclick="pilih(this,'XG','FULL UPDATE',20000)"><b>FULL UPDATE</b><span class="harga">Rp 20.000</span></div>
+<div class="varian" onclick="pilih(this,'XG','RESELLER',40000)"><b>RESELLER</b><span class="harga">Rp 40.000</span></div>
+<div class="varian" onclick="pilih(this,'XG','VIP',35000)"><b>VIP</b><span class="harga">Rp 35.000</span></div></div>
 <div class="card">
-<div style="display:flex;justify-content:space-between;font-weight:800"><span id="paketText">TR4SVLOID - FULL UPDATE</span><span id="totalText" style="color:#2563eb">Rp 25.000</span></div>
-<label>NAMA LENGKAP</label><input id="nama" placeholder="Nama pembeli">
-<label>NOMOR WA</label><input id="wa" placeholder="08xxxx">
-<button class="main" onclick="bayar()">LANJUT BAYAR QRIS 🚀</button>
+<label>Username / ID Game</label><input id="uid" placeholder="Masukkan ID">
+<label style="margin-top:12px;display:block">No WhatsApp</label><input id="wa" placeholder="08xxxxxxxx">
+<label style="margin-top:12px;display:block">Catatan (opsional)</label><input id="cat" placeholder="Catatan...">
+<button class="main" onclick="bayar()">💳 Bayar QRIS Sekarang</button>
 </div>
 </div>
-<div id="qrisModal"><div class="qris-box">
-<h3 style="margin:0">Scan QRIS Untuk Bayar 📲</h3>
-<p style="font-size:12px;color:#6b7280">Total: <b id="qTotal" style="color:#2563eb">Rp 25.000</b></p>
-<div class="qris-img"><img src="./IMG_20260426_170128_746.jpg" onerror="this.src='./qris_bajaklaut.jpg'"></div>
-<button class="main" onclick="konfirmasi()">CEK DANA BOSKU SUDAH MASUK BELUM ✅</button>
-<button onclick="document.getElementById('qrisModal').style.display='none'" style="width:100%;background:#fff;border:1px solid #e5e7eb;padding:10px;border-radius:12px;margin-top:8px;font-weight:700">Tutup</button>
-</div></div>
+<div id="qrisModal"><div class="qris-box"><h3 style="margin:0">Scan QRIS</h3><p id="qrisText" style="font-size:13px;color:#8e8e93;margin-top:6px"></p><div style="background:#fff;padding:14px;border-radius:18px;margin:14px 0;border:1px solid #f0f0f0"><div style="height:180px;background:#f9fafb;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#999">QRIS</div></div><button class="main" onclick="document.getElementById('qrisModal').style.display='none'">Sudah Bayar ✓</button></div></div>
 <script>
-let selected={app:'TR4SVLOID',paket:'FULL UPDATE',harga:25000};
-function pilih(el,app,paket,harga){el.parentElement.querySelectorAll('.varian').forEach(v=>v.classList.remove('active'));el.classList.add('active');selected={app,paket,harga};document.getElementById('paketText').innerText=app+' - '+paket;document.getElementById('totalText').innerText='Rp '+harga.toLocaleString('id-ID');twemoji.parse(document.body);}
-function bayar(){let n=document.getElementById('nama').value,w=document.getElementById('wa').value;if(!n||!w){alert('Isi Nama & WA dulu bos!');return;}document.getElementById('qTotal').innerText='Rp '+selected.harga.toLocaleString('id-ID');document.getElementById('qrisModal').style.display='flex';twemoji.parse(document.body);}
-function konfirmasi(){let n=document.getElementById('nama').value,w=document.getElementById('wa').value;let pesan=`*ORDER DAPORDERAPK*%0A%0A📦 ${selected.app}%0A📋 ${selected.paket}%0A💰 Rp ${selected.harga.toLocaleString('id-ID')}%0A👤 ${n}%0A📱 ${w}%0A%0A*CEK DANA BOSKU SUDAH MASUK BELUM*`;window.location.href='https://wa.me/6283879195047?text='+pesan;}
-twemoji.parse(document.body);
+let sel={app:'T4',varian:'FULL UPDATE',harga:25000};
+function pilih(el,app,varian,harga){document.querySelectorAll('.varian').forEach(e=>e.classList.remove('active'));el.classList.add('active');sel={app,varian,harga};}
+function bayar(){let u=document.getElementById('uid').value;let w=document.getElementById('wa').value;if(!u||!w){alert('Isi ID & WA dulu bos!');return;}document.getElementById('qrisText').innerText=sel.app+' - '+sel.varian+' | Rp '+sel.harga.toLocaleString('id-ID')+' | '+u;document.getElementById('qrisModal').style.display='flex';}
+window.addEventListener('load',()=>{twemoji.parse(document.body);});
 </script>
 </body>
 </html>
