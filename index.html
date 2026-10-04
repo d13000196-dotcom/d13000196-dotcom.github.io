@@ -7,65 +7,58 @@
 <style>
 :root{--neon:#00ff88;--bg:#050805;--panel:#101410;--border:#00ff88;--text:#c8ffd8}
 .theme-silver{--neon:#c0c0c0;--bg:#0a0a0c;--panel:#1a1a1e;--border:#c0c0c0;--text:#e0e0e0}
-.theme-white{--neon:#111;--bg:#f0f0f0;--panel:#ffffff;--border:#111;--text:#111}
+.theme-white{--neon:#111;--bg:#f0f0f0;--panel:#fff;--border:#111;--text:#111}
 *{box-sizing:border-box;font-family:'JetBrains Mono',monospace}
-body{margin:0;background:var(--bg);color:var(--text);transition:.3s;background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size:35px 35px}
+body{margin:0;background:var(--bg);color:var(--text);background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size:35px 35px}
 .container{max-width:480px;margin:0 auto;border-left:3px solid var(--border);border-right:3px solid var(--border);background:var(--bg);min-height:100vh}
 .header{position:sticky;top:0;z-index:99;background:#000;border-bottom:3px solid var(--border);padding:10px}
-.logo{font-family:'Press Start 2P';font-size:11px;color:var(--neon);line-height:1.3}
-.logo span{font-size:7px;color:#fff}
-.theme-row{display:flex;gap:6px;margin-top:8px}
+.logo{font-family:'Press Start 2P';font-size:11px;color:var(--neon)}
 .tbtn{flex:1;border:2px solid var(--border);padding:7px;font-size:8px;font-family:'Press Start 2P';cursor:pointer}
 .t-green{background:#00ff88;color:#000}.t-silver{background:#c0c0c0;color:#000}.t-white{background:#fff;color:#000}
 .status{background:#000;border:2px solid var(--border);margin:8px;padding:6px;font-size:7px;font-family:'Press Start 2P';color:var(--neon);text-align:center}
 .hero{margin:8px;border:3px solid var(--border);background:var(--panel);padding:8px;position:relative}
-.hero img{width:100%;height:210px;object-fit:contain;background:#000;border:2px solid var(--border);image-rendering:pixelated}
-.hero-tag{position:absolute;top:14px;left:14px;background:var(--neon);color:#000;font-size:7px;padding:4px 6px;font-family:'Press Start 2P'}
+.hero img{width:100%;height:210px;object-fit:contain;background:#000;border:2px solid var(--border)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
 .card{background:var(--panel);border:3px solid var(--border);padding:7px}
 .card img{width:100%;height:95px;object-fit:cover;background:#000;border:2px solid var(--border)}
 .badge{background:var(--neon);color:#000;font-size:6px;padding:3px 5px;font-family:'Press Start 2P';display:inline-block;margin-bottom:5px}
-.name{font-family:'Press Start 2P';font-size:7px;line-height:1.4;min-height:34px;margin:6px 0;color:var(--text)}
+.name{font-family:'Press Start 2P';font-size:7px;line-height:1.4;min-height:34px;margin:6px 0}
 .price{color:var(--neon);font-family:'Press Start 2P';font-size:9px;margin:4px 0}
 .btn{width:100%;background:#000;color:var(--neon);border:2px solid var(--neon);padding:8px;font-family:'Press Start 2P';font-size:7px;cursor:pointer;margin-top:6px}
-.btn:hover{background:var(--neon);color:#000}
-.footer{margin:10px;border:3px solid var(--border);background:#000;padding:10px;text-align:center;font-family:'Press Start 2P';font-size:7px;color:var(--neon);line-height:1.6}
+.footer{margin:10px;border:3px solid var(--border);background:#000;padding:10px;text-align:center;font-family:'Press Start 2P';font-size:7px;color:var(--neon)}
 .cart-float{position:fixed;bottom:18px;right:18px;background:var(--neon);color:#000;border:3px solid #000;padding:12px 18px;font-family:'Press Start 2P';font-size:10px;cursor:pointer;z-index:100;box-shadow:5px 5px 0 #000}
+/* CART MODAL */
+#cartBox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;padding:12px;overflow:auto}
+.cartPanel{max-width:460px;margin:20px auto;background:var(--panel);border:3px solid var(--border);padding:10px}
+.cartItem{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--border);padding:8px;margin:6px 0;background:#000}
+.cname{font-family:'Press Start 2P';font-size:6px;line-height:1.3;max-width:150px}
+.cact{display:flex;gap:4px;align-items:center}
+.sbtn{border:2px solid var(--neon);background:#000;color:var(--neon);font-family:'Press Start 2P';font-size:9px;width:28px;height:28px;cursor:pointer}
+.dbtn{border:2px solid #ff3344;background:#000;color:#ff3344;font-family:'Press Start 2P';font-size:6px;padding:5px;cursor:pointer}
 </style>
 </head>
-<body class="theme-green">
+<body>
 <div class="container">
 <div class="header">
-<div style="display:flex;justify-content:space-between">
-<div class="logo">DapOrderApk<br><span>OFFICIAL CYBERSEC ARMORY</span></div>
-<div style="font-family:'Press Start 2P';font-size:8px;color:var(--neon);text-align:right">CART [<span id="c1">0</span>]<br><span style="font-size:6px;color:#fff">083879195047</span></div>
+<div style="display:flex;justify-content:space-between"><div class="logo">DapOrderApk<br><span style="font-size:7px;color:#fff">OFFICIAL CYBERSEC ARMORY</span></div><div style="font-family:'Press Start 2P';font-size:8px;color:var(--neon);text-align:right">CART [<span id="c1">0</span>]</div></div>
+<div style="display:flex;gap:6px;margin-top:8px"><button class="tbtn t-green" onclick="setT('green')">HIJAU</button><button class="tbtn t-silver" onclick="setT('silver')">SILVER</button><button class="tbtn t-white" onclick="setT('white')">PUTIH</button></div>
 </div>
-<div class="theme-row">
-<button class="tbtn t-green" onclick="setT('green')">HIJAU</button>
-<button class="tbtn t-silver" onclick="setT('silver')">SILVER</button>
-<button class="tbtn t-white" onclick="setT('white')">PUTIH</button>
-</div>
-</div>
-
-<div class="status">CONNECTION: SECURE ● PING 12ms ● DANA:082312728245 ● WA:083879195047 ● 15 ITEMS READY</div>
-
-<div class="hero">
-<div class="hero-tag">> GUARD-01 ACTIVE</div>
-<img src="mecha.jpg" onerror="this.src='https://placehold.co/400x210/000/00ff88?text=MECHA.jpg+BELUM+DI+UPLOAD'">
-<div style="font-family:'Press Start 2P';font-size:7px;margin-top:6px;color:var(--neon)">DARK MECHA PIXEL GRID // ALL SYSTEMS NOMINAL</div>
-</div>
-
+<div class="status">CONNECTION: SECURE ● DANA:082312728245 ● WA:083879195047 ● 15 ITEMS</div>
+<div class="hero"><div style="position:absolute;top:14px;left:14px;background:var(--neon);color:#000;font-size:7px;padding:4px 6px;font-family:'Press Start 2P'">> GUARD-01 ACTIVE</div><img src="mecha.jpg"><div style="font-family:'Press Start 2P';font-size:7px;margin-top:6px;color:var(--neon)">DARK MECHA PIXEL GRID</div></div>
 <div class="grid" id="grid"></div>
+<div class="footer">PAYMENT: DANA 082312728245 | QRIS DAFF SHOP<br>NMID ID1025450705674<br><br>TOTAL: <span id="ftotal">0</span></div>
+</div>
+<div class="cart-float" onclick="openCart()">🛒 [<span id="c2">0</span>] CHECKOUT</div>
 
-<div class="footer">
-TOTAL INVENTORY: <span id="ftotal">0</span> CRED<br><br>
-PAYMENT: DANA 082312728245 | QRIS DAFF SHOP<br>
-NMID ID1025450705674 - SATU QRIS UNTUK SEMUA<br><br>
-SYSTEM LOG: 15 PRODUCTS VERIFIED ● 0 THREATS<br>V2.0 MECHA GRID ● TRUSTED 700+ PEMBELI
+<div id="cartBox" onclick="if(event.target==this)closeCart()">
+<div class="cartPanel">
+<div style="display:flex;justify-content:space-between;font-family:'Press Start 2P';font-size:9px;color:var(--neon)">KERANJANG <span style="cursor:pointer" onclick="closeCart()">[X] TUTUP</span></div>
+<div id="cartList" style="margin-top:10px"></div>
+<div style="border-top:3px solid var(--border);margin-top:10px;padding-top:10px;font-family:'Press Start 2P';font-size:9px">TOTAL: Rp <span id="cartTotal">0</span></div>
+<button class="btn" style="background:var(--neon);color:#000;margin-top:10px" onclick="goPay()">LANJUT BAYAR →</button>
+<button class="btn" style="border-color:#ff3344;color:#ff3344;margin-top:8px" onclick="clearCart()">[ KOSONGKAN KERANJANG ]</button>
 </div>
 </div>
-
-<div class="cart-float" onclick="goCart()">🛒 [<span id="c2">0</span>] CHECKOUT</div>
 
 <script>
 const products=[
@@ -86,19 +79,33 @@ const products=[
 {name:"X-GTR4SH MODERATOR",price:100000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
 ];
 let cart=JSON.parse(localStorage.getItem('dap_cart')||'[]');
-function setT(t){document.body.className='theme-'+t;localStorage.setItem('dap_theme',t);render()}
+function setT(t){document.body.className='theme-'+t;localStorage.setItem('dap_theme',t)}
+function save(){localStorage.setItem('dap_cart',JSON.stringify(cart));render()}
+function add(i){let f=cart.find(c=>c.idx==i); if(f) f.qty++; else cart.push({idx:i,qty:1}); save()}
+function dec(i){let f=cart.find(c=>c.idx==i); if(!f) return; f.qty--; if(f.qty<=0) cart=cart.filter(c=>c.idx!=i); save()}
+function rem(i){cart=cart.filter(c=>c.idx!=i); save()}
+function clearCart(){if(confirm('Kosongkan keranjang?')){cart=[]; save(); closeCart()}}
+function openCart(){renderCart(); document.getElementById('cartBox').style.display='block'}
+function closeCart(){document.getElementById('cartBox').style.display='none'}
+function renderCart(){
+let list=document.getElementById('cartList'); list.innerHTML=''; let tot=0;
+if(cart.length==0) list.innerHTML='<div style="font-family:Press Start 2P;font-size:7px;text-align:center;padding:20px">KERANJANG KOSONG</div>';
+cart.forEach(c=>{
+let p=products[c.idx]; tot+=p.price*c.qty;
+list.innerHTML+=`<div class="cartItem"><div class="cname">${p.name}<br><span style="color:var(--neon)">Rp ${p.price.toLocaleString('id-ID')} x ${c.qty}</span></div><div class="cact"><button class="sbtn" onclick="dec(${c.idx})">-</button><span style="font-family:Press Start 2P;font-size:8px">${c.qty}</span><button class="sbtn" onclick="add(${c.idx})">+</button><button class="dbtn" onclick="rem(${c.idx})">HAPUS</button></div></div>`;
+});
+document.getElementById('cartTotal').innerText=tot.toLocaleString('id-ID');
+}
 function render(){
 let g=document.getElementById('grid'); g.innerHTML=''; let tot=0;
-products.forEach((p,i)=>{
-g.innerHTML+=`<div class="card"><div class="badge">${p.cat}</div><img src="${p.img}" onerror="this.src='https://placehold.co/200x95/000/00ff88?text=${p.cat}'"><div class="name">${p.name}</div><div class="price">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="add(${i})">[ADD TO CART +]</button></div>`;
-});
+products.forEach((p,i)=>{g.innerHTML+=`<div class="card"><div class="badge">${p.cat}</div><img src="${p.img}" onerror="this.src='https://placehold.co/200x95/000/00ff88?text=${p.cat}'"><div class="name">${p.name}</div><div class="price">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="add(${i})">[ADD TO CART +]</button></div>`});
 cart.forEach(c=>{tot+=products[c.idx].price*c.qty});
-document.getElementById('c1').innerText=cart.length; document.getElementById('c2').innerText=cart.length; document.getElementById('ftotal').innerText=tot.toLocaleString('id-ID');
+let count=cart.reduce((a,b)=>a+b.qty,0);
+document.getElementById('c1').innerText=count; document.getElementById('c2').innerText=count; document.getElementById('ftotal').innerText='Rp '+tot.toLocaleString('id-ID');
+renderCart();
 }
-function add(i){cart.push({idx:i,qty:1});localStorage.setItem('dap_cart',JSON.stringify(cart));render()}
-function goCart(){if(cart.length==0){alert('KERANJANG KOSONG WOK!');return;} location.href='payment.html';}
-let sv=localStorage.getItem('dap_theme'); if(sv) document.body.className='theme-'+sv;
-render();
+function goPay(){if(cart.length==0){alert('Kosong wok!');return;} location.href='payment.html';}
+let th=localStorage.getItem('dap_theme'); if(th) document.body.className='theme-'+th; render();
 </script>
 </body>
 </html>
