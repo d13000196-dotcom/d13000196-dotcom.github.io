@@ -3,133 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DapOrderApk - RAINBOW TRANSPARENT v4.1</title>
+<title>DapOrderApk - OFFICIAL STORE</title>
 <style>
-:root{--green:#00ff88;--red:#ff0040;--purple:#a000ff;--silver:#c0c0c0;--orange:#ff8800;--yellow:#ffea00;--blue:#00d0ff;--trans:rgba(255,255,255,0.08);--bg:#0a0a0a}
+:root{--green:#00ff88;--red:#ff0040;--purple:#a000ff;--silver:#c0c0c0;--orange:#ff8800;--yellow:#ffea00;--blue:#00d0ff;--bg:#060606}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace}
-body{background:var(--bg);color:#fff;overflow-x:hidden}
-.matrix{position:fixed;top:0;left:0;width:100%;height:100%;opacity:0.07;pointer-events:none;z-index:0;background: repeating-linear-gradient(0deg, transparent, transparent 2px, var(--green) 2px, var(--green) 3px)}
-.header{position:relative;z-index:2;border-bottom:2px solid var(--green);padding:12px;background:#111;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.logo{font-size:22px;font-weight:900;color:var(--green);text-shadow:0 0 10px var(--green)}
-.terminal-text{color:var(--green);font-size:12px;margin:10px 0;min-height:16px}
+body{background:var(--bg);color:#fff;min-height:100vh}
+.header{border-bottom:3px solid var(--green);padding:12px 14px;background:#0f0f0f;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{color:var(--green);font-weight:900;font-size:18px;letter-spacing:1px}
 .nav{display:flex;gap:8px}
-.btn-nav{border:1px solid var(--silver);padding:6px 12px;background:#000;color:var(--silver);cursor:pointer}
-.btn-nav.active{border-color:var(--green);color:var(--green);box-shadow:0 0 8px var(--green)}
-.layout{display:grid;grid-template-columns:260px 1fr;gap:14px;padding:14px;position:relative;z-index:2}
-@media(max-width:800px){.layout{grid-template-columns:1fr}}
-.sidebar{border:1px solid var(--silver);padding:12px;background:#0f0f0f;height:fit-content}
-.sidebar h3{color:var(--yellow);margin:10px 0 6px;font-size:13px}
-.badge{display:inline-block;border:1px solid;padding:3px 8px;font-size:11px;margin:3px 2px}
-.b-green{border-color:var(--green);color:var(--green)}
-.b-red{border-color:var(--red);color:var(--red)}
-.b-purple{border-color:var(--purple);color:var(--purple)}
-.b-silver{border-color:var(--silver);color:var(--silver)}
-.b-orange{border-color:var(--orange);color:var(--orange)}
-.b-yellow{border-color:var(--yellow);color:var(--yellow)}
-.b-blue{border-color:var(--blue);color:var(--blue)}
-.b-trans{border-color:rgba(255,255,255,0.4);color:#fff;background:rgba(255,255,255,0.08);backdrop-filter:blur(6px)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.card{border:2px solid;padding:12px;background:#111;transition:0.25s;position:relative}
-.card:hover{transform:translateY(-4px);box-shadow:0 0 18px}
-.card.c-green{border-color:var(--green)} .card.c-green h4{color:var(--green)}
-.card.c-red{border-color:var(--red)} .card.c-red h4{color:var(--red)}
-.card.c-purple{border-color:var(--purple)} .card.c-purple h4{color:var(--purple)}
-.card.c-silver{border-color:var(--silver)} .card.c-silver h4{color:var(--silver)}
-.card.c-orange{border-color:var(--orange)} .card.c-orange h4{color:var(--orange)}
-.card.c-yellow{border-color:var(--yellow)} .card.c-yellow h4{color:var(--yellow)}
-.card.c-blue{border-color:var(--blue)} .card.c-blue h4{color:var(--blue)}
-.card.c-trans{border-color:rgba(255,255,255,0.35);background:linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));backdrop-filter:blur(12px)} 
-.card.c-trans h4{color:#fff;text-shadow:0 0 10px #fff}
-.card button{width:100%;margin-top:8px;padding:8px;background:#000;border:1px solid currentColor;color:inherit;cursor:pointer;font-weight:700}
-.card button:hover{background:currentColor;color:#000}
-.card.c-trans button{border-color:#fff;color:#fff}
-.cart-box{margin-top:14px;border:1px dashed var(--yellow);padding:10px}
-.cart-item{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;padding:6px 0;font-size:12px}
-.qty button{width:24px;height:24px;background:#000;border:1px solid #555;color:#fff;cursor:pointer}
+.btn{border:1px solid var(--silver);padding:6px 12px;background:#000;color:var(--silver);cursor:pointer;text-decoration:none;font-size:12px}
+.btn:hover{background:#fff;color:#000}
+.statusbar{background:#000;border-bottom:1px solid #222;padding:6px 14px;font-size:11px;color:var(--green)}
+.layout{max-width:1300px;margin:auto;display:grid;grid-template-columns:280px 1fr;gap:12px;padding:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+.side{border:1px solid #333;background:#0e0e0e;padding:12px;height:fit-content;position:sticky;top:60px}
+.side h3{font-size:12px;color:var(--yellow);margin-bottom:8px}
+.filter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.filter button{font-size:10px;border:1px solid;padding:4px 8px;background:#000;cursor:pointer}
+.preview{border:1px dashed var(--yellow);padding:10px;background:#111;margin-top:10px}
+.preview b{font-size:11px;color:var(--yellow)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{border:2px solid;padding:12px;background:#111;transition:.2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(0,0,0,.8)}
+.card h4{font-size:13px;margin-bottom:4px;line-height:1.2}
+.card .price{font-size:16px;font-weight:900;margin:6px 0}
+.card .desc{font-size:10px;color:#aaa;margin-bottom:6px}
+.card button{width:100%;padding:8px;background:#000;border:1px solid;font-weight:900;cursor:pointer}
+.card button:hover{filter:brightness(1.3)}
+.c-green{border-color:var(--green);color:var(--green)}
+.c-red{border-color:var(--red);color:var(--red)}
+.c-purple{border-color:var(--purple);color:var(--purple)}
+.c-silver{border-color:var(--silver);color:var(--silver)}
+.c-orange{border-color:var(--orange);color:var(--orange)}
+.c-yellow{border-color:var(--yellow);color:var(--yellow)}
+.c-blue{border-color:var(--blue);color:var(--blue)}
+.c-trans{border-color:rgba(255,255,255,0.35);color:#fff;background:linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03))!important;backdrop-filter:blur(14px)}
+.badge{font-size:9px;border:1px solid;padding:2px 5px;margin-left:5px}
 </style>
 </head>
 <body>
-<div class="matrix"></div>
 <div class="header">
-<div class="logo">DapOrderApk <span style="color:var(--silver)">// RAINBOW+TRANS v4.1</span></div>
+<div class="logo">DapOrderApk // RAINBOW+TRANS v4.2</div>
 <div class="nav">
-<button class="btn-nav active">SHOP</button>
-<button class="btn-nav" onclick="location.href='payment.html'">CART [<span id="cartCount">0</span>]</button>
-<button class="btn-nav">ORDERS</button>
+<a class="btn" href="index.html">SHOP</a>
+<a class="btn" href="payment.html" style="border-color:var(--green);color:var(--green)">CART [<span id="cartCount">0</span>]</a>
 </div>
 </div>
-<div style="padding:8px 14px;z-index:2;position:relative" class="terminal-text" id="typeText">> initializing...</div>
+<div class="statusbar">> colors 8/8 LOADED: GREEN RED PURPLE SILVER ORANGE YELLOW BLUE TRANS [100%] // BACKUP: AUTO-SAVE ON [OK]</div>
 
 <div class="layout">
-<div class="sidebar">
-<div><b>STATUS:</b> <span style="color:var(--green)">AUTHENTICATED</span></div>
-<div><b>BACKUP:</b> <span style="color:var(--blue)">AUTO-SAVE ON [OK]</span></div>
-<div style="margin:6px 0"><span class="badge b-green">700+ TRUSTED</span> <span class="badge b-yellow">READY</span> <span class="badge b-trans">GLASS</span></div>
-<h3>FILTERS // 8 COLORS</h3>
-<div class="badge b-green">[ GREEN ]</div>
-<div class="badge b-red">[ RED ]</div>
-<div class="badge b-purple">[ PURPLE ]</div>
-<div class="badge b-silver">[ SILVER ]</div>
-<div class="badge b-orange">[ ORANGE ]</div>
-<div class="badge b-yellow">[ YELLOW ]</div>
-<div class="badge b-blue">[ BLUE ]</div>
-<div class="badge b-trans">[ TRANSPARENT ]</div>
-<div class="cart-box">
+<div class="side">
+<h3>> STATUS: AUTHENTICATED [700+ TRUSTED]</h3>
+<div class="filter">
+<button style="color:var(--green);border-color:var(--green)" onclick="filterC('all')">[ ALL ]</button>
+<button style="color:var(--green);border-color:var(--green)" onclick="filterC('green')">[ GREEN ]</button>
+<button style="color:var(--red);border-color:var(--red)" onclick="filterC('red')">[ RED ]</button>
+<button style="color:var(--purple);border-color:var(--purple)" onclick="filterC('purple')">[ PURPLE ]</button>
+<button style="color:var(--silver);border-color:var(--silver)" onclick="filterC('silver')">[ SILVER ]</button>
+<button style="color:var(--orange);border-color:var(--orange)" onclick="filterC('orange')">[ ORANGE ]</button>
+<button style="color:var(--yellow);border-color:var(--yellow)" onclick="filterC('yellow')">[ YELLOW ]</button>
+<button style="color:var(--blue);border-color:var(--blue)" onclick="filterC('blue')">[ BLUE ]</button>
+<button style="color:#fff;border-color:#fff" onclick="filterC('trans')">[ TRANSPARENT ]</button>
+</div>
+<div class="preview">
 <b>CART PREVIEW // BACKUP SAFE</b>
-<div id="cartPreview">empty</div>
-<button onclick="clearCart()" style="margin-top:8px;width:100%;border:1px solid var(--red);color:var(--red);background:#000;padding:5px;cursor:pointer">KOSONGKAN KERANJANG</button>
+<div id="cartPreview" style="font-size:11px;margin-top:6px">empty</div>
+<button onclick="clearCart()" style="width:100%;margin-top:8px;background:#000;border:1px solid var(--red);color:var(--red);padding:6px;cursor:pointer;font-size:10px">KOSONGKAN KERANJANG</button>
+</div>
+<div style="font-size:10px;margin-top:12px;color:#666">
+DARKVERSE 3 VARIAN<br>
+TR4SVLOID 7 VARIAN<br>
+X-GTR4SH 5 VARIAN<br>
+TOTAL 15 PRODUK [OK]
 </div>
 </div>
 
-<div>
-<div class="grid" id="productGrid"></div>
-</div>
+<div class="grid" id="grid"></div>
 </div>
 
 <script>
-const CART_KEY = 'daporder_cart';
-let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-
-const products = [
-{id:1,name:'CYBER HOODIE V2',price:350000,color:'green',stock:12},
-{id:2,name:'MECHA KEYCHAIN RED',price:50000,color:'red',stock:20},
-{id:3,name:'NEON PURPLE CAP',price:120000,color:'purple',stock:8},
-{id:4,name:'SILVER CHAIN 925',price:200000,color:'silver',stock:5},
-{id:5,name:'ORANGE DRONE PROP',price:75000,color:'orange',stock:15},
-{id:6,name:'YELLOW GLOW TAPE',price:30000,color:'yellow',stock:30},
-{id:7,name:'BLUE LIGHT GLASSES',price:150000,color:'blue',stock:10},
-{id:8,name:'GHOST GLASS CASE',price:95000,color:'trans',stock:7},
+const CART_KEY='daporder_cart';
+let cart=JSON.parse(localStorage.getItem(CART_KEY)||'[]');
+let curFilter='all';
+const products=[
+{id:1,name:'DarkVerse - FULL UPDATE',price:50000,color:'green',cat:'DARKVERSE',desc:'Full fitur unlock'},
+{id:2,name:'DarkVerse - RESELLER',price:80000,color:'blue',cat:'DARKVERSE',desc:'Bisa jual lagi'},
+{id:3,name:'DarkVerse - PARTNER',price:150000,color:'purple',cat:'DARKVERSE',desc:'Partner resmi + support'},
+{id:4,name:'TR4SVLOID - 1 MINGGU',price:10000,color:'red',cat:'TR4SVLOID',desc:'Aktif 7 hari'},
+{id:5,name:'TR4SVLOID - 1 BULAN',price:15000,color:'orange',cat:'TR4SVLOID',desc:'Aktif 30 hari - best seller'},
+{id:6,name:'TR4SVLOID - FULL UPDATE',price:25000,color:'yellow',cat:'TR4SVLOID',desc:'Update lifetime'},
+{id:7,name:'TR4SVLOID - RESELLER',price:55000,color:'silver',cat:'TR4SVLOID',desc:'Reseller panel'},
+{id:8,name:'TR4SVLOID - VIP 1 BULAN',price:30000,color:'green',cat:'TR4SVLOID',desc:'VIP fitur 1 bulan'},
+{id:9,name:'TR4SVLOID - VIP PERMANEN',price:50000,color:'blue',cat:'TR4SVLOID',desc:'VIP permanen'},
+{id:10,name:'TR4SVLOID - PARTNER',price:65000,color:'purple',cat:'TR4SVLOID',desc:'Partner TR4SVLOID'},
+{id:11,name:'X-GTR4SH - FULL UPDATE',price:20000,color:'red',cat:'X-GTR4SH',desc:'Full update'},
+{id:12,name:'X-GTR4SH - RESELLER',price:30000,color:'orange',cat:'X-GTR4SH',desc:'Reseller edition'},
+{id:13,name:'X-GTR4SH - ADMIN',price:50000,color:'yellow',cat:'X-GTR4SH',desc:'Admin panel'},
+{id:14,name:'X-GTR4SH - PARTNER',price:70000,color:'silver',cat:'X-GTR4SH',desc:'Partner resmi'},
+{id:15,name:'X-GTR4SH - MODERATOR',price:100000,color:'trans',cat:'X-GTR4SH',desc:'Moderator ghost glass edition'},
 ];
 
-function saveCart(){localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateUI();}
-function addToCart(id){let p=products.find(x=>x.id===id);let f=cart.find(x=>x.id===id);if(f){f.qty++}else{cart.push({...p,qty:1})}saveCart();}
-function changeQty(id,delta){let f=cart.find(x=>x.id===id);if(!f)return;f.qty+=delta;if(f.qty<=0){cart=cart.filter(x=>x.id!==id)}saveCart();}
-function clearCart(){cart=[];saveCart();}
+function save(){localStorage.setItem(CART_KEY,JSON.stringify(cart));render();}
+function add(id){let p=products.find(x=>x.id===id);let f=cart.find(x=>x.id===id);if(f)f.qty++;else cart.push({...p,qty:1});save();}
+function changeQty(id,d){let f=cart.find(x=>x.id===id);if(!f)return;f.qty+=d;if(f.qty<=0)cart=cart.filter(x=>x.id!==id);save();}
+function clearCart(){cart=[];save();}
+function filterC(c){curFilter=c;render();}
 
-function updateUI(){
-document.getElementById('cartCount').innerText = cart.reduce((a,b)=>a+b.qty,0);
-let grid=document.getElementById('productGrid');
-grid.innerHTML = products.map(p=>`
+function render(){
+let list=curFilter==='all'?products:products.filter(p=>p.color===curFilter);
+document.getElementById('grid').innerHTML=list.map(p=>`
 <div class="card c-${p.color}">
-<h4>${p.name}</h4>
-<div style="font-size:11px;margin:6px 0">STOCK: ${p.stock} <span class="badge b-${p.color}">${p.color.toUpperCase()}</span></div>
-<div style="font-weight:900">Rp ${p.price.toLocaleString('id-ID')}</div>
-<button onclick="addToCart(${p.id})">[ ADD TO CART ]</button>
+<h4>${p.name} <span class="badge">${p.cat}</span></h4>
+<div class="desc">${p.desc} | STOCK: 99 | <span style="color:var(--${p.color==='trans'?'silver':p.color})">${p.color.toUpperCase()}</span></div>
+<div class="price">Rp ${p.price.toLocaleString('id-ID')}</div>
+<button onclick="add(${p.id})">[ ADD TO CART ]</button>
 </div>`).join('');
-let preview=document.getElementById('cartPreview');
-if(cart.length===0){preview.innerHTML='empty';return}
-preview.innerHTML = cart.map(c=>`
-<div class="cart-item">
-<span>${c.name.slice(0,12)}</span>
-<span class="qty">
-<button onclick="changeQty(${c.id},-1)">-</button> ${c.qty} <button onclick="changeQty(${c.id},1)">+</button>
-<button onclick="changeQty(${c.id},-${c.qty})" style="color:var(--red);margin-left:4px">HAPUS</button>
-</span>
-</div>`).join('') + `<div style="margin-top:6px;font-weight:700">TOTAL: Rp ${cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID')}</div>`;
+document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
+let prev=document.getElementById('cartPreview');
+if(cart.length===0)prev.innerHTML='empty';
+else prev.innerHTML=cart.map(c=>`${c.name} x${c.qty} <button onclick="changeQty(${c.id},-1)" style="background:#000;color:#fff;border:1px solid #444;width:18px">-</button> <button onclick="changeQty(${c.id},1)" style="background:#000;color:#fff;border:1px solid #444;width:18px">+</button>`).join('<br>') + `<br><br><b>TOTAL: Rp ${cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID')}</b>`;
 }
-let texts=["> loading rainbow+transparent... [OK]","> colors 8/8 LOADED: GREEN RED PURPLE SILVER ORANGE YELLOW BLUE TRANS [100%]","> backup system: CART_KEY="+CART_KEY+" [SAFE]","> ghost glass effect: backdrop-filter blur [ON]","> WELCOME TO DAPORDERAPK RAINBOW STORE v4.1"];
-let i=0; setInterval(()=>{document.getElementById('typeText').innerText=texts[i%texts.length]; i++},1800);
-updateUI();
+render();
 </script>
 </body>
-  </html>
+</html>
