@@ -1,111 +1,135 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DapOrderApk - CYBERSEC ARMORY</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DapOrderApk - RAINBOW TRANSPARENT v4.1</title>
 <style>
-:root{--neon:#00ff88;--bg:#050805;--panel:#101410;--border:#00ff88;--text:#c8ffd8}
-.theme-silver{--neon:#c0c0c0;--bg:#0a0a0c;--panel:#1a1a1e;--border:#c0c0c0;--text:#e0e0e0}
-.theme-white{--neon:#111;--bg:#f0f0f0;--panel:#fff;--border:#111;--text:#111}
-*{box-sizing:border-box;font-family:'JetBrains Mono',monospace}
-body{margin:0;background:var(--bg);color:var(--text);background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size:35px 35px}
-.container{max-width:480px;margin:0 auto;border-left:3px solid var(--border);border-right:3px solid var(--border);background:var(--bg);min-height:100vh}
-.header{position:sticky;top:0;z-index:99;background:#000;border-bottom:3px solid var(--border);padding:10px}
-.logo{font-family:'Press Start 2P';font-size:11px;color:var(--neon)}
-.tbtn{flex:1;border:2px solid var(--border);padding:7px;font-size:8px;font-family:'Press Start 2P';cursor:pointer}
-.t-green{background:#00ff88;color:#000}.t-silver{background:#c0c0c0;color:#000}.t-white{background:#fff;color:#000}
-.status{background:#000;border:2px solid var(--border);margin:8px;padding:6px;font-size:7px;font-family:'Press Start 2P';color:var(--neon);text-align:center}
-.hero{margin:8px;border:3px solid var(--border);background:var(--panel);padding:8px;position:relative}
-.hero img{width:100%;height:210px;object-fit:contain;background:#000;border:2px solid var(--border)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
-.card{background:var(--panel);border:3px solid var(--border);padding:7px}
-.card img{width:100%;height:95px;object-fit:cover;background:#000;border:2px solid var(--border)}
-.badge{background:var(--neon);color:#000;font-size:6px;padding:3px 5px;font-family:'Press Start 2P';display:inline-block;margin-bottom:5px}
-.name{font-family:'Press Start 2P';font-size:7px;line-height:1.4;min-height:34px;margin:6px 0}
-.price{color:var(--neon);font-family:'Press Start 2P';font-size:9px;margin:4px 0}
-.btn{width:100%;background:#000;color:var(--neon);border:2px solid var(--neon);padding:8px;font-family:'Press Start 2P';font-size:7px;cursor:pointer;margin-top:6px}
-.footer{margin:10px;border:3px solid var(--border);background:#000;padding:10px;text-align:center;font-family:'Press Start 2P';font-size:7px;color:var(--neon)}
-.cart-float{position:fixed;bottom:18px;right:18px;background:var(--neon);color:#000;border:3px solid #000;padding:12px 18px;font-family:'Press Start 2P';font-size:10px;cursor:pointer;z-index:100;box-shadow:5px 5px 0 #000}
-/* CART MODAL */
-#cartBox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;padding:12px;overflow:auto}
-.cartPanel{max-width:460px;margin:20px auto;background:var(--panel);border:3px solid var(--border);padding:10px}
-.cartItem{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--border);padding:8px;margin:6px 0;background:#000}
-.cname{font-family:'Press Start 2P';font-size:6px;line-height:1.3;max-width:150px}
-.cact{display:flex;gap:4px;align-items:center}
-.sbtn{border:2px solid var(--neon);background:#000;color:var(--neon);font-family:'Press Start 2P';font-size:9px;width:28px;height:28px;cursor:pointer}
-.dbtn{border:2px solid #ff3344;background:#000;color:#ff3344;font-family:'Press Start 2P';font-size:6px;padding:5px;cursor:pointer}
+:root{--green:#00ff88;--red:#ff0040;--purple:#a000ff;--silver:#c0c0c0;--orange:#ff8800;--yellow:#ffea00;--blue:#00d0ff;--trans:rgba(255,255,255,0.08);--bg:#0a0a0a}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace}
+body{background:var(--bg);color:#fff;overflow-x:hidden}
+.matrix{position:fixed;top:0;left:0;width:100%;height:100%;opacity:0.07;pointer-events:none;z-index:0;background: repeating-linear-gradient(0deg, transparent, transparent 2px, var(--green) 2px, var(--green) 3px)}
+.header{position:relative;z-index:2;border-bottom:2px solid var(--green);padding:12px;background:#111;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{font-size:22px;font-weight:900;color:var(--green);text-shadow:0 0 10px var(--green)}
+.terminal-text{color:var(--green);font-size:12px;margin:10px 0;min-height:16px}
+.nav{display:flex;gap:8px}
+.btn-nav{border:1px solid var(--silver);padding:6px 12px;background:#000;color:var(--silver);cursor:pointer}
+.btn-nav.active{border-color:var(--green);color:var(--green);box-shadow:0 0 8px var(--green)}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:14px;padding:14px;position:relative;z-index:2}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+.sidebar{border:1px solid var(--silver);padding:12px;background:#0f0f0f;height:fit-content}
+.sidebar h3{color:var(--yellow);margin:10px 0 6px;font-size:13px}
+.badge{display:inline-block;border:1px solid;padding:3px 8px;font-size:11px;margin:3px 2px}
+.b-green{border-color:var(--green);color:var(--green)}
+.b-red{border-color:var(--red);color:var(--red)}
+.b-purple{border-color:var(--purple);color:var(--purple)}
+.b-silver{border-color:var(--silver);color:var(--silver)}
+.b-orange{border-color:var(--orange);color:var(--orange)}
+.b-yellow{border-color:var(--yellow);color:var(--yellow)}
+.b-blue{border-color:var(--blue);color:var(--blue)}
+.b-trans{border-color:rgba(255,255,255,0.4);color:#fff;background:rgba(255,255,255,0.08);backdrop-filter:blur(6px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{border:2px solid;padding:12px;background:#111;transition:0.25s;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:0 0 18px}
+.card.c-green{border-color:var(--green)} .card.c-green h4{color:var(--green)}
+.card.c-red{border-color:var(--red)} .card.c-red h4{color:var(--red)}
+.card.c-purple{border-color:var(--purple)} .card.c-purple h4{color:var(--purple)}
+.card.c-silver{border-color:var(--silver)} .card.c-silver h4{color:var(--silver)}
+.card.c-orange{border-color:var(--orange)} .card.c-orange h4{color:var(--orange)}
+.card.c-yellow{border-color:var(--yellow)} .card.c-yellow h4{color:var(--yellow)}
+.card.c-blue{border-color:var(--blue)} .card.c-blue h4{color:var(--blue)}
+.card.c-trans{border-color:rgba(255,255,255,0.35);background:linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));backdrop-filter:blur(12px)} 
+.card.c-trans h4{color:#fff;text-shadow:0 0 10px #fff}
+.card button{width:100%;margin-top:8px;padding:8px;background:#000;border:1px solid currentColor;color:inherit;cursor:pointer;font-weight:700}
+.card button:hover{background:currentColor;color:#000}
+.card.c-trans button{border-color:#fff;color:#fff}
+.cart-box{margin-top:14px;border:1px dashed var(--yellow);padding:10px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;padding:6px 0;font-size:12px}
+.qty button{width:24px;height:24px;background:#000;border:1px solid #555;color:#fff;cursor:pointer}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="matrix"></div>
 <div class="header">
-<div style="display:flex;justify-content:space-between"><div class="logo">DapOrderApk<br><span style="font-size:7px;color:#fff">OFFICIAL CYBERSEC ARMORY</span></div><div style="font-family:'Press Start 2P';font-size:8px;color:var(--neon);text-align:right">CART [<span id="c1">0</span>]</div></div>
-<div style="display:flex;gap:6px;margin-top:8px"><button class="tbtn t-green" onclick="setT('green')">HIJAU</button><button class="tbtn t-silver" onclick="setT('silver')">SILVER</button><button class="tbtn t-white" onclick="setT('white')">PUTIH</button></div>
+<div class="logo">DapOrderApk <span style="color:var(--silver)">// RAINBOW+TRANS v4.1</span></div>
+<div class="nav">
+<button class="btn-nav active">SHOP</button>
+<button class="btn-nav" onclick="location.href='payment.html'">CART [<span id="cartCount">0</span>]</button>
+<button class="btn-nav">ORDERS</button>
 </div>
-<div class="status">CONNECTION: SECURE ● DANA:082312728245 ● WA:083879195047 ● 15 ITEMS</div>
-<div class="hero"><div style="position:absolute;top:14px;left:14px;background:var(--neon);color:#000;font-size:7px;padding:4px 6px;font-family:'Press Start 2P'">> GUARD-01 ACTIVE</div><img src="mecha.jpg"><div style="font-family:'Press Start 2P';font-size:7px;margin-top:6px;color:var(--neon)">DARK MECHA PIXEL GRID</div></div>
-<div class="grid" id="grid"></div>
-<div class="footer">PAYMENT: DANA 082312728245 | QRIS DAFF SHOP<br>NMID ID1025450705674<br><br>TOTAL: <span id="ftotal">0</span></div>
 </div>
-<div class="cart-float" onclick="openCart()">🛒 [<span id="c2">0</span>] CHECKOUT</div>
+<div style="padding:8px 14px;z-index:2;position:relative" class="terminal-text" id="typeText">> initializing...</div>
 
-<div id="cartBox" onclick="if(event.target==this)closeCart()">
-<div class="cartPanel">
-<div style="display:flex;justify-content:space-between;font-family:'Press Start 2P';font-size:9px;color:var(--neon)">KERANJANG <span style="cursor:pointer" onclick="closeCart()">[X] TUTUP</span></div>
-<div id="cartList" style="margin-top:10px"></div>
-<div style="border-top:3px solid var(--border);margin-top:10px;padding-top:10px;font-family:'Press Start 2P';font-size:9px">TOTAL: Rp <span id="cartTotal">0</span></div>
-<button class="btn" style="background:var(--neon);color:#000;margin-top:10px" onclick="goPay()">LANJUT BAYAR →</button>
-<button class="btn" style="border-color:#ff3344;color:#ff3344;margin-top:8px" onclick="clearCart()">[ KOSONGKAN KERANJANG ]</button>
+<div class="layout">
+<div class="sidebar">
+<div><b>STATUS:</b> <span style="color:var(--green)">AUTHENTICATED</span></div>
+<div><b>BACKUP:</b> <span style="color:var(--blue)">AUTO-SAVE ON [OK]</span></div>
+<div style="margin:6px 0"><span class="badge b-green">700+ TRUSTED</span> <span class="badge b-yellow">READY</span> <span class="badge b-trans">GLASS</span></div>
+<h3>FILTERS // 8 COLORS</h3>
+<div class="badge b-green">[ GREEN ]</div>
+<div class="badge b-red">[ RED ]</div>
+<div class="badge b-purple">[ PURPLE ]</div>
+<div class="badge b-silver">[ SILVER ]</div>
+<div class="badge b-orange">[ ORANGE ]</div>
+<div class="badge b-yellow">[ YELLOW ]</div>
+<div class="badge b-blue">[ BLUE ]</div>
+<div class="badge b-trans">[ TRANSPARENT ]</div>
+<div class="cart-box">
+<b>CART PREVIEW // BACKUP SAFE</b>
+<div id="cartPreview">empty</div>
+<button onclick="clearCart()" style="margin-top:8px;width:100%;border:1px solid var(--red);color:var(--red);background:#000;padding:5px;cursor:pointer">KOSONGKAN KERANJANG</button>
+</div>
+</div>
+
+<div>
+<div class="grid" id="productGrid"></div>
 </div>
 </div>
 
 <script>
-const products=[
-{name:"DarkVerse FULL UPDATE",price:50000,img:"darkverse.jpg",cat:"DARKVERSE"},
-{name:"DarkVerse RESELLER",price:80000,img:"darkverse.jpg",cat:"DARKVERSE"},
-{name:"DarkVerse PARTNER",price:150000,img:"darkverse.jpg",cat:"DARKVERSE"},
-{name:"TR4SVLOID 1 MINGGU",price:10000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"TR4SVLOID 1 BULAN",price:15000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"TR4SVLOID FULL UPDATE",price:25000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"TR4SVLOID RESELLER",price:55000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"TR4SVLOID VIP 1 BULAN",price:30000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"TR4SVLOID VIP PERMANEN",price:50000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"TR4SVLOID PARTNER",price:65000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
-{name:"X-GTR4SH FULL UPDATE",price:20000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
-{name:"X-GTR4SH RESELLER",price:30000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
-{name:"X-GTR4SH ADMIN",price:50000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
-{name:"X-GTR4SH PARTNER",price:70000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
-{name:"X-GTR4SH MODERATOR",price:100000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
+const CART_KEY = 'daporder_cart';
+let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+const products = [
+{id:1,name:'CYBER HOODIE V2',price:350000,color:'green',stock:12},
+{id:2,name:'MECHA KEYCHAIN RED',price:50000,color:'red',stock:20},
+{id:3,name:'NEON PURPLE CAP',price:120000,color:'purple',stock:8},
+{id:4,name:'SILVER CHAIN 925',price:200000,color:'silver',stock:5},
+{id:5,name:'ORANGE DRONE PROP',price:75000,color:'orange',stock:15},
+{id:6,name:'YELLOW GLOW TAPE',price:30000,color:'yellow',stock:30},
+{id:7,name:'BLUE LIGHT GLASSES',price:150000,color:'blue',stock:10},
+{id:8,name:'GHOST GLASS CASE',price:95000,color:'trans',stock:7},
 ];
-let cart=JSON.parse(localStorage.getItem('dap_cart')||'[]');
-function setT(t){document.body.className='theme-'+t;localStorage.setItem('dap_theme',t)}
-function save(){localStorage.setItem('dap_cart',JSON.stringify(cart));render()}
-function add(i){let f=cart.find(c=>c.idx==i); if(f) f.qty++; else cart.push({idx:i,qty:1}); save()}
-function dec(i){let f=cart.find(c=>c.idx==i); if(!f) return; f.qty--; if(f.qty<=0) cart=cart.filter(c=>c.idx!=i); save()}
-function rem(i){cart=cart.filter(c=>c.idx!=i); save()}
-function clearCart(){if(confirm('Kosongkan keranjang?')){cart=[]; save(); closeCart()}}
-function openCart(){renderCart(); document.getElementById('cartBox').style.display='block'}
-function closeCart(){document.getElementById('cartBox').style.display='none'}
-function renderCart(){
-let list=document.getElementById('cartList'); list.innerHTML=''; let tot=0;
-if(cart.length==0) list.innerHTML='<div style="font-family:Press Start 2P;font-size:7px;text-align:center;padding:20px">KERANJANG KOSONG</div>';
-cart.forEach(c=>{
-let p=products[c.idx]; tot+=p.price*c.qty;
-list.innerHTML+=`<div class="cartItem"><div class="cname">${p.name}<br><span style="color:var(--neon)">Rp ${p.price.toLocaleString('id-ID')} x ${c.qty}</span></div><div class="cact"><button class="sbtn" onclick="dec(${c.idx})">-</button><span style="font-family:Press Start 2P;font-size:8px">${c.qty}</span><button class="sbtn" onclick="add(${c.idx})">+</button><button class="dbtn" onclick="rem(${c.idx})">HAPUS</button></div></div>`;
-});
-document.getElementById('cartTotal').innerText=tot.toLocaleString('id-ID');
+
+function saveCart(){localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateUI();}
+function addToCart(id){let p=products.find(x=>x.id===id);let f=cart.find(x=>x.id===id);if(f){f.qty++}else{cart.push({...p,qty:1})}saveCart();}
+function changeQty(id,delta){let f=cart.find(x=>x.id===id);if(!f)return;f.qty+=delta;if(f.qty<=0){cart=cart.filter(x=>x.id!==id)}saveCart();}
+function clearCart(){cart=[];saveCart();}
+
+function updateUI(){
+document.getElementById('cartCount').innerText = cart.reduce((a,b)=>a+b.qty,0);
+let grid=document.getElementById('productGrid');
+grid.innerHTML = products.map(p=>`
+<div class="card c-${p.color}">
+<h4>${p.name}</h4>
+<div style="font-size:11px;margin:6px 0">STOCK: ${p.stock} <span class="badge b-${p.color}">${p.color.toUpperCase()}</span></div>
+<div style="font-weight:900">Rp ${p.price.toLocaleString('id-ID')}</div>
+<button onclick="addToCart(${p.id})">[ ADD TO CART ]</button>
+</div>`).join('');
+let preview=document.getElementById('cartPreview');
+if(cart.length===0){preview.innerHTML='empty';return}
+preview.innerHTML = cart.map(c=>`
+<div class="cart-item">
+<span>${c.name.slice(0,12)}</span>
+<span class="qty">
+<button onclick="changeQty(${c.id},-1)">-</button> ${c.qty} <button onclick="changeQty(${c.id},1)">+</button>
+<button onclick="changeQty(${c.id},-${c.qty})" style="color:var(--red);margin-left:4px">HAPUS</button>
+</span>
+</div>`).join('') + `<div style="margin-top:6px;font-weight:700">TOTAL: Rp ${cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID')}</div>`;
 }
-function render(){
-let g=document.getElementById('grid'); g.innerHTML=''; let tot=0;
-products.forEach((p,i)=>{g.innerHTML+=`<div class="card"><div class="badge">${p.cat}</div><img src="${p.img}" onerror="this.src='https://placehold.co/200x95/000/00ff88?text=${p.cat}'"><div class="name">${p.name}</div><div class="price">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="add(${i})">[ADD TO CART +]</button></div>`});
-cart.forEach(c=>{tot+=products[c.idx].price*c.qty});
-let count=cart.reduce((a,b)=>a+b.qty,0);
-document.getElementById('c1').innerText=count; document.getElementById('c2').innerText=count; document.getElementById('ftotal').innerText='Rp '+tot.toLocaleString('id-ID');
-renderCart();
-}
-function goPay(){if(cart.length==0){alert('Kosong wok!');return;} location.href='payment.html';}
-let th=localStorage.getItem('dap_theme'); if(th) document.body.className='theme-'+th; render();
+let texts=["> loading rainbow+transparent... [OK]","> colors 8/8 LOADED: GREEN RED PURPLE SILVER ORANGE YELLOW BLUE TRANS [100%]","> backup system: CART_KEY="+CART_KEY+" [SAFE]","> ghost glass effect: backdrop-filter blur [ON]","> WELCOME TO DAPORDERAPK RAINBOW STORE v4.1"];
+let i=0; setInterval(()=>{document.getElementById('typeText').innerText=texts[i%texts.length]; i++},1800);
+updateUI();
 </script>
 </body>
-</html>
+  </html>
