@@ -5,94 +5,67 @@
 <title>DapOrderApk - Official Store Bugs</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--accent:#6366f1;--accent2:#a855f7;--glow:rgba(99,102,241,0.25)}
-[data-theme="red"]{--accent:#ef4444;--accent2:#f97316;--glow:rgba(239,68,68,0.25)}
-[data-theme="blue"]{--accent:#0ea5e9;--accent2:#06b6d4;--glow:rgba(14,165,233,0.25)}
+:root{--accent:#6366f1;--glow:rgba(99,102,241,0.25)}
+[data-theme="red"]{--accent:#ef4444;--glow:rgba(239,68,68,0.25)}
+[data-theme="blue"]{--accent:#0ea5e9;--glow:rgba(14,165,233,0.25)}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
-body{background:linear-gradient(135deg,#eef2ff,#fdf2ff,#e0f2fe);min-height:100vh;transition:.4s}
-.header{position:sticky;top:16px;z-index:99;margin:16px auto;max-width:1150px;width:calc(100% - 32px);background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.9);border-radius:22px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 40px rgba(0,0,0,0.08),0 0 30px var(--glow)}
-.logo{font-weight:800;font-size:15px;color:#0f172a}
-.colorSwitch{display:flex;gap:6px;align-items:center}
-.colorSwitch button{width:22px;height:22px;border-radius:50%;border:2px solid #fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
-.c-orig{background:linear-gradient(135deg,#6366f1,#a855f7)}.c-red{background:#ef4444}.c-blue{background:#0ea5e9}
-.btn{padding:9px 16px;border-radius:12px;background:#0f172a;color:#fff;text-decoration:none;font-weight:800;font-size:12px}
-.container{max-width:1150px;margin:0 auto;padding:20px 16px 50px}
-.glass{margin-top:22px;background:rgba(255,255,255,0.78);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.9);border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,0.07),0 0 0 1px var(--glow) inset;padding:22px;transition:.3s}
-.glass:hover{transform:translateY(-3px);box-shadow:0 30px 80px rgba(0,0,0,0.1),0 0 40px var(--glow)}
-.title{font-weight:800;font-size:17px;color:#0f172a;margin-bottom:14px}
-.tableWrap{overflow:auto;border-radius:18px}
-table{width:100%;border-collapse:separate;border-spacing:0;background:rgba(255,255,255,0.92);border-radius:18px;overflow:hidden;min-width:750px}
-th,td{padding:14px 10px;text-align:center;font-size:13px;vertical-align:top}
-th{background:#f8fafc;color:#64748b;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:800}
-td:first-child{text-align:left;font-weight:700;color:#1e293b;background:rgba(255,255,255,0.6);width:180px}
-tr:not(:last-child) td{border-bottom:1px solid rgba(0,0,0,0.05)}
-.benefit{font-size:11.5px;line-height:1.5;color:#334155;font-weight:500;text-align:left}
-.benefit b{color:#0f172a}
-.price{font-weight:800;color:var(--accent);font-size:15px}
-.buy{margin-top:8px;padding:9px 16px;border-radius:12px;border:0;background:#0f172a;color:#fff;font-weight:800;cursor:pointer;font-size:12px;width:100%;transition:.2s}
-.buy:hover{background:var(--accent);box-shadow:0 6px 20px var(--glow)}
-.tag{display:inline-block;font-size:9px;padding:3px 7px;border-radius:20px;background:var(--glow);color:var(--accent);font-weight:800;margin-bottom:4px}
-.cart{position:sticky;bottom:16px;margin-top:24px;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);color:#fff;border-radius:20px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 20px 50px rgba(0,0,0,0.2)}
+body{background:#f5f3ff;min-height:100vh}
+.header{position:sticky;top:12px;z-index:99;margin:12px auto;max-width:1150px;width:calc(100% - 24px);background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-radius:20px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+.logo{font-weight:800;font-size:13px;line-height:1.2}
+.container{max-width:1150px;margin:0 auto;padding:16px 12px 100px}
+.glass{margin-top:16px;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,0.06);padding:16px;border:1px solid #fff}
+.title{font-weight:800;font-size:16px;margin-bottom:12px}
+.priceTag{font-weight:800;color:var(--accent);font-size:14px;display:block;margin-top:4px}
+.cardGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:#fff;border-radius:18px;padding:14px;border:1px solid #f1f5f9;box-shadow:0 4px 15px rgba(0,0,0,0.03)}
+.benefit{font-size:12px;line-height:1.5;color:#334155;margin-top:6px}
+.buy{margin-top:10px;width:100%;padding:10px;border-radius:12px;border:0;background:#0f172a;color:#fff;font-weight:800;cursor:pointer;font-size:13px}
+.buy:hover{background:var(--accent)}
+.tag{font-size:9px;padding:3px 8px;border-radius:20px;background:var(--glow);color:var(--accent);font-weight:800}
+.cartBar{position:fixed;bottom:12px;left:12px;right:12px;z-index:100;background:#0f172a;color:#fff;border-radius:20px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+.colorDot{width:22px;height:22px;border-radius:50%;border:2px solid #fff;cursor:pointer;display:inline-block;margin-left:4px;box-shadow:0 2px 6px rgba(0,0,0,0.2)}
 </style>
 </head>
 <body id="body" data-theme="orig">
-<div class="header">
-<div class="logo">DapOrderApk - Official Store Bugs</div>
-<div style="display:flex;gap:12px;align-items:center">
-<div class="colorSwitch"><button class="c-orig" onclick="setTheme('orig')" title="Original"></button><button class="c-red" onclick="setTheme('red')" title="Red Effect"></button><button class="c-blue" onclick="setTheme('blue')" title="Blue Effect"></button></div>
-<a class="btn" href="payment.html">CART <span id="c">0</span> →</a>
-</div>
-</div>
+<div class="header"><div class="logo">DapOrderApk - Official Store<br>Bugs</div><div style="display:flex;align-items:center"><span class="colorDot" style="background:linear-gradient(135deg,#6366f1,#a855f7)" onclick="setTheme('orig')"></span><span class="colorDot" style="background:#ef4444" onclick="setTheme('red')"></span><span class="colorDot" style="background:#0ea5e9" onclick="setTheme('blue')"></span><a href="payment.html" style="margin-left:10px;background:#0f172a;color:#fff;padding:8px 14px;border-radius:12px;text-decoration:none;font-weight:800;font-size:12px">CART <span id="c">0</span> →</a></div></div>
 <div class="container">
 
-<div class="glass"><div class="title">🌌 DARKVERSE - 3 ROLE</div>
-<div class="tableWrap"><table><tr><th>BENEFIT</th><th>FULL UPDATE<br><span class="price">Rp 50K</span></th><th>RESELLER<br><span class="price">Rp 80K</span></th><th>PARTNER<br><span class="price">Rp 150K</span></th></tr>
-<tr><td>Deskripsi</td>
-<td><div class="benefit"><b>Akses Biasa</b><br>Full akses DarkVerse, update lifetime seumur hidup.</div></td>
-<td><div class="benefit"><b>Bisa Menjual Role FULL UPDATE</b><br>Semua benefit Full + lisensi jual kembali profit 100%.</div></td>
-<td><div class="benefit"><span class="tag">BEST</span><br><b>Bisa Menjual Role MEMBER & RESELLER + Masuk GB & Add Bot</b><br>Full power jual semua role bawahnya + GB + Add Bot.</div></td></tr>
-<tr><td></td><td><button class="buy" onclick="add('DarkVerse FULL UPDATE',50000)">Beli</button></td><td><button class="buy" onclick="add('DarkVerse RESELLER',80000)">Beli</button></td><td><button class="buy" onclick="add('DarkVerse PARTNER',150000)">Beli 150K</button></td></tr>
-</table></div></div>
+<div class="glass"><div class="title">🌌 DARKVERSE - 3 ROLE</div><div class="cardGrid">
+<div class="card"><b>FULL UPDATE</b><span class="priceTag">Rp 50.000</span><div class="benefit"><b>Akses Biasa</b><br>Full akses DarkVerse, update lifetime seumur hidup.</div><button class="buy" onclick="add('DarkVerse FULL UPDATE',50000)">Beli - Rp 50.000</button></div>
+<div class="card"><b>RESELLER</b><span class="priceTag">Rp 80.000</span><div class="benefit"><b>Bisa Menjual Role FULL UPDATE</b><br>Profit 100% milikmu + full akses.</div><button class="buy" onclick="add('DarkVerse RESELLER',80000)">Beli - Rp 80.000</button></div>
+<div class="card" style="border:2px solid var(--accent)"><span class="tag">BEST VALUE</span><br><b>PARTNER</b><span class="priceTag">Rp 150.000</span><div class="benefit"><b>Bisa Menjual Role MEMBER & RESELLER + Masuk GB & Add Bot</b><br>Full power, jual semua role.</div><button class="buy" style="background:var(--accent)" onclick="add('DarkVerse PARTNER',150000)">Beli - Rp 150.000</button></div>
+</div></div>
 
-<div class="glass"><div class="title">⚡ TR4SVLOID - 7 ROLE</div>
-<div class="tableWrap"><table style="min-width:900px"><tr><th>BENEFIT</th><th>1 MINGGU<br><span class="price">10K</span></th><th>1 BULAN<br><span class="price">15K</span></th><th>FULL UPDATE<br><span class="price">25K</span></th><th>RESELLER<br><span class="price">55K</span></th><th>VIP 1 BULAN<br><span class="price">30K</span></th><th>VIP PERMANEN<br><span class="price">50K</span></th><th>PARTNER<br><span class="price">65K</span></th></tr>
-<tr><td>Benefit</td>
-<td><div class="benefit"><b>Trial 7 Hari</b><br>Coba semua fitur.</div></td>
-<td><div class="benefit"><b>Standar 30 Hari</b><br>Minor update + support.</div></td>
-<td><div class="benefit"><b>Lifetime Biasa</b><br>Full akses permanen update gratis.</div></td>
-<td><div class="benefit"><b>Jual FULL UPDATE</b><br>Lifetime + hak jual.</div></td>
-<td><div class="benefit"><b>VIP Tools 30H</b><br>Speed x2, bypass premium.</div></td>
-<td><div class="benefit"><b>VIP Permanen</b><br>All premium lifetime.</div></td>
-<td><div class="benefit"><span class="tag">SULTAN</span><br><b>Jual ALL + GB + Add Bot</b><br>Bisa jual semua role + GB Partner.</div></td></tr>
-<tr><td></td><td><button class="buy" onclick="add('TR4SVLOID 1 MINGGU',10000)">10K</button></td><td><button class="buy" onclick="add('TR4SVLOID 1 BULAN',15000)">15K</button></td><td><button class="buy" onclick="add('TR4SVLOID FULL UPDATE',25000)">25K</button></td><td><button class="buy" onclick="add('TR4SVLOID RESELLER',55000)">55K</button></td><td><button class="buy" onclick="add('TR4SVLOID VIP 1 BULAN',30000)">30K</button></td><td><button class="buy" onclick="add('TR4SVLOID VIP PERMANEN',50000)">50K</button></td><td><button class="buy" onclick="add('TR4SVLOID PARTNER',65000)">65K</button></td></tr>
-</table></div></div>
+<div class="glass"><div class="title">⚡ TR4SVLOID - 7 ROLE</div><div class="cardGrid">
+<div class="card"><b>1 MINGGU</b><span class="priceTag">Rp 10.000</span><div class="benefit"><b>Trial 7 Hari</b><br>Coba semua fitur.</div><button class="buy" onclick="add('TR4SVLOID 1 MINGGU',10000)">Rp 10.000</button></div>
+<div class="card"><b>1 BULAN</b><span class="priceTag">Rp 15.000</span><div class="benefit"><b>Standar 30 Hari</b><br>Minor update + support.</div><button class="buy" onclick="add('TR4SVLOID 1 BULAN',15000)">Rp 15.000</button></div>
+<div class="card"><b>FULL UPDATE</b><span class="priceTag">Rp 25.000</span><div class="benefit"><b>Lifetime Biasa</b><br>Full akses permanen.</div><button class="buy" onclick="add('TR4SVLOID FULL UPDATE',25000)">Rp 25.000</button></div>
+<div class="card"><b>RESELLER</b><span class="priceTag">Rp 55.000</span><div class="benefit"><b>Jual FULL UPDATE</b></div><button class="buy" onclick="add('TR4SVLOID RESELLER',55000)">Rp 55.000</button></div>
+<div class="card"><b>VIP 1 BULAN</b><span class="priceTag">Rp 30.000</span><div class="benefit"><b>VIP Tools 30 Hari</b></div><button class="buy" onclick="add('TR4SVLOID VIP 1 BULAN',30000)">Rp 30.000</button></div>
+<div class="card"><b>VIP PERMANEN</b><span class="priceTag">Rp 50.000</span><div class="benefit"><b>VIP Lifetime</b></div><button class="buy" onclick="add('TR4SVLOID VIP PERMANEN',50000)">Rp 50.000</button></div>
+<div class="card" style="border:2px solid var(--accent)"><span class="tag">SULTAN</span><br><b>PARTNER</b><span class="priceTag">Rp 65.000</span><div class="benefit"><b>Jual ALL + GB + Add Bot</b></div><button class="buy" style="background:var(--accent)" onclick="add('TR4SVLOID PARTNER',65000)">Rp 65.000</button></div>
+</div></div>
 
-<div class="glass"><div class="title">👑 X-GTR4SH - 5 ROLE</div>
-<div class="tableWrap"><table><tr><th>BENEFIT</th><th>FULL<br><span class="price">20K</span></th><th>RESELLER<br><span class="price">30K</span></th><th>ADMIN<br><span class="price">50K</span></th><th>PARTNER<br><span class="price">70K</span></th><th>MODERATOR<br><span class="price">100K</span></th></tr>
-<tr><td>Benefit</td>
-<td><div class="benefit"><b>Akses Biasa</b><br>User full fitur lifetime.</div></td>
-<td><div class="benefit"><b>Jual FULL UPDATE</b><br>Lifetime + jual Full.</div></td>
-<td><div class="benefit"><b>Manage User + Jual RESELLER</b><br>Kontrol user + jual Reseller.</div></td>
-<td><div class="benefit"><b>Jual ADMIN + GB + Add Bot</b><br>Jual role bawahnya + GB.</div></td>
-<td><div class="benefit"><span class="tag">TRANSPARENT GLASS</span><br><b>Full Moderator + Transparent + GB + Add Bot Unlimited</b><br>Role tertinggi, tema kaca eksklusif, profit tertinggi.</div></td></tr>
-<tr><td></td><td><button class="buy" onclick="add('X-GTR4SH FULL UPDATE',20000)">20K</button></td><td><button class="buy" onclick="add('X-GTR4SH RESELLER',30000)">30K</button></td><td><button class="buy" onclick="add('X-GTR4SH ADMIN',50000)">50K</button></td><td><button class="buy" onclick="add('X-GTR4SH PARTNER',70000)">70K</button></td><td><button class="buy" onclick="add('X-GTR4SH MODERATOR',100000)">100K</button></td></tr>
-</table></div></div>
+<div class="glass"><div class="title">👑 X-GTR4SH - 5 ROLE</div><div class="cardGrid">
+<div class="card"><b>FULL UPDATE</b><span class="priceTag">Rp 20.000</span><div class="benefit"><b>Akses Biasa</b> Full fitur lifetime.</div><button class="buy" onclick="add('X-GTR4SH FULL UPDATE',20000)">Rp 20.000</button></div>
+<div class="card"><b>RESELLER</b><span class="priceTag">Rp 30.000</span><div class="benefit"><b>Jual FULL UPDATE</b></div><button class="buy" onclick="add('X-GTR4SH RESELLER',30000)">Rp 30.000</button></div>
+<div class="card"><b>ADMIN</b><span class="priceTag">Rp 50.000</span><div class="benefit"><b>Manage User + Jual Reseller</b></div><button class="buy" onclick="add('X-GTR4SH ADMIN',50000)">Rp 50.000</button></div>
+<div class="card"><b>PARTNER</b><span class="priceTag">Rp 70.000</span><div class="benefit"><b>Jual ADMIN + GB + Add Bot</b></div><button class="buy" onclick="add('X-GTR4SH PARTNER',70000)">Rp 70.000</button></div>
+<div class="card" style="border:2px solid #0f172a"><span class="tag">TRANSPARENT</span><br><b>MODERATOR</b><span class="priceTag">Rp 100.000</span><div class="benefit"><b>Full Moderator + Glass + GB + Add Bot Unlimited</b></div><button class="buy" onclick="add('X-GTR4SH MODERATOR',100000)">Rp 100.000</button></div>
+</div></div>
 
-<div class="cart"><div><div id="preview" style="font-size:13px">Keranjang kosong</div><div id="backupInfo" style="font-size:9px;opacity:.6;margin-top:4px"></div></div><div><b id="total">Rp 0</b><a href="payment.html" style="background:#fff;color:#000;padding:8px 14px;border-radius:10px;text-decoration:none;margin-left:10px;font-weight:800">Checkout →</a></div></div>
-<div style="margin-top:12px;display:flex;gap:8px"><button onclick="exportBackup()" style="padding:8px 12px;border-radius:10px;border:0;background:#fff;font-weight:800;cursor:pointer">⬇️ Export Backup</button><label style="padding:8px 12px;border-radius:10px;background:#fff;font-weight:800;cursor:pointer">⬆️ Import<input type="file" hidden onchange="importBackup(this.files[0])"></label></div>
 </div>
+<div class="cartBar"><div style="flex:1;overflow:hidden"><div id="preview" style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Keranjang kosong</div><div id="backupInfo" style="font-size:8px;opacity:.6"></div></div><div style="display:flex;align-items:center;gap:8px"><b id="total" style="font-size:14px">Rp 0</b><a href="payment.html" style="background:#fff;color:#000;padding:8px 14px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px">Checkout →</a></div></div>
 <script>
-const KEY='daporder_cart',BKEY='daporder_cart_backup',BT='daporder_cart_time',THEME='daporder_theme';
+const KEY='daporder_cart',BKEY='daporder_cart_backup',THEME='daporder_theme';
 function setTheme(t){document.getElementById('body').setAttribute('data-theme',t);localStorage.setItem(THEME,t);}
 (function(){let th=localStorage.getItem(THEME)||'orig';document.getElementById('body').setAttribute('data-theme',th);})();
 function loadCart(){try{let m=localStorage.getItem(KEY);if(m)return JSON.parse(m);let b=localStorage.getItem(BKEY);if(b){localStorage.setItem(KEY,b);return JSON.parse(b);}let s=sessionStorage.getItem(KEY);if(s)return JSON.parse(s);}catch(e){}return[];}
-function save(){let j=JSON.stringify(cart);localStorage.setItem(KEY,j);localStorage.setItem(BKEY,j);localStorage.setItem(BT,new Date().toLocaleString('id-ID'));sessionStorage.setItem(KEY,j);render();}
-function exportBackup(){let data={cart,time:new Date().toISOString(),theme:localStorage.getItem(THEME),v:'7.0'};let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=`daporder-backup-${Date.now()}.json`;a.click();}
-function importBackup(f){let r=new FileReader();r.onload=e=>{try{let d=JSON.parse(e.target.result);cart=d.cart||d;if(d.theme)setTheme(d.theme);save();alert('RESTORED '+cart.length+' item');}catch{alert('File rusak!')}};r.readAsText(f);}
+function save(){let j=JSON.stringify(cart);localStorage.setItem(KEY,j);localStorage.setItem(BKEY,j);localStorage.setItem('daporder_cart_time',new Date().toLocaleString('id-ID'));sessionStorage.setItem(KEY,j);render();}
 let cart=loadCart();
 function add(n,p){let f=cart.find(x=>x.name===n);if(f)f.qty++;else cart.push({id:Date.now()+Math.random(),name:n,price:p,qty:1});save();}
-function render(){document.getElementById('c').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('preview').innerText=cart.length?cart.map(c=>`${c.name} x${c.qty}`).join(', '):'Keranjang kosong';document.getElementById('total').innerText='Rp '+cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID');document.getElementById('backupInfo').innerText='Backup: '+(localStorage.getItem(BT)||'-')+' | '+cart.length+' item | Theme: '+(localStorage.getItem(THEME)||'orig')+' | Triple Backup ON';}
-setInterval(()=>{if(cart.length)save()},10000);window.addEventListener('beforeunload',()=>{if(cart.length)save()});render();
+function render(){document.getElementById('c').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('preview').innerText=cart.length?cart.map(c=>`${c.name} x${c.qty}`).join(', '):'Keranjang kosong';document.getElementById('total').innerText='Rp '+cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID');document.getElementById('backupInfo').innerText='Backup: '+(localStorage.getItem('daporder_cart_time')||'-');}
+setInterval(()=>{if(cart.length)save()},10000);render();
 </script>
 </body>
-  </html>
+</html>
