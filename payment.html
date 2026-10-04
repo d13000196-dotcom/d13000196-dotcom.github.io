@@ -9,39 +9,62 @@
 [data-theme="red"]{--accent:#ef4444;--glow:rgba(239,68,68,0.25)}
 [data-theme="blue"]{--accent:#0ea5e9;--glow:rgba(14,165,233,0.25)}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
-body{background:linear-gradient(135deg,#eef2ff,#fdf2ff,#e0f2fe);min-height:100vh;transition:.4s}
-.header{position:sticky;top:16px;z-index:99;margin:16px auto;max-width:1100px;width:calc(100% - 32px);background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border:1px solid #fff;border-radius:22px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 40px rgba(0,0,0,0.08),0 0 30px var(--glow)}
-.logo{font-weight:800;font-size:14px;color:#0f172a}
-.btn{padding:8px 14px;border-radius:12px;background:#0f172a;color:#fff;text-decoration:none;font-weight:800;font-size:12px}
-.wrap{max-width:1100px;margin:20px auto;padding:0 16px 40px;display:grid;grid-template-columns:1fr 360px;gap:18px}
+body{background:#f5f3ff;min-height:100vh}
+.header{position:sticky;top:12px;z-index:99;margin:12px auto;max-width:1100px;width:calc(100% - 24px);background:#fff;border-radius:20px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+.wrap{max-width:1100px;margin:16px auto;padding:0 12px 40px;display:grid;grid-template-columns:1fr 360px;gap:14px}
 @media(max-width:850px){.wrap{grid-template-columns:1fr}}
-.glass{background:rgba(255,255,255,0.8);backdrop-filter:blur(24px);border:1px solid #fff;border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,0.07),0 0 0 1px var(--glow) inset;padding:20px}
-.qris{border-radius:20px;border:1.5px dashed var(--accent);padding:14px;text-align:center;background:rgba(255,255,255,0.9);box-shadow:0 0 20px var(--glow)}
-.qris img{width:100%;max-width:280px;border-radius:14px;margin:10px 0}
-input{width:100%;padding:12px;border-radius:14px;border:1px solid #e2e8f0;background:rgba(255,255,255,0.9);margin:6px 0;outline:none}
-input:focus{border-color:var(--accent)}
-.payBtn{width:100%;padding:14px;border-radius:14px;background:#0f172a;color:#fff;border:0;font-weight:800;cursor:pointer;margin-top:12px;transition:.2s}
-.payBtn:hover{background:var(--accent);box-shadow:0 8px 24px var(--glow)}
+.glass{background:rgba(255,255,255,0.95);border-radius:24px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,0.06)}
+.qrisBox{border:2px dashed var(--accent);border-radius:18px;padding:14px;text-align:center;background:#fff;margin-top:10px}
+.qrisBox img{width:100%;max-width:280px;border-radius:12px;margin:8px 0}
+.danaBox{background:#e0f2fe;border-radius:14px;padding:12px;margin-top:10px;border:1px solid #bae6fd}
+.btn{padding:8px 14px;border-radius:12px;background:#0f172a;color:#fff;text-decoration:none;font-weight:800;font-size:12px}
+input{width:100%;padding:12px;border-radius:12px;border:1px solid #e2e8f0;margin:5px 0;outline:none}
+.payBtn{width:100%;padding:14px;border-radius:14px;background:#0f172a;color:#fff;border:0;font-weight:800;cursor:pointer;margin-top:10px}
+.payBtn:hover{background:var(--accent)}
 </style>
 </head>
 <body id="body">
-<div class="header"><div class="logo">DapOrderApk - Official Store Bugs // PAYMENT</div><div style="display:flex;gap:8px"><div style="display:flex;gap:6px"><button onclick="setTheme('orig')" style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);border:2px solid #fff"></button><button onclick="setTheme('red')" style="width:20px;height:20px;border-radius:50%;background:#ef4444;border:2px solid #fff"></button><button onclick="setTheme('blue')" style="width:20px;height:20px;border-radius:50%;background:#0ea5e9;border:2px solid #fff"></button></div><a class="btn" href="index.html">← Shop</a></div></div>
+<div class="header"><div style="font-weight:800;font-size:13px">DapOrderApk - Official Store Bugs<br>PAYMENT</div><a class="btn" href="index.html">← Shop</a></div>
 <div class="wrap">
-<div class="glass"><h3>🛒 Cart - Backup Aman</h3><div id="cartList"></div><div style="font-weight:800;margin-top:12px" id="total">TOTAL: Rp 0</div><button onclick="clearCart()" style="margin-top:12px;width:100%;border-radius:12px;border:1px solid #fecaca;color:#ef4444;background:#fff;padding:10px;cursor:pointer;font-weight:700">Kosongkan</button><div id="backupInfo" style="font-size:10px;color:#94a3b8;margin-top:8px"></div></div>
-<div><div class="glass"><h3>💳 Checkout</h3><input id="nama" placeholder="Nama penerima"><input id="wa" placeholder="WA 08xx"><input id="alamat" placeholder="Alamat (opsional)"><div class="qris"><div style="font-size:11px;color:var(--accent);font-weight:800">QRIS DAFF SHOP</div><img id="qrisImg" src="qris.jpg" onerror="this.onerror=null;this.src='qris.png';this.onerror=function(){this.style.display='none';document.getElementById('fb').style.display='block'}"><div id="fb" style="display:none;font-size:11px;color:#94a3b8">Upload qris.jpg ke repo</div><div style="font-size:16px;font-weight:800" id="payAmount">Rp 0</div></div><button class="payBtn" onclick="checkout()">CONFIRM PAYMENT → WA</button><div id="status" style="font-size:11px;margin-top:8px;color:var(--accent);font-weight:700"></div></div></div>
+<div class="glass"><h3 style="font-size:15px">🛒 Cart Detail</h3><div id="cartList" style="margin-top:8px"></div><div id="total" style="font-weight:800;margin-top:12px;font-size:16px">TOTAL: Rp 0</div><button onclick="clearCart()" style="margin-top:10px;width:100%;padding:10px;border-radius:12px;border:1px solid #fecaca;color:#ef4444;background:#fff">Kosongkan</button></div>
+<div>
+<div class="glass">
+<h3 style="font-size:15px">💳 Pembayaran</h3>
+<input id="nama" placeholder="Nama penerima">
+<input id="wa" placeholder="WA kamu (08xx)">
+<div class="qrisBox">
+<div style="font-weight:800;color:var(--accent);font-size:12px">QRIS DAFF SHOP - SCAN</div>
+<img src="qris.jpg" onerror="this.src='qris.png';this.onerror=function(){this.style.display='none';document.getElementById('qrisErr').style.display='block'}">
+<div id="qrisErr" style="display:none;font-size:11px;color:#ef4444">Upload file qris.jpg ke repo!</div>
+<div id="payAmount" style="font-weight:800;font-size:18px">Rp 0</div>
+</div>
+
+<div class="danaBox">
+<div style="font-weight:800;font-size:13px;color:#0369a1">💰 DANA MANUAL</div>
+<div style="font-size:12px;margin-top:6px">No: <b id="danaNum">082312728245</b><br>A/n: <b>MIY***N</b></div>
+<div style="display:flex;gap:6px;margin-top:8px"><button onclick="copyDana()" id="copyBtn" style="flex:1;padding:8px;border-radius:10px;border:0;background:#0ea5e9;color:#fff;font-weight:800;cursor:pointer">📋 Salin Nomor (Auto)</button><span id="copyStat" style="font-size:10px;color:#059669;font-weight:700"></span></div>
+<div style="font-size:10px;color:#64748b;margin-top:6px">Nomor otomatis tersalin saat buka halaman!</div>
+</div>
+
+<button class="payBtn" onclick="checkout()">CONFIRM TF → KIRIM BUKTI KE WA UTAMA</button>
+<div id="status" style="font-size:11px;margin-top:8px;color:var(--accent);font-weight:700"></div>
+<div style="font-size:10px;color:#64748b;margin-top:10px;line-height:1.4">Setelah transfer DANA / QRIS, klik tombol di atas. Otomatis akan membuka WhatsApp utama <b>6283879195047</b> untuk kirim bukti TF. Jangan lupa screenshot bukti!</div>
+</div>
+</div>
 </div>
 <script>
-const KEY='daporder_cart',BKEY='daporder_cart_backup',THEME='daporder_theme';
-function setTheme(t){document.body.setAttribute('data-theme',t);localStorage.setItem(THEME,t);}
-(function(){let th=localStorage.getItem(THEME)||'orig';document.body.setAttribute('data-theme',th);})();
-function loadCart(){try{let m=localStorage.getItem(KEY);if(m)return JSON.parse(m);let b=localStorage.getItem(BKEY);if(b){localStorage.setItem(KEY,b);return JSON.parse(b);} }catch(e){}return[];}
+const KEY='daporder_cart',BKEY='daporder_cart_backup',DANA='082312728245',WA_UTAMA='6283879195047';
+function setTheme(t){document.body.setAttribute('data-theme',t);localStorage.setItem('daporder_theme',t);}
+(function(){let th=localStorage.getItem('daporder_theme')||'orig';document.body.setAttribute('data-theme',th);})();
+function loadCart(){try{let m=localStorage.getItem(KEY);if(m)return JSON.parse(m);let b=localStorage.getItem(BKEY);if(b)return JSON.parse(b);}catch(e){}return[];}
 let cart=loadCart();
-function save(){let j=JSON.stringify(cart);localStorage.setItem(KEY,j);localStorage.setItem(BKEY,j);sessionStorage.setItem(KEY,j);render();}
+function save(){let j=JSON.stringify(cart);localStorage.setItem(KEY,j);localStorage.setItem(BKEY,j);render();}
 function changeQty(id,d){let f=cart.find(x=>x.id===id);if(!f)return;f.qty+=d;if(f.qty<=0)cart=cart.filter(x=>x.id!==id);save();}
 function clearCart(){cart=[];save();}
-function render(){let list=document.getElementById('cartList');if(cart.length===0){list.innerHTML='<div style="padding:20px;text-align:center;color:#94a3b8">KOSONG</div>';document.getElementById('total').innerText='TOTAL: Rp 0';document.getElementById('payAmount').innerText='Rp 0';return;}let tot=0;list.innerHTML=cart.map(c=>{tot+=c.price*c.qty;return `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9"><div><b style="font-size:13px">${c.name}</b><br><span style="font-size:11px;color:#64748b">Rp ${c.price.toLocaleString('id-ID')}</span></div><div><button onclick="changeQty(${c.id},-1)" style="width:26px;height:26px;border-radius:8px">-</button> ${c.qty} <button onclick="changeQty(${c.id},1)" style="width:26px;height:26px;border-radius:8px">+</button></div></div>`}).join('');document.getElementById('total').innerText='TOTAL: Rp '+tot.toLocaleString('id-ID');document.getElementById('payAmount').innerText='Rp '+tot.toLocaleString('id-ID');document.getElementById('backupInfo').innerText='Backup: '+(localStorage.getItem('daporder_cart_time')||'-')+' | Triple Backup ON';}
-function checkout(){let n=document.getElementById('nama').value,w=document.getElementById('wa').value,a=document.getElementById('alamat').value;if(!n||!w){document.getElementById('status').innerText='Isi nama & WA dulu!';return;}let tot=cart.reduce((a,b)=>a+b.price*b.qty,0);let det=cart.map(c=>`- ${c.name} x${c.qty}`).join('%0A');window.open(`https://wa.me/6283878195047?text=Halo Daff Shop%0A${det}%0ATotal: Rp ${tot.toLocaleString('id-ID')}%0ANama: ${n}%0AWA: ${w}%0AAlamat: ${a}`,'_blank');}
-render();
+function render(){let l=document.getElementById('cartList');if(cart.length===0){l.innerHTML='<div style="padding:20px;text-align:center;color:#94a3b8">KOSONG</div>';document.getElementById('total').innerText='TOTAL: Rp 0';document.getElementById('payAmount').innerText='Rp 0';return;}let tot=0;l.innerHTML=cart.map(c=>{tot+=c.price*c.qty;return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div><b style="font-size:13px">${c.name}</b><br><span style="font-size:11px;color:#64748b">Rp ${c.price.toLocaleString('id-ID')} x ${c.qty}</span></div><div><button onclick="changeQty(${c.id},-1)" style="width:26px;height:26px;border-radius:8px">-</button> ${c.qty} <button onclick="changeQty(${c.id},1)" style="width:26px;height:26px;border-radius:8px">+</button></div></div>`}).join('');document.getElementById('total').innerText='TOTAL: Rp '+tot.toLocaleString('id-ID');document.getElementById('payAmount').innerText='Rp '+tot.toLocaleString('id-ID');}
+function copyDana(){navigator.clipboard.writeText(DANA).then(()=>{document.getElementById('copyStat').innerText='✓ Tersalin!';document.getElementById('copyBtn').innerText='✓ Tersalin!';setTimeout(()=>{document.getElementById('copyStat').innerText='';document.getElementById('copyBtn').innerText='📋 Salin Nomor (Auto)';},2000);});}
+window.addEventListener('load',()=>{copyDana();render();}); // AUTO SALIN PAS BUKA HALAMAN
+function checkout(){let n=document.getElementById('nama').value.trim(),w=document.getElementById('wa').value.trim();if(!n||!w){document.getElementById('status').innerText='Isi nama & WA dulu!';return;}let tot=cart.reduce((a,b)=>a+b.price*b.qty,0);let det=cart.map(c=>`- ${c.name} x${c.qty} = Rp ${(c.price*c.qty).toLocaleString('id-ID')}`).join('%0A');let pesan=`Halo Daff Shop%0A%0ASaya sudah TF:%0A${det}%0A%0ATOTAL: Rp ${tot.toLocaleString('id-ID')}%0AMetode: DANA ${DANA} / QRIS%0ANama: ${n}%0AWA: ${w}%0A%0AIni bukti TF nya (kirim screenshot) 👇%0A%0ADikirim dari DANA ${DANA} a/n MIY***N ke penerima`;window.open(`https://wa.me/${WA_UTAMA}?text=${pesan}`,'_blank');document.getElementById('status').innerText='Membuka WA utama '+WA_UTAMA+'...';}
 </script>
 </body>
 </html>
