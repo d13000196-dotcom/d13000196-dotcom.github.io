@@ -1,129 +1,98 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DapOrderApk - OFFICIAL STORE</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DapOrderApk - Official Store Bugs</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--green:#00ff88;--red:#ff0040;--purple:#a000ff;--silver:#c0c0c0;--orange:#ff8800;--yellow:#ffea00;--blue:#00d0ff;--bg:#060606}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace}
-body{background:var(--bg);color:#fff;min-height:100vh}
-.header{border-bottom:3px solid var(--green);padding:12px 14px;background:#0f0f0f;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo{color:var(--green);font-weight:900;font-size:18px;letter-spacing:1px}
-.nav{display:flex;gap:8px}
-.btn{border:1px solid var(--silver);padding:6px 12px;background:#000;color:var(--silver);cursor:pointer;text-decoration:none;font-size:12px}
-.btn:hover{background:#fff;color:#000}
-.statusbar{background:#000;border-bottom:1px solid #222;padding:6px 14px;font-size:11px;color:var(--green)}
-.layout{max-width:1300px;margin:auto;display:grid;grid-template-columns:280px 1fr;gap:12px;padding:12px}
-@media(max-width:900px){.layout{grid-template-columns:1fr}}
-.side{border:1px solid #333;background:#0e0e0e;padding:12px;height:fit-content;position:sticky;top:60px}
-.side h3{font-size:12px;color:var(--yellow);margin-bottom:8px}
-.filter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.filter button{font-size:10px;border:1px solid;padding:4px 8px;background:#000;cursor:pointer}
-.preview{border:1px dashed var(--yellow);padding:10px;background:#111;margin-top:10px}
-.preview b{font-size:11px;color:var(--yellow)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.card{border:2px solid;padding:12px;background:#111;transition:.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(0,0,0,.8)}
-.card h4{font-size:13px;margin-bottom:4px;line-height:1.2}
-.card .price{font-size:16px;font-weight:900;margin:6px 0}
-.card .desc{font-size:10px;color:#aaa;margin-bottom:6px}
-.card button{width:100%;padding:8px;background:#000;border:1px solid;font-weight:900;cursor:pointer}
-.card button:hover{filter:brightness(1.3)}
-.c-green{border-color:var(--green);color:var(--green)}
-.c-red{border-color:var(--red);color:var(--red)}
-.c-purple{border-color:var(--purple);color:var(--purple)}
-.c-silver{border-color:var(--silver);color:var(--silver)}
-.c-orange{border-color:var(--orange);color:var(--orange)}
-.c-yellow{border-color:var(--yellow);color:var(--yellow)}
-.c-blue{border-color:var(--blue);color:var(--blue)}
-.c-trans{border-color:rgba(255,255,255,0.35);color:#fff;background:linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03))!important;backdrop-filter:blur(14px)}
-.badge{font-size:9px;border:1px solid;padding:2px 5px;margin-left:5px}
+:root{--accent:#6366f1;--accent2:#a855f7;--glow:rgba(99,102,241,0.25)}
+[data-theme="red"]{--accent:#ef4444;--accent2:#f97316;--glow:rgba(239,68,68,0.25)}
+[data-theme="blue"]{--accent:#0ea5e9;--accent2:#06b6d4;--glow:rgba(14,165,233,0.25)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:linear-gradient(135deg,#eef2ff,#fdf2ff,#e0f2fe);min-height:100vh;transition:.4s}
+.header{position:sticky;top:16px;z-index:99;margin:16px auto;max-width:1150px;width:calc(100% - 32px);background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.9);border-radius:22px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 40px rgba(0,0,0,0.08),0 0 30px var(--glow)}
+.logo{font-weight:800;font-size:15px;color:#0f172a}
+.colorSwitch{display:flex;gap:6px;align-items:center}
+.colorSwitch button{width:22px;height:22px;border-radius:50%;border:2px solid #fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+.c-orig{background:linear-gradient(135deg,#6366f1,#a855f7)}.c-red{background:#ef4444}.c-blue{background:#0ea5e9}
+.btn{padding:9px 16px;border-radius:12px;background:#0f172a;color:#fff;text-decoration:none;font-weight:800;font-size:12px}
+.container{max-width:1150px;margin:0 auto;padding:20px 16px 50px}
+.glass{margin-top:22px;background:rgba(255,255,255,0.78);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.9);border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,0.07),0 0 0 1px var(--glow) inset;padding:22px;transition:.3s}
+.glass:hover{transform:translateY(-3px);box-shadow:0 30px 80px rgba(0,0,0,0.1),0 0 40px var(--glow)}
+.title{font-weight:800;font-size:17px;color:#0f172a;margin-bottom:14px}
+.tableWrap{overflow:auto;border-radius:18px}
+table{width:100%;border-collapse:separate;border-spacing:0;background:rgba(255,255,255,0.92);border-radius:18px;overflow:hidden;min-width:750px}
+th,td{padding:14px 10px;text-align:center;font-size:13px;vertical-align:top}
+th{background:#f8fafc;color:#64748b;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:800}
+td:first-child{text-align:left;font-weight:700;color:#1e293b;background:rgba(255,255,255,0.6);width:180px}
+tr:not(:last-child) td{border-bottom:1px solid rgba(0,0,0,0.05)}
+.benefit{font-size:11.5px;line-height:1.5;color:#334155;font-weight:500;text-align:left}
+.benefit b{color:#0f172a}
+.price{font-weight:800;color:var(--accent);font-size:15px}
+.buy{margin-top:8px;padding:9px 16px;border-radius:12px;border:0;background:#0f172a;color:#fff;font-weight:800;cursor:pointer;font-size:12px;width:100%;transition:.2s}
+.buy:hover{background:var(--accent);box-shadow:0 6px 20px var(--glow)}
+.tag{display:inline-block;font-size:9px;padding:3px 7px;border-radius:20px;background:var(--glow);color:var(--accent);font-weight:800;margin-bottom:4px}
+.cart{position:sticky;bottom:16px;margin-top:24px;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);color:#fff;border-radius:20px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 20px 50px rgba(0,0,0,0.2)}
 </style>
 </head>
-<body>
+<body id="body" data-theme="orig">
 <div class="header">
-<div class="logo">DapOrderApk // RAINBOW+TRANS v4.2</div>
-<div class="nav">
-<a class="btn" href="index.html">SHOP</a>
-<a class="btn" href="payment.html" style="border-color:var(--green);color:var(--green)">CART [<span id="cartCount">0</span>]</a>
+<div class="logo">DapOrderApk - Official Store Bugs</div>
+<div style="display:flex;gap:12px;align-items:center">
+<div class="colorSwitch"><button class="c-orig" onclick="setTheme('orig')" title="Original"></button><button class="c-red" onclick="setTheme('red')" title="Red Effect"></button><button class="c-blue" onclick="setTheme('blue')" title="Blue Effect"></button></div>
+<a class="btn" href="payment.html">CART <span id="c">0</span> →</a>
 </div>
 </div>
-<div class="statusbar">> colors 8/8 LOADED: GREEN RED PURPLE SILVER ORANGE YELLOW BLUE TRANS [100%] // BACKUP: AUTO-SAVE ON [OK]</div>
+<div class="container">
 
-<div class="layout">
-<div class="side">
-<h3>> STATUS: AUTHENTICATED [700+ TRUSTED]</h3>
-<div class="filter">
-<button style="color:var(--green);border-color:var(--green)" onclick="filterC('all')">[ ALL ]</button>
-<button style="color:var(--green);border-color:var(--green)" onclick="filterC('green')">[ GREEN ]</button>
-<button style="color:var(--red);border-color:var(--red)" onclick="filterC('red')">[ RED ]</button>
-<button style="color:var(--purple);border-color:var(--purple)" onclick="filterC('purple')">[ PURPLE ]</button>
-<button style="color:var(--silver);border-color:var(--silver)" onclick="filterC('silver')">[ SILVER ]</button>
-<button style="color:var(--orange);border-color:var(--orange)" onclick="filterC('orange')">[ ORANGE ]</button>
-<button style="color:var(--yellow);border-color:var(--yellow)" onclick="filterC('yellow')">[ YELLOW ]</button>
-<button style="color:var(--blue);border-color:var(--blue)" onclick="filterC('blue')">[ BLUE ]</button>
-<button style="color:#fff;border-color:#fff" onclick="filterC('trans')">[ TRANSPARENT ]</button>
-</div>
-<div class="preview">
-<b>CART PREVIEW // BACKUP SAFE</b>
-<div id="cartPreview" style="font-size:11px;margin-top:6px">empty</div>
-<button onclick="clearCart()" style="width:100%;margin-top:8px;background:#000;border:1px solid var(--red);color:var(--red);padding:6px;cursor:pointer;font-size:10px">KOSONGKAN KERANJANG</button>
-</div>
-<div style="font-size:10px;margin-top:12px;color:#666">
-DARKVERSE 3 VARIAN<br>
-TR4SVLOID 7 VARIAN<br>
-X-GTR4SH 5 VARIAN<br>
-TOTAL 15 PRODUK [OK]
-</div>
-</div>
+<div class="glass"><div class="title">🌌 DARKVERSE - 3 ROLE</div>
+<div class="tableWrap"><table><tr><th>BENEFIT</th><th>FULL UPDATE<br><span class="price">Rp 50K</span></th><th>RESELLER<br><span class="price">Rp 80K</span></th><th>PARTNER<br><span class="price">Rp 150K</span></th></tr>
+<tr><td>Deskripsi</td>
+<td><div class="benefit"><b>Akses Biasa</b><br>Full akses DarkVerse, update lifetime seumur hidup.</div></td>
+<td><div class="benefit"><b>Bisa Menjual Role FULL UPDATE</b><br>Semua benefit Full + lisensi jual kembali profit 100%.</div></td>
+<td><div class="benefit"><span class="tag">BEST</span><br><b>Bisa Menjual Role MEMBER & RESELLER + Masuk GB & Add Bot</b><br>Full power jual semua role bawahnya + GB + Add Bot.</div></td></tr>
+<tr><td></td><td><button class="buy" onclick="add('DarkVerse FULL UPDATE',50000)">Beli</button></td><td><button class="buy" onclick="add('DarkVerse RESELLER',80000)">Beli</button></td><td><button class="buy" onclick="add('DarkVerse PARTNER',150000)">Beli 150K</button></td></tr>
+</table></div></div>
 
-<div class="grid" id="grid"></div>
-</div>
+<div class="glass"><div class="title">⚡ TR4SVLOID - 7 ROLE</div>
+<div class="tableWrap"><table style="min-width:900px"><tr><th>BENEFIT</th><th>1 MINGGU<br><span class="price">10K</span></th><th>1 BULAN<br><span class="price">15K</span></th><th>FULL UPDATE<br><span class="price">25K</span></th><th>RESELLER<br><span class="price">55K</span></th><th>VIP 1 BULAN<br><span class="price">30K</span></th><th>VIP PERMANEN<br><span class="price">50K</span></th><th>PARTNER<br><span class="price">65K</span></th></tr>
+<tr><td>Benefit</td>
+<td><div class="benefit"><b>Trial 7 Hari</b><br>Coba semua fitur.</div></td>
+<td><div class="benefit"><b>Standar 30 Hari</b><br>Minor update + support.</div></td>
+<td><div class="benefit"><b>Lifetime Biasa</b><br>Full akses permanen update gratis.</div></td>
+<td><div class="benefit"><b>Jual FULL UPDATE</b><br>Lifetime + hak jual.</div></td>
+<td><div class="benefit"><b>VIP Tools 30H</b><br>Speed x2, bypass premium.</div></td>
+<td><div class="benefit"><b>VIP Permanen</b><br>All premium lifetime.</div></td>
+<td><div class="benefit"><span class="tag">SULTAN</span><br><b>Jual ALL + GB + Add Bot</b><br>Bisa jual semua role + GB Partner.</div></td></tr>
+<tr><td></td><td><button class="buy" onclick="add('TR4SVLOID 1 MINGGU',10000)">10K</button></td><td><button class="buy" onclick="add('TR4SVLOID 1 BULAN',15000)">15K</button></td><td><button class="buy" onclick="add('TR4SVLOID FULL UPDATE',25000)">25K</button></td><td><button class="buy" onclick="add('TR4SVLOID RESELLER',55000)">55K</button></td><td><button class="buy" onclick="add('TR4SVLOID VIP 1 BULAN',30000)">30K</button></td><td><button class="buy" onclick="add('TR4SVLOID VIP PERMANEN',50000)">50K</button></td><td><button class="buy" onclick="add('TR4SVLOID PARTNER',65000)">65K</button></td></tr>
+</table></div></div>
 
+<div class="glass"><div class="title">👑 X-GTR4SH - 5 ROLE</div>
+<div class="tableWrap"><table><tr><th>BENEFIT</th><th>FULL<br><span class="price">20K</span></th><th>RESELLER<br><span class="price">30K</span></th><th>ADMIN<br><span class="price">50K</span></th><th>PARTNER<br><span class="price">70K</span></th><th>MODERATOR<br><span class="price">100K</span></th></tr>
+<tr><td>Benefit</td>
+<td><div class="benefit"><b>Akses Biasa</b><br>User full fitur lifetime.</div></td>
+<td><div class="benefit"><b>Jual FULL UPDATE</b><br>Lifetime + jual Full.</div></td>
+<td><div class="benefit"><b>Manage User + Jual RESELLER</b><br>Kontrol user + jual Reseller.</div></td>
+<td><div class="benefit"><b>Jual ADMIN + GB + Add Bot</b><br>Jual role bawahnya + GB.</div></td>
+<td><div class="benefit"><span class="tag">TRANSPARENT GLASS</span><br><b>Full Moderator + Transparent + GB + Add Bot Unlimited</b><br>Role tertinggi, tema kaca eksklusif, profit tertinggi.</div></td></tr>
+<tr><td></td><td><button class="buy" onclick="add('X-GTR4SH FULL UPDATE',20000)">20K</button></td><td><button class="buy" onclick="add('X-GTR4SH RESELLER',30000)">30K</button></td><td><button class="buy" onclick="add('X-GTR4SH ADMIN',50000)">50K</button></td><td><button class="buy" onclick="add('X-GTR4SH PARTNER',70000)">70K</button></td><td><button class="buy" onclick="add('X-GTR4SH MODERATOR',100000)">100K</button></td></tr>
+</table></div></div>
+
+<div class="cart"><div><div id="preview" style="font-size:13px">Keranjang kosong</div><div id="backupInfo" style="font-size:9px;opacity:.6;margin-top:4px"></div></div><div><b id="total">Rp 0</b><a href="payment.html" style="background:#fff;color:#000;padding:8px 14px;border-radius:10px;text-decoration:none;margin-left:10px;font-weight:800">Checkout →</a></div></div>
+<div style="margin-top:12px;display:flex;gap:8px"><button onclick="exportBackup()" style="padding:8px 12px;border-radius:10px;border:0;background:#fff;font-weight:800;cursor:pointer">⬇️ Export Backup</button><label style="padding:8px 12px;border-radius:10px;background:#fff;font-weight:800;cursor:pointer">⬆️ Import<input type="file" hidden onchange="importBackup(this.files[0])"></label></div>
+</div>
 <script>
-const CART_KEY='daporder_cart';
-let cart=JSON.parse(localStorage.getItem(CART_KEY)||'[]');
-let curFilter='all';
-const products=[
-{id:1,name:'DarkVerse - FULL UPDATE',price:50000,color:'green',cat:'DARKVERSE',desc:'Full fitur unlock'},
-{id:2,name:'DarkVerse - RESELLER',price:80000,color:'blue',cat:'DARKVERSE',desc:'Bisa jual lagi'},
-{id:3,name:'DarkVerse - PARTNER',price:150000,color:'purple',cat:'DARKVERSE',desc:'Partner resmi + support'},
-{id:4,name:'TR4SVLOID - 1 MINGGU',price:10000,color:'red',cat:'TR4SVLOID',desc:'Aktif 7 hari'},
-{id:5,name:'TR4SVLOID - 1 BULAN',price:15000,color:'orange',cat:'TR4SVLOID',desc:'Aktif 30 hari - best seller'},
-{id:6,name:'TR4SVLOID - FULL UPDATE',price:25000,color:'yellow',cat:'TR4SVLOID',desc:'Update lifetime'},
-{id:7,name:'TR4SVLOID - RESELLER',price:55000,color:'silver',cat:'TR4SVLOID',desc:'Reseller panel'},
-{id:8,name:'TR4SVLOID - VIP 1 BULAN',price:30000,color:'green',cat:'TR4SVLOID',desc:'VIP fitur 1 bulan'},
-{id:9,name:'TR4SVLOID - VIP PERMANEN',price:50000,color:'blue',cat:'TR4SVLOID',desc:'VIP permanen'},
-{id:10,name:'TR4SVLOID - PARTNER',price:65000,color:'purple',cat:'TR4SVLOID',desc:'Partner TR4SVLOID'},
-{id:11,name:'X-GTR4SH - FULL UPDATE',price:20000,color:'red',cat:'X-GTR4SH',desc:'Full update'},
-{id:12,name:'X-GTR4SH - RESELLER',price:30000,color:'orange',cat:'X-GTR4SH',desc:'Reseller edition'},
-{id:13,name:'X-GTR4SH - ADMIN',price:50000,color:'yellow',cat:'X-GTR4SH',desc:'Admin panel'},
-{id:14,name:'X-GTR4SH - PARTNER',price:70000,color:'silver',cat:'X-GTR4SH',desc:'Partner resmi'},
-{id:15,name:'X-GTR4SH - MODERATOR',price:100000,color:'trans',cat:'X-GTR4SH',desc:'Moderator ghost glass edition'},
-];
-
-function save(){localStorage.setItem(CART_KEY,JSON.stringify(cart));render();}
-function add(id){let p=products.find(x=>x.id===id);let f=cart.find(x=>x.id===id);if(f)f.qty++;else cart.push({...p,qty:1});save();}
-function changeQty(id,d){let f=cart.find(x=>x.id===id);if(!f)return;f.qty+=d;if(f.qty<=0)cart=cart.filter(x=>x.id!==id);save();}
-function clearCart(){cart=[];save();}
-function filterC(c){curFilter=c;render();}
-
-function render(){
-let list=curFilter==='all'?products:products.filter(p=>p.color===curFilter);
-document.getElementById('grid').innerHTML=list.map(p=>`
-<div class="card c-${p.color}">
-<h4>${p.name} <span class="badge">${p.cat}</span></h4>
-<div class="desc">${p.desc} | STOCK: 99 | <span style="color:var(--${p.color==='trans'?'silver':p.color})">${p.color.toUpperCase()}</span></div>
-<div class="price">Rp ${p.price.toLocaleString('id-ID')}</div>
-<button onclick="add(${p.id})">[ ADD TO CART ]</button>
-</div>`).join('');
-document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
-let prev=document.getElementById('cartPreview');
-if(cart.length===0)prev.innerHTML='empty';
-else prev.innerHTML=cart.map(c=>`${c.name} x${c.qty} <button onclick="changeQty(${c.id},-1)" style="background:#000;color:#fff;border:1px solid #444;width:18px">-</button> <button onclick="changeQty(${c.id},1)" style="background:#000;color:#fff;border:1px solid #444;width:18px">+</button>`).join('<br>') + `<br><br><b>TOTAL: Rp ${cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID')}</b>`;
-}
-render();
+const KEY='daporder_cart',BKEY='daporder_cart_backup',BT='daporder_cart_time',THEME='daporder_theme';
+function setTheme(t){document.getElementById('body').setAttribute('data-theme',t);localStorage.setItem(THEME,t);}
+(function(){let th=localStorage.getItem(THEME)||'orig';document.getElementById('body').setAttribute('data-theme',th);})();
+function loadCart(){try{let m=localStorage.getItem(KEY);if(m)return JSON.parse(m);let b=localStorage.getItem(BKEY);if(b){localStorage.setItem(KEY,b);return JSON.parse(b);}let s=sessionStorage.getItem(KEY);if(s)return JSON.parse(s);}catch(e){}return[];}
+function save(){let j=JSON.stringify(cart);localStorage.setItem(KEY,j);localStorage.setItem(BKEY,j);localStorage.setItem(BT,new Date().toLocaleString('id-ID'));sessionStorage.setItem(KEY,j);render();}
+function exportBackup(){let data={cart,time:new Date().toISOString(),theme:localStorage.getItem(THEME),v:'7.0'};let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=`daporder-backup-${Date.now()}.json`;a.click();}
+function importBackup(f){let r=new FileReader();r.onload=e=>{try{let d=JSON.parse(e.target.result);cart=d.cart||d;if(d.theme)setTheme(d.theme);save();alert('RESTORED '+cart.length+' item');}catch{alert('File rusak!')}};r.readAsText(f);}
+let cart=loadCart();
+function add(n,p){let f=cart.find(x=>x.name===n);if(f)f.qty++;else cart.push({id:Date.now()+Math.random(),name:n,price:p,qty:1});save();}
+function render(){document.getElementById('c').innerText=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('preview').innerText=cart.length?cart.map(c=>`${c.name} x${c.qty}`).join(', '):'Keranjang kosong';document.getElementById('total').innerText='Rp '+cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString('id-ID');document.getElementById('backupInfo').innerText='Backup: '+(localStorage.getItem(BT)||'-')+' | '+cart.length+' item | Theme: '+(localStorage.getItem(THEME)||'orig')+' | Triple Backup ON';}
+setInterval(()=>{if(cart.length)save()},10000);window.addEventListener('beforeunload',()=>{if(cart.length)save()});render();
 </script>
 </body>
-</html>
+  </html>
