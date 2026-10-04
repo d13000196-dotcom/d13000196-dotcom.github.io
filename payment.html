@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAYMENT - DapOrderApk</title>
+<title>BAYAR - DapOrderApk</title>
 <style>
 body{background:#0a0a0a;color:#fff;font-family:Arial;text-align:center;padding:20px}
 .box{background:#151515;border:1px solid #00ffcc;border-radius:15px;padding:20px;margin:20px auto;max-width:400px;box-shadow:0 0 15px #00ffcc50}
 h1{color:#00ffcc}
 .qris{background:#fff;padding:15px;border-radius:10px;margin:15px 0}
-.btn{display:block;background:#00ffcc;color:#000;padding:15px;border-radius:10px;text-decoration:none;font-weight:bold;margin:10px 0}
+.btn{display:block;background:#00ffcc;color:#000;padding:15px;border-radius:10px;text-decoration:none;font-weight:bold;margin:10px auto;max-width:400px}
 .btn2{background:#222;color:#00ffcc;border:1px solid #00ffcc}
 </style>
 </head>
@@ -17,14 +17,33 @@ h1{color:#00ffcc}
 <h1>DAPORDERAPK PAYMENT</h1>
 <div class="box">
 <h3>📱 QRIS ALL PAYMENT</h3>
-<div class="qris">
-<img src="qris.jpg" style="width:100%">
+<div class="qris"><img src="qris.jpg" style="width:100%"></div>
+<div id="detail" style="font-size:13px;text-align:left;background:#0a0a0a;padding:10px;border-radius:10px;margin-top:10px"></div>
+<h2 id="total" style="color:#00ffcc;margin-top:10px">Rp 0</h2>
 </div>
-</div>
-<div class="box">
-<h3>💳 DANA: 082312728245</h3>
-</div>
-<a class="btn" href="https://wa.me/6283879195047">✅ SUDAH BAYAR</a>
+<div class="box"><h3>💳 DANA: 082312728245</h3></div>
+<a class="btn" onclick="sudahBayar()">✅ SUDAH BAYAR</a>
 <a class="btn btn2" href="index.html">⬅ KEMBALI</a>
+<script>
+let cart=JSON.parse(localStorage.getItem('daporderapk_final')||'[]');
+let custom=JSON.parse(localStorage.getItem('daporder_custom')||'[]');
+let defaultProducts=[{id:1,name:'DarkVerse FULL UPDATE',price:50000},{id:2,name:'DarkVerse RESELLER',price:80000},{id:3,name:'DarkVerse PARTNER',price:150000},{id:4,name:'TR4SVLOID 1 MINGGU',price:10000},{id:5,name:'TR4SVLOID 1 BULAN',price:15000},{id:6,name:'TR4SVLOID FULL UPDATE',price:25000},{id:7,name:'TR4SVLOID RESELLER',price:55000},{id:8,name:'TR4SVLOID VIP 1 BULAN',price:30000},{id:9,name:'TR4SVLOID VIP PERMANEN',price:50000},{id:10,name:'TR4SVLOID PARTNER',price:65000},{id:11,name:'X-GTR4SH FULL UPDATE',price:20000},{id:12,name:'X-GTR4SH RESELLER',price:30000},{id:13,name:'X-GTR4SH ADMIN',price:50000},{id:14,name:'X-GTR4SH PARTNER',price:70000},{id:15,name:'X-GTR4SH MODERATOR',price:100000}];
+let products=[...defaultProducts,...custom];
+let tot=0, txt='';
+let html='';
+cart.forEach(c=>{
+ let p=products.find(x=>x.id===c.id);
+ if(!p) return;
+ tot+=p.price*c.qty;
+ html+=p.name+' x'+c.qty+'<br>';
+ txt+= '- '+p.name+' x'+c.qty+' = Rp '+(p.price*c.qty).toLocaleString('id-ID')+'%0A';
+});
+document.getElementById('detail').innerHTML=html||'Keranjang kosong';
+document.getElementById('total').innerText='Total: Rp '+tot.toLocaleString('id-ID');
+function sudahBayar(){
+ let pesan='Halo DapOrderApk! %0A%0ASudah bayar QRIS:%0A'+txt+'%0ATotal *Rp '+tot.toLocaleString('id-ID')+'*%0A%0ABukti QRIS DapOrderApk ID1025450705674 %0ADANA: 082312728245';
+ window.open('https://wa.me/6282312728245?text='+pesan,'_blank');
+}
+</script>
 </body>
 </html>
