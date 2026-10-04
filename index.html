@@ -1,99 +1,104 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DapOrderApk - Official Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&family=Inter:wght@600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DapOrderApk - CYBERSEC ARMORY</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@800&display=swap" rel="stylesheet">
 <style>
-:root{--primary:#00bfa6}
-*{box-sizing:border-box;font-family:'Inter',Arial,sans-serif}
-body{background:#f5f5f7;margin:0;color:#111}
-.angka{font-family:'Roboto Condensed',sans-serif!important}
-header{padding:12px 16px;background:#fff;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:30;box-shadow:0 1px 10px rgba(0,0,0,0.06)}
-.logo{font-weight:800;font-size:22px}.logo span{color:var(--primary)}
-.top-banner{background:var(--primary);color:#fff;text-align:center;padding:8px 10px;font-size:12px;font-weight:700}
-.theme-box{display:flex;gap:6px}
-.theme-btn{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;cursor:pointer}
-.theme-btn.active{box-shadow:0 0 0 2px #000}
-.cart-btn{background:#000;color:#fff;border:none;padding:9px 16px;border-radius:20px;cursor:pointer;font-weight:bold}
-.stats{background:linear-gradient(135deg,#111 0%, #222 100%);color:#fff;padding:16px 12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}
-.livebar{background:#fff;padding:10px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;font-size:11px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
-.card{background:#fff;padding:10px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
-.card img{width:100%;height:130px;object-fit:cover;border-radius:12px;background:#e9e9e9;display:block}
-.card h4{margin:10px 0 4px 0;font-size:13px;min-height:34px}
-.harga{color:var(--primary);font-weight:800;font-size:16px}
-.btn{width:100%;padding:11px;background:#000;color:#fff;border:none;border-radius:20px;margin-top:8px;cursor:pointer;font-weight:bold;font-size:12px}
-.section{padding:18px 15px}
-.testi{display:flex;gap:12px;overflow-x:auto}
-.testi::-webkit-scrollbar{display:none}
-.testi-card{min-width:260px;background:#fff;padding:14px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.04);border-left:4px solid var(--primary)}
-#cartModal{position:fixed;inset:0;background:rgba(0,0,0,0.55);display:none;justify-content:center;align-items:center;z-index:99;padding:15px}
-.cart-box{background:#fff;width:100%;max-width:400px;border-radius:20px;padding:20px;max-height:85vh;overflow-y:auto}
-.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
-.qty button{width:32px;height:32px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer;font-weight:bold}
-.hapus{color:red;font-size:11px;font-weight:bold;background:none;border:none;cursor:pointer;margin-left:8px}
-#fakeNotif{position:fixed;left:12px;bottom:12px;background:#111;color:#fff;padding:10px 14px;border-radius:12px;font-size:12px;z-index:50;display:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);max-width:280px;border-left:4px solid var(--primary)}
+:root{--neon:#00ff88;--bg:#050805;--panel:#101410;--border:#00ff88;--text:#c8ffd8}
+.theme-silver{--neon:#c0c0c0;--bg:#0a0a0c;--panel:#1a1a1e;--border:#c0c0c0;--text:#e0e0e0}
+.theme-white{--neon:#111;--bg:#f0f0f0;--panel:#ffffff;--border:#111;--text:#111}
+*{box-sizing:border-box;font-family:'JetBrains Mono',monospace}
+body{margin:0;background:var(--bg);color:var(--text);transition:.3s;background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size:35px 35px}
+.container{max-width:480px;margin:0 auto;border-left:3px solid var(--border);border-right:3px solid var(--border);background:var(--bg);min-height:100vh}
+.header{position:sticky;top:0;z-index:99;background:#000;border-bottom:3px solid var(--border);padding:10px}
+.logo{font-family:'Press Start 2P';font-size:11px;color:var(--neon);line-height:1.3}
+.logo span{font-size:7px;color:#fff}
+.theme-row{display:flex;gap:6px;margin-top:8px}
+.tbtn{flex:1;border:2px solid var(--border);padding:7px;font-size:8px;font-family:'Press Start 2P';cursor:pointer}
+.t-green{background:#00ff88;color:#000}.t-silver{background:#c0c0c0;color:#000}.t-white{background:#fff;color:#000}
+.status{background:#000;border:2px solid var(--border);margin:8px;padding:6px;font-size:7px;font-family:'Press Start 2P';color:var(--neon);text-align:center}
+.hero{margin:8px;border:3px solid var(--border);background:var(--panel);padding:8px;position:relative}
+.hero img{width:100%;height:210px;object-fit:contain;background:#000;border:2px solid var(--border);image-rendering:pixelated}
+.hero-tag{position:absolute;top:14px;left:14px;background:var(--neon);color:#000;font-size:7px;padding:4px 6px;font-family:'Press Start 2P'}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
+.card{background:var(--panel);border:3px solid var(--border);padding:7px}
+.card img{width:100%;height:95px;object-fit:cover;background:#000;border:2px solid var(--border)}
+.badge{background:var(--neon);color:#000;font-size:6px;padding:3px 5px;font-family:'Press Start 2P';display:inline-block;margin-bottom:5px}
+.name{font-family:'Press Start 2P';font-size:7px;line-height:1.4;min-height:34px;margin:6px 0;color:var(--text)}
+.price{color:var(--neon);font-family:'Press Start 2P';font-size:9px;margin:4px 0}
+.btn{width:100%;background:#000;color:var(--neon);border:2px solid var(--neon);padding:8px;font-family:'Press Start 2P';font-size:7px;cursor:pointer;margin-top:6px}
+.btn:hover{background:var(--neon);color:#000}
+.footer{margin:10px;border:3px solid var(--border);background:#000;padding:10px;text-align:center;font-family:'Press Start 2P';font-size:7px;color:var(--neon);line-height:1.6}
+.cart-float{position:fixed;bottom:18px;right:18px;background:var(--neon);color:#000;border:3px solid #000;padding:12px 18px;font-family:'Press Start 2P';font-size:10px;cursor:pointer;z-index:100;box-shadow:5px 5px 0 #000}
 </style>
 </head>
-<body>
-<div class="top-banner">🔥 TRUSTED 700+ PEMBELI • DapOrderApk - Official Store • GARANSI FULL UPDATE 🔥</div>
-<div class="stats">
-<div><div style="color:var(--primary);font-size:10px;letter-spacing:1px">BULAN INI</div><div class="angka" style="font-size:20px;font-weight:800;color:#00ff88">+342% 🚀</div><div style="font-size:10px;opacity:0.7">Melonjak</div></div>
-<div style="border-left:1px solid #333;border-right:1px solid #333"><div style="color:var(--primary);font-size:10px;letter-spacing:1px">TOTAL TRANSAKSI</div><div class="angka" id="statTransaksi" style="font-size:20px;font-weight:800">1,250</div><div style="font-size:10px;opacity:0.7">Berhasil</div></div>
-<div><div style="color:var(--primary);font-size:10px;letter-spacing:1px">TOTAL PEMBELI</div><div class="angka" id="statPembeli" style="font-size:20px;font-weight:800">738</div><div style="font-size:10px;opacity:0.7">Puas</div></div>
+<body class="theme-green">
+<div class="container">
+<div class="header">
+<div style="display:flex;justify-content:space-between">
+<div class="logo">DapOrderApk<br><span>OFFICIAL CYBERSEC ARMORY</span></div>
+<div style="font-family:'Press Start 2P';font-size:8px;color:var(--neon);text-align:right">CART [<span id="c1">0</span>]<br><span style="font-size:6px;color:#fff">083879195047</span></div>
 </div>
-<div class="livebar"><div>🔴 <b id="liveOnline" class="angka">30</b> orang lihat toko ini</div><div style="color:var(--primary);font-weight:700" class="angka">● LIVE ORDER</div></div>
-<header>
-<div class="logo">DapOrder<span>Apk</span> <span style="font-size:11px;background:#000;color:#fff;padding:3px 8px;border-radius:10px;margin-left:4px;vertical-align:middle">Official Store</span></div>
-<div style="display:flex;gap:10px;align-items:center">
-<div class="theme-box">
-<div class="theme-btn active" style="background:#00bfa6" onclick="setTheme('original',this)"></div>
-<div class="theme-btn" style="background:#0d6efd" onclick="setTheme('biru',this)"></div>
-<div class="theme-btn" style="background:#e11d48" onclick="setTheme('merah',this)"></div>
+<div class="theme-row">
+<button class="tbtn t-green" onclick="setT('green')">HIJAU</button>
+<button class="tbtn t-silver" onclick="setT('silver')">SILVER</button>
+<button class="tbtn t-white" onclick="setT('white')">PUTIH</button>
 </div>
-<button class="cart-btn" onclick="openCart()">🛒 <span id="cartCount" class="angka">0</span></button>
 </div>
-</header>
-<div class="grid" id="productGrid"></div>
-<div class="section"><h3 style="margin:0 0 10px 0">Testimoni Real 700+ ⭐</h3><div class="testi"><div class="testi-card"><b>Andra - ⭐⭐⭐⭐⭐</b><p>"DarkVerse FULL UPDATE work parah!"</p></div><div class="testi-card"><b>Rizky - ⭐⭐⭐⭐⭐</b><p>"TR4SVLOID VIP PERMANEN 50k murah!"</p></div><div class="testi-card"><b>Arul - ⭐⭐⭐⭐⭐</b><p>"X-GTR4SH MODERATOR 100k ganas wok!"</p></div><div class="testi-card"><b>Ndre - ⭐⭐⭐⭐⭐</b><p>"Udah 3x order amanah terus!"</p></div></div></div>
-<div style="text-align:center;padding:20px;color:#888;font-size:11px">© 2026 DapOrderApk - Official Store • 700+ Pembeli</div>
-<div id="cartModal"><div class="cart-box"><h2 style="margin:0 0 15px 0">Keranjang</h2><div id="cartList"></div><div id="cartTotal" class="angka" style="color:var(--primary);font-weight:900;margin:15px 0;font-size:20px">Total: Rp 0</div><button onclick="lanjutBayar()" style="width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-weight:bold;cursor:pointer">LANJUT BAYAR →</button><center><p onclick="closeCart()" style="cursor:pointer;color:#888;margin-top:12px">Tutup</p></center></div></div>
-<div id="fakeNotif"></div>
+
+<div class="status">CONNECTION: SECURE ● PING 12ms ● DANA:082312728245 ● WA:083879195047 ● 15 ITEMS READY</div>
+
+<div class="hero">
+<div class="hero-tag">> GUARD-01 ACTIVE</div>
+<img src="mecha.jpg" onerror="this.src='https://placehold.co/400x210/000/00ff88?text=MECHA.jpg+BELUM+DI+UPLOAD'">
+<div style="font-family:'Press Start 2P';font-size:7px;margin-top:6px;color:var(--neon)">DARK MECHA PIXEL GRID // ALL SYSTEMS NOMINAL</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="footer">
+TOTAL INVENTORY: <span id="ftotal">0</span> CRED<br><br>
+PAYMENT: DANA 082312728245 | QRIS DAFF SHOP<br>
+NMID ID1025450705674 - SATU QRIS UNTUK SEMUA<br><br>
+SYSTEM LOG: 15 PRODUCTS VERIFIED ● 0 THREATS<br>V2.0 MECHA GRID ● TRUSTED 700+ PEMBELI
+</div>
+</div>
+
+<div class="cart-float" onclick="goCart()">🛒 [<span id="c2">0</span>] CHECKOUT</div>
+
 <script>
-const products = [
-{name:"DarkVerse FULL UPDATE", price:50000, img:"darkverse.jpg", cat:"DarkVerse"},
-{name:"DarkVerse RESELLER", price:80000, img:"darkverse.jpg", cat:"DarkVerse"},
-{name:"DarkVerse PARTNER", price:150000, img:"darkverse.jpg", cat:"DarkVerse"},
-{name:"TR4SVLOID 1 MINGGU", price:10000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"TR4SVLOID 1 BULAN", price:15000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"TR4SVLOID FULL UPDATE", price:25000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"TR4SVLOID RESELLER", price:55000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"TR4SVLOID VIP 1 BULAN", price:30000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"TR4SVLOID VIP PERMANEN", price:50000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"TR4SVLOID PARTNER", price:65000, img:"tr4svloid.jpg", cat:"TR4SVLOID"},
-{name:"X-GTR4SH FULL UPDATE", price:20000, img:"xgtr4sh.jpg", cat:"X-GTR4SH"},
-{name:"X-GTR4SH RESELLER", price:30000, img:"xgtr4sh.jpg", cat:"X-GTR4SH"},
-{name:"X-GTR4SH ADMIN", price:50000, img:"xgtr4sh.jpg", cat:"X-GTR4SH"},
-{name:"X-GTR4SH PARTNER", price:70000, img:"xgtr4sh.jpg", cat:"X-GTR4SH"},
-{name:"X-GTR4SH MODERATOR", price:100000, img:"xgtr4sh.jpg", cat:"X-GTR4SH"},
+const products=[
+{name:"DarkVerse FULL UPDATE",price:50000,img:"darkverse.jpg",cat:"DARKVERSE"},
+{name:"DarkVerse RESELLER",price:80000,img:"darkverse.jpg",cat:"DARKVERSE"},
+{name:"DarkVerse PARTNER",price:150000,img:"darkverse.jpg",cat:"DARKVERSE"},
+{name:"TR4SVLOID 1 MINGGU",price:10000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"TR4SVLOID 1 BULAN",price:15000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"TR4SVLOID FULL UPDATE",price:25000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"TR4SVLOID RESELLER",price:55000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"TR4SVLOID VIP 1 BULAN",price:30000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"TR4SVLOID VIP PERMANEN",price:50000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"TR4SVLOID PARTNER",price:65000,img:"tr4svloid.jpg",cat:"TR4SVLOID"},
+{name:"X-GTR4SH FULL UPDATE",price:20000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
+{name:"X-GTR4SH RESELLER",price:30000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
+{name:"X-GTR4SH ADMIN",price:50000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
+{name:"X-GTR4SH PARTNER",price:70000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
+{name:"X-GTR4SH MODERATOR",price:100000,img:"xgtr4sh.jpg",cat:"X-GTR4SH"},
 ];
 let cart=JSON.parse(localStorage.getItem('dap_cart')||'[]');
-function setTheme(type,el){let c='#00bfa6';if(type==='biru')c='#0d6efd';if(type==='merah')c='#e11d48';document.documentElement.style.setProperty('--primary',c);localStorage.setItem('dap_theme',type);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
-function renderProducts(){let html='';products.forEach((p,i)=>{html+=`<div class="card"><img src="${p.img}" onerror="this.src='https://placehold.co/400x300/111111/00bfa6?text='+encodeURIComponent(p.name)"><div style="font-size:10px;color:#fff;background:var(--primary);display:inline-block;padding:2px 8px;border-radius:10px;margin-top:8px">${p.cat}</div><h4>${p.name}</h4><div class="harga angka">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="addToCart(${i})">+ KERANJANG</button></div>`;});document.getElementById('productGrid').innerHTML=html;updateCart();}
-function addToCart(idx){let it=cart.find(c=>c.idx===idx);if(it){it.qty++;}else{cart.push({idx:idx,qty:1});}saveCart();openCart();}
-function saveCart(){localStorage.setItem('dap_cart',JSON.stringify(cart));updateCart();}
-function updateCart(){document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);let list='';let total=0;cart.forEach((c,i)=>{let p=products[c.idx];let sub=p.price*c.qty;total+=sub;list+=`<div style="border-bottom:1px solid #eee;padding:10px 0;display:flex;gap:10px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px;object-fit:cover" onerror="this.src='https://placehold.co/100x100'"><div style="flex:1"><b style="font-size:13px">${p.name}</b><br><span style="color:var(--primary)" class="angka">Rp ${p.price.toLocaleString('id-ID')}</span><div class="qty"><button onclick="changeQty(${i},-1)">-</button><span class="angka">${c.qty}</span><button onclick="changeQty(${i},1)">+</button><button class="hapus" onclick="removeItem(${i})">HAPUS</button></div></div></div>`;});document.getElementById('cartList').innerHTML=list||'Keranjang kosong';document.getElementById('cartTotal').innerText='Total: Rp '+total.toLocaleString('id-ID');}
-function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart[i].qty=1;saveCart();}
-function removeItem(i){cart.splice(i,1);saveCart();}
-function openCart(){document.getElementById('cartModal').style.display='flex';}
-function closeCart(){document.getElementById('cartModal').style.display='none';}
-function lanjutBayar(){if(cart.length===0){alert('Kosong wok!');return;}localStorage.setItem('dap_cart',JSON.stringify(cart));localStorage.setItem('dap_products',JSON.stringify(products));location.href='payment.html';}
-let t=1250; let p=738;
-setInterval(()=>{t+=Math.floor(Math.random()*2);let el=document.getElementById('statTransaksi');if(el)el.innerText=t.toLocaleString('id-ID');if(Math.random()>0.6){p++;let el2=document.getElementById('statPembeli');if(el2)el2.innerText=p.toLocaleString('id-ID');}let live=document.getElementById('liveOnline');if(live)live.innerText=28+Math.floor(Math.random()*40);},3000);
-const fakeNames=["Andra Jakarta","Rizky Surabaya","Daffa Lampung"];const fakeProducts=["DarkVerse FULL UPDATE","TR4SVLOID VIP PERMANEN","X-GTR4SH MODERATOR"];function showFakeNotif(){let n=fakeNames[Math.floor(Math.random()*fakeNames.length)];let pr=fakeProducts[Math.floor(Math.random()*fakeProducts.length)];let box=document.getElementById('fakeNotif');box.innerHTML=`✅ <b>${n}</b> baru beli<br><b>${pr}</b>`;box.style.display='block';setTimeout(()=>{box.style.display='none';},3500);}setInterval(showFakeNotif,6000);setTimeout(showFakeNotif,2000);
-renderProducts();
+function setT(t){document.body.className='theme-'+t;localStorage.setItem('dap_theme',t);render()}
+function render(){
+let g=document.getElementById('grid'); g.innerHTML=''; let tot=0;
+products.forEach((p,i)=>{
+g.innerHTML+=`<div class="card"><div class="badge">${p.cat}</div><img src="${p.img}" onerror="this.src='https://placehold.co/200x95/000/00ff88?text=${p.cat}'"><div class="name">${p.name}</div><div class="price">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="add(${i})">[ADD TO CART +]</button></div>`;
+});
+cart.forEach(c=>{tot+=products[c.idx].price*c.qty});
+document.getElementById('c1').innerText=cart.length; document.getElementById('c2').innerText=cart.length; document.getElementById('ftotal').innerText=tot.toLocaleString('id-ID');
+}
+function add(i){cart.push({idx:i,qty:1});localStorage.setItem('dap_cart',JSON.stringify(cart));render()}
+function goCart(){if(cart.length==0){alert('KERANJANG KOSONG WOK!');return;} location.href='payment.html';}
+let sv=localStorage.getItem('dap_theme'); if(sv) document.body.className='theme-'+sv;
+render();
 </script>
 </body>
 </html>
