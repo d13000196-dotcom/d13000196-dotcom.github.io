@@ -2,36 +2,111 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bayar - DapOrderApk</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&family=Inter:wght@600&display=swap" rel="stylesheet">
+<title>DapOrderApk - Official Store - Bayar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&family=Roboto+Condensed:wght@800&display=swap" rel="stylesheet">
 <style>
 :root{--primary:#00bfa6}
-*{box-sizing:border-box;font-family:'Inter',Arial}body{background:#f5f5f7;margin:0;padding:12px}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f5f5f7;margin:0;color:#111}
 .angka{font-family:'Roboto Condensed',sans-serif!important}
-.box{background:#fff;padding:20px;border-radius:20px;max-width:430px;margin:auto}
-.qris-box{background:#111;border-radius:16px;padding:14px;text-align:center;border:2px solid var(--primary)}
-.qris-box img{width:100%;max-width:280px;border-radius:12px;background:#fff}
-.order-item{font-size:13px;border-bottom:1px solid #eee;padding:8px 0;display:flex;justify-content:space-between}
-input,select,textarea{width:100%;padding:12px;margin:6px 0 10px 0;border:1px solid #ddd;border-radius:10px}
-.btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer}
-.salin-box{background:#f0fdfa;border:1px dashed var(--primary);padding:10px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin:10px 0}
+.container{max-width:420px;margin:0 auto;background:#fff;min-height:100vh;padding:18px}
+.header{font-weight:800;font-size:22px;margin-bottom:12px}
+.header span{color:var(--primary)}
+.box{background:#fafafa;padding:12px;border-radius:12px;margin-bottom:10px}
+.total{color:var(--primary);font-weight:900;font-size:22px;margin:12px 0}
+.qris-card{background:#111;border:3px solid var(--primary);border-radius:20px;padding:12px;text-align:center}
+.qris-card img{width:100%;max-width:320px;border-radius:12px;background:#fff;display:block;margin:0 auto}
+.badge-pay{display:inline-block;background:#fff;color:#111;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800;margin:6px 2px}
+.input{width:100%;padding:14px;border:1.5px solid #ddd;border-radius:12px;margin-bottom:10px;font-size:14px}
+.btn-wa{width:100%;padding:16px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:900;font-size:15px;cursor:pointer;margin-top:10px}
+.copy-btn{background:#111;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.countdown{background:#fff3cd;color:#856404;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:700;text-align:center;margin-bottom:12px}
+.info-box{margin-top:14px;padding:12px;border:1.5px dashed var(--primary);border-radius:12px;background:#f0fffd}
 </style>
 </head>
 <body>
-<div class="box">
-<h2 style="margin:0">DapOrder<span style="color:var(--primary)">Apk</span> - Bayar</h2>
-<div id="orderList" style="margin:10px 0;background:#f9f9f9;padding:10px;border-radius:10px"></div>
-<div id="totalBayar" class="angka" style="font-weight:900;color:var(--primary);font-size:22px;margin-bottom:12px">Total: Rp 0</div>
-<div class="qris-box"><div style="color:var(--primary);font-size:11px;letter-spacing:2px;margin-bottom:8px">QRIS PAYMENT • DapOrderApk</div><img src="https://placehold.co/400x400/111111/00bfa6?text=QRIS+DapOrderApk" id="qrisImg"><div style="color:#fff;margin-top:10px;font-size:12px">Scan to Pay - Support GoPay OVO DANA</div></div>
-<div class="salin-box"><div><div style="font-size:11px;color:#666">DANA / GoPay</div><b id="noDana" class="angka" style="font-size:16px">081234567890</b></div><button onclick="salinDana()" style="background:#000;color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:11px;cursor:pointer">SALIN</button></div>
-<input type="text" id="nama" placeholder="Nama Lengkap"><input type="text" id="wa" placeholder="No WA Aktif"><textarea id="catatan" placeholder="Catatan / ID Game"></textarea><select id="metode"><option>DANA</option><option>GoPay</option><option>OVO</option><option>QRIS</option><option>Transfer Bank</option></select>
-<button class="btn" onclick="bayar()">KIRIM BUKTI & ORDER KE WA →</button><button onclick="location.href='index.html'" style="width:100%;padding:12px;background:#eee;border:none;border-radius:10px;margin-top:10px;cursor:pointer">Kembali</button><p id="salinMsg" style="text-align:center;color:var(--primary);font-size:12px;display:none;margin-top:10px">✅ Nomor disalin!</p>
+<div class="container">
+<div class="header">DapOrder<span>Apk</span> - Bayar</div>
+<div id="orderBox" class="box"></div>
+<div class="total angka" id="totalText">Total: Rp 0</div>
+<div class="countdown">⏰ Selesaikan pembayaran dalam <span id="timer" class="angka">15:00</span></div>
+
+<div class="qris-card">
+<div style="color:var(--primary);font-size:11px;letter-spacing:2px;font-weight:800;margin-bottom:8px">QRIS ALL PAYMENT • DapOrderApk Official Store</div>
+<img src="qris.jpg?v=final" alt="QRIS" onclick="window.open(this.src)" onerror="this.src='https://placehold.co/400x500/111/00bfa6?text=Upload+qris.jpg'">
+<div style="margin-top:12px">
+<span class="badge-pay">GoPay</span><span class="badge-pay">OVO</span><span class="badge-pay">DANA</span><span class="badge-pay">ShopeePay</span><span class="badge-pay">LinkAja</span>
 </div>
+<div style="color:#fff;font-size:12px;margin-top:10px">Scan QRIS di atas - 1 QR untuk semua e-wallet</div>
+</div>
+
+<!-- DANA NUMBER FIX -->
+<div class="info-box">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div>
+<div style="font-size:11px;color:#666;font-weight:700">DANA / QRIS a.n M*****N</div>
+<div style="font-weight:900;font-size:18px" class="angka" id="danaNumber">082312728245</div>
+<div style="font-size:10px;color:#666">A/N: INISIAL M*****N - ALL PAYMENT</div>
+</div>
+<button class="copy-btn" onclick="copyDana()">SALIN</button>
+</div>
+</div>
+
+<div class="info-box" style="background:#fff;border-color:#111;margin-top:10px">
+<div style="font-size:11px;color:#666;font-weight:700">KIRIM BUKTI TF KE WA UTAMA:</div>
+<div style="font-weight:900;font-size:18px" class="angka">083879195047</div>
+<div style="font-size:10px;color:#666">WA Admin DapOrderApk - Official Store</div>
+</div>
+
+<input id="nama" class="input" placeholder="Nama Lengkap">
+<input id="wa" class="input" placeholder="No WA Aktif (08xxxx)">
+<textarea id="catatan" class="input" placeholder="Catatan / ID Game"></textarea>
+
+<select id="metode" class="input" style="font-weight:800">
+<option value="QRIS ALL PAYMENT (GoPay OVO DANA ShopeePay)">QRIS ALL PAYMENT</option>
+<option value="DANA 082312728245">DANA - 082312728245</option>
+</select>
+
+<button class="btn-wa" onclick="kirimWA()">KIRIM BUKTI & ORDER KE WA →</button>
+<div style="text-align:center;margin-top:12px"><a href="index.html" style="color:#888;font-size:12px">← Kembali Belanja</a></div>
+</div>
+
 <script>
-let theme=localStorage.getItem('dap_theme')||'original';let color='#00bfa6';if(theme==='biru')color='#0d6efd';if(theme==='merah')color='#e11d48';document.documentElement.style.setProperty('--primary',color);
-let cart=JSON.parse(localStorage.getItem('dap_cart')||'[]');let products=JSON.parse(localStorage.getItem('dap_products')||'[]');let total=0;let listHTML='';cart.forEach(c=>{let p=products[c.idx];let sub=p.price*c.qty;total+=sub;listHTML+=`<div class="order-item"><span>${p.name} <b class="angka">x${c.qty}</b></span><span class="angka">Rp ${sub.toLocaleString('id-ID')}</span></div>`;});document.getElementById('orderList').innerHTML=listHTML||'Keranjang kosong';document.getElementById('totalBayar').innerText='Total: Rp '+total.toLocaleString('id-ID')+'';
-function salinDana(){navigator.clipboard.writeText(document.getElementById('noDana').innerText);document.getElementById('salinMsg').style.display='block';setTimeout(()=>{document.getElementById('salinMsg').style.display='none';},2000);}
-function bayar(){let nama=document.getElementById('nama').value.trim();let wa=document.getElementById('wa').value.trim();let catatan=document.getElementById('catatan').value.trim();let metode=document.getElementById('metode').value;if(!nama||!wa){alert('Isi Nama & WA dulu wok!');return;}let pesan=`Halo DapOrderApk saya mau bayar:%0A%0A${cart.map(c=>{let p=products[c.idx];return `- ${p.name} x${c.qty} = Rp ${(p.price*c.qty).toLocaleString('id-ID')}`}).join('%0A')}%0A%0A*Total: Rp ${total.toLocaleString('id-ID')}*%0ANama: ${nama}%0AWA: ${wa}%0ACatatan: ${catatan}%0AMetode: ${metode}`;let noToko="6281234567890";localStorage.removeItem('dap_cart');window.open(`https://wa.me/${noToko}?text=${pesan}`,'_blank');setTimeout(()=>{alert('✅ Order terkirim! Keranjang auto kehapus.');location.href='index.html';},1000);}
+const WA_ADMIN = "6283879195047";
+const TOKO = "DapOrderApk - Official Store";
+const DANA_NUM = "082312728245";
+
+let cart = JSON.parse(localStorage.getItem('dap_cart')||'[]');
+let products = JSON.parse(localStorage.getItem('dap_products')||'[]');
+let html='';let total=0;
+cart.forEach(c=>{
+let p=products[c.idx]; if(!p) return;
+let sub=p.price*c.qty; total+=sub;
+html+=`<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span>${p.name} x${c.qty}</span><span class="angka" style="font-weight:800">Rp ${sub.toLocaleString('id-ID')}</span></div>`;
+});
+document.getElementById('orderBox').innerHTML=html||'Kosong wok';
+document.getElementById('totalText').innerText='Total: Rp '+total.toLocaleString('id-ID');
+
+function copyDana(){navigator.clipboard.writeText(DANA_NUM); alert('Nomor DANA disalin wok: '+DANA_NUM);}
+
+function kirimWA(){
+let nama=document.getElementById('nama').value;
+let wa=document.getElementById('wa').value;
+let cat=document.getElementById('catatan').value;
+let met=document.getElementById('metode').value;
+if(!nama||!wa){alert('Isi nama & WA dulu wok!');return;}
+let list='';
+cart.forEach(c=>{let p=products[c.idx]; if(p) list+=`- ${p.name} x${c.qty} = Rp ${(p.price*c.qty).toLocaleString('id-ID')}%0A`;});
+let pesan=`Halo ${TOKO}%0A%0ASaya mau order:%0A${list}%0ATotal: Rp ${total.toLocaleString('id-ID')}%0AMetode: ${met}%0ANo DANA Tujuan: ${DANA_NUM} a/n M*****N%0ANama: ${nama}%0AWA: ${wa}%0ACatatan: ${cat}%0A%0ASaya sudah bayar via ${met}, ini bukti TF nya:` ;
+window.open(`https://wa.me/${WA_ADMIN}?text=${pesan}`,'_blank');
+}
+
+let time=900;
+setInterval(()=>{let m=Math.floor(time/60);let s=time%60;let el=document.getElementById('timer'); if(el) el.innerText=`${m}:${s<10?'0':''}${s}`; time--; if(time<0) time=900;},1000);
+
+let th=localStorage.getItem('dap_theme')||'original';
+let col='#00bfa6'; if(th==='biru') col='#0d6efd'; if(th==='merah') col='#e11d48';
+document.documentElement.style.setProperty('--primary',col);
 </script>
 </body>
 </html>
