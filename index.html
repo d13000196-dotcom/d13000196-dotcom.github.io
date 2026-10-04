@@ -4,81 +4,85 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DapOrderApk</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&family=Inter:wght@600;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;font-family:Arial}
-body{background:#f5f5f5;margin:0}
-header{padding:15px 20px;background:#fff;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
-.logo{font-weight:800;font-size:22px;letter-spacing:-0.5px}.logo span{color:#00bfa6;font-weight:900}
-.cart-btn{background:#000;color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer}
+:root{--primary:#00bfa6}
+*{box-sizing:border-box;font-family:'Inter',Arial,sans-serif}
+body{background:#f5f5f7;margin:0;color:#111}
+.angka{font-family:'Roboto Condensed',sans-serif!important}
+header{padding:12px 16px;background:#fff;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:30;box-shadow:0 1px 10px rgba(0,0,0,0.06)}
+.logo{font-weight:800;font-size:22px}.logo span{color:var(--primary)}
+.top-banner{background:var(--primary);color:#fff;text-align:center;padding:8px 10px;font-size:12px;font-weight:700}
+.theme-box{display:flex;gap:6px}
+.theme-btn{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ddd;cursor:pointer}
+.theme-btn.active{box-shadow:0 0 0 2px #000}
+.cart-btn{background:#000;color:#fff;border:none;padding:9px 16px;border-radius:20px;cursor:pointer;font-weight:bold}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
-.card{background:#fff;padding:10px;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
-.card img{width:100%;height:120px;object-fit:cover;border-radius:12px;background:#eee}
-.card h4{margin:10px 0 4px 0;font-size:13px;min-height:32px;line-height:1.3}
-.harga{color:#00bfa6;font-weight:bold;font-size:14px}
-.btn{width:100%;padding:10px;background:#000;color:#fff;border:none;border-radius:20px;margin-top:8px;cursor:pointer;font-weight:bold;font-size:12px}
-#cartModal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;justify-content:center;align-items:center;z-index:99;padding:15px}
+.card{background:#fff;padding:10px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.card img{width:100%;height:130px;object-fit:cover;border-radius:12px;background:#e9e9e9;display:block}
+.card h4{margin:10px 0 4px 0;font-size:13px;min-height:34px}
+.harga{color:var(--primary);font-weight:800;font-size:16px}
+.btn{width:100%;padding:11px;background:#000;color:#fff;border:none;border-radius:20px;margin-top:8px;cursor:pointer;font-weight:bold;font-size:12px}
+.section{padding:18px 15px}
+.testi{display:flex;gap:12px;overflow-x:auto}
+.testi::-webkit-scrollbar{display:none}
+.testi-card{min-width:260px;background:#fff;padding:14px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.04);border-left:4px solid var(--primary)}
+#cartModal{position:fixed;inset:0;background:rgba(0,0,0,0.55);display:none;justify-content:center;align-items:center;z-index:99;padding:15px}
 .cart-box{background:#fff;width:100%;max-width:400px;border-radius:20px;padding:20px;max-height:85vh;overflow-y:auto}
 .qty{display:flex;align-items:center;gap:8px;margin-top:8px}
 .qty button{width:32px;height:32px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer;font-weight:bold}
-.hapus{color:red;font-size:12px;font-weight:bold;background:none;border:none;cursor:pointer;margin-left:10px}
+.hapus{color:red;font-size:11px;font-weight:bold;background:none;border:none;cursor:pointer;margin-left:8px}
+#fakeNotif{position:fixed;left:12px;bottom:12px;background:#111;color:#fff;padding:10px 14px;border-radius:12px;font-size:12px;z-index:50;display:none;box-shadow:0 4px 20px rgba(0,0,0,0.3);max-width:280px;border-left:4px solid var(--primary)}
 </style>
 </head>
 <body>
-
+<div class="top-banner">🔥 TRUSTED 700+ PEMBELI • DapOrderApk • GARANSI FULL UPDATE 🔥</div>
 <header>
 <div class="logo">DapOrder<span>Apk</span></div>
-<button class="cart-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+<div style="display:flex;gap:10px;align-items:center">
+<div class="theme-box">
+<div class="theme-btn active" style="background:#00bfa6" onclick="setTheme('original',this)"></div>
+<div class="theme-btn" style="background:#0d6efd" onclick="setTheme('biru',this)"></div>
+<div class="theme-btn" style="background:#e11d48" onclick="setTheme('merah',this)"></div>
+</div>
+<button class="cart-btn" onclick="openCart()">🛒 <span id="cartCount" class="angka">0</span></button>
+</div>
 </header>
-
 <div class="grid" id="productGrid"></div>
-
-<div id="cartModal">
-<div class="cart-box">
-<h2 style="margin:0 0 15px 0">Keranjang</h2>
-<div id="cartList"></div>
-<div id="cartTotal" style="color:#00bfa6;font-weight:bold;margin:15px 0;font-size:18px">Total: Rp 0</div>
-<button onclick="lanjutBayar()" style="width:100%;padding:14px;background:#000;color:#fff;border:none;border-radius:12px;font-weight:bold;cursor:pointer">LANJUT BAYAR →</button>
-<center><p onclick="closeCart()" style="cursor:pointer;color:#888;margin-top:12px">Tutup</p></center>
-</div>
-</div>
-
+<div class="section"><h3 style="margin:0 0 10px 0">Testimoni Real 700+ ⭐</h3><div class="testi"><div class="testi-card"><b>Andra - Jakarta ⭐⭐⭐⭐⭐</b><p>"DarkVerse FULL UPDATE work, trusted!"</p><span style="font-size:10px;color:#888">2 jam lalu - Verified</span></div><div class="testi-card"><b>Rizky - Surabaya ⭐⭐⭐⭐⭐</b><p>"TR4SVLOID VIP PERMANEN 50k murah pol!"</p><span style="font-size:10px;color:#888">5 jam lalu - Verified</span></div><div class="testi-card"><b>Daffa - Lampung ⭐⭐⭐⭐⭐</b><p>"X-GTR4SH MODERATOR 100k paling ganas!"</p><span style="font-size:10px;color:#888">Hari ini - Verified</span></div><div class="testi-card"><b>Fajar - Bandung ⭐⭐⭐⭐⭐</b><p>"Udah 3x order disini amanah!"</p><span style="font-size:10px;color:#888">Kemarin - Verified</span></div></div></div>
+<div style="text-align:center;padding:20px;color:#888;font-size:11px">© 2026 DapOrderApk</div>
+<div id="cartModal"><div class="cart-box"><h2 style="margin:0 0 15px 0">Keranjang</h2><div id="cartList"></div><div id="cartTotal" class="angka" style="color:var(--primary);font-weight:900;margin:15px 0;font-size:20px">Total: Rp 0</div><button onclick="lanjutBayar()" style="width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-weight:bold;cursor:pointer">LANJUT BAYAR →</button><center><p onclick="closeCart()" style="cursor:pointer;color:#888;margin-top:12px">Tutup</p></center></div></div>
+<div id="fakeNotif"></div>
 <script>
-// === EDIT PRODUK DISINI AJA WOK ===
 const products = [
-{name:"DarkVerse FULL UPDATE", price:50000, img:"https://via.placeholder.com/300x200/00bfa6/fff?text=DarkVerse"},
-{name:"DarkVerse PARTNER", price:150000, img:"https://via.placeholder.com/300x200/000/fff?text=PARTNER"},
-{name:"TR4SVLOID 1 MINGGU", price:10000, img:"https://via.placeholder.com/300x200/222/fff?text=1+Minggu"},
-{name:"TR4SVLOID 1 BULAN", price:15000, img:"https://via.placeholder.com/300x200/333/fff?text=1+Bulan"},
-{name:"TR4SVLOID FULL UPDATE", price:25000, img:"https://via.placeholder.com/300x200/444/fff?text=FULL"},
-{name:"TR4SVLOID RESELLER", price:55000, img:"https://via.placeholder.com/300x200/555/fff?text=RESELLER"},
-{name:"TR4SVLOID VIP 1 BULAN", price:30000, img:"https://via.placeholder.com/300x200/666/fff?text=VIP+1+Bulan"},
-{name:"TR4SVLOID VIP PERMANEN", price:50000, img:"https://via.placeholder.com/300x200/777/fff?text=VIP+Permanen"},
-{name:"TR4SVLOID VIP PARTNER", price:65000, img:"https://via.placeholder.com/300x200/888/fff?text=VIP+Partner"},
+{name:"DarkVerse FULL UPDATE", price:50000, img:"https://placehold.co/400x300/00bfa6/ffffff?text=DarkVerse+FULL+UPDATE", cat:"DarkVerse"},
+{name:"DarkVerse RESELLER", price:80000, img:"https://placehold.co/400x300/00bfa6/ffffff?text=DarkVerse+RESELLER", cat:"DarkVerse"},
+{name:"DarkVerse PARTNER", price:150000, img:"https://placehold.co/400x300/00bfa6/ffffff?text=DarkVerse+PARTNER", cat:"DarkVerse"},
+{name:"TR4SVLOID 1 MINGGU", price:10000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+1+Minggu", cat:"TR4SVLOID"},
+{name:"TR4SVLOID 1 BULAN", price:15000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+1+Bulan", cat:"TR4SVLOID"},
+{name:"TR4SVLOID FULL UPDATE", price:25000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+FULL+UPDATE", cat:"TR4SVLOID"},
+{name:"TR4SVLOID RESELLER", price:55000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+RESELLER", cat:"TR4SVLOID"},
+{name:"TR4SVLOID VIP 1 BULAN", price:30000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+VIP+1+Bulan", cat:"TR4SVLOID"},
+{name:"TR4SVLOID VIP PERMANEN", price:50000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+VIP+Permanen", cat:"TR4SVLOID"},
+{name:"TR4SVLOID PARTNER", price:65000, img:"https://placehold.co/400x300/e11d48/ffffff?text=TR4SVLOID+PARTNER", cat:"TR4SVLOID"},
+{name:"X-GTR4SH FULL UPDATE", price:20000, img:"https://placehold.co/400x300/0d6efd/ffffff?text=X-GTR4SH+FULL+UPDATE", cat:"X-GTR4SH"},
+{name:"X-GTR4SH RESELLER", price:30000, img:"https://placehold.co/400x300/0d6efd/ffffff?text=X-GTR4SH+RESELLER", cat:"X-GTR4SH"},
+{name:"X-GTR4SH ADMIN", price:50000, img:"https://placehold.co/400x300/0d6efd/ffffff?text=X-GTR4SH+ADMIN", cat:"X-GTR4SH"},
+{name:"X-GTR4SH PARTNER", price:70000, img:"https://placehold.co/400x300/0d6efd/ffffff?text=X-GTR4SH+PARTNER", cat:"X-GTR4SH"},
+{name:"X-GTR4SH MODERATOR", price:100000, img:"https://placehold.co/400x300/0d6efd/ffffff?text=X-GTR4SH+MODERATOR", cat:"X-GTR4SH"},
 ];
-let cart = [];
-function renderProducts(){
-let html='';
-products.forEach((p,i)=>{
-html+=`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><div class="harga">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="addToCart(${i})">+ KERANJANG</button></div>`;
-});
-document.getElementById('productGrid').innerHTML=html;
-}
-function addToCart(idx){let it=cart.find(c=>c.idx===idx);if(it){it.qty++;}else{cart.push({idx:idx,qty:1});}updateCart();openCart();}
-function updateCart(){
-document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
-let list='';let total=0;
-cart.forEach((c,i)=>{
-let p=products[c.idx];let sub=p.price*c.qty;total+=sub;
-list+=`<div style="border-bottom:1px solid #eee;padding:10px 0;display:flex;gap:10px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px;object-fit:cover"><div><b style="font-size:13px">${p.name}</b><br><span style="color:#00bfa6">Rp ${p.price.toLocaleString('id-ID')}</span><div class="qty"><button onclick="changeQty(${i},-1)">-</button><span>${c.qty}</span><button onclick="changeQty(${i},1)">+</button><button class="hapus" onclick="removeItem(${i})">HAPUS</button></div></div></div>`;
-});
-document.getElementById('cartList').innerHTML=list||'Keranjang kosong';
-document.getElementById('cartTotal').innerText='Total: Rp '+total.toLocaleString('id-ID');
-}
-function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<1){cart[i].qty=1;}updateCart();}
-function removeItem(i){cart.splice(i,1);updateCart();}
+let cart=JSON.parse(localStorage.getItem('dap_cart')||'[]');
+function setTheme(type,el){let c='#00bfa6';if(type==='biru')c='#0d6efd';if(type==='merah')c='#e11d48';document.documentElement.style.setProperty('--primary',c);localStorage.setItem('dap_theme',type);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+function renderProducts(){let html='';products.forEach((p,i)=>{html+=`<div class="card"><img src="${p.img}"><div style="font-size:10px;color:#fff;background:var(--primary);display:inline-block;padding:2px 8px;border-radius:10px;margin-top:8px">${p.cat}</div><h4>${p.name}</h4><div class="harga angka">Rp ${p.price.toLocaleString('id-ID')}</div><button class="btn" onclick="addToCart(${i})">+ KERANJANG</button></div>`;});document.getElementById('productGrid').innerHTML=html;updateCart();}
+function addToCart(idx){let it=cart.find(c=>c.idx===idx);if(it){it.qty++;}else{cart.push({idx:idx,qty:1});}saveCart();openCart();}
+function saveCart(){localStorage.setItem('dap_cart',JSON.stringify(cart));updateCart();}
+function updateCart(){document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);let list='';let total=0;cart.forEach((c,i)=>{let p=products[c.idx];let sub=p.price*c.qty;total+=sub;list+=`<div style="border-bottom:1px solid #eee;padding:10px 0;display:flex;gap:10px"><img src="${p.img}" style="width:50px;height:50px;border-radius:8px;object-fit:cover"><div style="flex:1"><b style="font-size:13px">${p.name}</b><br><span style="color:var(--primary)" class="angka">Rp ${p.price.toLocaleString('id-ID')}</span><div class="qty"><button onclick="changeQty(${i},-1)">-</button><span class="angka">${c.qty}</span><button onclick="changeQty(${i},1)">+</button><button class="hapus" onclick="removeItem(${i})">HAPUS</button></div></div></div>`;});document.getElementById('cartList').innerHTML=list||'Keranjang kosong';document.getElementById('cartTotal').innerText='Total: Rp '+total.toLocaleString('id-ID');}
+function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart[i].qty=1;saveCart();}
+function removeItem(i){cart.splice(i,1);saveCart();}
 function openCart(){document.getElementById('cartModal').style.display='flex';}
 function closeCart(){document.getElementById('cartModal').style.display='none';}
-function lanjutBayar(){if(cart.length===0){alert('Keranjang kosong wok!');return;}localStorage.setItem('dap_cart',JSON.stringify(cart));localStorage.setItem('dap_products',JSON.stringify(products));window.location.href='payment.html';}
+function lanjutBayar(){if(cart.length===0){alert('Kosong wok!');return;}localStorage.setItem('dap_cart',JSON.stringify(cart));localStorage.setItem('dap_products',JSON.stringify(products));location.href='payment.html';}
+const fakeNames=["Andra Jakarta","Rizky Surabaya","Daffa Lampung"];const fakeProducts=["DarkVerse FULL UPDATE","TR4SVLOID VIP PERMANEN","X-GTR4SH MODERATOR"];function showFakeNotif(){let n=fakeNames[Math.floor(Math.random()*fakeNames.length)];let p=fakeProducts[Math.floor(Math.random()*fakeProducts.length)];let box=document.getElementById('fakeNotif');box.innerHTML=`✅ <b>${n}</b> baru beli<br><b>${p}</b>`;box.style.display='block';setTimeout(()=>{box.style.display='none';},3500);}setInterval(showFakeNotif,6000);setTimeout(showFakeNotif,2000);
 renderProducts();
 </script>
 </body>
