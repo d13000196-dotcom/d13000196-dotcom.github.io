@@ -25,48 +25,65 @@ h1{font-family:'Syne';text-align:center;color:#00ffcc;font-size:26px;margin:18px
 </head>
 <body>
 <h1>DAPORDERAPK PAYMENT</h1>
+
 <div class="box">
 <div style="text-align:center;font-weight:800">📱 QRIS ALL PAYMENT</div>
-<div class="qris-box"><img src="qris.jpg" alt="QRIS"></div>
-<div id="detail" class="detail">Memuat...</div>
+<div class="qris-box"><img src="qris.jpg" alt="QRIS DapOrderApk"></div>
+<div id="detail" class="detail">Memuat pesanan...</div>
 <div id="total" class="total">Rp 0</div>
 </div>
+
 <div class="box">
 <div style="font-weight:800;text-align:center;margin-bottom:8px">💳 DANA: 082312728245</div>
 <div class="dana-row">
 <span class="dana-num" id="danaNum">082312728245</span>
 <button class="copy-btn" onclick="copyDana()">SALIN</button>
 </div>
-<div style="font-size:11px;opacity:0.5;margin-top:8px;text-align:center">Nomor DANA ( pembayaran ), WA utama beda</div>
+<div style="font-size:11px;opacity:0.5;margin-top:8px;text-align:center">Pembayaran ke DANA ini, bukti kirim ke WA utama</div>
 </div>
-<div class="btn btn-pay" onclick="sudahBayar()">✅ SUDAH BAYAR</div>
-<a class="btn btn-back" href="index.html">← KEMBALI</a>
+
+<div class="btn btn-pay" onclick="sudahBayar()">✅ SUDAH BAYAR - KIRIM BUKTI</div>
+<a class="btn btn-back" href="index.html">← KEMBALI KE TOKO</a>
+
 <div id="toast">Nomor DANA disalin! ✅</div>
+
 <script>
 let cart=JSON.parse(localStorage.getItem('daporderapk_final')||'[]');
 let custom=JSON.parse(localStorage.getItem('daporder_custom')||'[]');
 let defaultProducts=[{id:1,name:'DarkVerse FULL UPDATE',price:50000},{id:2,name:'DarkVerse RESELLER',price:80000},{id:3,name:'DarkVerse PARTNER',price:150000},{id:4,name:'TR4SVLOID 1 MINGGU',price:10000},{id:5,name:'TR4SVLOID 1 BULAN',price:15000},{id:6,name:'TR4SVLOID FULL UPDATE',price:25000},{id:7,name:'TR4SVLOID RESELLER',price:55000},{id:8,name:'TR4SVLOID VIP 1 BULAN',price:30000},{id:9,name:'TR4SVLOID VIP PERMANEN',price:50000},{id:10,name:'TR4SVLOID PARTNER',price:65000},{id:11,name:'X-GTR4SH FULL UPDATE',price:20000},{id:12,name:'X-GTR4SH RESELLER',price:30000},{id:13,name:'X-GTR4SH ADMIN',price:50000},{id:14,name:'X-GTR4SH PARTNER',price:70000},{id:15,name:'X-GTR4SH MODERATOR',price:100000}];
 let products=[...defaultProducts,...custom];
 let tot=0, txtWA='', html='';
-if(cart.length===0){html='<div style="opacity:0.5;text-align:center">Keranjang kosong wok!</div>';}
-else{
+if(cart.length===0){
+ html='<div style="opacity:0.5;text-align:center;padding:10px">Keranjang kosong wok, balik ke toko dulu!</div>';
+}else{
  cart.forEach(c=>{
-  let p=products.find(x=>x.id===c.id); if(!p) return;
-  let sub=p.price*c.qty; tot+=sub;
+  let p=products.find(x=>x.id===c.id);
+  if(!p) return;
+  let sub=p.price*c.qty;
+  tot+=sub;
   html+='<div style="display:flex;justify-content:space-between"><span>'+p.name+' x'+c.qty+'</span><span>Rp '+sub.toLocaleString('id-ID')+'</span></div>';
   txtWA+= '- '+p.name+' x'+c.qty+' = Rp '+sub.toLocaleString('id-ID')+'%0A';
  });
 }
 document.getElementById('detail').innerHTML=html;
 document.getElementById('total').innerText='Total Bayar: Rp '+tot.toLocaleString('id-ID');
+
 function copyDana(){
- navigator.clipboard.writeText(document.getElementById('danaNum').innerText);
- let t=document.getElementById('toast'); t.style.display='block'; setTimeout(()=>{t.style.display='none'},2000);
+ let num=document.getElementById('danaNum').innerText;
+ navigator.clipboard.writeText(num);
+ let t=document.getElementById('toast');
+ t.style.display='block';
+ setTimeout(()=>{t.style.display='none'},2000);
 }
+
 function sudahBayar(){
- if(tot===0){alert('Keranjang kosong!'); location.href='index.html'; return;}
- let pesan='Halo DapOrderApk! %0A%0ASudah bayar QRIS/DANA:%0A'+txtWA+'%0ATotal *Rp '+tot.toLocaleString('id-ID')+'*%0A%0A-Metode: QRIS / DANA 082312728245%0A-Bukti TF: (kirim screenshot)%0A%0ANMID: ID1025450705674';
+ if(tot===0){alert('Keranjang kosong wok!'); location.href='index.html'; return;}
+ let pesan='Halo DapOrderApk! %0A%0ASudah bayar QRIS/DANA:%0A'+txtWA+'%0ATotal *Rp '+tot.toLocaleString('id-ID')+'*%0A%0A-Metode: QRIS / DANA 082312728245%0A-Bukti TF: (kirim screenshot disini)%0A%0ANMID: ID1025450705674';
+ // AUTO HAPUS KERANJANG BIAR ANTI DOUBLE ORDER
+ localStorage.removeItem('daporderapk_final');
+ // LARI KE WA UTAMA 083879195047
  window.open('https://wa.me/6283879195047?text='+pesan,'_blank');
+ setTimeout(()=>{location.href='index.html'},1000);
 }
 </script>
 </body>
