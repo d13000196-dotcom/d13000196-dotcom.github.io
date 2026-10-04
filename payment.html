@@ -1,84 +1,103 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment - DapOrderApk</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAYMENT - DapOrderApk Rainbow</title>
 <style>
-:root{--neon:#00ff88;--border:#00ff88;--panel:#101410;--bg:#050805;--text:#c8ffd8}
-body{margin:0;background:#050805;color:#c8ffd8;font-family:'JetBrains Mono';background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size:35px 35px}
-.container{max-width:480px;margin:0 auto;border-left:3px solid var(--border);border-right:3px solid var(--border);background:var(--bg);min-height:100vh;padding:10px}
-.box{border:3px solid var(--border);background:var(--panel);padding:10px;margin-bottom:10px}
-.title{font-family:'Press Start 2P';font-size:10px;color:var(--neon);margin-bottom:10px}
-.item{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--border);padding:8px;margin:6px 0;background:#000}
-.cname{font-family:'Press Start 2P';font-size:6px;line-height:1.3;max-width:160px}
-.sbtn{border:2px solid var(--neon);background:#000;color:var(--neon);font-family:'Press Start 2P';font-size:9px;width:28px;height:28px;cursor:pointer}
-.dbtn{border:2px solid #ff3344;background:#000;color:#ff3344;font-family:'Press Start 2P';font-size:6px;padding:5px;cursor:pointer}
-.btn{width:100%;background:var(--neon);color:#000;border:3px solid #000;padding:12px;font-family:'Press Start 2P';font-size:8px;cursor:pointer;margin-top:6px;box-shadow:4px 4px 0 #000}
-.btn2{width:100%;background:#000;color:var(--neon);border:2px solid var(--neon);padding:10px;font-family:'Press Start 2P';font-size:7px;cursor:pointer;margin-top:8px}
-.qris{width:100%;border:3px solid var(--border);background:#fff;padding:10px;text-align:center}
-.qris img{width:100%;max-width:300px}
+:root{--green:#00ff88;--red:#ff0040;--purple:#a000ff;--silver:#c0c0c0;--orange:#ff8800;--yellow:#ffea00;--blue:#00d0ff;--bg:#0a0a0a}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',monospace}
+body{background:var(--bg);color:#fff;padding:14px}
+.header{border-bottom:2px solid var(--green);padding:10px;display:flex;justify-content:space-between;align-items:center;background:#111;margin:-14px -14px 14px}
+.logo{color:var(--green);font-weight:900;font-size:20px}
+.btn{border:1px solid var(--silver);padding:6px 12px;background:#000;color:var(--silver);cursor:pointer;text-decoration:none}
+.wrap{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 320px;gap:14px}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}}
+.box{border:2px solid var(--silver);padding:14px;background:#111}
+.box.green{border-color:var(--green)} .box.red{border-color:var(--red)} .box.purple{border-color:var(--purple)}
+.box.trans{border-color:rgba(255,255,255,0.35);background:linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));backdrop-filter:blur(12px)}
+.item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222}
+.item:last-child{border:0}
+.qty button{width:28px;height:28px;background:#000;border:1px solid #555;color:#fff;cursor:pointer;font-weight:700}
+.qty button:hover{background:#fff;color:#000}
+.hapus{color:var(--red);border:1px solid var(--red);background:#000;padding:4px 8px;cursor:pointer;margin-left:6px;font-size:11px}
+.total{font-size:18px;font-weight:900;margin-top:10px;color:var(--yellow)}
+.qris{width:100%;max-width:260px;border:2px dashed var(--green);padding:10px;text-align:center;margin-top:10px}
+input{width:100%;padding:8px;background:#000;border:1px solid #444;color:#fff;margin:6px 0}
+.payBtn{width:100%;padding:12px;background:var(--green);color:#000;border:0;font-weight:900;cursor:pointer;margin-top:10px;font-size:16px}
+.payBtn:hover{box-shadow:0 0 15px var(--green)}
+.badge{display:inline-block;border:1px solid;padding:2px 6px;font-size:10px;margin-left:4px}
 </style>
 </head>
 <body>
-<div class="container">
-<div class="box">
-<div style="display:flex;justify-content:space-between"><div class="title">CHECKOUT</div><a href="index.html" style="font-family:'Press Start 2P';font-size:7px;color:var(--neon);text-decoration:none">[X] KEMBALI</a></div>
-<div id="list"></div>
-<div style="border-top:3px solid var(--border);margin-top:10px;padding-top:10px;font-family:'Press Start 2P';font-size:9px">TOTAL BAYAR: Rp <span id="total">0</span></div>
-<button class="btn2" onclick="clearAll()">[ KOSONGKAN KERANJANG ]</button>
+<div class="header">
+<div class="logo">DapOrderApk // PAYMENT v4.1</div>
+<a class="btn" href="index.html">← BACK TO SHOP</a>
 </div>
 
-<div class="box">
-<div class="title">METODE BAYAR</div>
-<div style="font-family:'Press Start 2P';font-size:7px;line-height:1.8">
-DANA: 082312728245<br>
-A/N: DAFF<br><br>
-QRIS: DAFF SHOP<br>
-NMID: ID1025450705674<br>
-SATU QRIS UNTUK SEMUA
-</div>
-<div class="qris" style="margin-top:10px"><img src="qris.jpg" onerror="this.src='https://placehold.co/300x300/fff/000?text=QRIS+DAFF+SHOP'"></div>
+<div class="wrap">
+<div class="box green">
+<h3 style="color:var(--green)">> CART DETAIL // 8 COLORS SUPPORT</h3>
+<div id="cartList">loading...</div>
+<div class="total" id="total">TOTAL: Rp 0</div>
+<button onclick="clearCart()" style="margin-top:10px;width:100%;border:1px solid var(--red);color:var(--red);background:#000;padding:8px;cursor:pointer">KOSONGKAN KERANJANG</button>
 </div>
 
-<div class="box">
-<div class="title">KONFIRMASI WA</div>
-<input id="nama" placeholder="Nama lu wok" style="width:100%;background:#000;border:2px solid var(--border);color:var(--neon);padding:10px;font-family:'Press Start 2P';font-size:7px;margin-bottom:6px">
-<button class="btn" onclick="sendWA()">KIRIM BUKTI KE WA 083879195047 →</button>
-<div style="font-family:'Press Start 2P';font-size:6px;margin-top:8px;color:#fff;line-height:1.5">TRUSTED 700+ PEMBELI ● AUTO PROCESS</div>
+<div>
+<div class="box trans">
+<h3 style="color:#fff">> CHECKOUT</h3>
+<input id="nama" placeholder="Nama penerima">
+<input id="wa" placeholder="WA (08xx)">
+<input id="alamat" placeholder="Alamat lengkap">
+<div class="qris">
+<div style="font-size:12px;color:var(--green)">QRIS DAFF SHOP</div>
+<div style="font-size:40px;margin:10px 0">◫</div>
+<div style="font-size:11px">Scan untuk bayar<br><span style="color:var(--yellow)" id="payAmount">Rp 0</span></div>
+</div>
+<button class="payBtn" onclick="checkout()">[ CONFIRM PAYMENT ]</button>
+<div id="status" style="font-size:11px;margin-top:8px;color:var(--blue)"></div>
+</div>
+
+<div class="box" style="margin-top:12px;border-style:dashed">
+<div style="font-size:11px">
+<span style="color:var(--green)">● GREEN</span> <span style="color:var(--red)">● RED</span> <span style="color:var(--purple)">● PURPLE</span><br>
+<span style="color:var(--silver)">● SILVER</span> <span style="color:var(--orange)">● ORANGE</span> <span style="color:var(--yellow)">● YELLOW</span><br>
+<span style="color:var(--blue)">● BLUE</span> <span style="color:#fff">● TRANSPARENT GLASS</span><br><br>
+<b>BACKUP:</b> AUTO-SAVE ON<br>
+CART_KEY: daporder_cart [SAFE]
+</div>
+</div>
 </div>
 </div>
 
 <script>
-const products=[
-{name:"DarkVerse FULL UPDATE",price:50000},{name:"DarkVerse RESELLER",price:80000},{name:"DarkVerse PARTNER",price:150000},
-{name:"TR4SVLOID 1 MINGGU",price:10000},{name:"TR4SVLOID 1 BULAN",price:15000},{name:"TR4SVLOID FULL UPDATE",price:25000},
-{name:"TR4SVLOID RESELLER",price:55000},{name:"TR4SVLOID VIP 1 BULAN",price:30000},{name:"TR4SVLOID VIP PERMANEN",price:50000},
-{name:"TR4SVLOID PARTNER",price:65000},{name:"X-GTR4SH FULL UPDATE",price:20000},{name:"X-GTR4SH RESELLER",price:30000},
-{name:"X-GTR4SH ADMIN",price:50000},{name:"X-GTR4SH PARTNER",price:70000},{name:"X-GTR4SH MODERATOR",price:100000},
-];
-let cart=JSON.parse(localStorage.getItem('dap_cart')||'[]');
-function save(){localStorage.setItem('dap_cart',JSON.stringify(cart)); render()}
-function add(i){let f=cart.find(c=>c.idx==i); if(f) f.qty++; else cart.push({idx:i,qty:1}); save()}
-function dec(i){let f=cart.find(c=>c.idx==i); if(!f) return; f.qty--; if(f.qty<=0) cart=cart.filter(c=>c.idx!=i); save()}
-function rem(i){cart=cart.filter(c=>c.idx!=i); save()}
-function clearAll(){if(confirm('Yakin kosongkan keranjang?')){cart=[]; save()}}
+const CART_KEY='daporder_cart';
+let cart=JSON.parse(localStorage.getItem(CART_KEY)||'[]');
+function save(){localStorage.setItem(CART_KEY,JSON.stringify(cart));render();}
+function changeQty(id,d){let f=cart.find(x=>x.id===id);if(!f)return;f.qty+=d;if(f.qty<=0)cart=cart.filter(x=>x.id!==id);save();}
+function clearCart(){cart=[];save();}
 function render(){
-let list=document.getElementById('list'); list.innerHTML=''; let tot=0;
-if(cart.length==0){list.innerHTML='<div style="font-family:Press Start 2P;font-size:7px;text-align:center;padding:20px">KERANJANG KOSONG<br><a href=index.html style=color:var(--neon)>BALIK BELANJA</a></div>'; document.getElementById('total').innerText='0'; return;}
-cart.forEach(c=>{
-let p=products[c.idx]; tot+=p.price*c.qty;
-list.innerHTML+=`<div class="item"><div class="cname">${p.name}<br><span style="color:var(--neon)">Rp ${p.price.toLocaleString('id-ID')} x ${c.qty}</span></div><div style="display:flex;gap:4px;align-items:center"><button class="sbtn" onclick="dec(${c.idx})">-</button><span style="font-family:Press Start 2P;font-size:8px">${c.qty}</span><button class="sbtn" onclick="add(${c.idx})">+</button><button class="dbtn" onclick="rem(${c.idx})">HAPUS</button></div></div>`;
-});
-document.getElementById('total').innerText=tot.toLocaleString('id-ID');
+let list=document.getElementById('cartList');
+if(cart.length===0){list.innerHTML='<div style="padding:20px;text-align:center;color:#666">KERANJANG KOSONG<br><a href="index.html" style="color:var(--green)">BALIK BELANJA</a></div>'; document.getElementById('total').innerText='TOTAL: Rp 0'; document.getElementById('payAmount').innerText='Rp 0'; return;}
+let total=0;
+list.innerHTML=cart.map(c=>{
+let col=c.color||'green';
+total+=c.price*c.qty;
+return `<div class="item">
+<div><b style="color:var(--${col==='trans'?'silver':col})">${c.name}</b><br><span style="font-size:11px">Rp ${c.price.toLocaleString('id-ID')} <span class="badge" style="border-color:var(--${col==='trans'?'silver':col});color:var(--${col==='trans'?'silver':col})">${col.toUpperCase()}</span></span></div>
+<div class="qty"><button onclick="changeQty(${c.id},-1)">-</button> ${c.qty} <button onclick="changeQty(${c.id},1)">+</button> <button class="hapus" onclick="changeQty(${c.id},-${c.qty})">HAPUS</button></div>
+</div>`}).join('');
+document.getElementById('total').innerText='TOTAL: Rp '+total.toLocaleString('id-ID');
+document.getElementById('payAmount').innerText='Rp '+total.toLocaleString('id-ID');
 }
-function sendWA(){
-let nama=document.getElementById('nama').value||'Customer';
-if(cart.length==0){alert('Keranjang kosong wok!');return;}
-let tot=0; let txt=`Halo Admin DapOrderApk! Mau order nih%0A%0ANama: ${nama}%0A%0APesanan:%0A`;
-cart.forEach(c=>{let p=products[c.idx]; tot+=p.price*c.qty; txt+=`- ${p.name} x${c.qty} = Rp ${p.price*c.qty}%0A`;});
-txt+=`%0ATotal: Rp ${tot}%0A%0ASudah transfer ke DANA 082312728245 / QRIS DAFF SHOP%0AMinta bukti ya!`;
-window.open(`https://wa.me/6283879195047?text=${txt}`,'_blank');
+function checkout(){
+let nama=document.getElementById('nama').value;
+let wa=document.getElementById('wa').value;
+if(!nama||!wa){document.getElementById('status').innerText='> ERROR: isi nama & WA dulu wok!'; return;}
+let total=cart.reduce((a,b)=>a+b.price*b.qty,0);
+let pesan=`Halo Daff Shop, saya mau order:%0A${cart.map(c=>`- ${c.name} x${c.qty} (${c.color})`).join('%0A')}%0A%0ATotal: Rp ${total.toLocaleString('id-ID')}%0ANama: ${nama}%0AWA: ${wa}%0AAlamat: ${document.getElementById('alamat').value}`;
+window.open(`https://wa.me/6281234567890?text=${pesan}`,'_blank');
+document.getElementById('status').innerText='> redirecting to WA... backup saved [OK]';
 }
 render();
 </script>
