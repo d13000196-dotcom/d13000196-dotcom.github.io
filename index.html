@@ -30,29 +30,30 @@
 .t-card{min-width:180px;background:#fff;border:1px solid #eee;border-radius:14px;padding:12px;font-size:11px}
 .t-card b{color:#00bfa6}
 .footer{text-align:center;padding:20px;font-size:10px;opacity:0.5;border-top:1px solid #eee;margin-top:20px}
-#cartModal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;z-index:20;padding:20px}
-.cartBox{background:#fff;border-radius:20px;max-width:380px;margin:15% auto;padding:18px}
+#cartModal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;z-index:20;padding:20px;overflow:auto}
+.cartBox{background:#fff;border-radius:20px;max-width:380px;margin:10% auto;padding:18px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.qty-ctrl{display:flex;align-items:center;gap:8px;margin-top:6px}
+.q-btn{width:28px;height:28px;border-radius:8px;border:1px solid #ddd;background:#fff;font-weight:800;cursor:pointer}
+.q-num{font-weight:800;min-width:18px;text-align:center}
+.del{color:#ff3b30;font-size:11px;font-weight:800;cursor:pointer;margin-left:8px}
 </style>
 </head>
 <body>
 <div class="header"><div class="logo">DAPORDER<span>APK</span></div><div class="badge" onclick="openCart()">🛒 <span id="cartCount">0</span></div></div>
-
 <div class="banner">
 <h1>DAPORDERAPK <span>OFFICIAL</span></h1>
 <p>🔥 TRUSTED 1000+ CUSTOMER • PROSES 5 MENIT • GARANSI</p>
-<div class="trust"><span>✅ 1000+ Terjual</span><span>⭐ 4.9 Rating</span><span>⚡ Instant Delivery</span></div>
+<div class="trust"><span>✅ 1000+ Terjual</span><span>⭐ 4.9 Rating</span><span>⚡ Instant</span></div>
 </div>
-
-<div class="search"><input id="search" placeholder="Cari DarkVerse, TR4SVLOID, X-GTR4SH..." oninput="render()"></div>
+<div class="search"><input id="search" placeholder="Cari DarkVerse, TR4SVLOID..." oninput="render()"></div>
 <div class="cats">
 <button class="active" onclick="setCat('all',this)">Semua</button>
 <button onclick="setCat('DarkVerse',this)">DarkVerse</button>
 <button onclick="setCat('TR4SVLOID',this)">TR4SVLOID</button>
 <button onclick="setCat('X-GTR4SH',this)">X-GTR4SH</button>
 </div>
-
 <div class="grid" id="grid"></div>
-
 <div class="testi">
 <h2>💬 TESTIMONI CUSTOMER</h2>
 <div class="t-row">
@@ -61,21 +62,21 @@
 <div class="t-card"><b>@alfaa</b><br>"2 menit jadi partner!"<br>⭐⭐⭐⭐⭐</div>
 </div>
 </div>
-
-<div class="footer">DAPORDERAPK • DANA: 082312728245 • WA: 083879195047<br>ID1025450705674</div>
-
+<div class="footer">DAPORDERAPK • DANA: 082312728245 • WA: 083879195047</div>
 <div id="cartModal"><div class="cartBox">
-<h3>Keranjang</h3><div id="cartList" style="margin:12px 0"></div><div id="cartTotal" style="font-weight:800;color:#00bfa6"></div>
-<a href="payment.html" style="display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:10px;margin-top:12px;text-decoration:none;font-weight:800">LANJUT BAYAR →</a>
+<h3 style="font-weight:800">Keranjang</h3>
+<div id="cartList" style="margin:12px 0"></div>
+<div id="cartTotal" style="font-weight:800;color:#00bfa6;margin-top:10px"></div>
+<a href="payment.html" id="payBtn" style="display:block;background:#111;color:#fff;text-align:center;padding:12px;border-radius:10px;margin-top:12px;text-decoration:none;font-weight:800">LANJUT BAYAR →</a>
 <div style="text-align:center;margin-top:10px;font-size:12px;opacity:0.6;cursor:pointer" onclick="closeCart()">Tutup</div>
 </div></div>
-
 <script>
 let defaultProducts=[{id:1,name:'DarkVerse FULL UPDATE',price:50000},{id:2,name:'DarkVerse RESELLER',price:80000},{id:3,name:'DarkVerse PARTNER',price:150000},{id:4,name:'TR4SVLOID 1 MINGGU',price:10000},{id:5,name:'TR4SVLOID 1 BULAN',price:15000},{id:6,name:'TR4SVLOID FULL UPDATE',price:25000},{id:7,name:'TR4SVLOID RESELLER',price:55000},{id:8,name:'TR4SVLOID VIP 1 BULAN',price:30000},{id:9,name:'TR4SVLOID VIP PERMANEN',price:50000},{id:10,name:'TR4SVLOID PARTNER',price:65000},{id:11,name:'X-GTR4SH FULL UPDATE',price:20000},{id:12,name:'X-GTR4SH RESELLER',price:30000},{id:13,name:'X-GTR4SH ADMIN',price:50000},{id:14,name:'X-GTR4SH PARTNER',price:70000},{id:15,name:'X-GTR4SH MODERATOR',price:100000}];
 let custom=JSON.parse(localStorage.getItem('daporder_custom')||'[]');
 let products=[...defaultProducts,...custom];
 let cart=JSON.parse(localStorage.getItem('daporderapk_final')||'[]');
 let curCat='all';
+function save(){localStorage.setItem('daporderapk_final',JSON.stringify(cart)); render();}
 function setCat(c,el){curCat=c; document.querySelectorAll('.cats button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); render();}
 function render(){
  let s=document.getElementById('search').value.toLowerCase();
@@ -86,9 +87,26 @@ function render(){
  });
  document.getElementById('grid').innerHTML=f.map(p=>`<div class="card"><h3>${p.name}</h3><div class="price">Rp ${p.price.toLocaleString('id-ID')}</div><button class="add" onclick="addCart(${p.id})">+ KERANJANG</button></div>`).join('');
  document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
+ // update modal if open
+ if(document.getElementById('cartModal').style.display==='block') openCart();
 }
-function addCart(id){let e=cart.find(x=>x.id===id); if(e) e.qty++; else cart.push({id,qty:1}); localStorage.setItem('daporderapk_final',JSON.stringify(cart)); render(); openCart();}
-function openCart(){let html='',tot=0; cart.forEach(c=>{let p=products.find(x=>x.id===c.id); if(!p) return; let sub=p.price*c.qty; tot+=sub; html+=`<div style="display:flex;justify-content:space-between;margin:6px 0;font-size:13px"><span>${p.name} x${c.qty}</span><span>Rp ${sub.toLocaleString('id-ID')}</span></div>`;}); if(cart.length===0) html='<div style="text-align:center;opacity:0.5">Kosong wok!</div>'; document.getElementById('cartList').innerHTML=html; document.getElementById('cartTotal').innerText='Total: Rp '+tot.toLocaleString('id-ID'); document.getElementById('cartModal').style.display='block';}
+function addCart(id){let e=cart.find(x=>x.id===id); if(e) e.qty++; else cart.push({id,qty:1}); save(); openCart();}
+function inc(id){let e=cart.find(x=>x.id===id); if(e){e.qty++; save(); openCart();}}
+function dec(id){let e=cart.find(x=>x.id===id); if(e){e.qty--; if(e.qty<=0){cart=cart.filter(x=>x.id!==id);} save(); openCart();}}
+function removeItem(id){cart=cart.filter(x=>x.id!==id); save(); openCart();}
+function openCart(){
+ let html='',tot=0;
+ cart.forEach(c=>{
+  let p=products.find(x=>x.id===c.id); if(!p) return;
+  let sub=p.price*c.qty; tot+=sub;
+  html+=`<div class="cart-item"><div style="flex:1"><div style="font-size:13px;font-weight:700">${p.name}</div><div style="font-size:12px;color:#00bfa6">Rp ${sub.toLocaleString('id-ID')}</div><div class="qty-ctrl"><button class="q-btn" onclick="dec(${c.id})">-</button><span class="q-num">${c.qty}</span><button class="q-btn" onclick="inc(${c.id})">+</button><span class="del" onclick="removeItem(${c.id})">HAPUS</span></div></div></div>`;
+ });
+ if(cart.length===0){html='<div style="text-align:center;opacity:0.5;padding:20px">Keranjang kosong wok!</div>'; document.getElementById('payBtn').style.display='none';}
+ else {document.getElementById('payBtn').style.display='block';}
+ document.getElementById('cartList').innerHTML=html;
+ document.getElementById('cartTotal').innerText=cart.length? 'Total: Rp '+tot.toLocaleString('id-ID') : '';
+ document.getElementById('cartModal').style.display='block';
+}
 function closeCart(){document.getElementById('cartModal').style.display='none';}
 render();
 </script>
