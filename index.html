@@ -8,66 +8,67 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
+:root{ --primary:#6366f1; --primary-dark:#4f46e5 }
 body{font-family:'Plus Jakarta Sans',system-ui;background:#f6f7ff}
 .mono{font-family:'JetBrains Mono',monospace}
 .card{transform:translateZ(0);transition:.2s}
 .card:active{transform:scale(.97)}
+.theme-btn{width:32px;height:32px;border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+.theme-btn.active{border-color:black;scale:1.2}
 </style>
 </head>
 <body>
-<div class="sticky top-0 z-30 p-3"><div class="max-w-[520px] mx-auto bg-white rounded-[22px] px-4 py-3 flex justify-between items-center shadow"><div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-[12px] bg-[#6366f1] text-white font-black flex items-center justify-center">D</div><div><h1 class="font-black text-[14px] leading-[1.1]">DapOrderApk -<br>Official Store 🚀</h1><p class="mono text-[9px] opacity-50">V21 FIX ALL REAL</p></div></div><button onclick="location.href='payment.html'" class="bg-black text-white px-4 py-2.5 rounded-full font-black text-[13px]">🛒 <span id="cartC">0</span></button></div></div>
+<div class="sticky top-0 z-30 p-3"><div class="max-w-[520px] mx-auto bg-white rounded-[22px] px-4 py-3 flex justify-between items-center shadow"><div class="flex gap-3 items-center"><div id="logo" class="w-10 h-10 rounded-[12px] text-white font-black flex items-center justify-center" style="background:var(--primary)">D</div><div><h1 class="font-black text-[14px] leading-[1.1]">DapOrderApk -<br>Official Store 🚀</h1><p class="mono text-[9px] opacity-50">V22.1 THEME + FOTO FIX</p></div></div><div class="flex gap-2 items-center"><div class="flex gap-1.5"><div onclick="setTheme('#6366f1')" id="t1" class="theme-btn active" style="background:#6366f1" title="Bawaan"></div><div onclick="setTheme('#ef4444')" id="t2" class="theme-btn" style="background:#ef4444" title="Merah"></div><div onclick="setTheme('#0abdc6')" id="t3" class="theme-btn" style="background:#0abdc6" title="Biru"></div></div><button onclick="location.href='payment.html'" class="bg-black text-white px-4 py-2.5 rounded-full font-black text-[13px] ml-2">🛒 <span id="cartC">0</span></button></div></div></div>
 
-<div class="max-w-[520px] mx-auto px-4 mt-2"><div class="bg-white rounded-[26px] p-5 border-l-[7px] border-[#6366f1] shadow"><h2 class="font-black text-[15px] leading-[1.35]">Selamat Datang Di Website Jual Beli Aplikasi Bug WhatsApp Crash Disini Menjual Beberapa Aplikasi Bug Gacor Setiap Pembelian Langsung Ke Owner Website Nya Agar Di Pandu Jelas Dan Real Silahkan Pilih Aplikasi Bug Sesuai Mu! 🚀</h2></div></div>
+<div class="max-w-[520px] mx-auto px-4 mt-2"><div class="bg-white rounded-[26px] p-5 border-l-[7px] shadow" style="border-color:var(--primary)"><h2 class="font-black text-[15px] leading-[1.35]">Selamat Datang Di Website Jual Beli Aplikasi Bug WhatsApp Crash Disini Menjual Beberapa Aplikasi Bug Gacor Setiap Pembelian Langsung Ke Owner Website Nya Agar Di Pandu Jelas Dan Real Silahkan Pilih Aplikasi Bug Sesuai Mu! 🚀</h2><div class="mt-3 flex gap-2"><span class="mono text-[10px] bg-black text-white px-3 py-1.5 rounded-full">⭐ REKOMENDASI: DARKVERSE 👑</span><span class="mono text-[9px] border px-2 py-1 rounded-full">🎨 GANTI TEMA DI ATAS</span></div></div></div>
 
 <div class="max-w-[520px] mx-auto px-4 mt-5 grid gap-4 pb-10">
-<!-- DARKVERSE -->
 <div onclick="openProd('darkverse')" class="card bg-white rounded-[26px] overflow-hidden cursor-pointer shadow">
-<div class="relative h-[220px] bg-[#6d28d9]"><img src="foto/darkverse.jpg" class="w-full h-full object-cover absolute inset-0"><div class="absolute top-3 left-3 bg-black text-white mono text-[10px] px-3 py-1.5 rounded-full">⭐ BEST SELLER</div><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">DarkVerse</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
-<div class="p-4"><h3 class="font-black">DarkVerse 👑</h3><p class="text-[11px] opacity-70 font-bold uppercase">PENCET FOTO PRODUK DARKVERSE UNTUK MELIHAT HARGA</p></div>
+<div class="relative h-[220px]" style="background:#6d28d9"><img src="./foto/darkverse.jpg?v=22" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='./foto/DarkVerse.jpg'; setTimeout(()=>{if(this.naturalWidth==0) this.style.display='none'},500)"><div class="absolute top-3 left-3 bg-black text-white mono text-[10px] px-3 py-1.5 rounded-full">⭐ BEST SELLER</div><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">DarkVerse</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
+<div class="p-4"><h3 class="font-black">DarkVerse 👑</h3><p class="text-[11px] opacity-70 font-bold">PENCET FOTO PRODUK DARKVERSE UNTUK MELIHAT HARGA</p></div>
 </div>
-<!-- TR4SVLOID -->
 <div onclick="openProd('tr4svloid')" class="card bg-white rounded-[26px] overflow-hidden cursor-pointer shadow">
-<div class="relative h-[220px] bg-[#10b981]"><img src="foto/tr4svloid.jpg" class="w-full h-full object-cover absolute inset-0"><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">TR4SVLOID</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
-<div class="p-4"><h3 class="font-black">TR4SVLOID 🧬</h3><p class="text-[11px] opacity-70 font-bold uppercase">PENCET FOTO PRODUK TR4SVLOID UNTUK MELIHAT HARGA</p></div>
+<div class="relative h-[220px]" style="background:#10b981"><img src="./foto/tr4svloid.jpg?v=22" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='./foto/TR4SVLOID.jpg'; setTimeout(()=>{if(this.naturalWidth==0) this.style.display='none'},500)"><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">TR4SVLOID</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
+<div class="p-4"><h3 class="font-black">TR4SVLOID 🧬</h3><p class="text-[11px] opacity-70 font-bold">PENCET FOTO PRODUK TR4SVLOID UNTUK MELIHAT HARGA</p></div>
 </div>
-<!-- XGTRASH -->
 <div onclick="openProd('xgtrash')" class="card bg-white rounded-[26px] overflow-hidden cursor-pointer shadow">
-<div class="relative h-[220px] bg-[#ef4444]"><img src="foto/xgtrash.jpg" class="w-full h-full object-cover absolute inset-0"><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">X-GTR4SH</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
-<div class="p-4"><h3 class="font-black">X-GTR4SH ☠️</h3><p class="text-[11px] opacity-70 font-bold uppercase">PENCET FOTO PRODUK X-GTR4SH UNTUK MELIHAT HARGA</p></div>
+<div class="relative h-[220px]" style="background:#ef4444"><img src="./foto/xgtrash.jpg?v=22" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='./foto/XGTRASH.jpg'; setTimeout(()=>{if(this.naturalWidth==0) this.style.display='none'},500)"><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">X-GTR4SH</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
+<div class="p-4"><h3 class="font-black">X-GTR4SH ☠️</h3><p class="text-[11px] opacity-70 font-bold">PENCET FOTO PRODUK X-GTR4SH UNTUK MELIHAT HARGA</p></div>
 </div>
-<!-- ORCA -->
 <div onclick="openProd('orca')" class="card bg-white rounded-[26px] overflow-hidden cursor-pointer shadow">
-<div class="relative h-[220px] bg-[#0f172a]"><img src="foto/orca.jpg" class="w-full h-full object-cover absolute inset-0"><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">ORCA MALIGNANT</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
-<div class="p-4"><h3 class="font-black">ORCA MALIGNANT 🐋</h3><p class="text-[11px] opacity-70 font-bold uppercase">PENCET FOTO PRODUK ORCA MALIGNANT UNTUK MELIHAT HARGA</p></div>
+<div class="relative h-[220px]" style="background:#0f172a"><img src="./foto/orca.jpg?v=22" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='./foto/ORCA.jpg'; setTimeout(()=>{if(this.naturalWidth==0) this.style.display='none'},500)"><div class="absolute bottom-3 left-3 right-3 bg-white rounded-[14px] px-3 py-2.5 flex justify-between items-center"><span class="font-black text-[13px]">ORCA MALIGNANT</span><span class="mono text-[11px] bg-black text-white px-4 py-1.5 rounded-full">👁️ LIHAT HARGA</span></div></div>
+<div class="p-4"><h3 class="font-black">ORCA MALIGNANT 🐋</h3><p class="text-[11px] opacity-70 font-bold">PENCET FOTO PRODUK ORCA MALIGNANT UNTUK MELIHAT HARGA</p></div>
 </div>
 </div>
 
 <div id="prodModal" class="fixed inset-0 z-50 hidden"><div onclick="closeProd()" class="absolute inset-0 bg-black/60"></div><div class="absolute bottom-0 left-0 right-0 max-w-[520px] mx-auto bg-white rounded-t-[32px] max-h-[90vh] overflow-y-auto p-6 pb-10"><div class="w-10 h-1.5 bg-black/10 rounded-full mx-auto mb-5"></div><div id="prodContent"></div></div></div>
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] hidden bg-black text-white px-5 py-3 rounded-full font-black text-[13px]"></div>
-
 <script>
 const DATA={
-darkverse:{name:'DarkVerse 👑',img:'foto/darkverse.jpg',desc:'Aplikasi paling brutal & premium.',roles:[['FULL UPDATE ♻️','50000'],['RESELLER 💼','80000'],['PARTNER 👑','150000']]},
-tr4svloid:{name:'TR4SVLOID 🧬',img:'foto/tr4svloid.jpg',desc:'Virus mutasi murah meriah ganas.',roles:[['1 MINGGU ⏰','10000'],['1 BULAN 📅','15000'],['FULL UPDATE ♻️','25000'],['RESELLER 💼','55000'],['VIP 1 BULAN 💎','30000'],['VIP PERMANEN 👑','50000'],['PARTNER 🔥','65000']]},
-xgtrash:{name:'X-GTR4SH ☠️',img:'foto/xgtrash.jpg',desc:'Si brutal X, bug lengkap anti delay.',roles:[['FULL UPDATE ♻️','20000'],['RESELLER 💼','30000'],['ADMIN 🛡️','50000'],['PARTNER 🤝','70000'],['MODERATOR 👑','100000']]},
-orca:{name:'ORCA MALIGNANT 🐋',img:'foto/orca.jpg',desc:'Paus pembunuh role terlengkap & stabil.',roles:[['FULL UPDATE ♻️','30000'],['RESELLER 💼','45000'],['ADMIN 🛡️','55000'],['PARTNER 🤝','60000'],['VIP 💎','75000'],['MODERATOR 👑','75000'],['OWNER 👑','100000'],['OWNER VIP 🔥','120000']]}
+darkverse:{name:'DarkVerse 👑',img:'./foto/darkverse.jpg?v=22',desc:'Aplikasi paling brutal & premium.',roles:[['FULL UPDATE ♻️','50000'],['RESELLER 💼','80000'],['PARTNER 👑','150000']]},
+tr4svloid:{name:'TR4SVLOID 🧬',img:'./foto/tr4svloid.jpg?v=22',desc:'Virus mutasi murah meriah ganas.',roles:[['1 MINGGU ⏰','10000'],['1 BULAN 📅','15000'],['FULL UPDATE ♻️','25000'],['RESELLER 💼','55000'],['VIP 1 BULAN 💎','30000'],['VIP PERMANEN 👑','50000'],['PARTNER 🔥','65000']]},
+xgtrash:{name:'X-GTR4SH ☠️',img:'./foto/xgtrash.jpg?v=22',desc:'Si brutal X, bug lengkap anti delay.',roles:[['FULL UPDATE ♻️','20000'],['RESELLER 💼','30000'],['ADMIN 🛡️','50000'],['PARTNER 🤝','70000'],['MODERATOR 👑','100000']]},
+orca:{name:'ORCA MALIGNANT 🐋',img:'./foto/orca.jpg?v=22',desc:'Paus pembunuh role terlengkap & stabil.',roles:[['FULL UPDATE ♻️','30000'],['RESELLER 💼','45000'],['ADMIN 🛡️','55000'],['PARTNER 🤝','60000'],['VIP 💎','75000'],['MODERATOR 👑','75000'],['OWNER 👑','100000'],['OWNER VIP 🔥','120000']]}
 }
-let cart=JSON.parse(localStorage.getItem('cart_v21')||'[]')
+let cart=JSON.parse(localStorage.getItem('cart_v22')||'[]')
+function setTheme(c){
+ document.documentElement.style.setProperty('--primary',c);
+ document.getElementById('logo').style.background=c;
+ localStorage.setItem('theme_v22',c);
+ document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));
+ if(c=='#6366f1') document.getElementById('t1').classList.add('active');
+ if(c=='#ef4444') document.getElementById('t2').classList.add('active');
+ if(c=='#0abdc6') document.getElementById('t3').classList.add('active');
+}
+let savedTheme=localStorage.getItem('theme_v22'); if(savedTheme) setTheme(savedTheme);
 function openProd(k){
  let d=DATA[k];
- document.getElementById('prodContent').innerHTML=`
- <h3 class="font-black text-[18px]">FOTO PRODUK ${d.name}</h3>
- <img src="${d.img}" class="w-full h-[260px] object-cover rounded-[20px] mt-3 bg-gray-100">
- <p class="text-[13px] opacity-70 mt-3">${d.desc}</p>
- <p class="mono text-[11px] font-black mt-4">👇 KLIK UNTUK MELIHAT HARGA DAN ROLE</p>
- <div class="mt-3 grid gap-2.5">
- ${d.roles.map(r=>`<div class="bg-gray-50 rounded-[18px] p-4 flex justify-between items-center border"><div><p class="font-black text-[14px]">${r[0]}</p><p class="mono text-[13px] text-[#6366f1] font-bold">Rp ${parseInt(r[1]).toLocaleString('id-ID')}</p></div><button onclick="addCart('${d.name} ${r[0]}','${r[1]}');location.href='payment.html'" class="bg-black text-white px-5 py-3 rounded-full font-black text-[12px]">🛒 BELI</button></div>`).join('')}
- </div>`;
+ document.getElementById('prodContent').innerHTML=`<h3 class="font-black text-[18px]">FOTO PRODUK ${d.name}</h3><img src="${d.img}" class="w-full h-[260px] object-cover rounded-[20px] mt-3 bg-gray-100" onerror="this.style.display='none'"><p class="text-[13px] opacity-70 mt-3">${d.desc}</p><p class="mono text-[11px] font-black mt-4">👇 KLIK UNTUK MELIHAT HARGA DAN ROLE</p><div class="mt-3 grid gap-2.5">${d.roles.map(r=>`<div class="bg-gray-50 rounded-[18px] p-4 flex justify-between items-center border"><div><p class="font-black text-[14px]">${r[0]}</p><p class="mono text-[13px] font-bold" style="color:var(--primary)">Rp ${parseInt(r[1]).toLocaleString('id-ID')}</p></div><button onclick="addCart('${d.name} ${r[0]}','${r[1]}');location.href='payment.html'" class="bg-black text-white px-5 py-3 rounded-full font-black text-[12px]">🛒 BELI</button></div>`).join('')}</div>`;
  document.getElementById('prodModal').classList.remove('hidden');
 }
 function closeProd(){document.getElementById('prodModal').classList.add('hidden')}
 function showToast(t){let e=document.getElementById('toast'); e.innerText=t; e.classList.remove('hidden'); setTimeout(()=>e.classList.add('hidden'),2000)}
-function addCart(n,p){cart.push({name:n,price:p}); localStorage.setItem('cart_v21',JSON.stringify(cart)); upd(); showToast('🛒 Masuk')}
+function addCart(n,p){cart.push({name:n,price:p}); localStorage.setItem('cart_v22',JSON.stringify(cart)); upd(); showToast('🛒 Masuk')}
 function upd(){document.getElementById('cartC').innerText=cart.length}
 upd()
 </script>
