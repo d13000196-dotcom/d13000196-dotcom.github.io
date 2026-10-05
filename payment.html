@@ -5,67 +5,52 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Payment - DapOrderApk</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>body{font-family:'Plus Jakarta Sans',system-ui;background:#fff}.mono{font-family:'JetBrains Mono',monospace}</style>
 </head>
 <body>
 <div class="max-w-[520px] mx-auto p-4 pb-20">
-<div class="flex justify-between items-center"><h1 class="font-black text-[22px]">DapOrder<span class="text-[#0abdc6]">Apk</span> - Bayar</h1><button onclick="location.href='index.html'" class="text-[12px] font-bold border px-3 py-1.5 rounded-full">← Kembali</button></div>
+<div class="flex justify-between items-center"><h1 class="font-black text-[22px]">DapOrder<span style="color:var(--primary,#0abdc6)">Apk</span> - Bayar</h1><button onclick="location.href='index.html'" class="text-[12px] font-bold border px-3 py-1.5 rounded-full">← Kembali</button></div>
 <div id="orderSummary" class="mt-4 p-4 rounded-[16px] bg-gray-50 border"></div>
 <div class="mt-2 p-3 rounded-[14px] bg-yellow-50 border border-yellow-200 text-center"><p class="font-black text-[13px]">⏰ Selesaikan pembayaran dalam <span id="timer">15:00</span></p></div>
 
-<!-- QRIS ASLI - FOTO QRIS LU YANG DAFF SHOP - KLIK AUTO SAVE -->
-<div class="mt-4 rounded-[24px] border-[3px] border-[#0abdc6] overflow-hidden shadow-lg">
-<div class="bg-black text-[#0abdc6] p-3 text-center mono text-[11px] font-black">QRIS ALL PAYMENT • DapOrderApk Official Store</div>
-<div onclick="saveQRIS()" class="p-2 bg-white cursor-pointer">
-<img id="qrisImg" src="foto/qris.jpg" class="w-full rounded-[12px]" alt="QRIS DAFF SHOP">
+<!-- QRIS FIX - PAKAI./foto/ + ANTI 404 -->
+<div class="mt-4 rounded-[24px] border-[3px] border-black overflow-hidden shadow-lg bg-white">
+<div class="bg-black text-[#0abdc6] p-3 text-center mono text-[11px] font-black">QRIS ALL PAYMENT • DAFF SHOP • NMID ID1025450705674</div>
+<div onclick="saveQRIS()" class="p-2 bg-white cursor-pointer active:opacity-80">
+<!-- FIX PATH + CACHE BUSTER + DOUBLE FALLBACK -->
+<img id="qrisImg" src="./foto/qris.jpg?v=22" alt="QRIS DAFF SHOP" class="w-full rounded-[12px]" onerror="this.onerror=null; this.src='./foto/qris.jpeg?v=22'; setTimeout(()=>{if(this.naturalWidth==0){this.src='https://i.ibb.co/placeholder.jpg'; showToast('⚠️ foto/qris.jpg gak ketemu! Cek nama file harus lowercase!')}},500)">
 </div>
-<div class="bg-black p-3 flex justify-center gap-2 flex-wrap"><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">GoPay</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">OVO</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">DANA</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">ShopeePay</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">LinkAja</span></div>
-<div class="bg-black text-white text-center py-2.5 mono text-[11px]">Scan QRIS di atas - 1 QR untuk semua e-wallet</div>
+<div class="bg-black p-3 flex justify-center gap-2 flex-wrap"><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">GoPay</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">OVO</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">DANA</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">ShopeePay</span></div>
+<div class="bg-black text-white text-center py-2 mono text-[10px]">👆 KLIK TENGAH QRIS UNTUK SIMPAN OTOMATIS</div>
 </div>
-<button onclick="saveQRIS()" class="w-full mt-2 py-2.5 rounded-full bg-yellow-300 font-black text-[11px]">👆 KLIK 1 KALI SAJA UNTUK MENYIMPAN QRIS LANGSUNG - BISA SS JUGA</button>
+<button onclick="saveQRIS()" class="w-full mt-2 py-3 rounded-full bg-yellow-300 font-black text-[11px] border-2 border-black">👆 KLIK 1 KALI SAJA UNTUK MENYIMPAN QRIS LANGSUNG - BISA SS JUGA</button>
 
-<!-- DANA MIY***N -->
 <div class="mt-4 p-4 rounded-[16px] border-2 border-dashed border-[#0abdc6] bg-[#f0fdfa] flex justify-between items-center">
-<div><p class="mono text-[11px] font-bold">DANA / QRIS a.n M*****N</p><p class="font-black text-[18px] mono">082312728245</p><p class="mono text-[10px]">A/N: INISIAL M*****N - ALL PAYMENT</p></div>
+<div><p class="mono text-[11px] font-bold">DANA / QRIS a.n M*****N</p><p class="font-black text-[18px] mono">082312728245</p><p class="mono text-[10px]">A/N: DAFF SHOP - ALL PAYMENT</p></div>
 <button onclick="copyDana()" class="bg-black text-white px-5 py-2.5 rounded-full font-black text-[13px]">SALIN</button>
 </div>
 
-<!-- FORM -->
 <div class="mt-4 p-4 rounded-[16px] border-2 border-dashed">
-<p class="font-black text-[13px]">KIRIM BUKTI TF KE WA UTAMA:</p><p class="font-black text-[16px] text-[#0abdc6]">083879195047</p>
+<p class="font-black text-[13px]">KIRIM BUKTI TF KE WA UTAMA: 083879195047</p>
 <input id="namaInput" placeholder="Nama kamu" class="mt-3 w-full p-3.5 rounded-xl border-2 bg-gray-50 font-bold">
 <input type="file" id="buktiInput" accept="image/*" onchange="previewBukti(this)" class="mt-3 w-full text-[12px] p-3 rounded-xl border-2 bg-gray-50">
-<div id="buktiBox" class="hidden mt-3"><img id="buktiPreview" class="w-full h-[240px] object-cover rounded-[16px] border-2 border-[#0abdc6]"><div class="flex gap-2 mt-2"><button onclick="document.getElementById('buktiInput').click()" class="flex-1 py-2.5 rounded-full bg-black text-white font-bold text-[12px]">🔄 Ganti Foto</button><button onclick="hapusBukti()" class="flex-1 py-2.5 rounded-full bg-red-500 text-white font-bold text-[12px]">🗑️ Hapus Foto</button></div></div>
+<div id="buktiBox" class="hidden mt-3"><img id="buktiPreview" class="w-full h-[240px] object-cover rounded-[16px] border-2 border-[#0abdc6]"><div class="flex gap-2 mt-2"><button onclick="document.getElementById('buktiInput').click()" class="flex-1 py-2.5 rounded-full bg-black text-white font-bold text-[12px]">🔄 Ganti</button><button onclick="hapusBukti()" class="flex-1 py-2.5 rounded-full bg-red-500 text-white font-bold text-[12px]">🗑️ Hapus</button></div></div>
 </div>
-
 <button onclick="checkoutPayment()" class="w-full mt-5 py-4 rounded-[18px] bg-black text-white font-black">💬 KIRIM BUKTI KE WA 083879195047 🚀</button>
-<button onclick="clearCart()" class="w-full mt-3 py-3 rounded-[18px] bg-red-50 border text-red-600 font-bold text-[12px]">🗑️ Kosongkan & Reset Semua</button>
 </div>
-
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 hidden bg-black text-white px-5 py-3 rounded-full font-black text-[13px] z-50"></div>
 <script>
-let cart=JSON.parse(localStorage.getItem('cart_v21')||'[]'), bukti=null, buktiFile=null
+let cart=JSON.parse(localStorage.getItem('cart_v22')||'[]'), bukti=null, buktiFile=null
 let time=900; setInterval(()=>{ time--; let m=Math.floor(time/60), s=time%60; document.getElementById('timer').innerText=`${m}:${s<10?'0':''}${s}` },1000)
-function showToast(t){let e=document.getElementById('toast'); e.innerText=t; e.classList.remove('hidden'); setTimeout(()=>e.classList.add('hidden'),2200)}
+function showToast(t){let e=document.getElementById('toast'); e.innerText=t; e.classList.remove('hidden'); setTimeout(()=>e.classList.add('hidden'),2500)}
 function loadOrder(){let tot=cart.reduce((s,c)=>s+parseInt(c.price),0); document.getElementById('orderSummary').innerHTML=cart.length?`<div class="flex justify-between"><span class="font-bold">${cart.map(c=>c.name).join(', ')} x1</span><span class="font-black">Rp ${tot.toLocaleString('id-ID')}</span></div><p class="font-black text-[#0abdc6] text-[18px] mt-2">Total: Rp ${tot.toLocaleString('id-ID')}</p>`:`<p class="text-center">Cart kosong</p>`}
-function copyDana(){navigator.clipboard.writeText('082312728245'); showToast('082312728245 MIY***N tersalin')}
-function saveQRIS(){ let img=document.getElementById('qrisImg'); let src=img.src; let a=document.createElement('a'); a.href=src; a.download='QRIS-DAFF-SHOP-082312728245.jpg'; document.body.appendChild(a); a.click(); document.body.removeChild(a); showToast('📸 QRIS DAFF SHOP disimpan ke galeri ✅') }
-function previewBukti(i){ if(i.files[0]){ buktiFile=i.files[0]; let r=new FileReader(); r.onload=e=>{ bukti=e.target.result; document.getElementById('buktiPreview').src=bukti; document.getElementById('buktiBox').classList.remove('hidden'); localStorage.setItem('bukti_v21',bukti) }; r.readAsDataURL(i.files[0]) }}
-function hapusBukti(){bukti=null; buktiFile=null; localStorage.removeItem('bukti_v21'); document.getElementById('buktiBox').classList.add('hidden'); document.getElementById('buktiInput').value=''}
-function clearCart(){cart=[]; localStorage.removeItem('cart_v21'); loadOrder()}
-async function checkoutPayment(){
- let nama=document.getElementById('namaInput').value.trim();
- if(!cart.length) return showToast('Cart kosong');
- if(!nama) return showToast('Isi nama');
- if(!buktiFile) return showToast('Upload bukti dulu');
- let tot=cart.reduce((s,c)=>s+parseInt(c.price),0);
- let pesan=`Cek Bang Info Barang Di Beli Nih\n\n👤 Nama: ${nama}\n🛒 Order:\n${cart.map(c=>`- ${c.name}`).join('\n')}\n💰 Total: Rp ${tot}\n\nBukti TF ada di foto ya Bang!`;
- if(navigator.canShare && buktiFile && navigator.canShare({files:[buktiFile]})){ try{ await navigator.share({text:pesan, files:[buktiFile]}); return }catch(e){} }
- window.open(`https://wa.me/6283879195047?text=${encodeURIComponent(pesan)}`,'_blank');
- setTimeout(()=>{ let a=document.createElement('a'); a.href=bukti; a.download=`Bukti-${nama}.jpg`; a.click() },500);
-}
+function copyDana(){navigator.clipboard.writeText('082312728245'); showToast('082312728245 tersalin')}
+function saveQRIS(){ let img=document.getElementById('qrisImg'); let a=document.createElement('a'); a.href=img.src; a.download='QRIS-DAFF-SHOP-ID1025450705674.jpg'; document.body.appendChild(a); a.click(); document.body.removeChild(a); showToast('📸 QRIS DAFF SHOP disimpan ke galeri ✅') }
+function previewBukti(i){ if(i.files[0]){ buktiFile=i.files[0]; let r=new FileReader(); r.onload=e=>{ bukti=e.target.result; document.getElementById('buktiPreview').src=bukti; document.getElementById('buktiBox').classList.remove('hidden'); localStorage.setItem('bukti_v22',bukti) }; r.readAsDataURL(i.files[0]) }}
+function hapusBukti(){bukti=null; buktiFile=null; localStorage.removeItem('bukti_v22'); document.getElementById('buktiBox').classList.add('hidden'); document.getElementById('buktiInput').value=''}
+async function checkoutPayment(){ let nama=document.getElementById('namaInput').value.trim(); if(!cart.length) return showToast('Cart kosong'); if(!nama) return showToast('Isi nama'); if(!buktiFile) return showToast('Upload bukti'); let tot=cart.reduce((s,c)=>s+parseInt(c.price),0); let pesan=`Cek Bang Info Barang Di Beli Nih\n\n👤 Nama: ${nama}\n🛒 Order:\n${cart.map(c=>`- ${c.name}`).join('\n')}\n💰 Total: Rp ${tot}\n\nBukti TF ada di foto ya Bang!`; if(navigator.canShare && buktiFile && navigator.canShare({files:[buktiFile]})){ try{ await navigator.share({text:pesan, files:[buktiFile]}); return }catch(e){} } window.open(`https://wa.me/6283879195047?text=${encodeURIComponent(pesan)}`,'_blank'); setTimeout(()=>{ let a=document.createElement('a'); a.href=bukti; a.download=`Bukti-${nama}.jpg`; a.click() },500); }
 loadOrder();
+let th=localStorage.getItem('theme_v22'); if(th) document.documentElement.style.setProperty('--primary',th);
 </script>
 </body>
-</html>
+ </html>
