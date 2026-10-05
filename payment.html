@@ -6,33 +6,122 @@
 <title>Bayar - DapOrderApk</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
-<style>body{font-family:'Plus Jakarta Sans',system-ui}.mono{font-family:'JetBrains Mono',monospace}</style>
+<style>body{font-family:'Plus Jakarta Sans',system-ui;background:#fff}.mono{font-family:'JetBrains Mono',monospace}</style>
 </head>
 <body>
-<div class="max-w-[520px] mx-auto p-4 pb-20">
-<div class="flex justify-between items-center"><h1 class="font-black text-[20px]">DapOrderApk - Bayar</h1><button onclick="location.href='index.html'" class="text-[12px] font-bold border px-3 py-1.5 rounded-full">← Kembali</button></div>
-<div id="orderBox" class="mt-4 p-4 rounded-[16px] bg-gray-50 border"></div>
-<div class="mt-3 flex gap-2"><button onclick="clearCartPay()" class="flex-1 py-2.5 rounded-full border-2 border-black font-black text-[12px]">🗑️ Kosongkan Keranjang</button><button onclick="location.href='index.html'" class="flex-1 py-2.5 rounded-full bg-black text-white font-black text-[12px]">+ Tambah Produk</button></div>
-<div class="mt-3 p-3 rounded-[14px] bg-yellow-50 border text-center"><p class="font-black text-[13px]">⏰ Selesaikan pembayaran dalam <span id="timer">15:00</span></p></div>
-<div class="mt-4 rounded-[24px] border-[3px] border-black overflow-hidden bg-white"><div class="bg-black text-[#0abdc6] p-3 text-center mono text-[11px] font-black">QRIS ALL PAYMENT • DAFF SHOP • ID1025450705674 • A01</div><div onclick="saveQRIS()" class="p-2 bg-white cursor-pointer"><img id="qrisImg" src="qris.jpg?v=24" class="w-full rounded-[12px]"></div><div class="bg-black p-3 flex justify-center gap-2 flex-wrap"><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">GoPay</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">OVO</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">DANA</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">ShopeePay</span></div></div>
-<button onclick="saveQRIS()" class="w-full mt-2 py-3 rounded-full bg-yellow-300 font-black text-[11px] border-2 border-black">👆 KLIK 1 KALI SAJA UNTUK MENYIMPAN QRIS LANGSUNG - BISA SS JUGA</button>
-<div class="mt-4 p-4 rounded-[16px] border-2 border-dashed border-[#0abdc6] bg-[#f0fdfa] flex justify-between items-center"><div><p class="mono text-[11px] font-bold">DANA / QRIS a.n M*****N</p><p class="font-black text-[18px] mono">082312728245</p></div><button onclick="copyDana()" class="bg-black text-white px-5 py-2.5 rounded-full font-black text-[13px]">SALIN</button></div>
-<div class="mt-4 p-4 rounded-[16px] border-2 border-dashed"><p class="font-black text-[13px]">KIRIM BUKTI TF KE WA UTAMA: 083879195047</p><p class="mt-3 font-black text-[12px] text-red-600">UPLOAD FOTO BUKTI TRANSFER KE BAWAH INI..!! 👇</p><input id="namaInput" placeholder="Nama kamu" class="mt-3 w-full p-3.5 rounded-xl border-2 bg-gray-50 font-bold"><input type="file" id="buktiInput" accept="image/*" onchange="previewBukti(this)" class="mt-3 w-full text-[12px] p-3 rounded-xl border-2 bg-gray-50"><div id="buktiBox" class="hidden mt-3"><img id="buktiPreview" class="w-full h-[240px] object-cover rounded-[16px] border-2 border-[#0abdc6]"><div class="flex gap-2 mt-2"><button onclick="document.getElementById('buktiInput').click()" class="flex-1 py-2.5 rounded-full bg-black text-white font-bold text-[12px]">🔄 Ganti</button><button onclick="hapusBukti()" class="flex-1 py-2.5 rounded-full bg-red-500 text-white font-bold text-[12px]">🗑️ Hapus</button></div></div></div>
-<button onclick="checkoutPayment()" class="w-full mt-5 py-4 rounded-[18px] bg-black text-white font-black">💬 KIRIM BUKTI KE WA 083879195047 🚀</button>
+<div class="max-w-[520px] mx-auto p-4 pb-24">
+<div class="flex justify-between items-center"><h1 class="font-black text-[20px]">DapOrderApk - Bayar</h1><button onclick="location.href='../index.html'" class="text-[12px] font-bold border px-3 py-1.5 rounded-full">← Kembali</button></div>
+
+<div id="orderBox" class="mt-4 p-4 rounded-[20px] bg-gray-50 border-2 border-black"></div>
+<div class="mt-3 flex gap-2"><button onclick="clearCartPay()" class="flex-1 py-2.5 rounded-full border-2 border-black font-black text-[12px]">🗑️ Kosongkan Keranjang</button><button onclick="location.href='../index.html'" class="flex-1 py-2.5 rounded-full bg-black text-white font-black text-[12px]">+ Tambah Produk</button></div>
+
+<div class="mt-3 p-3 rounded-[14px] bg-yellow-50 border-2 border-yellow-200 text-center"><p class="font-black text-[13px]">⏰ Selesaikan pembayaran dalam <span id="timer" class="text-red-600">15:00</span></p></div>
+
+<div class="mt-4 rounded-[24px] border-[3px] border-black overflow-hidden shadow-lg bg-white">
+<div class="bg-black text-[#0abdc6] p-3 text-center mono text-[11px] font-black">QRIS ALL PAYMENT • DAFF SHOP • ID1025450705674 • A01</div>
+<div class="p-2 bg-white"><img id="qrisImg" src="../qris.jpg" onerror="this.src='qris.jpg'" onclick="saveQRIS()" class="w-full rounded-[12px] cursor-pointer active:scale-[0.98] transition"></div>
+<div class="bg-black p-3 flex justify-center gap-2 flex-wrap"><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">GoPay</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">OVO</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">DANA</span><span class="bg-white text-black text-[10px] font-black px-3 py-1 rounded-full">ShopeePay</span></div>
 </div>
-<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 hidden bg-black text-white px-5 py-3 rounded-full font-black text-[13px] z-50"></div>
+<button onclick="saveQRIS()" class="w-full mt-2 py-3 rounded-full bg-yellow-300 font-black text-[11px] border-2 border-black">👆 KLIK 1 KALI SAJA UNTUK MENYIMPAN QRIS LANGSUNG - BISA SS JUGA</button>
+
+<div class="mt-4 p-4 rounded-[20px] border-2 border-dashed border-[#0abdc6] bg-[#f0fdfa] flex justify-between items-center">
+<div><p class="mono text-[11px] font-bold">DANA / QRIS a.n M*****N</p><p class="font-black text-[18px] mono">082312728245</p></div>
+<button onclick="copyDana()" class="bg-black text-white px-5 py-2.5 rounded-full font-black text-[13px]">SALIN</button>
+</div>
+
+<div class="mt-4 p-4 rounded-[20px] border-2 border-dashed bg-white">
+<p class="font-black text-[13px]">KIRIM BUKTI TF KE WA UTAMA: 083879195047</p>
+<p class="mt-3 font-black text-[12px] text-red-600">UPLOAD FOTO BUKTI TRANSFER KE BAWAH INI..!! 👇</p>
+<input id="namaInput" placeholder="Nama kamu" class="mt-3 w-full p-3.5 rounded-xl border-2 bg-gray-50 font-bold outline-none">
+<input type="file" id="buktiInput" accept="image/*" onchange="previewBukti(this)" class="mt-3 w-full text-[12px] p-3 rounded-xl border-2 bg-gray-50">
+<div id="buktiBox" class="hidden mt-3"><img id="buktiPreview" class="w-full h-[260px] object-cover rounded-[16px] border-2 border-[#0abdc6]"><div class="flex gap-2 mt-2"><button onclick="document.getElementById('buktiInput').click()" class="flex-1 py-2.5 rounded-full bg-black text-white font-bold text-[12px]">🔄 Ganti</button><button onclick="hapusBukti()" class="flex-1 py-2.5 rounded-full bg-red-500 text-white font-bold text-[12px]">🗑️ Hapus</button></div></div>
+</div>
+<button onclick="checkoutPayment()" class="w-full mt-5 py-4 rounded-[18px] bg-black text-white font-black text-[15px]">💬 KIRIM BUKTI KE WA 083879195047 🚀</button>
+</div>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 hidden bg-black text-white px-6 py-3 rounded-full font-black text-[13px] z-[99] shadow-2xl"></div>
+
 <script>
-let cart=JSON.parse(localStorage.getItem('cart_v24')||'[]'),buktiFile=null,time=900
-setInterval(()=>{time--;let m=Math.floor(time/60),s=time%60;document.getElementById('timer').innerText=`${m}:${s<10?'0':''}${s}`},1000)
-function showToast(t){let e=document.getElementById('toast');e.innerText=t;e.classList.remove('hidden');setTimeout(()=>e.classList.add('hidden'),2500)}
-function loadCartPay(){let tot=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);document.getElementById('orderBox').innerHTML=cart.length?`<div class="grid gap-2">${cart.map((c,i)=>`<div class="flex justify-between items-center bg-white p-2 rounded-xl border"><div><p class="font-bold text-[13px]">${c.name}</p><p class="mono text-[11px]">Rp ${parseInt(c.price).toLocaleString('id-ID')} x ${c.qty}</p></div><div class="flex gap-1 items-center"><button onclick="chgPay(${i},-1)" class="w-7 h-7 rounded-full bg-black text-white">-</button><span class="font-black text-[12px] w-5 text-center">${c.qty}</span><button onclick="chgPay(${i},1)" class="w-7 h-7 rounded-full bg-black text-white">+</button><button onclick="delPay(${i})" class="ml-1 w-7 h-7 rounded-full bg-red-500 text-white">🗑️</button></div></div>`).join('')}<div class="mt-3 pt-3 border-t flex justify-between font-black"><span>Total</span><span style="color:#0abdc6">Rp ${tot.toLocaleString('id-ID')}</span></div></div>:`<p class="text-center opacity-60">Kosong</p>`}
-function chgPay(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);savePay();loadCartPay()}function delPay(i){cart.splice(i,1);savePay();loadCartPay()}function clearCartPay(){cart=[];savePay();loadCartPay()}function savePay(){localStorage.setItem('cart_v24',JSON.stringify(cart))}
-function copyDana(){navigator.clipboard.writeText('082312728245');showToast('Tersalin')}
-function saveQRIS(){let img=document.getElementById('qrisImg');let a=document.createElement('a');a.href=img.src;a.download='QRIS-DAFF-SHOP.jpg';document.body.appendChild(a);a.click();document.body.removeChild(a);showToast('📸 QRIS disimpan ✅')}
-function previewBukti(i){if(i.files[0]){buktiFile=i.files[0];let r=new FileReader();r.onload=e=>{document.getElementById('buktiPreview').src=e.target.result;document.getElementById('buktiBox').classList.remove('hidden')};r.readAsDataURL(i.files[0])}}
-function hapusBukti(){buktiFile=null;document.getElementById('buktiBox').classList.add('hidden');document.getElementById('buktiInput').value=''}
-async function checkoutPayment(){let nama=document.getElementById('namaInput').value.trim();if(!cart.length)return showToast('Cart kosong');if(!nama)return showToast('Isi nama');if(!buktiFile)return showToast('UPLOAD FOTO BUKTI TRANSFER KE BAWAH INI..!!');let tot=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);let pesan=`Cek Bang Info Barang Di Beli Nih\n\n👤 Nama: ${nama}\n🛒 Order:\n${cart.map(c=>`- ${c.name} x${c.qty}`).join('\n')}\n💰 Total: Rp ${tot}`;if(navigator.canShare&&buktiFile&&navigator.canShare({files:[buktiFile]})){try{await navigator.share({text:pesan,files:[buktiFile]});return}catch(e){}}window.open(`https://wa.me/6283879195047?text=${encodeURIComponent(pesan)}`,'_blank')}
-loadCartPay()
+let cart = JSON.parse(localStorage.getItem('cart_v24')||'[]');
+let buktiFile=null;
+let time=900;
+let timerInterval = setInterval(()=>{
+  time--;
+  if(time<=0){clearInterval(timerInterval); document.getElementById('timer').innerText='00:00'; return;}
+  let m=Math.floor(time/60), s=time%60;
+  document.getElementById('timer').innerText=`${m}:${s<10?'0':''}${s}`;
+},1000);
+
+function showToast(t){
+  let e=document.getElementById('toast');
+  e.innerText=t; e.classList.remove('hidden');
+  setTimeout(()=>e.classList.add('hidden'),2500);
+}
+
+function loadCartPay(){
+  let tot=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);
+  let box=document.getElementById('orderBox');
+  if(!cart.length){
+    box.innerHTML=`<p class="text-center font-bold opacity-60 py-4">🛒 Keranjang kosong - balik ke toko dulu</p>`;
+    return;
+  }
+  box.innerHTML=`
+    <div class="flex justify-between items-center mb-3"><h3 class="font-black">🛒 Keranjang - ${cart.reduce((s,c)=>s+c.qty,0)} Produk</h3><span class="mono text-[11px] bg-black text-white px-3 py-1 rounded-full">${cart.length} ITEM</span></div>
+    <div class="grid gap-2.5">
+    ${cart.map((c,i)=>`
+      <div class="flex justify-between items-center bg-white p-3 rounded-[14px] border-2">
+        <div class="flex-1"><p class="font-black text-[13px] leading-[1.2]">${c.name}</p><p class="mono text-[11px] text-red-500 font-bold">Rp ${parseInt(c.price).toLocaleString('id-ID')} x ${c.qty}</p></div>
+        <div class="flex gap-1 items-center">
+          <button onclick="chgPay(${i},-1)" class="w-8 h-8 rounded-full bg-black text-white font-black">-</button>
+          <span class="font-black text-[13px] w-6 text-center">${c.qty}</span>
+          <button onclick="chgPay(${i},1)" class="w-8 h-8 rounded-full bg-black text-white font-black">+</button>
+          <button onclick="delPay(${i})" class="ml-1 w-8 h-8 rounded-full bg-red-500 text-white">🗑️</button>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div class="mt-4 pt-3 border-t-2 border-dashed flex justify-between font-black text-[16px]"><span>Total Bayar</span><span class="text-[#0abdc6]">Rp ${tot.toLocaleString('id-ID')}</span></div>`;
+}
+
+function chgPay(i,d){cart[i].qty+=d; if(cart[i].qty<=0)cart.splice(i,1); savePay(); loadCartPay();}
+function delPay(i){cart.splice(i,1); savePay(); loadCartPay();}
+function clearCartPay(){cart=[]; savePay(); loadCartPay(); showToast('🗑️ Keranjang dikosongkan');}
+function savePay(){localStorage.setItem('cart_v24',JSON.stringify(cart));}
+
+function copyDana(){navigator.clipboard.writeText('082312728245'); showToast('✅ Nomor DANA tersalin');}
+
+function saveQRIS(){
+  let img=document.getElementById('qrisImg');
+  // Trik save work di semua HP
+  fetch(img.src).then(r=>r.blob()).then(b=>{
+    let url=URL.createObjectURL(b);
+    let a=document.createElement('a'); a.href=url; a.download='QRIS-DAFF-SHOP.jpg';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    showToast('📸 QRIS berhasil disimpan ke galeri ✅');
+  }).catch(()=>{
+    let a=document.createElement('a'); a.href=img.src; a.download='QRIS-DAFF-SHOP.jpg';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    showToast('📸 QRIS berhasil disimpan ✅');
+  });
+}
+
+function previewBukti(i){if(i.files && i.files[0]){buktiFile=i.files[0]; let r=new FileReader(); r.onload=e=>{document.getElementById('buktiPreview').src=e.target.result; document.getElementById('buktiBox').classList.remove('hidden'); showToast('✅ Bukti terupload');}; r.readAsDataURL(i.files[0]);}}
+function hapusBukti(){buktiFile=null; document.getElementById('buktiBox').classList.add('hidden'); document.getElementById('buktiInput').value='';}
+
+async function checkoutPayment(){
+  let nama=document.getElementById('namaInput').value.trim();
+  if(!cart.length)return showToast('❌ Keranjang kosong');
+  if(!nama)return showToast('❌ Isi nama dulu');
+  if(!buktiFile)return showToast('❌ UPLOAD FOTO BUKTI TRANSFER KE BAWAH INI..!!');
+  let tot=cart.reduce((s,c)=>s+parseInt(c.price)*c.qty,0);
+  let pesan=`Cek Bang Info Barang Di Beli Nih\n\n👤 Nama: ${nama}\n🛒 Order:\n${cart.map(c=>`- ${c.name} x${c.qty} = Rp ${(parseInt(c.price)*c.qty).toLocaleString('id-ID')}`).join('\n')}\n\n💰 Total: Rp ${tot.toLocaleString('id-ID')}\n💳 Bayar via QRIS DANA\n\n📸 Bukti TF ada di file terlampir ya bang`;
+  if(navigator.canShare && buktiFile && navigator.canShare({files:[buktiFile]})){
+    try{await navigator.share({text:pesan, files:[buktiFile], title:'Bukti TF DapOrderApk'}); return;}catch(e){}
+  }
+  window.open(`https://wa.me/6283879195047?text=${encodeURIComponent(pesan)}`,'_blank');
+  showToast('➡️ Kirim bukti di WA ya!');
+}
+
+loadCartPay();
 </script>
 </body>
 </html>
