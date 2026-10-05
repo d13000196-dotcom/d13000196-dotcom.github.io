@@ -3,52 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>DapOrderApk - Official Store - Payment</title>
+<title>Payment - DapOrderApk</title>
+<meta name="theme-color" content="#6366f1">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
-<style>body{font-family:'Plus Jakarta Sans',system-ui;background:#f6f7ff}.glass{backdrop-filter:blur(32px);background:rgba(255,255,255,.88);border:1px solid #fff;box-shadow:0 20px 50px rgba(99,102,241,.12)} img.emoji{height:1.35em;width:1.35em;vertical-align:-0.2em;display:inline-block!important}</style>
+<style>body{font-family:'Plus Jakarta Sans',system-ui;background:#f6f7ff; overscroll-behavior:none}.glass{ background: rgba(255,255,255,.95); border:1px solid #fff; box-shadow:0 8px 24px rgba(99,102,241,.08)} img.emoji{height:1.25em;width:1.25em;vertical-align:-0.15em;display:inline-block!important} *{-webkit-tap-highlight-color:transparent}</style>
 </head>
-<body class="pb-10">
-<div class="max-w-[520px] mx-auto p-4">
+<body>
+<div class="max-w-[520px] mx-auto p-3">
+<div class="glass rounded-[22px] px-4 py-3 flex justify-between items-center mt-2"><div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-[12px] bg-[#6366f1] text-white font-black flex items-center justify-center">D</div><div><h1 class="font-black text-[14px] leading-[1.1]">DapOrderApk -<br>Official Store 🚀</h1><p class="mono text-[9px] opacity-50">V19.3 QRIS AUTO SAVE</p></div></div><button onclick="location.href='index.html'" class="bg-black text-white px-4 py-2 rounded-full text-[12px] font-black">← Store</button></div>
 <div class="glass rounded-[26px] p-6 mt-4">
-<h1 class="font-black text-[20px] text-center">DapOrderApk - Official Store 🚀</h1>
-<p class="text-center mono text-[10px] opacity-50 mt-1">💳 PAYMENT PAGE - REAL WEB</p>
-
-<div class="mt-6 p-4 rounded-[20px] bg-black text-white">
-<p class="mono text-[11px] opacity-60">METODE PEMBAYARAN RESMI</p>
-<p class="font-black text-[20px] mt-1">DANA • 082312728245 💳</p>
-<p class="mono text-[11px] mt-2 opacity-70">A/n DapOrderApk Official</p>
-<button onclick="navigator.clipboard.writeText('082312728245');showToast('📋 DANA tersalin')" class="w-full mt-4 py-3 rounded-[14px] bg-white text-black font-black flex justify-center gap-2">📋 Copy Nomor DANA</button>
+<h2 class="font-black text-[18px]">💳 Checkout Payment</h2>
+<p class="text-[12px] opacity-70 mt-1">Klik 1x QRIS untuk simpan langsung ke galeri!</p>
+<div class="mt-5 grid grid-cols-2 gap-3">
+<div onclick="navigator.clipboard.writeText('082312728245');showToast('📋 DANA tersalin')" class="p-4 rounded-[18px] bg-black text-white cursor-pointer active:scale-95 transition"><p class="mono text-[10px] opacity-60">DANA</p><p class="font-black text-[14px] mt-1">082312728245</p><p class="mono text-[10px] mt-2 bg-white text-black inline-block px-2 py-1 rounded-full">📋 Copy</p></div>
+<div onclick="saveQRIS()" class="p-4 rounded-[18px] bg-white border-2 border-dashed text-center cursor-pointer active:scale-95 transition"><p class="mono text-[10px] font-black">QRIS</p><img id="qrisImgPay" src="foto/qris.jpg" loading="lazy" class="w-[110px] h-[110px] mx-auto mt-2 object-contain rounded-[10px]" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=DANA082312728245'"><p class="mono text-[8px] mt-3 font-bold bg-yellow-300 inline-block px-3 py-1.5 rounded-full">👆 KLIK 1 KALI SAJA UNTUK MENYIMPAN QRIS LANGSUNG</p><p class="mono text-[7px] mt-1 opacity-60">Bisa SS juga kalo mau</p></div>
 </div>
-
-<div class="mt-5 p-4 rounded-[20px] bg-white border-2 border-dashed border-indigo-200">
-<p class="font-black text-[14px]">📸 UPLOAD BUKTI TRANSFER *WAJIB</p>
-<p class="text-[12px] opacity-70 mt-1">Wajib upload bukti, kalo gak gak diproses wok!</p>
-<input type="file" id="buktiInput" accept="image/*" onchange="previewBukti(this)" class="mt-3 w-full text-[12px] p-3 rounded-xl border-2 bg-gray-50">
-<img id="buktiPreview" class="mt-4 w-full h-[230px] object-cover rounded-[16px] hidden border-2 border-indigo-500">
-<p id="buktiStatus" class="mono text-[11px] mt-2 text-green-600 hidden font-bold">✅ Bukti terpasang - siap kirim</p>
-<div class="mt-3 p-3 rounded-xl bg-yellow-50 border text-[11px]">⚠️ Format WA nanti otomatis: <b>Cek Masuk 1 ✅ + Bukti Transfer 📸</b></div>
-</div>
-
-<div id="orderSummary" class="mt-5 glass rounded-[20px] p-4"></div>
-
-<button onclick="checkoutPayment()" class="w-full mt-5 py-4 rounded-[18px] bg-black text-white font-black text-[15px]">💬 KIRIM KE WA + BUKTI 🚀</button>
-<button onclick="location.href='index.html'" class="w-full mt-3 py-3 rounded-[18px] bg-white border font-bold text-[13px]">← Kembali ke Store</button>
-
-<div class="mt-6 glass rounded-[20px] p-4">
-<p class="font-black text-[13px]">Selamat Datang Di Website Jual Beli Aplikasi Bug WhatsApp Crash Disini Menjual Beberapa Aplikasi Bug Gacor Setiap Pembelian Langsung Ke Owner Website Nya Agar Di Pandu Jelas Dan Real Silahkan Pilih Aplikasi Bug Sesuai Mu! 🚀</p>
-</div>
+<div id="orderSummary" class="mt-5 glass rounded-[20px] p-4 border"></div>
+<div class="mt-5 p-4 rounded-[20px] bg-white border-2"><p class="font-black text-[13px]">📸 UPLOAD BUKTI *WAJIB</p><input type="file" id="buktiInput" accept="image/*" onchange="previewBukti(this)" class="mt-3 w-full text-[12px] p-3 rounded-xl border-2 bg-gray-50"><div id="buktiBox" class="hidden mt-3"><img id="buktiPreview" class="w-full h-[230px] object-cover rounded-[16px] border-2 border-indigo-500"><div class="flex gap-2 mt-2"><button onclick="document.getElementById('buktiInput').click()" class="flex-1 py-2.5 rounded-full bg-black text-white font-bold text-[12px]">🔄 Ganti Foto</button><button onclick="hapusBukti()" class="flex-1 py-2.5 rounded-full bg-red-500 text-white font-bold text-[12px]">🗑️ Hapus Foto</button></div></div></div>
+<button onclick="checkoutPayment()" class="w-full mt-5 py-4 rounded-[18px] bg-black text-white font-black">💬 KIRIM WA 🚀</button>
+<button onclick="clearCart()" class="w-full mt-3 py-3 rounded-[18px] bg-red-50 border border-red-200 text-red-600 font-bold text-[12px]">🗑️ Kosongkan & Reset Semua</button>
 </div>
 </div>
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 hidden glass px-5 py-3 rounded-full font-black text-[13px] z-50"></div>
 <script>
-let bukti=localStorage.getItem('bukti_v18')||null, cart=JSON.parse(localStorage.getItem('cart_v18')||'[]');
-function showToast(t){let e=document.getElementById('toast'); e.innerText=t; e.classList.remove('hidden'); twemoji.parse(e); setTimeout(()=>e.classList.add('hidden'),2200)}
-function previewBukti(i){if(i.files[0]){let r=new FileReader(); r.onload=e=>{bukti=e.target.result; let p=document.getElementById('buktiPreview'); p.src=bukti; p.classList.remove('hidden'); document.getElementById('buktiStatus').classList.remove('hidden'); localStorage.setItem('bukti_v18',bukti); showToast('📸 Bukti terpasang')}; r.readAsDataURL(i.files[0])}}
-function loadOrder(){let tot=cart.reduce((s,c)=>s+parseInt(c.price),0); document.getElementById('orderSummary').innerHTML=cart.length?`<p class="font-black text-[13px]">🛒 Order (${cart.length})</p><div class="mt-2 space-y-1 text-[12px]">${cart.map(c=>`<div class="flex justify-between"><span>${c.name}</span><span class="font-bold">Rp ${c.price}</span></div>`).join('')}</div><div class="mt-3 pt-3 border-t flex justify-between font-black"><span>Total</span><span>Rp ${tot.toLocaleString('id-ID')}</span></div>`:`<p class="text-center text-[13px] opacity-60">Cart kosong - balik ke store</p>`}
-function checkoutPayment(){if(!cart.length) return showToast('😢 Cart kosong'); if(!bukti) return showToast('📸 Upload bukti dulu wok'); let tot=cart.reduce((s,c)=>s+parseInt(c.price),0); let msg=`Halo DapOrderApk 🚀%0AOrder:%0A`+cart.map(c=>`- ${c.name} Rp ${c.price}`).join('%0A')+`%0ATotal: Rp ${tot}%0APayment DANA 082312728245 💳%0A%0ACek Masuk: 1 ✅%0ABukti Transfer: Sudah upload 📸%0A`; window.open(`https://wa.me/6283879195047?text=${msg}`,'_blank'); setTimeout(()=>alert('WA kebuka! Kirim foto bukti yang tadi 📸'),800)}
-loadOrder(); if(bukti){setTimeout(()=>{let p=document.getElementById('buktiPreview'); if(p){p.src=bukti; p.classList.remove('hidden'); document.getElementById('buktiStatus').classList.remove('hidden')}},500)} twemoji.parse(document.body)
+let cart=JSON.parse(localStorage.getItem('cart_v19')||'[]'), bukti=localStorage.getItem('bukti_v19')||null
+function showToast(t){let e=document.getElementById('toast'); e.innerText=t; e.classList.remove('hidden'); setTimeout(()=>e.classList.add('hidden'),2200)}
+function loadOrder(){let tot=cart.reduce((s,c)=>s+parseInt(c.price),0); document.getElementById('orderSummary').innerHTML=cart.length?`<p class="font-black text-[13px]">🛒 Order (${cart.length})</p><div class="mt-2 space-y-1 text-[12px]">${cart.map(c=>`<div class="flex justify-between"><span>${c.name}</span><span class="font-bold">Rp ${c.price}</span></div>`).join('')}</div><div class="mt-3 pt-3 border-t flex justify-between font-black"><span>Total</span><span>Rp ${tot.toLocaleString('id-ID')}</span></div>`:`<p class="text-center text-[13px] opacity-60">Cart kosong</p>`}
+function saveQRIS(){ let img=document.getElementById('qrisImgPay'); let src=img.currentSrc||img.src; fetch(src).then(r=>r.blob()).then(b=>{ let url=URL.createObjectURL(b); let a=document.createElement('a'); a.href=url; a.download='QRIS-DapOrderApk-082312728245.jpg'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url); showToast('📸 QRIS disimpan ke galeri ✅') }).catch(()=>{ let a=document.createElement('a'); a.href=src; a.download='QRIS-DapOrderApk.jpg'; a.target='_blank'; a.click(); showToast('📸 Tahan gambar & save ✅') })}
+function previewBukti(i){if(i.files[0]){let r=new FileReader(); r.onload=e=>{bukti=e.target.result; document.getElementById('buktiPreview').src=bukti; document.getElementById('buktiBox').classList.remove('hidden'); localStorage.setItem('bukti_v19',bukti)}; r.readAsDataURL(i.files[0])}}
+function hapusBukti(){bukti=null; localStorage.removeItem('bukti_v19'); document.getElementById('buktiBox').classList.add('hidden'); document.getElementById('buktiInput').value=''}
+function clearCart(){cart=[]; bukti=null; localStorage.removeItem('cart_v19'); localStorage.removeItem('bukti_v19'); document.getElementById('buktiBox').classList.add('hidden'); document.getElementById('buktiInput').value=''; loadOrder()}
+function checkoutPayment(){if(!cart.length) return showToast('😢 Cart kosong'); if(!bukti) return showToast('📸 Upload bukti dulu'); let tot=cart.reduce((s,c)=>s+parseInt(c.price),0); let msg=`Halo DapOrderApk 🚀%0AOrder:%0A`+cart.map(c=>`- ${c.name} Rp ${c.price}`).join('%0A')+`%0ATotal: Rp ${tot}%0A%0ABukti Transfer: Sudah upload 📸`; window.open(`https://wa.me/6283879195047?text=${msg}`,'_blank')}
+loadOrder(); if(bukti){document.getElementById('buktiPreview').src=bukti; document.getElementById('buktiBox').classList.remove('hidden')}
 </script>
 </body>
 </html>
