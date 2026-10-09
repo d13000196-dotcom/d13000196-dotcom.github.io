@@ -1,27 +1,82 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>DAP ORDER APK</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#07070b;color:#fff;font-family:Poppins,sans-serif}.top{text-align:center;padding:18px 14px 10px;padding-top:calc(18px + env(safe-area-inset-top))}.top h1{font-size:1.9rem;letter-spacing:2.5px;font-weight:800}.desc-box{max-width:700px;margin:12px auto 0;background:rgba(255,255,255,0.05);border:1px solid #ffffff14;border-radius:14px;padding:12px 14px;text-align:center}.desc-text{font-size:.78rem;opacity:.85}.tags{margin-top:8px;display:flex;justify-content:center;gap:8px}.tag{padding:4px 10px;border-radius:999px;font-size:.68rem;font-weight:700}.tag-green{background:#00ff8815;border:1px solid #00ff8844;color:#00ff88}.tag-blue{background:#00c6ff15;border:1px solid #00c6ff44;color:#00c6ff}.tag-yellow{background:#ffe60015;border:1px solid #ffe60044;color:#ffe600}.country{display:flex;justify-content:center;gap:8px;margin:12px auto}.country button{padding:6px 14px;border-radius:999px;border:1px solid #333;background:#1a1a26;color:#fff;font-weight:700;font-size:.78rem;cursor:pointer}.country button.active{background:#fff;color:#000}
-.video-layers-wrap{width:95%;max-width:1100px;margin:12px auto 20px;border-radius:22px;overflow:hidden;height:380px;background:#000;position:relative;border:1px solid #222}.video-layers-wrap video{width:100%;height:100%;object-fit:cover;display:block}.btn-video-active{position:absolute;right:14px;bottom:14px;background:#ff0a32;color:#fff;padding:7px 14px;border-radius:999px;font-size:.7rem;font-weight:800;pointer-events:none}
-.products{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:12px}.card{background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:10px}.card img{width:100%;height:145px;object-fit:cover;border-radius:12px;background:#0e0e14}.card-title{font-weight:700;margin-top:8px;font-size:.84rem}.price{font-weight:800;color:#00ff88;margin:8px 0}.price small{color:#888;font-size:.68rem;display:block}.btn{width:100%;padding:11px;border:none;border-radius:10px;font-weight:800;cursor:pointer}.btn-r{background:#ff0a32;color:#fff}.btn-b{background:#0a84ff;color:#fff}
-#floatCart{position:fixed;right:18px;bottom:calc(22px + env(safe-area-inset-bottom));width:60px;height:60px;background:linear-gradient(135deg,#00c6ff,#7a00ff);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:9999;cursor:grab;touch-action:none}#cart{position:fixed;right:-400px;top:0;width:380px;max-width:92vw;height:100dvh;background:#0f0f17;border-left:1px solid #222;transition:.35s;z-index:9998;padding:16px;display:flex;flex-direction:column}#cart.open{right:0}#cartOverlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:9997}#cartOverlay.show{display:block}
-</style></head><body>
-<div class="top"><h1>DAP ORDER APK</h1><p>OFFICIAL SHOP</p><div class="desc-box"><div class="desc-text">HAI, PENGGUNAAN WEBSITE!, INI WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR DAN TERPERCAYA.</div><div class="tags"><span class="tag tag-green">STABIL</span><span class="tag tag-blue">OTOMATIS</span><span class="tag tag-yellow">AMAN</span></div></div><div class="country"><button id="btnID" class="active" onclick="setCountry('ID')">🇮🇩 ID - Rp</button><button id="btnMY" onclick="setCountry('MY')">🇲🇾 MY - RM</button></div></div>
-<div class="video-layers-wrap"><video id="layersVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" poster="darkverse.jpg"></video><div class="btn-video-active">VIDEO HD 120FPS</div></div>
-<div class="products" id="prod"></div>
-<div id="cartOverlay" onclick="closeCart()"></div><div id="floatCart">🛒<span id="cc" style="position:absolute;top:-4px;right:-4px;background:#ff0a32;width:20px;height:20px;border-radius:50%;font-size:.68rem;display:flex;align-items:center;justify-content:center;font-weight:800">0</span></div><div id="cart"><div style="display:flex;justify-content:space-between"><h3>Keranjang</h3><span onclick="closeCart()" style="cursor:pointer">✕</span></div><div id="citems" style="flex:1;overflow:auto;margin:12px 0"></div><div id="ctotal" style="font-weight:800;text-align:center"></div><button class="btn btn-r" style="margin-top:12px" onclick="goPay()">LANJUT PAYMENT →</button></div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAP ORDER APK - OFFICIAL SHOP</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0a0a0a;color:#fff}
+.layers{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.12;background:linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%),linear-gradient(-45deg,#111 25%,transparent 25%,transparent 75%,#111 75%);background-size:40px 40px}
+.header{text-align:center;padding:25px;background:rgba(0,0,0,.9);border-bottom:2px solid #00ff88}
+.header h1{color:#00ff88;letter-spacing:2px;font-size:19px}
+.header p{color:#aaa;font-size:12px;margin-top:6px}
+.container{max-width:1000px;margin:20px auto;padding:0 15px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:#161616;border:1px solid #222;border-radius:12px;overflow:hidden}
+.card img{width:100%;height:200px;object-fit:cover;background:#111}
+.card-body{padding:15px}
+.card-body h3{color:#00ff88;margin-bottom:10px}
+.varian{margin:8px 0;background:#1f1f1f;padding:10px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+.varian button{background:#00ff88;border:none;padding:6px 14px;border-radius:6px;font-weight:bold;cursor:pointer}
+.cart{max-width:500px;margin:20px auto;background:#161616;border:1px solid #222;border-radius:12px;padding:15px;text-align:center}
+.btn-pay{width:100%;padding:13px;background:#00ff88;border:none;border-radius:8px;font-weight:bold;margin-top:10px;cursor:pointer}
+.bukti-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;margin-top:10px}
+.bukti-list img{width:100%;border-radius:6px;border:1px solid #333}
+</style>
+</head>
+<body>
+<div class="layers"></div>
+<div class="header">
+<h1>DAP ORDER APK - OFFICIAL SHOP</h1>
+<p>Website Resmi Penyedia Aplikasi Bug WhatsApp Terpercaya - Aman, Cepat & Bergaransi, Dan Juga Langsung Di Arahkan Sama Owner Website</p>
+</div>
+<div class="container" id="produk-list"></div>
+<div class="cart">
+<h3>KERANJANG</h3>
+<div id="cart-list" style="margin:10px 0;color:#aaa;font-size:14px">Belum ada item</div>
+<div id="total" style="font-size:20px;color:#00ff88;font-weight:bold">Total: Rp 0</div>
+<button class="btn-pay" onclick="kePayment()">LANJUT KE PAYMENT</button>
+<h4 style="margin-top:20px">DASHBOARD BUKTI TF</h4>
+<div class="bukti-list" id="bukti-list"></div>
+</div>
 <script>
-const v=document.getElementById('layersVideo');let vs=["darkverse-layers.mp4","video.mp4"],vi=0;function tryV(){if(vi>=vs.length)return;v.src=vs[vi]+"?v=45";v.load();v.play().catch(()=>{vi++;tryV();});}v.addEventListener('error',()=>{vi++;tryV();});tryV();
-let country=localStorage.getItem('country')||'ID';const RATE=3600;
-function setCountry(c){country=c;localStorage.setItem('country',c);document.getElementById('btnID').classList.toggle('active',c==='ID');document.getElementById('btnMY').classList.toggle('active',c==='MY');render();upd();}
-function fmtIDR(n){return 'Rp '+n.toLocaleString('id-ID');}function fmtMYR(n){return 'RM '+(n/RATE).toFixed(2);}function priceDisplay(n){return country==='MY'?fmtMYR(n)+`<small>${fmtIDR(n)}</small>`:fmtIDR(n)+`<small>${fmtMYR(n)}</small>`;}
-const DATA=[
-{app:'darkverse',name:'DarkVerse',img:'darkverse.jpg',tiers:[{id:'dv-full',label:'FULL UPDATE',price:50000},{id:'dv-reseller',label:'RESELLER',price:80000},{id:'dv-partner',label:'PARTNER',price:150000}]},
-{app:'xgtr4sh',name:'X-GTR4SH',img:'xgtr4sh.jpg',tiers:[{id:'xg-full',label:'FULL UPDATE',price:20000},{id:'xg-reseller',label:'RESELLER',price:30000},{id:'xg-admin',label:'ADMIN',price:50000},{id:'xg-partner',label:'PARTNER',price:70000},{id:'xg-mod',label:'MODERATOR',price:100000}]}
+// === EDIT NAMA & FOTO GAMPANG DISINI WOK ===
+const produk = [
+{
+nama:"DarkVerse", // GANTI NAMA APK 1 DISINI
+foto:"darkverse.jpg",
+varian:[
+{nama:"FULL UPDATE",harga:50000},
+{nama:"RESELLER",harga:80000},
+{nama:"PARTNER",harga:150000}
+]
+},
+{
+nama:"X-GTR4SH", // GANTI NAMA APK 2 DISINI
+foto:"xgtr4sh.jpg",
+varian:[
+{nama:"FULL UPDATE",harga:20000},
+{nama:"RESELLER",harga:30000},
+{nama:"ADMIN",harga:50000},
+{nama:"PARTNER",harga:70000},
+{nama:"MODERATOR",harga:100000}
+]
+}
 ];
-let cart=JSON.parse(localStorage.getItem('cart')||'[]');
-function render(){let h='';DATA.forEach(app=>{app.tiers.forEach(t=>{h+=`<div class="card"><img src="${app.img}?v=45" onerror="this.src='darkverse.jpg'"><div class="card-title">${app.name} - ${t.label}</div><div class="price">${priceDisplay(t.price)}</div><button class="btn ${t.label.includes('RESELLER')||t.label.includes('PARTNER')?'btn-b':'btn-r'}" onclick="add('${t.id}',${t.price},'${app.name} ${t.label}')">BELI</button></div>`;});});document.getElementById('prod').innerHTML=h;}
-function add(id,price,name){let f=cart.find(c=>c.id===id);if(f)f.qty+=1;else cart.push({id,price,name,qty:1});localStorage.setItem('cart',JSON.stringify(cart));upd();openCart();}
-function upd(){let tot=0,qty=0,h='';cart.forEach((c,i)=>{tot+=c.price*c.qty;qty+=c.qty;h+=`<div style="background:#1a1a26;margin:8px 0;padding:10px;border-radius:10px;display:flex;justify-content:space-between"><span>${c.name} x${c.qty}</span><span>${fmtIDR(c.price*c.qty)} <span onclick="del(${i})" style="color:#ff0a32;cursor:pointer">✕</span></span></div>`;});document.getElementById('citems').innerHTML=h||'Kosong';document.getElementById('ctotal').innerText='Total: '+fmtIDR(tot);document.getElementById('cc').innerText=qty;}
-function del(i){cart.splice(i,1);localStorage.setItem('cart',JSON.stringify(cart));upd();}
-function openCart(){document.getElementById('cart').classList.add('open');document.getElementById('cartOverlay').classList.add('show');}function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('cartOverlay').classList.remove('show');}function goPay(){if(cart.length===0)return alert('Kosong');location.href='payment.html?v=45';}
-const fc=document.getElementById('floatCart');let drag=false,sx,sy,ol,ot,moved=false;function gp(e){return e.touches?e.touches[0]:e;}function ds(e){drag=true;moved=false;let p=gp(e);sx=p.clientX;sy=p.clientY;let r=fc.getBoundingClientRect();ol=r.left;ot=r.top;fc.style.transition='none';}function dm(e){if(!drag)return;let p=gp(e);let dx=p.clientX-sx,dy=p.clientY-sy;if(Math.abs(dx)>5||Math.abs(dy)>5)moved=true;let nl=ol+dx,nt=ot+dy;nl=Math.max(8,Math.min(window.innerWidth-fc.offsetWidth-8,nl));nt=Math.max(8,Math.min(window.innerHeight-fc.offsetHeight-8,nt));fc.style.left=nl+'px';fc.style.top=nt+'px';fc.style.right='auto';fc.style.bottom='auto';e.preventDefault();}function de(){drag=false;fc.style.transition='';setTimeout(()=>moved=false,80);}fc.addEventListener('mousedown',ds);fc.addEventListener('touchstart',ds,{passive:false});window.addEventListener('mousemove',dm,{passive:false});window.addEventListener('touchmove',dm,{passive:false});window.addEventListener('mouseup',de);window.addEventListener('touchend',de);fc.addEventListener('click',()=>{if(!moved)openCart();});
-render();upd();
-</script></body></html>
+// ============================================
+let cart=[],total=0;
+let listEl=document.getElementById('produk-list');
+produk.forEach((p,i)=>{
+let vHTML=p.varian.map((v,j)=>`<div class="varian"><span>${v.nama} - Rp ${v.harga.toLocaleString()}</span><button onclick="tambah(${i},${j})">+</button></div>`).join('');
+let d=document.createElement('div');d.className='card';
+d.innerHTML=`<img src="${p.foto}" onerror="this.src='https://via.placeholder.com/400x300/111/00ff88?text=${encodeURIComponent(p.nama)}'"><div class="card-body"><h3>${p.nama}</h3>${vHTML}</div>`;
+listEl.appendChild(d);
+});
+function tambah(pi,vi){let it=produk[pi].varian[vi];cart.push({nama:`${produk[pi].nama} - ${it.nama}`,harga:it.harga});total+=it.harga;render();}
+function render(){document.getElementById('cart-list').innerHTML=cart.length?cart.map(c=>`${c.nama} - Rp ${c.harga.toLocaleString()}`).join('<br>'):'Belum ada item';document.getElementById('total').innerText='Total: Rp '+total.toLocaleString();localStorage.setItem('dap_total',total);}
+function kePayment(){if(total==0){alert('Keranjang kosong');return}location.href='payment.html';}
+function loadBukti(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');document.getElementById('bukti-list').innerHTML=list.map(b=>`<img src="${b.img}">`).join('')||'<p style="color:#555;font-size:12px">Belum ada bukti</p>';}
+loadBukti();setInterval(loadBukti,2000);
+</script>
+</body>
+</html>
