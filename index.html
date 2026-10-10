@@ -40,7 +40,7 @@ body{background:#07090f;color:#fff;padding-bottom:100px;overflow-x:hidden}
 <div class="top"><h1>DAP ORDER APK</h1><p>OFFICIAL SHOP</p><div class="desc">HAI PENGGUNA WEBSITE!, INI ADALAH WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR, SILAHKAN PILIH APLIKASI BUG YANG ANDA SUKA, SEMOGA PUAS DAN BERLANGGANAN!!<div class="badges"><div class="badge b1">STABIL</div><div class="badge b2">OTOMATIS</div><div class="badge b3">AMAN</div></div></div><div class="cur"><div class="active" id="cid">🇮🇩 ID Rp</div><div id="cmy">🇲🇾 MY RM</div></div></div>
 <div class="grid" id="grid"></div>
 <div class="overlay" id="ov"></div>
-<div class="sheet" id="sc"><div class="drag" id="dc"></div><div class="sheet-head"><span>🛒 Keranjang - <span id="cn">0</span></span><span id="ci" style="background:#fff;color:#000;padding:4px 10px;border-radius:999px;font-size:.7rem">0 ITEM</span></div><div class="sheet-body"><div id="cl"></div><div id="ct" style="text-align:center;color:#00ff88;font-weight:800;margin:12px 0"></div><button id="goPay" style="width:100%;padding:14px;background:linear-gradient(90deg,#00ff88,#00bfff);border:none;border-radius:12px;font-weight:800">LANJUT BAYAR → A/N MIY***N</button></div></div>
+<div class="sheet" id="sc"><div class="drag" id="dc"></div><div class="sheet-head"><span>🛒 Keranjang - <span id="cn">0</span></span><span id="ci" style="background:#fff;color:#000;padding:4px 10px;border-radius:999px;font-size:.7rem">0 ITEM</span></div><div class="sheet-body"><div id="cl"></div><div id="ct" style="text-align:center;color:#00ff88;font-weight:800;margin:12px 0"></div><button id="goPay" style="width:100%;padding:14px;background:linear-gradient(90deg,#00ff88,#00bfff);border:none;border-radius:12px;font-weight:800">LANJUT PEMBAYARAN → PENCET</button></div></div>
 <div class="sheet" id="sb"><div class="drag" id="db"></div><div class="sheet-head"><span>📋 Dashboard Bukti A/N MIY***N</span><span id="bc" style="font-size:.7rem;opacity:.6">0 bukti</span></div><div class="sheet-body"><div id="bl"></div></div></div>
 <div class="float f2" id="fB">📋</div><div class="float f1" id="fC">🛒<div class="cnt" id="co">0</div></div>
 <script>
@@ -58,11 +58,11 @@ async function tog(){
 if(customSoundURL){
 try{
 if(customAudio.paused){await customAudio.play();sBtn.innerHTML='🔊 MP3 "'+customSoundName+'" PLAYING 🟢 - TAP PAUSE - 2X TAP GANTI';canvas.style.opacity='0.9';}
-else{customAudio.pause();sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" PAUSED - TAP PLAY - 2X TAP GANTI - MIY***N';canvas.style.opacity='0.6';}
+else{customAudio.pause();sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" PAUSED - TAP PLAY - 2X TAP GANTI';canvas.style.opacity='0.6';}
 }catch(e){alert('Gagal play MP3, coba file lain wok');}
 return;
 }
-if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')await ac.resume();if(!on){os=ac.createOscillator();gn=ac.createGain();os.type='sawtooth';os.frequency.value=55;os.connect(gn);gn.connect(ac.destination);gn.gain.value=0.045;os.start();on=true;sBtn.innerHTML='🔊 SOUND ON 120FPS 🟢 MIY***N - 2X TAP UPLOAD MP3 - "'+customSoundName+'"';canvas.style.opacity='0.9';}else{os.stop();on=false;sBtn.innerHTML='✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP - 2X TAP UPLOAD MP3 - A/N MIY***N';canvas.style.opacity='0.6';}
+if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')await ac.resume();if(!on){os=ac.createOscillator();gn=ac.createGain();os.type='sawtooth';os.frequency.value=55;os.connect(gn);gn.connect(ac.destination);gn.gain.value=0.045;os.start();on=true;sBtn.innerHTML='🔊 SOUND ON 120FPS 🟢 - 2X TAP UPLOAD MP3 - "'+customSoundName+'"';canvas.style.opacity='0.9';}else{os.stop();on=false;sBtn.innerHTML='✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP - 2X TAP UPLOAD MP3';canvas.style.opacity='0.6';}
 }
 sBtn.onclick=tog;
 let lastTap=0;
