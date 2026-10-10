@@ -14,7 +14,7 @@ body{background:#07090f;color:#fff;padding-bottom:100px;overflow-x:hidden}
 .top h1{font-size:2.3rem;font-weight:800;background:linear-gradient(90deg,#00ff88,#00bfff,#ffeb00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .desc{max-width:650px;margin:10px auto;background:rgba(18,18,26,.9);border:1px solid #1e1e2a;border-radius:16px;padding:14px;font-size:.85rem;backdrop-filter:blur(8px)}
 .badges{display:flex;justify-content:center;gap:8px;margin-top:8px}.badge{padding:5px 14px;border-radius:999px;font-size:.7rem;font-weight:800;border:1px solid}
-.b1{color:#00ff88;border-color:#00ff88;background:#00ff8820;box-shadow:0 0 12px #00ff8844}.b2{color:#00bfff;border-color:#00bfff;background:#00bfff20;box-shadow:0 0 12px #00bfff44}.b3{color:#ffeb00;border-color:#ffeb00;background:#ffeb0020;box-shadow:0 0 12px #ffeb0044}
+.b1{color:#00ff88;border-color:#00ff88;background:#00ff8820}.b2{color:#00bfff;border-color:#00bfff;background:#00bfff20}.b3{color:#ffeb00;border-color:#ffeb00;background:#ffeb0020}
 .cur{position:relative;z-index:10;display:flex;justify-content:center;gap:10px;margin:12px 0}.cur div{padding:7px 18px;border-radius:999px;border:1px solid #333;background:#1a1a26;cursor:pointer;font-weight:700}.cur div.active{background:#fff;color:#000}
 .grid{position:relative;z-index:10;max-width:700px;margin:10px auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
 .card{background:linear-gradient(145deg,#12121aee,#1a1a2eee);border:1px solid #1e1e2a;border-radius:16px;overflow:hidden;cursor:pointer}
@@ -35,7 +35,9 @@ body{background:#07090f;color:#fff;padding-bottom:100px;overflow-x:hidden}
 <body>
 <canvas id="layerCanvas"></canvas>
 <div class="sound" id="sBtn">✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP</div>
-<div class="top"><h1>DAP ORDER APK</h1><p>OFFICIAL SHOP</p><div class="desc">HAI PENGGUNA WEBSITE!, INI ADALAH WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR, SILAHKAN PILIH APLIKASI BUG NYA, SEMOGA PUAS DAN BERLANGGANAN!!<div class="badges"><div class="badge b1">STABIL</div><div class="badge b2">OTOMATIS</div><div class="badge b3">AMAN</div></div></div><div class="cur"><div class="active" id="cid">🇮🇩 ID Rp</div><div id="cmy">🇲🇾 MY RM</div></div></div>
+<input type="file" id="mp3File" accept="audio/*" style="display:none">
+<audio id="customAudio" loop></audio>
+<div class="top"><h1>DAP ORDER APK</h1><p>OFFICIAL SHOP</p><div class="desc">HAI PENGGUNA WEBSITE!, INI ADALAH WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR, SILAHKAN PILIH APLIKASI BUG YANG ANDA SUKA, SEMOGA PUAS DAN BERLANGGANAN!!<div class="badges"><div class="badge b1">STABIL</div><div class="badge b2">OTOMATIS</div><div class="badge b3">AMAN</div></div></div><div class="cur"><div class="active" id="cid">🇮🇩 ID Rp</div><div id="cmy">🇲🇾 MY RM</div></div></div>
 <div class="grid" id="grid"></div>
 <div class="overlay" id="ov"></div>
 <div class="sheet" id="sc"><div class="drag" id="dc"></div><div class="sheet-head"><span>🛒 Keranjang - <span id="cn">0</span></span><span id="ci" style="background:#fff;color:#000;padding:4px 10px;border-radius:999px;font-size:.7rem">0 ITEM</span></div><div class="sheet-body"><div id="cl"></div><div id="ct" style="text-align:center;color:#00ff88;font-weight:800;margin:12px 0"></div><button id="goPay" style="width:100%;padding:14px;background:linear-gradient(90deg,#00ff88,#00bfff);border:none;border-radius:12px;font-weight:800">LANJUT BAYAR → A/N MIY***N</button></div></div>
@@ -43,11 +45,53 @@ body{background:#07090f;color:#fff;padding-bottom:100px;overflow-x:hidden}
 <div class="float f2" id="fB">📋</div><div class="float f1" id="fC">🛒<div class="cnt" id="co">0</div></div>
 <script>
 const canvas=document.getElementById('layerCanvas'),ctx=canvas.getContext('2d');function rs(){canvas.width=innerWidth;canvas.height=innerHeight}rs();addEventListener('resize',rs);let dots=[];for(let i=0;i<85;i++)dots.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*1.6,vy:(Math.random()-.5)*1.6,r:Math.random()*2+1,c:['#00ff88','#00bfff','#ffeb00'][i%3]});(function anim(){ctx.clearRect(0,0,canvas.width,canvas.height);dots.forEach(d=>{d.x+=d.vx;d.y+=d.vy;if(d.x<0||d.x>canvas.width)d.vx*=-1;if(d.y<0||d.y>canvas.height)d.vy*=-1;ctx.fillStyle=d.c;ctx.globalAlpha=.85;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,7);ctx.fill()});requestAnimationFrame(anim)})();
-let ac,os,gn,on=false;async function tog(){if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')await ac.resume();if(!on){os=ac.createOscillator();gn=ac.createGain();os.type='sawtooth';os.frequency.value=55;os.connect(gn);gn.connect(ac.destination);gn.gain.value=0.045;os.start();on=true;sBtn.innerHTML='🔊 SOUND ON 120FPS 🟢 MIY***N';canvas.style.opacity='0.9'}else{os.stop();on=false;sBtn.innerHTML='✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP - A/N MIY***N';canvas.style.opacity='0.6'}}sBtn.onclick=tog;
+let ac,os,gn,on=false;
+let customSoundURL=localStorage.getItem('dap_custom_sound')||'';
+let customSoundName=localStorage.getItem('dap_custom_sound_name')||'';
+const mp3File=document.getElementById('mp3File');
+const customAudio=document.getElementById('customAudio');
+if(customSoundURL){
+customAudio.src=customSoundURL;
+document.getElementById('sBtn').innerHTML='🎵 MP3 "'+customSoundName+'" READY - TAP PLAY - 2X TAP GANTI';
+}
+async function tog(){
+if(customSoundURL){
+try{
+if(customAudio.paused){await customAudio.play();sBtn.innerHTML='🔊 MP3 "'+customSoundName+'" PLAYING 🟢 - TAP PAUSE - 2X TAP GANTI';canvas.style.opacity='0.9';}
+else{customAudio.pause();sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" PAUSED - TAP PLAY - 2X TAP GANTI - MIY***N';canvas.style.opacity='0.6';}
+}catch(e){alert('Gagal play MP3, coba file lain wok');}
+return;
+}
+if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')await ac.resume();if(!on){os=ac.createOscillator();gn=ac.createGain();os.type='sawtooth';os.frequency.value=55;os.connect(gn);gn.connect(ac.destination);gn.gain.value=0.045;os.start();on=true;sBtn.innerHTML='🔊 SOUND ON 120FPS 🟢 MIY***N - 2X TAP UPLOAD MP3 - "'+customSoundName+'"';canvas.style.opacity='0.9';}else{os.stop();on=false;sBtn.innerHTML='✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP - 2X TAP UPLOAD MP3 - A/N MIY***N';canvas.style.opacity='0.6';}
+}
+sBtn.onclick=tog;
+let lastTap=0;
+sBtn.addEventListener('dblclick',()=>mp3File.click());
+sBtn.addEventListener('click',()=>{let now=Date.now();if(now-lastTap<400){mp3File.click();}lastTap=now;});
+let pressTimer;
+sBtn.addEventListener('touchstart',()=>{pressTimer=setTimeout(()=>mp3File.click(),650);},{passive:true});
+sBtn.addEventListener('touchend',()=>clearTimeout(pressTimer));
+mp3File.onchange=function(){
+let f=this.files[0];if(!f)return;
+if(f.size>12*1024*1024){alert('File kegedean cok max 12MB!');return;}
+let r=new FileReader();
+r.onload=e=>{
+customSoundURL=e.target.result;
+customSoundName=f.name;
+localStorage.setItem('dap_custom_sound',customSoundURL);
+localStorage.setItem('dap_custom_sound_name',customSoundName);
+customAudio.src=customSoundURL;
+customAudio.play().then(()=>{
+sBtn.innerHTML='🔊 MP3 "'+customSoundName+'" PLAYING 🟢 - SOUND';
+alert('✅ MP3 "'+customSoundName+'" kesimpen permanen! Refresh tetep ada nama nya!');
+}).catch(()=>{sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" READY - TAP PLAY - SOUND';});
+};
+r.readAsDataURL(f);
+};
 const prod=[{n:"DarkVerse",f:"darkverse.jpg",v:[{n:"FULL UPDATE",h:50000},{n:"RESELLER",h:80000},{n:"PARTNER",h:150000}]},{n:"X-GTR4SH",f:"xgtr4sh.jpg",v:[{n:"FULL UPDATE",h:20000},{n:"RESELLER",h:30000},{n:"ADMIN",h:50000},{n:"PARTNER",h:70000},{n:"MODERATOR",h:100000}]}];
 let cur=localStorage.getItem('country')||'ID';let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
 function fmt(n){return cur==='MY'?'RM '+(n/3600).toFixed(2):'Rp '+n.toLocaleString('id-ID')}function fmtRp(n){return 'Rp '+n.toLocaleString('id-ID')}
-function setCur(c){cur=c;localStorage.setItem('country',c);cid.classList.toggle('active',c==='ID');cmy.classList.toggle('active',c==='MY');render()}cid.onclick=()=>setCur('ID');cmy.onclick=()=>setCur('MY');fC.onclick=()=>openS('c');fB.onclick=()=>openS('b');ov.onclick=closeAll;goPay.onclick=()=>{if(cart.length)location.href='payment.html'};
+function setCur(c){cur=c;localStorage.setItem('country',c);cid.classList.toggle('active',c==='ID');cmy.classList.toggle('active',c==='MY');render()}cid.onclick=()=>setCur('ID');cmy.onclick=()=>setCur('MY');fC.onclick=()=>openS('c');fB.onclick=()=>openS('b');ov.onclick=closeAll;goPay.onclick=()=>{if(cart.length)location.href='payment.html';};
 function render(){let g=document.getElementById('grid');g.innerHTML='';prod.forEach(p=>{p.v.forEach(v=>{let d=document.createElement('div');d.className='card';d.innerHTML=`<img src="${p.f}" onerror="this.src='https://via.placeholder.com/400x300/111/00ff88?text=${p.n}'"><div class="card-body"><div style="font-size:.85rem;font-weight:700;min-height:34px">${p.n} - ${v.n}</div><div style="color:#00ff88;font-weight:800">${fmt(v.h)}</div><button class="btn">BELI / BUY</button></div>`;d.onclick=()=>{cart.push({nama:`${p.n} - ${v.n}`,harga:v.h});save();openS('c')};g.appendChild(d)})});renderCart();loadB()}
 function save(){localStorage.setItem('dap_cart_detail',JSON.stringify(cart));renderCart()}
 function renderCart(){let grouped={};cart.forEach(c=>{if(!grouped[c.nama])grouped[c.nama]={nama:c.nama,harga:c.harga,qty:0};grouped[c.nama].qty++});let html='';Object.values(grouped).forEach(g=>{html+=`<div class="item"><div><div style="font-weight:700;font-size:.85rem">${g.nama}</div><div style="color:#ff4d4d;font-size:.8rem">${fmtRp(g.harga)} x ${g.qty}</div></div><div class="qty"><button onclick="chg('${g.nama}',-1)">-</button><span>${g.qty}</span><button onclick="chg('${g.nama}',1)">+</button></div></div>`});cl.innerHTML=html||'<div style="text-align:center;opacity:.5;padding:20px">Kosong - drag handle atas buat tutup</div>';cn.innerText=Object.keys(grouped).length||cart.length;ci.innerText=cart.length+' ITEM';co.innerText=cart.length;co.style.display=cart.length?'flex':'none';let t=cart.reduce((a,b)=>a+b.harga,0);ct.innerText=t?`Total: ${fmt(t)} A/N MIY***N`:''}
