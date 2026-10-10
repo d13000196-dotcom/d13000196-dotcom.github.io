@@ -88,7 +88,7 @@ alert('✅ MP3 "'+customSoundName+'" kesimpen permanen! Refresh tetep ada nama n
 };
 r.readAsDataURL(f);
 };
-const prod=[{n:"DarkVerse",f:"darkverse.jpg",v:[{n:"FULL UPDATE",h:50000},{n:"RESELLER",h:80000},{n:"PARTNER",h:150000}]},{n:"X-GTR4SH",f:"xgtr4sh.jpg",v:[{n:"FULL UPDATE",h:20000},{n:"RESELLER",h:30000},{n:"ADMIN",h:50000},{n:"PARTNER",h:70000},{n:"MODERATOR",h:100000}]},{n:"TRAPENDEN",f:"trapenden.jpg",v:[{n:"FULL UPDATE",h:25000},{n:"RESELLER",h:45000},{n:"ADMIN",h:55000},{n:"VIP",h:60000},{n:"PT",h:80000},{n:"MODERATOR",h:100000}]}
+const prod=[{n:"DarkVerse",f:"darkverse.jpg",v:[{n:"FULL UPDATE",h:50000},{n:"RESELLER",h:80000},{n:"PARTNER",h:150000}]},{n:"X-GTR4SH",f:"xgtr4sh.jpg",v:[{n:"FULL UPDATE",h:20000},{n:"RESELLER",h:30000},{n:"ADMIN",h:50000},{n:"PARTNER",h:70000},{n:"MODERATOR",h:100000}]},{n:"TRAPENDEN",f:"trapenden.jpg",v:[{n:"FULL UPDATE",h:25000},{n:"RESELLER",h:45000},{n:"ADMIN",h:55000},{n:"VIP",h:60000},{n:"PT",h:80000},{n:"MODERATOR",h:100000}]}];
 let cur=localStorage.getItem('country')||'ID';let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
 function fmt(n){return cur==='MY'?'RM '+(n/3600).toFixed(2):'Rp '+n.toLocaleString('id-ID')}function fmtRp(n){return 'Rp '+n.toLocaleString('id-ID')}
 function setCur(c){cur=c;localStorage.setItem('country',c);cid.classList.toggle('active',c==='ID');cmy.classList.toggle('active',c==='MY');render()}cid.onclick=()=>setCur('ID');cmy.onclick=()=>setCur('MY');fC.onclick=()=>openS('c');fB.onclick=()=>openS('b');ov.onclick=closeAll;goPay.onclick=()=>{if(cart.length)location.href='payment.html';};
