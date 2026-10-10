@@ -7,184 +7,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#07070b;color:#fff;padding:0 0 80px}
-.top{text-align:center;padding:22px 16px 10px}
-.top h1{font-size:2rem;font-weight:800;letter-spacing:2px;line-height:1.1}
-.top h2{font-size:1rem;font-weight:400;opacity:.9;margin-top:4px}
-.desc{max-width:650px;margin:14px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px;text-align:center;font-size:.8rem;line-height:1.4;opacity:.85}
-.badges{display:flex;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+body{background:#07070b;color:#fff;padding-bottom:90px}
+.top{text-align:center;padding:20px 16px 10px}
+.top h1{font-size:2rem;font-weight:800;letter-spacing:2px}
+.desc{max-width:650px;margin:12px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px;text-align:center;font-size:.8rem}
+.badges{display:flex;justify-content:center;gap:8px;margin-top:10px}
 .badge{padding:4px 14px;border-radius:999px;font-size:.7rem;font-weight:800;border:1px solid}
-.b-green{color:#00ff88;border-color:#00ff88;background:#00ff8815}
-.b-blue{color:#00bfff;border-color:#00bfff;background:#00bfff15}
-.b-yellow{color:#ffeb00;border-color:#ffeb00;background:#ffeb0015}
-.currency{display:flex;justify-content:center;gap:10px;margin:14px 0}
-.cur{padding:6px 16px;border-radius:999px;font-size:.8rem;font-weight:700;border:1px solid #333;cursor:pointer;background:#1a1a26}
-.cur.active{background:#fff;color:#000}
-.hero{max-width:650px;margin:0 auto;padding:0 16px}
-.hero-box{position:relative;border-radius:18px;overflow:hidden;border:1px solid #1e1e2a;background:#111}
-.hero-box img{width:100%;height:320px;object-fit:cover;display:block}
-.hero-tag{position:absolute;bottom:12px;right:12px;background:#ff0a32;color:#fff;padding:6px 12px;border-radius:999px;font-size:.7rem;font-weight:800}
-.grid{max-width:700px;margin:18px auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
-.card{background:#12121a;border:1px solid #1e1e2a;border-radius:16px;overflow:hidden;cursor:pointer;position:relative}
-.card img{width:100%;height:150px;object-fit:cover;background:#000;display:block}
+.b-green{color:#00ff88;border-color:#00ff88;background:#00ff8815}.b-blue{color:#00bfff;border-color:#00bfff;background:#00bfff15}.b-yellow{color:#ffeb00;border-color:#ffeb00;background:#ffeb0015}
+.cur{display:flex;justify-content:center;gap:10px;margin:14px 0}
+.cur div{padding:6px 16px;border-radius:999px;font-size:.8rem;font-weight:700;border:1px solid #333;background:#1a1a26;cursor:pointer}
+.cur div.active{background:#fff;color:#000}
+.grid{max-width:700px;margin:10px auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
+.card{background:#12121a;border:1px solid #1e1e2a;border-radius:16px;overflow:hidden}
+.card img{width:100%;height:150px;object-fit:cover;background:#000}
 .card-body{padding:10px}
-.card-title{font-size:.8rem;font-weight:700;line-height:1.2;min-height:32px}
-.card-price{color:#00ff88;font-weight:800;font-size:.9rem;margin-top:6px}
-.card-role{font-size:.65rem;opacity:.6;margin-top:2px}
-.cart-float{position:fixed;bottom:18px;right:18px;background:linear-gradient(135deg,#6a5af9,#8a5cff);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 8px 20px #0008;cursor:pointer;z-index:99}
-.cart-count{position:absolute;top:-4px;right:-4px;background:#ff0a32;color:#fff;font-size:.7rem;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
-.cart-box{max-width:650px;margin:16px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px;display:none}
-.bukti-wrap{max-width:650px;margin:18px auto;padding:0 12px}
-.bukti-item{background:#12121a;border:1px solid #1e1e2a;border-radius:12px;padding:10px;margin:10px 0}
-.bukti-item img{width:100%;border-radius:8px;margin-top:8px;max-height:280px;object-fit:contain}
-.layers{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.08;background:linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%),linear-gradient(-45deg,#111 25%,transparent 25%,transparent 75%,#111 75%);background-size:40px 40px}
+.card-title{font-size:.8rem;font-weight:700;min-height:32px}
+.card-price{color:#00ff88;font-weight:800;font-size:.9rem;margin-top:4px}
+.btn-buy{width:100%;margin-top:8px;padding:8px;background:#fff;color:#000;border:none;border-radius:8px;font-weight:800;font-size:.75rem;cursor:pointer}
+.cart-box{max-width:650px;margin:16px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:32px;height:32px;border-radius:50%;border:none;background:#fff;color:#000;font-weight:800;cursor:pointer}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.act{padding:10px;border-radius:999px;border:1px solid #333;background:#1e1e2e;color:#fff;font-weight:700;cursor:pointer}
+.total-row{display:flex;justify-content:space-between;margin-top:12px;font-weight:800}
+.total-rp{color:#00ff88;text-align:right}
+.float{position:fixed;bottom:18px;right:18px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6a5af9,#8a5cff);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9}
+.count{position:absolute;top:-4px;right:-4px;background:#ff0a32;color:#fff;width:20px;height:20px;border-radius:50%;font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:800}
+.bukti-item{background:#1a1a26;border:1px solid #222;border-radius:12px;padding:10px;margin:10px 0}
+.bukti-item img{width:100%;border-radius:8px;margin-top:8px}
 </style>
 </head>
 <body>
-<div class="layers"></div>
-<div class="top">
-<h1>DAP ORDER APK</h1>
-<h2>OFFICIAL SHOP</h2>
+<div class="top"><h1>DAP ORDER APK</h1><h2 style="font-weight:400;font-size:1rem;opacity:.8">OFFICIAL SHOP</h2><div class="desc">HAI, PENGGUNAAN WEBSITE!, INI WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR DAN TERPERCAYA.<div class="badges"><div class="badge b-green">STABIL</div><div class="badge b-blue">OTOMATIS</div><div class="badge b-yellow">AMAN</div></div></div><div class="cur"><div class="active" id="cur-id" onclick="setCur('ID')">🇮🇩 ID - Rp</div><div id="cur-my" onclick="setCur('MY')">🇲🇾 MY - RM</div></div></div>
+
+<div class="grid" id="grid"></div>
+
+<div class="cart-box">
+<div style="display:flex;justify-content:space-between;font-weight:800"><span>🛒 Keranjang - <span id="c-num">0</span></span><span id="c-item" style="background:#fff;color:#000;padding:4px 10px;border-radius:999px;font-size:.7rem">0 ITEM</span></div>
+<div id="cart-list"></div>
+<div class="total-row"><span>Total Bayar</span><div class="total-rp"><div id="rp">Rp 0</div><div id="rm" style="font-size:.7rem;color:#aaa;font-weight:400">RM 0 (MY)</div></div></div>
+<div class="actions"><button class="act" onclick="kosongkan()">🗑️ Kosongkan</button><button class="act" onclick="document.getElementById('grid').scrollIntoView()">+ Tambah</button></div>
+<button onclick="kePayment()" style="width:100%;margin-top:12px;padding:14px;background:#00ff88;border:none;border-radius:12px;font-weight:800;cursor:pointer">LANJUT BAYAR → DANA & QRIS</button>
+
+<div style="margin-top:18px;border-top:1px solid #222;padding-top:12px"><h3 style="text-align:center;font-size:.85rem">📋 Dashboard Bukti TF</h3><div id="bukti"></div></div>
 </div>
 
-<div class="desc">
-HAI, PENGGUNA WEBSITE!, INI WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR DAN TERPERCAYA. SILAHKAN PILIH APLIKASI YANG INGIN ANDA BELI, SEMOGA BERLANGGANAN!!
-<div class="badges">
-<div class="badge b-green">STABIL</div>
-<div class="badge b-blue">OTOMATIS</div>
-<div class="badge b-yellow">AMAN</div>
-</div>
-</div>
-
-<div class="currency">
-<div class="cur active" id="cur-id" onclick="setCur('ID')">🇮🇩 ID - Rp</div>
-<div class="cur" id="cur-my" onclick="setCur('MY')">🇲🇾 MY - RM</div>
-</div>
-
-<div class="hero">
-<div class="hero-box">
-<img src="produk1.jpg" onerror="this.src='https://via.placeholder.com/600x400/111/00ff88?text=DAP+ORDER+APK'" id="hero-img">
-<div class="hero-tag">VIDEO HD 120FPS</div>
-</div>
-</div>
-
-<div class="grid" id="produk-grid"></div>
-
-<div class="cart-box" id="cart-box">
-<h3 style="text-align:center;font-size:.9rem">🛒 KERANJANG</h3>
-<div id="cart-list" style="margin:10px 0;font-size:.8rem"></div>
-<div id="cart-total" style="text-align:center;color:#00ff88;font-weight:800;font-size:1.1rem"></div>
-<button onclick="kePayment()" style="width:100%;margin-top:10px;padding:12px;background:#00ff88;border:none;border-radius:12px;font-weight:800;cursor:pointer">LANJUT KE PAYMENT → DANA & QRIS</button>
-</div>
-
-<div class="bukti-wrap">
-<h3 style="text-align:center;font-size:.9rem">📋 DASHBOARD BUKTI TF</h3>
-<p style="text-align:center;font-size:.65rem;opacity:.5;margin-top:4px">Bukti dari payment DANA 082312728245 akan muncul disini</p>
-<div id="bukti-list"></div>
-<button onclick="clearBukti()" style="width:100%;margin-top:10px;background:#1e1e2a;border:1px solid #333;color:#fff;padding:8px;border-radius:10px;font-size:.7rem">Hapus Semua (Admin)</button>
-</div>
-
-<div class="cart-float" onclick="toggleCart()"><span>🛒</span><div class="cart-count" id="cart-count">0</div></div>
+<div class="float" onclick="document.querySelector('.cart-box').scrollIntoView({behavior:'smooth'})">🛒<div class="count" id="count">0</div></div>
 
 <script>
-// ============ EDIT NAMA & FOTO DISINI AJA WOK ============
-const produkMaster = [
-{
-nama:"DarkVerse", // GANTI NAMA APK 1
-foto:"darkverse.jpg",
-varian:[
-{nama:"FULL UPDATE",harga:50000,role:"FULL UPDATE"},
-{nama:"RESELLER",harga:80000,role:"RESELLER"},
-{nama:"PARTNER",harga:150000,role:"PARTNER"}
-]
-},
-{
-nama:"X-GTR4SH", // GANTI NAMA APK 2
-foto:"xgtr4sh.jpg",
-varian:[
-{nama:"FULL UPDATE",harga:20000,role:"FULL UPDATE"},
-{nama:"RESELLER",harga:30000,role:"RESELLER"},
-{nama:"ADMIN",harga:50000,role:"ADMIN"},
-{nama:"PARTNER",harga:70000,role:"PARTNER"},
-{nama:"MODERATOR",harga:100000,role:"MODERATOR"}
-]
-}
+const produk=[
+{nama:"APK 1",foto:"produk1.jpg",varian:[{nama:"FULL UPDATE",harga:50000},{nama:"RESELLER",harga:80000},{nama:"PARTNER",harga:150000}]},
+{nama:"APK 2",foto:"produk2.jpg",varian:[{nama:"FULL UPDATE",harga:20000},{nama:"RESELLER",harga:30000},{nama:"ADMIN",harga:50000},{nama:"PARTNER",harga:70000},{nama:"MODERATOR",harga:100000}]}
 ];
-// =======================================================
-const RATE=3600;
-let currency=localStorage.getItem('country')||'ID';
+let cur=localStorage.getItem('country')||'ID';
 let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
-
-function fmt(n){return currency==='MY'?'RM '+(n/RATE).toFixed(2):'Rp '+n.toLocaleString('id-ID');}
-function setCur(c){currency=c;localStorage.setItem('country',c);document.getElementById('cur-id').classList.toggle('active',c==='ID');document.getElementById('cur-my').classList.toggle('active',c==='MY');renderProduk();renderCart();loadBukti();}
-
-let grid=document.getElementById('produk-grid');
-function renderProduk(){
-  grid.innerHTML='';
-  produkMaster.forEach(p=>{
-    p.varian.forEach(v=>{
-      let el=document.createElement('div'); el.className='card';
-      el.innerHTML=`
-        <img src="${p.foto}" onerror="this.src='https://via.placeholder.com/400x300/111/00ff88?text=${p.nama}'">
-        <div class="card-body">
-          <div class="card-title">${p.nama} - ${v.nama}</div>
-          <div class="card-price">${fmt(v.harga)}</div>
-          <div class="card-role">${v.role}</div>
-        </div>`;
-      el.onclick=()=>{tambah(p.nama,v.nama,v.harga);};
-      grid.appendChild(el);
-    });
-  });
+function fmt(n){return cur==='MY'?'RM '+(n/3600).toFixed(2):'Rp '+n.toLocaleString('id-ID');}
+function fmtRp(n){return 'Rp '+n.toLocaleString('id-ID');}
+function setCur(c){cur=c;localStorage.setItem('country',c);document.getElementById('cur-id').classList.toggle('active',c==='ID');document.getElementById('cur-my').classList.toggle('active',c==='MY');render();}
+function render(){
+ let grid=document.getElementById('grid');grid.innerHTML='';
+ produk.forEach(p=>{p.varian.forEach(v=>{
+  let d=document.createElement('div');d.className='card';
+  d.innerHTML=`<img src="${p.foto}" onerror="this.src='https://via.placeholder.com/300x200/111/00ff88?text=${p.nama}'"><div class="card-body"><div class="card-title">${p.nama} - ${v.nama}</div><div class="card-price">${fmt(v.harga)}</div><button class="btn-buy">BELI / BUY</button></div>`;
+  d.onclick=()=>{tambah(`${p.nama} - ${v.nama}`,v.harga)};
+  grid.appendChild(d);
+ });});
+ renderCart();loadBukti();
 }
-
-function tambah(pNama,vNama,harga){
-  cart.push({nama:`${pNama} - ${vNama}`,harga:harga});
-  saveCart();
-  if(navigator.vibrate) navigator.vibrate(60);
-  document.getElementById('cart-box').style.display='block';
-}
-
-function saveCart(){
-  let total=cart.reduce((a,b)=>a+b.harga,0);
-  localStorage.setItem('dap_total',total);
-  localStorage.setItem('dap_cart_detail',JSON.stringify(cart));
-  renderCart();
-}
-
+function tambah(nama,harga){cart.push({nama,harga});save();}
+function save(){localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',cart.reduce((a,b)=>a+b.harga,0));renderCart();}
 function renderCart(){
-  let list=document.getElementById('cart-list');
-  let totEl=document.getElementById('cart-total');
-  let count=document.getElementById('cart-count');
-  count.innerText=cart.length;
-  count.style.display=cart.length?'flex':'none';
-  if(cart.length===0){list.innerHTML='<div style="text-align:center;opacity:.5">Belum ada item</div>'; totEl.innerText=''; return;}
-  let total=0; let h='';
-  cart.forEach((c,i)=>{
-    total+=c.harga;
-    h+=`<div style="display:flex;justify-content:space-between;margin:5px 0"><span>${c.nama}</span><span>${fmt(c.harga)} <b onclick="hapus(${i})" style="color:#ff0a32;cursor:pointer;margin-left:6px">x</b></span></div>`;
-  });
-  list.innerHTML=h;
-  totEl.innerText='Total: '+fmt(total);
+ let total=cart.reduce((a,b)=>a+b.harga,0);
+ let grouped={};cart.forEach(c=>{if(!grouped[c.nama]) grouped[c.nama]={nama:c.nama,harga:c.harga,qty:0};grouped[c.nama].qty++;});
+ let h='';Object.values(grouped).forEach(g=>{
+  h+=`<div class="item"><div><div style="font-weight:700;font-size:.85rem">${g.nama}</div><div style="color:#ff4d4d;font-size:.8rem">${fmtRp(g.harga)} x ${g.qty}</div></div><div class="qty"><button onclick="ubah('${g.nama}',-1)">-</button><span>${g.qty}</span><button onclick="ubah('${g.nama}',1)">+</button><button onclick="hapus('${g.nama}')" style="background:#ff0a3222;color:#ff0a32">🗑️</button></div></div>`;
+ });
+ document.getElementById('cart-list').innerHTML=h||'<div style="text-align:center;opacity:.4;padding:15px">Keranjang kosong</div>';
+ document.getElementById('c-num').innerText=Object.keys(grouped).length||cart.length;
+ document.getElementById('c-item').innerText=cart.length+' ITEM';
+ document.getElementById('count').innerText=cart.length;
+ document.getElementById('rp').innerText=fmtRp(total);
+ document.getElementById('rm').innerText='RM '+(total/3600).toFixed(2)+' (MY)';
 }
-
-function hapus(i){cart.splice(i,1);saveCart();}
-function toggleCart(){let b=document.getElementById('cart-box');b.style.display=b.style.display==='block'?'none':'block';}
-function kePayment(){if(cart.length===0){alert('Keranjang kosong');return} location.href='payment.html';}
-
-function loadBukti(){
-  let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');
-  let el=document.getElementById('bukti-list');
-  if(list.length===0){el.innerHTML='<div style="text-align:center;opacity:.4;padding:20px;font-size:.8rem">Belum ada bukti</div>';return}
-  el.innerHTML=list.map(b=>`
-    <div class="bukti-item">
-      <div style="display:flex;justify-content:space-between;font-size:.7rem"><span>${b.time}</span><span style="color:#00ff88">${b.method} - ${fmt(parseInt(b.total))}</span></div>
-      <img src="${b.img}">
-      <div style="margin-top:6px"><span style="background:#00ff8822;border:1px solid #00ff8844;color:#00ff88;padding:2px 8px;border-radius:999px;font-size:.65rem">✅ VERIFIED - DANA 082312728245 A/N MIY***N</span></div>
-    </div>`).join('');
-}
-function clearBukti(){if(confirm('Hapus semua bukti?')){localStorage.removeItem('dap_bukti');loadBukti();}}
-
-renderProduk();renderCart();loadBukti();setCur(currency);
+function ubah(nama,d){if(d===1){let f=cart.find(c=>c.nama===nama);cart.push({nama:f.nama,harga:f.harga});}else{let i=cart.findIndex(c=>c.nama===nama);if(i>-1) cart.splice(i,1);}save();}
+function hapus(nama){cart=cart.filter(c=>c.nama!==nama);save();}
+function kosongkan(){cart=[];save();}
+function kePayment(){if(!cart.length)return alert('Keranjang kosong');location.href='payment.html';}
+function loadBukti(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');document.getElementById('bukti').innerHTML=list.length?list.map(b=>`<div class="bukti-item"><div style="display:flex;justify-content:space-between;font-size:.7rem"><span>${b.time}</span><span style="color:#00ff88">${b.method} - ${fmt(parseInt(b.total))}</span></div><img src="${b.img}"></div>`).join(''):'<div style="text-align:center;opacity:.4;padding:15px">Belum ada bukti</div>';}
+render();setCur(cur);
 </script>
 </body>
-  </html>
+</html>
