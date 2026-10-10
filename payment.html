@@ -1,70 +1,102 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DAP PAYMENT - OFFICIAL PAYMENT</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>DAP PAYMENT - PEMBAYARAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
-body{background:#070710;color:#fff;padding:14px}
-.qris-box{background:#fff;color:#000;border-radius:20px;padding:16px;text-align:center}
-.qris-box img{width:100%;max-width:300px;margin:10px auto;display:block}
-.info{background:#15151e;border-radius:16px;padding:12px;margin-top:12px;text-align:center;font-size:13px;border:1px solid #222}
-.btn-upload{width:100%;padding:14px;border:2px dashed #00ffa6;border-radius:14px;background:transparent;color:#fff;margin-top:14px;font-weight:700}
-.inp-nama{width:100%;padding:14px;border-radius:14px;background:#15151e;border:1px solid #333;color:#fff;margin-top:12px}
-.btn-wa{width:100%;padding:16px;border-radius:14px;border:0;background:#00ff88;color:#000;font-weight:900;margin-top:14px;font-size:15px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#07090f;color:#fff;padding:12px;padding-bottom:90px;overflow-x:hidden}
+#layerCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6;pointer-events:none}
+.sound{position:relative;z-index:10;max-width:650px;margin:0 auto;background:linear-gradient(90deg,#0f2215,#1a3a2a);border:1px solid #00ff88;box-shadow:0 0 30px #00ff8866;border-radius:14px;padding:12px;text-align:center;color:#00ff88;font-weight:800;cursor:pointer}
+.head{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;max-width:650px;margin:12px auto}
+.box{position:relative;z-index:10;max-width:650px;margin:10px auto;background:rgba(18,18,26,.95);border:1px solid #1e1e2a;border-radius:16px;padding:14px}
+.method{position:relative;z-index:10;max-width:650px;margin:12px auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.m{padding:12px;border-radius:12px;border:1px solid #333;background:#1a1a26;text-align:center;font-weight:700;cursor:pointer}
+.m.active{background:#fff;color:#000}
+.qhead{position:relative;z-index:10;max-width:650px;margin:12px auto 0;background:#000;border:2px solid #00ff88;border-bottom:none;border-radius:14px 14px 0 0;padding:10px;text-align:center;color:#00ff88;font-weight:800}
+.qwrap{position:relative;z-index:10;max-width:650px;margin:0 auto 12px;background:#fff;border:2px solid #00ff88;border-top:none;border-radius:0 0 14px 14px;padding:12px;text-align:center;color:#000;overflow:hidden}
+.qwrap::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent 40%,#00ff8844 50%,transparent 60%);background-size:200% 100%;animation:scan 1.5s linear infinite;z-index:2;pointer-events:none}
+@keyframes scan{0%{background-position:-100% 0}100%{background-position:200% 0}}
+.qwrap img{width:100%;max-width:380px;border-radius:12px;position:relative;z-index:1;display:block;margin:0 auto}
+.dana{position:relative;z-index:10;max-width:650px;margin:12px auto;background:rgba(18,18,26,.95);border:1px solid #1e1e2a;border-radius:12px;padding:16px;text-align:center;display:none}
+.dnum{font-size:2rem;font-weight:800;color:#00ff88}
+.up{position:relative;z-index:10;max-width:650px;margin:12px auto;background:rgba(18,18,26,.9);border:2px dashed #00ff88;border-radius:12px;padding:16px;text-align:center;cursor:pointer}
+.btn{position:relative;z-index:10;max-width:650px;margin:12px auto;display:block;width:100%;padding:14px;background:linear-gradient(90deg,#25D366,#00ff88);border:none;border-radius:12px;font-weight:800;color:#000}
 </style>
 </head>
 <body>
-
-<div class="qris-box">
-<b>DAFF SHOP</b><br>
-<small>NMID : ID1025450705674<br>A01</small>
-<img src="qris.jpg">
-<small>SATU QRIS UNTUK SEMUA</small>
-</div>
-
-<div class="info">
-<b id="produkText">DAFF SHOP</b><br>
-<span style="font-size:11px;color:#aaa">TAP QRIS DOWNLOAD - ATAU SS QRIS DI ATAS</span><br><br>
-<span style="background:#000;color:#00ff88;padding:6px 10px;border-radius:8px;font-size:12px;display:inline-block">
-DANA : 082312728245<br>GoPay / OVO / QRIS All Pay
-</span>
-</div>
-
-<label style="display:block;margin-top:16px;font-size:12px;color:#aaa;margin-left:4px">UPLOAD FOTO BUKTI TRANSFER DISINI</label>
-<input type="file" id="bukti" accept="image/*" class="btn-upload">
-
-<label style="display:block;margin-top:12px;font-size:12px;color:#aaa;margin-left:4px">Nama Mu (Nama Pembeli)</label>
-<input type="text" id="namaMu" class="inp-nama" placeholder="Tulis nama kamu disini...">
-
-<button class="btn-wa" onclick="konfirmasi()">KONFIRMASI PEMBAYARAN KE WHATSAPP</button>
-
+<canvas id="layerCanvas"></canvas>
+<div class="sound" id="sBtn">✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP - 2X TAP UPLOAD MP3</div>
+<input type="file" id="mp3File" accept="audio/*" style="display:none">
+<audio id="customAudio" loop></audio>
+<div class="head"><h1 style="font-size:1.2rem">DAP PAYMENT - OFFICIAL PAY</h1><button onclick="location.href='index.html'" style="background:#fff;color:#000;border:none;padding:8px 16px;border-radius:999px;font-weight:700">← Kembali</button></div>
+<div class="box"><div id="items"></div><div style="display:flex;justify-content:space-between;margin-top:10px;font-weight:800"><span>Total A/N MIY***N</span><span id="rp" style="color:#00ff88">Rp 0</span></div></div>
+<div class="method"><div class="m active" id="mq">QRIS JPG<br><span style="font-size:.6rem">SOUND HD+ MP3</span></div><div class="m" id="md">DANA<br><span style="font-size:.6rem">MIY***N</span></div></div>
+<div class="qhead">QRIS JPG • <span id="qt">Rp 0</span> • <span id="mp3NameHead">MP3 NAMA BAWAAN</span></div>
+<div class="qwrap" id="qw"><img src="qris.jpg" alt="QRIS JPG"><div style="font-weight:800;margin-top:8px">DAFF SHOP - QRIS ALL PAY</div><div style="font-size:.7rem;opacity:.7">TAP 1X QRIS DOWNLOAD JPG - 2X TAP ATAS GANTI MP3</div><div style="background:#000;color:#00ff88;padding:8px;border-radius:8px;margin-top:8px;font-size:.75rem;font-weight:800">LAYERS SCAN 🔊 MP3: <span id="mp3NameBox">BELUM ADA</span> - DANA 082312728245 A/N MIY***N</div></div>
+<div class="dana" id="danaBox"><div>DANA MANUAL</div><div class="dnum">082312728245</div><div style="font-weight:800">ATAS NAMA: MIY***N</div></div>
+<div class="up" id="upBox"><div>📸 Upload Bukti Transfer Disini!</div><input type="file" id="file" accept="image/*" style="display:none"><img id="pr" style="width:100%;max-width:300px;display:none;margin:10px auto;border-radius:8px"></div>
+<button class="btn" id="waBtn">KONFIRMASI PEMBAYARAN</button>
 <script>
-const WA="6283879195047"; // GANTI NOMOR LU
-// ambil produk dari URL
-const urlParams = new URLSearchParams(window.location.search);
-const produk = urlParams.get('produk') || 'Produk DAFF SHOP';
-document.getElementById('produkText').innerText = produk;
-
-function konfirmasi(){
- let nama = document.getElementById('namaMu').value.trim();
- let file = document.getElementById('bukti').files[0];
- if(!file) return alert('Upload bukti transfer dulu!');
- if(!nama) return alert('Isi Nama Mu dulu!');
-
- // Simpan ke dashboard (localStorage)
- let reader = new FileReader();
- reader.onload = e => {
-   let data = {id:Date.now(),tgl:new Date().toLocaleString('id-ID'),produk:produk,nama:nama,img:e.target.result};
-   let arr = JSON.parse(localStorage.getItem('bukti')||"[]");
-   arr.unshift(data);
-   localStorage.setItem('bukti',JSON.stringify(arr));
-
-   let teks = `Halo bang, konfirmasi TF%0A%0AProduk yang di beli: ${produk}%0ANama Pembeli: ${nama}%0A%0ACek bang sudah masuk belum, itu bukti tf nya cek di website.`;
-   window.open(`https://wa.me/${WA}?text=${teks}`,'_blank');
- };
- reader.readAsDataURL(file);
+const canvas=document.getElementById('layerCanvas'),ctx=canvas.getContext('2d');function rs(){canvas.width=innerWidth;canvas.height=innerHeight}rs();addEventListener('resize',rs);let dots=[];for(let i=0;i<80;i++)dots.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*1.6,vy:(Math.random()-.5)*1.6,r:Math.random()*2+1,c:['#00ff88','#00bfff','#ffeb00'][i%3]});(function a(){ctx.clearRect(0,0,canvas.width,canvas.height);dots.forEach(o=>{o.x+=o.vx;o.y+=o.vy;if(o.x<0||o.x>canvas.width)o.vx*=-1;if(o.y<0||o.y>canvas.height)o.vy*=-1;ctx.fillStyle=o.c;ctx.globalAlpha=.85;ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,7);ctx.fill()});requestAnimationFrame(a)})();
+// SOUND MP3 NAMA BAWAAN
+let ac,os,gn,on=false;
+let customSoundURL=localStorage.getItem('dap_custom_sound')||'';
+let customSoundName=localStorage.getItem('dap_custom_sound_name')||'BELUM ADA MP3';
+const mp3File=document.getElementById('mp3File');
+const customAudio=document.getElementById('customAudio');
+const sBtn=document.getElementById('sBtn');
+if(customSoundURL){
+customAudio.src=customSoundURL;
+sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" READY - TAP PLAY - 2X TAP GANTI - A/N MIY***N JPG';
+document.getElementById('mp3NameBox').innerText=customSoundName;
+document.getElementById('mp3NameHead').innerText=customSoundName;
 }
+async function tog(){
+if(customSoundURL){
+try{
+if(customAudio.paused){await customAudio.play();sBtn.innerHTML='🔊 MP3 "'+customSoundName+'" PLAYING 🟢 - TAP PAUSE - 2X TAP GANTI SOUND';canvas.style.opacity='0.9';}
+else{customAudio.pause();sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" PAUSED - TAP PLAY - 2X TAP GANTI - MIY***N JPG';canvas.style.opacity='0.6';}
+}catch(e){alert('Gagal play MP3 cok');}
+return;
+}
+if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')await ac.resume();if(!on){os=ac.createOscillator();gn=ac.createGain();os.type='sawtooth';os.frequency.value=55;os.connect(gn);gn.connect(ac.destination);gn.gain.value=0.045;os.start();on=true;sBtn.innerHTML='🔊 SOUND ON 120FPS 🟢 HD+ - 2X TAP UPLOAD MP3 - "'+customSoundName+'"';canvas.style.opacity='0.9';}else{os.stop();on=false;sBtn.innerHTML='✅ SOUND LAYERS AKTIF 120FPS HD+ 🔊 TAP - 2X TAP UPLOAD MP3';canvas.style.opacity='0.6';}
+}
+sBtn.onclick=tog;
+let lastTap=0;
+sBtn.addEventListener('dblclick',()=>mp3File.click());
+sBtn.addEventListener('click',()=>{let now=Date.now();if(now-lastTap<400){mp3File.click();}lastTap=now;});
+let pressTimer;
+sBtn.addEventListener('touchstart',()=>{pressTimer=setTimeout(()=>mp3File.click(),650);},{passive:true});
+sBtn.addEventListener('touchend',()=>clearTimeout(pressTimer));
+mp3File.onchange=function(){
+let f=this.files[0];if(!f)return;
+if(f.size>12*1024*1024){alert('File kegedean cok max 12MB!');return;}
+let r=new FileReader();
+r.onload=e=>{
+customSoundURL=e.target.result;
+customSoundName=f.name;
+localStorage.setItem('dap_custom_sound',customSoundURL);
+localStorage.setItem('dap_custom_sound_name',customSoundName);
+customAudio.src=customSoundURL;
+document.getElementById('mp3NameBox').innerText=customSoundName;
+document.getElementById('mp3NameHead').innerText=customSoundName;
+customAudio.play().then(()=>{
+sBtn.innerHTML='🔊 MP3 "'+customSoundName+'" PLAYING 🟢 - SOUND';
+alert('✅ MP3 "'+customSoundName+'" kesimpen permanen di payment juga!');
+}).catch(()=>{sBtn.innerHTML='🎵 MP3 "'+customSoundName+'" READY - TAP PLAY';});
+};
+r.readAsDataURL(f);
+};
+let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');function fmt(n){return 'Rp '+n.toLocaleString('id-ID')}function ren(){let t=cart.reduce((a,b)=>a+b.harga,0);let g={};cart.forEach(c=>{if(!g[c.nama])g[c.nama]={nama:c.nama,harga:c.harga,qty:0};g[c.nama].qty++});let h='';Object.values(g).forEach(v=>{h+=`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #222"><div><b style="font-size:.85rem">${v.nama}</b><div style="color:#ff4d4d;font-size:.8rem">${fmt(v.harga)} x ${v.qty}</div></div><div style="display:flex;gap:6px;align-items:center"><button onclick="ch('${v.nama}',-1)" style="width:34px;height:34px;border-radius:50%;border:none">-</button>${v.qty}<button onclick="ch('${v.nama}',1)" style="width:34px;height:34px;border-radius:50%;border:none">+</button></div></div>`});document.getElementById('items').innerHTML=h||'Kosong';document.getElementById('rp').innerText=fmt(t);document.getElementById('qt').innerText=fmt(t)}
+window.ch=(n,d)=>{if(d===1){let f=cart.find(c=>c.nama===n);cart.push({nama:f.nama,harga:f.harga})}else{let i=cart.findIndex(c=>c.nama===n);if(i>-1)cart.splice(i,1)}localStorage.setItem('dap_cart_detail',JSON.stringify(cart));ren()}
+function setM(m){document.querySelectorAll('.m').forEach(x=>x.classList.remove('active'));document.getElementById(m==='qris'?'mq':'md').classList.add('active');qw.style.display=m==='qris'?'block':'none';document.querySelector('.qhead').style.display=m==='qris'?'block':'none';danaBox.style.display=m==='dana'?'block':'none'}
+mq.onclick=()=>setM('qris');md.onclick=()=>setM('dana');
+document.querySelector('.qwrap img').onclick=()=>{let a=document.createElement('a');a.href='qris.jpg';a.download='QRIS-MIY***N.jpg';a.click()};
+let bukti='';upBox.onclick=()=>file.click();file.onchange=function(){if(this.files[0]){let r=new FileReader();r.onload=e=>{bukti=e.target.result;pr.src=bukti;pr.style.display='block';let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');list.unshift({id:Date.now(),img:bukti,total:cart.reduce((a,b)=>a+b.harga,0),method:'QRIS JPG MIY***N - MP3 '+customSoundName,time:new Date().toLocaleString('id-ID')});localStorage.setItem('dap_bukti',JSON.stringify(list))};r.readAsDataURL(this.files[0])}};
+waBtn.onclick=()=>{let t=cart.reduce((a,b)=>a+b.harga,0);if(!bukti)return alert('Upload bukti MIY***N dulu!');window.open(`https://wa.me/6283879195047?text=${encodeURIComponent('Halo Total: '+fmt(t)+' MP3: '+customSoundName+' DANA 082312728245 A/N MIY***N JPG Sudah TF')}`,'_blank')};ren();
 </script>
 </body>
 </html>
