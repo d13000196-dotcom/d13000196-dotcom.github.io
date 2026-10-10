@@ -7,58 +7,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#07070b;color:#fff;padding-bottom:90px}
-.top{text-align:center;padding:20px 16px 10px}
-.top h1{font-size:2rem;font-weight:800;letter-spacing:2px}
-.desc{max-width:650px;margin:12px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px;text-align:center;font-size:.8rem}
+body{background:#07070b;color:#fff;padding-bottom:90px;overflow-x:hidden}
+.layers{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.12;pointer-events:none;background:
+radial-gradient(circle at 20% 30%,#00ff88 0%,transparent 40%),
+radial-gradient(circle at 80% 70%,#6a5af9 0%,transparent 40%),
+radial-gradient(circle at 50% 50%,#ffeb00 0%,transparent 50%),
+linear-gradient(45deg,#111 25%,transparent 25%,transparent 75%,#111 75%),
+linear-gradient(-45deg,#111 25%,transparent 25%,transparent 75%,#111 75%);background-size:100%,100%,100%,40px 40px,40px 40px;animation:layer120 0.8s linear infinite;will-change:transform}
+@keyframes layer120{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(10px,10px,0)}}
+.sound{max-width:650px;margin:12px auto;background:linear-gradient(90deg,#0f2215,#1a3a2a);border:1px solid #00ff88;box-shadow:0 0 25px #00ff8866;border-radius:14px;padding:10px;text-align:center;color:#00ff88;font-weight:800;font-size:.85rem;cursor:pointer;position:relative;z-index:10}
+.sound span{color:#ffeb00}
+.top{text-align:center;padding:10px 16px}
+.top h1{font-size:2.1rem;font-weight:800;letter-spacing:2px;background:linear-gradient(90deg,#00ff88,#00bfff,#ffeb00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{max-width:650px;margin:10px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px;font-size:.8rem;text-align:center}
 .badges{display:flex;justify-content:center;gap:8px;margin-top:10px}
 .badge{padding:4px 14px;border-radius:999px;font-size:.7rem;font-weight:800;border:1px solid}
-.b-green{color:#00ff88;border-color:#00ff88;background:#00ff8815}.b-blue{color:#00bfff;border-color:#00bfff;background:#00bfff15}.b-yellow{color:#ffeb00;border-color:#ffeb00;background:#ffeb0015}
-.cur{display:flex;justify-content:center;gap:10px;margin:14px 0}
+.b-green{color:#00ff88;border-color:#00ff88;background:#00ff8815;box-shadow:0 0 10px #00ff8844}
+.b-blue{color:#00bfff;border-color:#00bfff;background:#00bfff15;box-shadow:0 0 10px #00bfff44}
+.b-yellow{color:#ffeb00;border-color:#ffeb00;background:#ffeb0015;box-shadow:0 0 10px #ffeb0044}
+.cur{display:flex;justify-content:center;gap:10px;margin:12px 0}
 .cur div{padding:6px 16px;border-radius:999px;font-size:.8rem;font-weight:700;border:1px solid #333;background:#1a1a26;cursor:pointer}
 .cur div.active{background:#fff;color:#000}
 .grid{max-width:700px;margin:10px auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
-.card{background:#12121a;border:1px solid #1e1e2a;border-radius:16px;overflow:hidden}
-.card img{width:100%;height:150px;object-fit:cover;background:#000}
+.card{background:linear-gradient(145deg,#12121a,#1a1a2e);border:1px solid #1e1e2a;border-radius:16px;overflow:hidden;cursor:pointer;transition:.2s}
+.card:hover{border-color:#00ff88;box-shadow:0 0 15px #00ff8833;transform:translateY(-2px)}
+.card img{width:100%;height:150px;object-fit:cover}
 .card-body{padding:10px}
 .card-title{font-size:.8rem;font-weight:700;min-height:32px}
-.card-price{color:#00ff88;font-weight:800;font-size:.9rem;margin-top:4px}
-.btn-buy{width:100%;margin-top:8px;padding:8px;background:#fff;color:#000;border:none;border-radius:8px;font-weight:800;font-size:.75rem;cursor:pointer}
-.cart-box{max-width:650px;margin:16px auto;background:#12121a;border:1px solid #1e1e2a;border-radius:16px;padding:14px}
+.card-price{color:#00ff88;font-weight:800}
+.btn-buy{width:100%;margin-top:8px;padding:8px;background:linear-gradient(90deg,#00ff88,#00bfff);border:none;border-radius:8px;font-weight:800;color:#000;cursor:pointer}
+/* BOTTOM SHEET DRAG */
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#0008;z-index:98;display:none;backdrop-filter:blur(4px)}
+.sheet{position:fixed;bottom:0;left:0;width:100%;max-height:85vh;background:#12121a;border-top:2px solid #00ff88;border-radius:22px 22px 0 0;z-index:99;transform:translateY(100%);transition:.35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;touch-action:none}
+.sheet.active{transform:translateY(0)}
+.drag{width:50px;height:6px;background:linear-gradient(90deg,#00ff88,#00bfff);border-radius:999px;margin:12px auto;cursor:grab}
+.sheet-head{padding:0 16px 12px;text-align:center;font-weight:800;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center}
+.sheet-body{overflow-y:auto;padding:14px;flex:1}
 .item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222}
 .qty{display:flex;align-items:center;gap:8px}
-.qty button{width:32px;height:32px;border-radius:50%;border:none;background:#fff;color:#000;font-weight:800;cursor:pointer}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.act{padding:10px;border-radius:999px;border:1px solid #333;background:#1e1e2e;color:#fff;font-weight:700;cursor:pointer}
-.total-row{display:flex;justify-content:space-between;margin-top:12px;font-weight:800}
-.total-rp{color:#00ff88;text-align:right}
-.float{position:fixed;bottom:18px;right:18px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6a5af9,#8a5cff);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9}
-.count{position:absolute;top:-4px;right:-4px;background:#ff0a32;color:#fff;width:20px;height:20px;border-radius:50%;font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:800}
+.qty button{width:34px;height:34px;border-radius:50%;border:none;background:#fff;color:#000;font-weight:800;cursor:pointer}
+.float{position:fixed;bottom:18px;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;box-shadow:0 8px 25px #000a}
+.float-cart{right:18px;background:linear-gradient(135deg,#6a5af9,#8a5cff)}
+.float-bukti{right:88px;background:linear-gradient(135deg,#00ff88,#00bfff);color:#000;font-weight:800}
+.count{position:absolute;top:-4px;right:-4px;background:#ff0a32;color:#fff;width:22px;height:22px;border-radius:50%;font-size:.75rem;display:flex;align-items:center;justify-content:center;font-weight:800}
 .bukti-item{background:#1a1a26;border:1px solid #222;border-radius:12px;padding:10px;margin:10px 0}
 .bukti-item img{width:100%;border-radius:8px;margin-top:8px}
 </style>
 </head>
 <body>
-<div class="top"><h1>DAP ORDER APK</h1><h2 style="font-weight:400;font-size:1rem;opacity:.8">OFFICIAL SHOP</h2><div class="desc">HAI, PENGGUNAAN WEBSITE!, INI WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR DAN TERPERCAYA.<div class="badges"><div class="badge b-green">STABIL</div><div class="badge b-blue">OTOMATIS</div><div class="badge b-yellow">AMAN</div></div></div><div class="cur"><div class="active" id="cur-id" onclick="setCur('ID')">🇮🇩 ID - Rp</div><div id="cur-my" onclick="setCur('MY')">🇲🇾 MY - RM</div></div></div>
-
+<div class="layers"></div>
+<div class="sound" id="sBtn" onclick="toggleSound()">✅ SOUND LAYERS AKTIF 120FPS HD+ <span>🔊 TAP ON/OFF</span></div>
+<div class="top"><h1>DAP ORDER APK</h1><p style="opacity:.8">OFFICIAL SHOP - LAYERS EDITION</p><div class="desc">HAI, PENGGUNAAN WEBSITE! WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR & TERPERCAYA<div class="badges"><div class="badge b-green">STABIL</div><div class="badge b-blue">OTOMATIS</div><div class="badge b-yellow">AMAN</div></div></div><div class="cur"><div class="active" id="cur-id" onclick="setCur('ID')">🇮🇩 ID - Rp</div><div id="cur-my" onclick="setCur('MY')">🇲🇾 MY - RM</div></div></div>
 <div class="grid" id="grid"></div>
 
-<div class="cart-box">
-<div style="display:flex;justify-content:space-between;font-weight:800"><span>🛒 Keranjang - <span id="c-num">0</span></span><span id="c-item" style="background:#fff;color:#000;padding:4px 10px;border-radius:999px;font-size:.7rem">0 ITEM</span></div>
-<div id="cart-list"></div>
-<div class="total-row"><span>Total Bayar</span><div class="total-rp"><div id="rp">Rp 0</div><div id="rm" style="font-size:.7rem;color:#aaa;font-weight:400">RM 0 (MY)</div></div></div>
-<div class="actions"><button class="act" onclick="kosongkan()">🗑️ Kosongkan</button><button class="act" onclick="document.getElementById('grid').scrollIntoView()">+ Tambah</button></div>
-<button onclick="kePayment()" style="width:100%;margin-top:12px;padding:14px;background:#00ff88;border:none;border-radius:12px;font-weight:800;cursor:pointer">LANJUT BAYAR → DANA & QRIS</button>
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
 
-<div style="margin-top:18px;border-top:1px solid #222;padding-top:12px"><h3 style="text-align:center;font-size:.85rem">📋 Dashboard Bukti TF</h3><div id="bukti"></div></div>
+<div class="sheet" id="sheet-cart">
+<div class="drag" id="drag-cart"></div>
+<div class="sheet-head"><span>🛒 Keranjang - <span id="c-num">0</span></span><span id="c-item" style="background:#fff;color:#000;padding:4px 10px;border-radius:999px;font-size:.7rem">0 ITEM</span></div>
+<div class="sheet-body"><div id="cart-list"></div><div id="cart-total" style="text-align:center;color:#00ff88;font-weight:800;margin:12px 0;font-size:1.1rem"></div><button onclick="kePayment()" style="width:100%;padding:14px;background:linear-gradient(90deg,#00ff88,#00bfff);border:none;border-radius:12px;font-weight:800;cursor:pointer">LANJUT BAYAR → DANA & QRIS</button><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"><button onclick="kosongkan()" style="padding:10px;background:#1e1e2e;border:1px solid #333;border-radius:10px;color:#fff">🗑️ Kosongkan</button><button onclick="closeAll()" style="padding:10px;background:#1e1e2e;border:1px solid #333;border-radius:10px;color:#fff">+ Tambah</button></div></div>
 </div>
 
-<div class="float" onclick="document.querySelector('.cart-box').scrollIntoView({behavior:'smooth'})">🛒<div class="count" id="count">0</div></div>
+<div class="sheet" id="sheet-bukti">
+<div class="drag" id="drag-bukti"></div>
+<div class="sheet-head"><span>📋 Dashboard Bukti TF</span><span style="font-size:.7rem;opacity:.6" id="bukti-count">0 bukti</span></div>
+<div class="sheet-body"><div id="bukti-list"></div><button onclick="clearBukti()" style="width:100%;margin-top:10px;background:#222;border:1px solid #333;color:#fff;padding:8px;border-radius:10px;font-size:.7rem">Hapus Semua (Admin)</button></div>
+</div>
+
+<div class="float float-bukti" onclick="openSheet('bukti')">📋</div>
+<div class="float float-cart" onclick="openSheet('cart')">🛒<div class="count" id="count">0</div></div>
+
+<audio id="snd" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_1c6b0f4093.mp3" type="audio/mpeg"></audio>
 
 <script>
 const produk=[
-{nama:"APK 1",foto:"produk1.jpg",varian:[{nama:"FULL UPDATE",harga:50000},{nama:"RESELLER",harga:80000},{nama:"PARTNER",harga:150000}]},
-{nama:"APK 2",foto:"produk2.jpg",varian:[{nama:"FULL UPDATE",harga:20000},{nama:"RESELLER",harga:30000},{nama:"ADMIN",harga:50000},{nama:"PARTNER",harga:70000},{nama:"MODERATOR",harga:100000}]}
+{nama:"DarkVerse",foto:"darkverse.jpg",varian:[{nama:"FULL UPDATE",harga:50000},{nama:"RESELLER",harga:80000},{nama:"PARTNER",harga:150000}]},
+{nama:"X-GTR4SH",foto:"xgtr4sh.jpg",varian:[{nama:"FULL UPDATE",harga:20000},{nama:"RESELLER",harga:30000},{nama:"ADMIN",harga:50000},{nama:"PARTNER",harga:70000},{nama:"MODERATOR",harga:100000}]}
 ];
 let cur=localStorage.getItem('country')||'ID';
 let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
@@ -69,33 +93,43 @@ function render(){
  let grid=document.getElementById('grid');grid.innerHTML='';
  produk.forEach(p=>{p.varian.forEach(v=>{
   let d=document.createElement('div');d.className='card';
-  d.innerHTML=`<img src="${p.foto}" onerror="this.src='https://via.placeholder.com/300x200/111/00ff88?text=${p.nama}'"><div class="card-body"><div class="card-title">${p.nama} - ${v.nama}</div><div class="card-price">${fmt(v.harga)}</div><button class="btn-buy">BELI / BUY</button></div>`;
-  d.onclick=()=>{tambah(`${p.nama} - ${v.nama}`,v.harga)};
+  d.innerHTML=`<img src="${p.foto}" onerror="this.src='https://via.placeholder.com/300x200/111/00ff88?text=${encodeURIComponent(p.nama)}'"><div class="card-body"><div class="card-title">${p.nama} - ${v.nama}</div><div class="card-price">${fmt(v.harga)}</div><button class="btn-buy">BELI / BUY</button></div>`;
+  d.onclick=()=>{cart.push({nama:`${p.nama} - ${v.nama}`,harga:v.harga});save();openSheet('cart');if(navigator.vibrate) navigator.vibrate(50);};
   grid.appendChild(d);
  });});
  renderCart();loadBukti();
 }
-function tambah(nama,harga){cart.push({nama,harga});save();}
 function save(){localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',cart.reduce((a,b)=>a+b.harga,0));renderCart();}
 function renderCart(){
  let total=cart.reduce((a,b)=>a+b.harga,0);
  let grouped={};cart.forEach(c=>{if(!grouped[c.nama]) grouped[c.nama]={nama:c.nama,harga:c.harga,qty:0};grouped[c.nama].qty++;});
- let h='';Object.values(grouped).forEach(g=>{
-  h+=`<div class="item"><div><div style="font-weight:700;font-size:.85rem">${g.nama}</div><div style="color:#ff4d4d;font-size:.8rem">${fmtRp(g.harga)} x ${g.qty}</div></div><div class="qty"><button onclick="ubah('${g.nama}',-1)">-</button><span>${g.qty}</span><button onclick="ubah('${g.nama}',1)">+</button><button onclick="hapus('${g.nama}')" style="background:#ff0a3222;color:#ff0a32">🗑️</button></div></div>`;
+ let html='';Object.values(grouped).forEach(g=>{
+  html+=`<div class="item"><div><div style="font-weight:700;font-size:.85rem">${g.nama}</div><div style="color:#ff4d4d;font-size:.8rem">${fmtRp(g.harga)} x ${g.qty}</div></div><div class="qty"><button onclick="ubahQty('${g.nama}',-1)">-</button><span>${g.qty}</span><button onclick="ubahQty('${g.nama}',1)">+</button><button onclick="hapusItem('${g.nama}')" style="background:#ff0a3222;color:#ff0a32">🗑️</button></div></div>`;
  });
- document.getElementById('cart-list').innerHTML=h||'<div style="text-align:center;opacity:.4;padding:15px">Keranjang kosong</div>';
+ document.getElementById('cart-list').innerHTML=html||'<div style="text-align:center;opacity:.5;padding:20px">Keranjang kosong</div>';
  document.getElementById('c-num').innerText=Object.keys(grouped).length||cart.length;
  document.getElementById('c-item').innerText=cart.length+' ITEM';
  document.getElementById('count').innerText=cart.length;
- document.getElementById('rp').innerText=fmtRp(total);
- document.getElementById('rm').innerText='RM '+(total/3600).toFixed(2)+' (MY)';
+ document.getElementById('count').style.display=cart.length?'flex':'none';
+ document.getElementById('cart-total').innerText=total?`Total: ${fmt(total)}`:'';
 }
-function ubah(nama,d){if(d===1){let f=cart.find(c=>c.nama===nama);cart.push({nama:f.nama,harga:f.harga});}else{let i=cart.findIndex(c=>c.nama===nama);if(i>-1) cart.splice(i,1);}save();}
-function hapus(nama){cart=cart.filter(c=>c.nama!==nama);save();}
+function ubahQty(n,d){if(d===1){let f=cart.find(c=>c.nama===n);cart.push({nama:f.nama,harga:f.harga});}else{let i=cart.findIndex(c=>c.nama===n);if(i>-1) cart.splice(i,1);}save();}
+function hapusItem(n){cart=cart.filter(c=>c.nama!==n);save();}
 function kosongkan(){cart=[];save();}
-function kePayment(){if(!cart.length)return alert('Keranjang kosong');location.href='payment.html';}
-function loadBukti(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');document.getElementById('bukti').innerHTML=list.length?list.map(b=>`<div class="bukti-item"><div style="display:flex;justify-content:space-between;font-size:.7rem"><span>${b.time}</span><span style="color:#00ff88">${b.method} - ${fmt(parseInt(b.total))}</span></div><img src="${b.img}"></div>`).join(''):'<div style="text-align:center;opacity:.4;padding:15px">Belum ada bukti</div>';}
+function kePayment(){if(!cart.length)return alert('Kosong');location.href='payment.html';}
+function openSheet(t){document.getElementById('overlay').style.display='block';document.getElementById(t==='cart'?'sheet-cart':'sheet-bukti').classList.add('active');if(t==='bukti') loadBukti();}
+function closeAll(){document.getElementById('overlay').style.display='none';document.querySelectorAll('.sheet').forEach(s=>s.classList.remove('active'));}
+function loadBukti(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');document.getElementById('bukti-count').innerText=list.length+' bukti';document.getElementById('bukti-list').innerHTML=list.length?list.map(b=>`<div class="bukti-item"><div style="display:flex;justify-content:space-between;font-size:.7rem"><span>${b.time}</span><span style="color:#00ff88">${b.method} - ${fmt(parseInt(b.total))}</span></div><img src="${b.img}"><div style="margin-top:6px"><span style="background:#00ff8822;border:1px solid #00ff8844;color:#00ff88;padding:2px 8px;border-radius:999px;font-size:.65rem">✅ VERIFIED DANA 082312728245</span></div></div>`).join(''):'<div style="text-align:center;opacity:.4;padding:20px">Belum ada bukti</div>';}
+function clearBukti(){if(confirm('Hapus semua bukti?')){localStorage.removeItem('dap_bukti');loadBukti();}}
+function makeDrag(sheetId,dragId){
+ let sheet=document.getElementById(sheetId),drag=document.getElementById(dragId),startY=0,curY=0;
+ drag.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;sheet.style.transition='none'});
+ drag.addEventListener('touchmove',e=>{curY=e.touches[0].clientY-startY;if(curY>0) sheet.style.transform=`translateY(${curY}px)`});
+ drag.addEventListener('touchend',()=>{sheet.style.transition='';sheet.style.transform='';if(curY>100) closeAll();curY=0;});
+}
+makeDrag('sheet-cart','drag-cart');makeDrag('sheet-bukti','drag-bukti');
+let soundOn=false;function toggleSound(){let a=document.getElementById('snd');soundOn=!soundOn;if(soundOn){a.play().catch(()=>{});document.getElementById('sBtn').innerHTML='🔊 SOUND LAYERS ON 120FPS HD+ <span>🟢 TAP OFF</span>';document.querySelector('.layers').style.opacity='.22';}else{a.pause();document.getElementById('sBtn').innerHTML='✅ SOUND LAYERS AKTIF 120FPS HD+ <span>🔊 TAP ON/OFF</span>';document.querySelector('.layers').style.opacity='.12';}}
 render();setCur(cur);
 </script>
 </body>
-</html>
+ </html>
