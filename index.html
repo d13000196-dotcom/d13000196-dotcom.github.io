@@ -14,75 +14,106 @@ canvas{position:fixed;inset:0;z-index:-2}.ov{position:fixed;inset:0;z-index:-1;b
 .banner{margin:12px auto;max-width:620px;background:linear-gradient(90deg,#1a160a,#2a2300);border:1.5px solid #ffd70066;border-radius:14px;padding:14px;text-align:center}
 .banner b{color:#ffd700;letter-spacing:3px;font-size:13px;display:block;margin-bottom:6px}.banner div{font-size:12px;line-height:1.6;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:12px}
-.card{border:1.5px solid #3a2e14;background:linear-gradient(180deg,#1a160a,#0f0d05);border-radius:16px;overflow:hidden;position:relative}
-.card img{width:100%;height:140px;object-fit:cover;background:#000;display:block}
-.img-fallback{width:100%;height:140px;background:linear-gradient(135deg,#1a160a,#2a2300);display:flex;align-items:center;justify-content:center;font-family:Orbitron;font-weight:900;font-size:18px;color:#ffd700;text-align:center;border-bottom:1.5px solid #3a2e14}
-.cat{grid-column:1/-1;background:#1a160a;border:1px solid #ffd70044;border-radius:10px;padding:8px;text-align:center;color:#ffd700;font-weight:800}
-.cart{margin-top:16px;border:1.5px solid #3a2e14;background:#111;border-radius:16px;padding:12px}
+.card{border:1.5px solid #3a2e14;background:linear-gradient(180deg,#1a160a,#0f0d05);border-radius:16px;overflow:hidden}.card img{width:100%;height:140px;object-fit:cover;background:#000;display:block}
+.cat{grid-column:1/-1;background:linear-gradient(90deg,#1a160a,#2a2300);border:1px solid #ffd70044;border-radius:10px;padding:8px;text-align:center;color:#ffd700;font-weight:800}
+.cart-panel{margin-top:16px;border:1.5px solid #3a2e14;background:#111;border-radius:16px;padding:12px}
+.cart-item{display:flex;justify-content:space-between;background:#000;border:1px solid #222;border-radius:10px;padding:8px;margin:6px 0;font-size:12px}
+
+/* PANEL BULET BISA DI DRAG */
+.fbtn{position:fixed;width:56px;height:56px;border-radius:50%;border:1.5px solid #ffd700;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:grab;z-index:998;box-shadow:0 0 20px #ffd70055;touch-action:none;user-select:none;transition:box-shadow.2s}
+.fbtn:active{cursor:grabbing;box-shadow:0 0 35px #ffd700aa;transform:scale(1.1)}
+.fbtn.dragging{opacity:.9;z-index:9999!important;box-shadow:0 0 40px #ffd700}
+#btnL{left:auto;right:16px;bottom:90px;background:linear-gradient(180deg,#1a160a,#2a2300)}#btnC{left:auto;right:16px;bottom:20px;background:linear-gradient(180deg,#4a3a00,#ffd700);color:#000}
+.bukti-scroll{display:flex;gap:10px;overflow-x:auto;padding:8px 0}.bukti-scroll::-webkit-scrollbar{height:6px}.bukti-scroll::-webkit-scrollbar-thumb{background:#ffd700;border-radius:999px}
+.bukti-card{min-width:220px;background:#1a160a;border:1px solid #3a2e14;border-radius:10px;padding:8px}.bukti-card img{width:100%;height:120px;object-fit:cover;border-radius:8px}
 </style>
 </head>
 <body>
 <canvas id="bgCanvas"></canvas><div class="ov"></div>
 <div class="wrap">
-<div class="mp3" onclick="document.getElementById('aud').play()">🔇 TAP PLAY MUSIC - DAP-SOUND-MUSIC.mp3</div>
-<audio id="aud" loop><source src="DAP-SOUND-MUSIC.mp3" type="audio/mpeg"></audio>
-<div class="hero"><h1>DAP ORDER APK</h1><p style="letter-spacing:3px;color:#c9a86a;font-size:12px;font-weight:800">OFFICIAL STORE</p><div class="banner"><b>⚡ STABIL - OTOMATIS - AMANAH ⚡</b><div>HAI PENGGUNA WEBSITE, INI ADALAH WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR, SILAHKAN PILIH APLIKASI YANG ANDA SUKA!!, SEMOGA PUAS DAN BERLANGGANAN SOBB!!</div></div></div>
+<div class="mp3" onclick="document.getElementById('aud').play()">🔇 TAP PLAY MUSIC</div>
+<audio id="aud" loop><source src="ssstik.io_1791597744544.mp3" type="audio/mpeg"></audio>
+<div class="hero"><h1>DAP ORDER APK</h1><p style="letter-spacing:3px;color:#c9a86a;font-size:12px;font-weight:800">OFFICIAL STORE</p><div class="banner"><b>⚡ STABIL - OTOMATIS - AMANAH ⚡</b><div>HAI PENGGUNA WEBSITE, INI ADALAH WEBSITE JUAL BELI APLIKASI BUG WHATSAPP GACOR, SILAHKAN PILIH APLIKASI YANG ANDA SUKA!!, SEMOGA PUAS DAN BERLANGGANAN!!</div></div></div>
 <div style="display:flex;justify-content:center;gap:8px;margin:12px 0">
 <button id="bIDR" onclick="setC('IDR')" style="padding:9px 20px;border-radius:999px;border:1.5px solid #ffd700;background:linear-gradient(90deg,#ffd700,#c9a86a);color:#000;font-weight:900">🇮🇩 IDR</button>
-<button id="bMYR" onclick="setC('MYR')" style="padding:9px 20px;border-radius:999px;border:1.5px solid #333;background:#1a160a;color:#c9a86a;font-weight:800">🇲🇾 MYR</button>
+<button id="bMYR" onclick="setC('MYR')" style="padding:9px 20px;border-radius:999px;border:1px solid #333;background:#1a160a;color:#c9a86a;font-weight:800">🇲🇾 MYR</button>
 </div>
 <div class="grid" id="grid"></div>
-<div class="cart"><div style="display:flex;justify-content:space-between"><b style="color:#ffd700">KERANJANG</b><b id="tot" style="color:#ffd700">Total: Rp 0</b></div><div id="cartI" style="margin-top:8px"></div><div style="display:flex;gap:8px;margin-top:10px"><button onclick="kos()" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ff4444;background:#1a160a;color:#ff8888">KOSONGKAN</button><button onclick="location.href='payment.html'" style="flex:2;padding:11px;background:linear-gradient(90deg,#ffd700,#c9a86a);border:none;border-radius:10px;font-weight:900;color:#000">CHECKOUT → PAYMENT</button></div></div>
+<div class="cart-panel" id="cartP"><div style="display:flex;justify-content:space-between"><b style="color:#ffd700">KERANJANG</b><b id="tot" style="color:#ffd700">Total: Rp 0</b></div><div id="cartI" style="margin-top:8px"></div><div style="display:flex;gap:8px;margin-top:10px"><button onclick="kos()" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ff4444;background:#1a160a;color:#ff8888;font-weight:700">🗑️ KOSONGKAN</button><button onclick="location.href='payment.html'" style="flex:2;padding:11px;background:linear-gradient(90deg,#ffd700,#c9a86a);border:none;border-radius:10px;font-weight:900;color:#000">CHECKOUT → PAYMENT</button></div></div>
+<div style="margin-top:16px;border:1.5px solid #3a2e14;border-radius:12px;background:#1a160a;padding:10px"><div style="text-align:center;color:#ffd700;font-weight:800;font-size:11px">📋 DASHBOARD BUKTI TRANSFER</div><div class="bukti-scroll" id="bukS"></div><div id="buk1" style="margin-top:8px"></div></div>
 </div>
+
+<!-- TOMBOL BULET DRAGGABLE -->
+<div class="fbtn" id="btnL">📋</div>
+<div class="fbtn" id="btnC">🛒<span id="badge" style="position:absolute;top:-4px;right:-4px;background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:999px;display:none">0</span></div>
+
 <script>
 const cv=document.getElementById('bgCanvas'),cx=cv.getContext('2d');let W,H,pt=[];function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}addEventListener('resize',rs);rs();for(let i=0;i<60;i++)pt.push({x:Math.random()*W,y:Math.random()*H,r:2,c:`hsl(45,100%,50%)`,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});(function a(){cx.clearRect(0,0,W,H);pt.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.28);cx.fillStyle=p.c;cx.fill();});requestAnimationFrame(a)})();
 let kurs=3600,cur=localStorage.getItem('dap_curr')||'IDR';
 function fp(idr){if(cur==='IDR')return`Rp ${idr.toLocaleString('id-ID')}`;else return`RM ${(idr/kurs).toFixed(2)} <small>≈ Rp ${idr.toLocaleString()}</small>`}
 function setC(c){cur=c;localStorage.setItem('dap_curr',c);document.getElementById('bIDR').style.background=c==='IDR'?'linear-gradient(90deg,#ffd700,#c9a86a)':'#1a160a';document.getElementById('bIDR').style.color=c==='IDR'?'#000':'#c9a86a';document.getElementById('bMYR').style.background=c==='MYR'?'linear-gradient(90deg,#ffd700,#c9a86a)':'#1a160a';document.getElementById('bMYR').style.color=c==='MYR'?'#000':'#c9a86a';rend()}
-
-// INI FIX FOTO - NAMA FILE AUTO COBA SEMUA VERSI
 let prod=[
-{c:"DarkVerse",n:"DarkVerse - FULL UPDATE",h:50000,imgs:["darkverse.jpg","DarkVerse.jpg","DARKVERSE.jpg","darkverse.png","darkverse.jpeg"]},
+{c:"DarkVerse",n:"DarkVerse - FULL UPDATE",h:50000,imgs:["darkverse.jpg","DarkVerse.jpg"]},
 {c:"DarkVerse",n:"DarkVerse - RESELLER",h:80000,imgs:["darkverse.jpg","DarkVerse.jpg"]},
-{c:"DarkVerse",n:"DarkVerse - PARTNER",h:150000,imgs:["darkverse.jpg","DarkVerse.jpg"]},
-{c:"X-GTR4SH",n:"X-GTR4SH - FULL UPDATE",h:20000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg","x-gtr4sh.jpg","X-GTR4SH.png","xgtr4sh.png","XGTR4SH.jpg"]},
-{c:"X-GTR4SH",n:"X-GTR4SH - RESELLER",h:30000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg","x-gtr4sh.jpg"]},
-{c:"X-GTR4SH",n:"X-GTR4SH - ADMIN",h:50000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg","x-gtr4sh.jpg"]},
-{c:"X-GTR4SH",n:"X-GTR4SH - PARTNER",h:70000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg","x-gtr4sh.jpg"]},
-{c:"X-GTR4SH",n:"X-GTR4SH - MODERATOR",h:100000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg","x-gtr4sh.jpg"]},
-{c:"TRAPENDEN",n:"APK TRAPENDEN - FULL UPDATE",h:25000,imgs:["trapenden.jpg","TRAPENDEN.jpg","TrapEnden.jpg","trapenden.png","TRAPENDEN.png"]},
+{c:"DarkVerse",n:"DarkVerse - PARTNER",h:150000,imgs:["darkverse.jpg"]},
+{c:"X-GTR4SH",n:"X-GTR4SH - FULL UPDATE",h:20000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg","x-gtr4sh.jpg"]},
+{c:"X-GTR4SH",n:"X-GTR4SH - RESELLER",h:30000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg"]},
+{c:"X-GTR4SH",n:"X-GTR4SH - ADMIN",h:50000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg"]},
+{c:"X-GTR4SH",n:"X-GTR4SH - PARTNER",h:70000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg"]},
+{c:"X-GTR4SH",n:"X-GTR4SH - MODERATOR",h:100000,imgs:["xgtr4sh.jpg","X-GTR4SH.jpg"]},
+{c:"TRAPENDEN",n:"APK TRAPENDEN - FULL UPDATE",h:25000,imgs:["trapenden.jpg","TRAPENDEN.jpg"]},
 {c:"TRAPENDEN",n:"APK TRAPENDEN - RESELLER",h:45000,imgs:["trapenden.jpg","TRAPENDEN.jpg"]},
 {c:"TRAPENDEN",n:"APK TRAPENDEN - ADMIN",h:55000,imgs:["trapenden.jpg","TRAPENDEN.jpg"]},
 {c:"TRAPENDEN",n:"APK TRAPENDEN - VIP",h:60000,imgs:["trapenden.jpg","TRAPENDEN.jpg"]},
 {c:"TRAPENDEN",n:"APK TRAPENDEN - PT",h:80000,imgs:["trapenden.jpg","TRAPENDEN.jpg"]},
 {c:"TRAPENDEN",n:"APK TRAPENDEN - MODERATOR",h:100000,imgs:["trapenden.jpg","TRAPENDEN.jpg"]}
 ];
-
 let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
 function save(){localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',cart.reduce((a,b)=>a+b.harga,0));rend()}
+function imgTag(p){let f=p.imgs[0];return `<img src="${f}" data-imgs='${JSON.stringify(p.imgs)}' data-i="0" onerror="let a=JSON.parse(this.dataset.imgs);let n=parseInt(this.dataset.i)+1;if(n<a.length){this.dataset.i=n;this.src=a[n]}else{this.outerHTML='<div style=\\'width:100%;height:140px;background:linear-gradient(135deg,#1a160a,#2a2300);display:flex;align-items:center;justify-content:center;font-family:Orbitron;color:#ffd700\\'>${p.c}</div>'}">`}
+function rend(){let g=document.getElementById('grid'),html='',last='';prod.forEach((p,i)=>{if(p.c!==last){html+=`<div class="cat">🔥 ${p.c} 🔥</div>`;last=p.c;}html+=`<div class="card">${imgTag(p)}<div style="padding:9px"><div style="font-size:10.5px;font-weight:700;min-height:32px">${p.n}</div><div style="color:#ffd700;font-weight:800;font-size:13px;margin:5px 0">${fp(p.h)}</div><button style="width:100%;padding:8px;border:none;border-radius:9px;background:linear-gradient(90deg,#c9a86a,#ffd700);color:#000;font-weight:900;font-size:10.5px" onclick="add(${i})">BELI / BUY</button></div></div>`});g.innerHTML=html;let total=cart.reduce((a,b)=>a+b.harga,0);document.getElementById('tot').innerHTML=cur==='IDR'?`Total: Rp ${total.toLocaleString()}`:`Total: RM ${(total/kurs).toFixed(2)}`;let ci=document.getElementById('cartI');if(cart.length===0)ci.innerHTML='<div style="opacity:.5;font-size:12px;text-align:center">Belum ada produk</div>';else ci.innerHTML=cart.map((c,idx)=>`<div class="cart-item"><div><b>${c.nama}</b><br><span style="color:#ffd700">${fp(c.harga)}</span></div><div style="display:flex;gap:4px"><button onclick="kur(${idx})" style="padding:5px 10px;border-radius:7px;border:1px solid #333;background:#1a160a;color:#fff">-</button><button onclick="hap(${idx})" style="padding:5px 10px;border-radius:7px;border:1px solid #ff4444;background:#1a160a;color:#ff8888">Hapus</button><button onclick="plus(${idx})" style="padding:5px 10px;border-radius:7px;border:1px solid #333;background:#1a160a;color:#fff">+</button></div></div>`).join('');let badge=document.getElementById('badge');if(cart.length>0){badge.style.display='block';badge.innerText=cart.length;}else badge.style.display='none';rb()}
+function add(i){cart.push({nama:prod[i].n,harga:prod[i].h});save()}function plus(i){cart.push({nama:cart[i].nama,harga:cart[i].harga});save()}function kur(i){cart.splice(i,1);save()}function hap(i){cart.splice(i,1);save()}function kos(){cart=[];save()}
+function rb(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');let s=document.getElementById('bukS'),o=document.getElementById('buk1');if(!list.length){s.innerHTML='<div style="opacity:.5;font-size:12px">Belum ada bukti</div>';o.innerHTML='';return;}s.innerHTML=list.slice(0,5).map(b=>`<div class="bukti-card"><img src="${b.img}"><div style="font-size:10px">${b.time}</div><div style="font-size:11px;color:#ffd700">${b.method}</div></div>`).join('');let b=list[0];o.innerHTML=`<div style="background:#000;border:1px solid #222;border-radius:10px;padding:8px;display:flex;gap:8px"><img src="${b.img}" style="width:70px;height:70px;border-radius:8px;object-fit:cover"><div><div style="font-size:10px">${b.time}</div><div style="color:#ffd700;font-weight:800">${b.method}</div><div>${fp(parseInt(b.total))}</div></div></div>`;}
 
-function imgTag(p,i){
-let first=p.imgs[0];
-let fallbackDiv=`<div class="img-fallback">${p.c}</div>`;
-return `<img src="${first}" data-imgs='${JSON.stringify(p.imgs)}' data-idx="0" onerror="this.onerror=null;let arr=JSON.parse(this.dataset.imgs);let idx=parseInt(this.dataset.idx)+1;if(idx<arr.length){this.dataset.idx=idx;this.src=arr[idx];}else{this.outerHTML='<div class=\\'img-fallback\\'>${p.c}</div>';}" >`;
+// ==== DRAGGABLE FLOATING BUTTON LOGIC ====
+function makeFloatDraggable(id, defaultBottom, defaultRight, clickAction){
+let el=document.getElementById(id);
+let saved=JSON.parse(localStorage.getItem('float_'+id)||'null');
+if(saved){el.style.left=saved.x+'px';el.style.top=saved.y+'px';el.style.right='auto';el.style.bottom='auto';}
+else{el.style.bottom=defaultBottom+'px';el.style.right=defaultRight+'px';}
+let startX,startY,initX,initY,dragging=false,moved=false;
+function getPos(e){return e.touches?e.touches[0]:e;}
+function onStart(e){
+let p=getPos(e);
+startX=p.clientX;startY=p.clientY;
+let rect=el.getBoundingClientRect();
+initX=rect.left;initY=rect.top;
+dragging=true;moved=false;
+el.classList.add('dragging');
+e.preventDefault();
 }
-
-function rend(){
-let g=document.getElementById('grid'),html='',last='';
-prod.forEach((p,i)=>{
-if(p.c!==last){html+=`<div class="cat">🔥 ${p.c} 🔥</div>`;last=p.c;}
-html+=`<div class="card">${imgTag(p,i)}<div style="padding:9px"><div style="font-size:10.5px;font-weight:700;min-height:32px">${p.n}</div><div style="color:#ffd700;font-weight:800;font-size:13px;margin:5px 0">${fp(p.h)}</div><button style="width:100%;padding:8px;border:none;border-radius:9px;background:linear-gradient(90deg,#c9a86a,#ffd700);color:#000;font-weight:900;font-size:10.5px" onclick="add(${i})">BELI / BUY</button></div></div>`;
-});
-g.innerHTML=html;
-let total=cart.reduce((a,b)=>a+b.harga,0);
-document.getElementById('tot').innerHTML=cur==='IDR'?`Total: Rp ${total.toLocaleString()}`:`Total: RM ${(total/kurs).toFixed(2)}`;
-let ci=document.getElementById('cartI');
-if(!cart.length)ci.innerHTML='<div style="opacity:.5;font-size:12px;text-align:center">Belum ada produk</div>';
-else ci.innerHTML=cart.map((c,idx)=>`<div style="display:flex;justify-content:space-between;background:#000;border:1px solid #222;border-radius:10px;padding:8px;margin:6px 0;font-size:12px"><div><b>${c.nama}</b><br><span style="color:#ffd700">${fp(c.harga)}</span></div><div style="display:flex;gap:4px"><button onclick="kur(${idx})" style="padding:5px 10px;border-radius:7px;border:1px solid #333;background:#1a160a;color:#fff">-</button><button onclick="hap(${idx})" style="padding:5px 10px;border-radius:7px;border:1px solid #ff4444;background:#1a160a;color:#ff8888">Hapus</button><button onclick="plus(${idx})" style="padding:5px 10px;border-radius:7px;border:1px solid #333;background:#1a160a;color:#fff">+</button></div></div>`).join('');
+function onMove(e){
+if(!dragging)return;
+let p=getPos(e);
+let dx=p.clientX-startX,dy=p.clientY-startY;
+if(Math.abs(dx)>5||Math.abs(dy)>5)moved=true;
+let nx=initX+dx,ny=initY+dy;
+nx=Math.max(0,Math.min(nx,window.innerWidth-el.offsetWidth));
+ny=Math.max(0,Math.min(ny,window.innerHeight-el.offsetHeight));
+el.style.left=nx+'px';el.style.top=ny+'px';el.style.right='auto';el.style.bottom='auto';
 }
-function add(i){cart.push({nama:prod[i].n,harga:prod[i].h});save()}
-function plus(i){cart.push({nama:cart[i].nama,harga:cart[i].harga});save()}
-function kur(i){cart.splice(i,1);save()}function hap(i){cart.splice(i,1);save()}function kos(){cart=[];save()}
+function onEnd(){
+if(!dragging)return;
+dragging=false;el.classList.remove('dragging');
+if(moved){localStorage.setItem('float_'+id,JSON.stringify({x:parseInt(el.style.left),y:parseInt(el.style.top)}));}
+else{if(clickAction)clickAction();}
+}
+el.addEventListener('mousedown',onStart);el.addEventListener('touchstart',onStart,{passive:false});
+window.addEventListener('mousemove',onMove);window.addEventListener('touchmove',onMove,{passive:false});
+window.addEventListener('mouseup',onEnd);window.addEventListener('touchend',onEnd);
+}
+makeFloatDraggable('btnL',90,16,()=>{document.getElementById('bukS').scrollIntoView({behavior:'smooth'})});
+makeFloatDraggable('btnC',20,16,()=>{document.getElementById('cartP').scrollIntoView({behavior:'smooth'})});
 setC(cur);
 </script>
 </body>
