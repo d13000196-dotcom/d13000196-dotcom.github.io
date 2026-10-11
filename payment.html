@@ -3,99 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DAP PAYMENT - OFFICIAL STORE</title>
+<title>DAP PAYMENT - OFFICIAL PAYMENT</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#0a0800;color:#fff;padding:16px;position:relative;overflow-x:hidden}
+body{background:#0a0800;color:#fff;padding:14px}
 canvas#bgCanvas{position:fixed;inset:0;z-index:-2}
-.layers{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% 0%,rgba(255,215,0,.12) 0%,rgba(0,0,0,.95) 70%)}
-.top{text-align:center;padding:14px}
-.top h1{font-family:Orbitron;font-size:1.7rem;background:linear-gradient(90deg,#c9a86a,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.box{max-width:650px;margin:0 auto;background:linear-gradient(180deg,#1a160a,#0f0d05);border:1.5px solid #3a2e14;border-radius:18px;padding:16px;z-index:2;position:relative;box-shadow:0 0 30px rgba(255,215,0,.15);cursor:grab;touch-action:none}
-.box:active{cursor:grabbing}
-.box:before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#ffd700,transparent)}
-.timer-box{text-align:center;background:#0f0d05;padding:12px;border-radius:12px;border:1px dashed #ffd700;margin-bottom:12px}
-#timer{font-size:28px;font-weight:800;color:#ffd700;font-family:Orbitron}
-.total{font-size:1.4rem;font-weight:800;color:#ffd700;text-align:center;margin:12px 0}
-.method{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
-.m{border:1.5px solid #3a2e14;border-radius:14px;padding:14px;text-align:center;cursor:pointer;background:#0f0d05;font-weight:700}
-.m.active{border-color:#ffd700;box-shadow:0 0 15px #ffd70055;background:linear-gradient(180deg,#ffd700,#c9a86a);color:#000}
-.qris-box,.dana-box{background:#000;border:1.5px solid #2a2310;border-radius:14px;padding:16px;text-align:center;margin:12px 0}
-.qris-box img{width:100%;max-width:320px;border-radius:12px;border:2px solid #ffd700;cursor:pointer;box-shadow:0 0 15px #ffd70033}
-.dana-num{font-size:32px;color:#ffd700;font-weight:800;font-family:Orbitron}
-.upload{border:2px dashed #3a2e14;border-radius:14px;padding:18px;text-align:center;margin:14px 0;background:#0a0800;cursor:pointer}
-.upload input{display:none}
-.preview{width:100%;max-height:300px;object-fit:contain;border-radius:10px;margin-top:10px;display:none;border:1px solid #333}
-.btn{width:100%;padding:14px;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:Orbitron}
+.overlay{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% 0%,rgba(255,215,0,.12) 0%,rgba(0,0,0,.95) 70%)}
+.top{text-align:center;padding:10px}
+.top h1{font-family:Orbitron;font-size:1.9rem;background:linear-gradient(90deg,#c9a86a,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.box{max-width:600px;margin:0 auto;background:linear-gradient(180deg,#1a160a,#0f0d05);border:1.5px solid #3a2e14;border-radius:16px;padding:14px;position:relative;z-index:2}
+.timer{text-align:center;background:#000;border:1px dashed #ffd700;border-radius:12px;padding:10px;margin-bottom:10px}
+#timer{font-size:34px;font-weight:800;color:#ffd700;font-family:Orbitron}
+.total{font-size:1.35rem;font-weight:800;color:#ffd700;text-align:center;margin:10px 0}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.m{border:1.5px solid #3a2e14;border-radius:12px;padding:12px;text-align:center;cursor:pointer;background:#0f0d05;font-weight:700;transition:.2s}
+.m.active{border-color:#ffd700;background:linear-gradient(180deg,#ffd700,#c9a86a);color:#000;box-shadow:0 0 15px #ffd70066}
+.qris-box,.dana-box{background:#000;border:1.5px solid #2a2310;border-radius:14px;padding:14px;text-align:center;margin:10px 0;position:relative;z-index:5}
+.qris-box img{width:100%;max-width:300px;border-radius:12px;border:2px solid #ffd700;cursor:pointer;display:block;margin:0 auto;position:relative;z-index:10;pointer-events:auto}
+.dana-num{font-size:32px;color:#ffd700;font-weight:800;font-family:Orbitron;cursor:pointer;padding:10px;border:1.5px dashed #ffd700;border-radius:12px;background:#111;margin:8px 0;user-select:none;transition:.2s}
+.dana-num:active{transform:scale(0.95);background:#ffd700;color:#000}
+.toast{display:none;margin-top:10px;background:linear-gradient(90deg,#ffd700,#c9a86a);color:#000;padding:10px;border-radius:10px;font-weight:800;font-size:12px;animation:pop .3s}
+@keyframes pop{0%{transform:scale(0.8)}100%{transform:scale(1)}}
+.order{background:#000;border:1px solid #222;border-radius:10px;padding:10px;margin:8px 0}
+.item-row{display:flex;justify-content:space-between;align-items:center;background:#111;border:1px solid #222;border-radius:8px;padding:8px;margin:5px 0;font-size:12px;gap:8px}
+.btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:800;cursor:pointer;font-family:Orbitron}
 .btn-r{background:linear-gradient(90deg,#25D366,#128C7E);color:#fff}
-.order{background:#000;border:1px solid #222;border-radius:12px;padding:12px;margin:10px 0;font-size:.85rem}
-.marquee{overflow:hidden;white-space:nowrap;background:#0f0d05;border:1px solid #2a2310;border-radius:10px;padding:8px;margin:10px 0}
-.marquee-track{display:inline-flex;animation:scroll 20s linear infinite;gap:12px}
-@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.bukti-card{min-width:180px;background:#1a160a;border:1px solid #3a2e14;border-radius:10px;padding:6px}
-.bukti-card img{width:100%;height:100px;object-fit:cover;border-radius:8px}
-#dragNote{position:fixed;bottom:80px;left:20px;background:#1a160a;border:1px solid #ffd700;border-radius:999px;padding:8px 14px;font-size:10px;color:#ffd700;z-index:999}
+.small{padding:5px 10px;border-radius:7px;border:1px solid #333;background:#1a160a;color:#fff;font-size:11px;cursor:pointer;font-weight:700}
+.small.del{border-color:#ff4444;color:#ff8888}
+.upload{border:2px dashed #3a2e14;border-radius:12px;padding:14px;text-align:center;margin:10px 0;background:#0a0800;cursor:pointer}
+.preview{width:100%;max-height:250px;object-fit:contain;border-radius:10px;margin-top:8px;display:none}
 </style>
 </head>
 <body>
-<canvas id="bgCanvas"></canvas><div class="layers"></div>
-<div class="top"><h1>DAP PAYMENT - OFFICIAL PAYMENT</h1><p style="color:#c9a86a;font-size:.75rem">PAYMENT GOLD• 14 PRODUK • QRIS & DANA</p></div>
+<canvas id="bgCanvas"></canvas><div class="overlay"></div>
+<div class="top"><h1>DAP PAYMENT</h1><p style="color:#c9a86a;font-size:11px;font-weight:800;letter-spacing:2px">PAYMENT ALL PAY • DANA ONLY</p></div>
+<div class="box">
+<div class="timer"><div style="font-size:.65rem;color:#ffd700;letter-spacing:1px">BATAS WAKTU PEMBAYARAN</div><b id="timer">05:00</b></div>
 
-<div class="box" id="paymentBox">
-<div style="text-align:center;font-size:9px;color:#ffd700;letter-spacing:2px;margin-bottom:8px">↕️ DRAG PANEL INI BISA DIGESER ↕️</div>
-<div class="timer-box"><div style="font-size:.7rem;color:#ffd700">BATAS WAKTU PEMBAYARAN</div><b id="timer">05:00</b></div>
-<div id="order" class="order">Memuat 14 produk...</div>
+<div style="font-weight:800;color:#ffd700;font-size:13px;margin-bottom:6px">KERANJANG PAYMENT</div>
+<div id="orderList" class="order"></div>
 <div class="total" id="tot">Total: Rp 0</div>
+<div style="display:flex;gap:8px;margin-bottom:12px"><button class="small del" onclick="kosongkan()" style="flex:1">🗑️ KOSONGKAN</button><button class="small" onclick="location.href='index.html'" style="flex:1">➕ TAMBAH</button></div>
+
 <div class="method">
-<div class="m active" id="m-qris" onclick="setM('qris')">QRIS<div style="font-size:.6rem">ALL PAYMENT - JPG</div></div>
-<div class="m" id="m-dana" onclick="setM('dana')">DANA<div style="font-size:.6rem">082312728245</div></div>
+<div class="m active" id="m-qris" onclick="setM('qris')">QRIS<br><span style="font-size:10px">ALL PAY - JPG</span></div>
+<div class="m" id="m-dana" onclick="setM('dana')">DANA<br><span style="font-size:10px">TAP AUTO SALIN</span></div>
 </div>
+
 <div class="qris-box" id="qris-box">
-<img id="qris-img" src="qris.jpg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=QRIS-DAP-ORDER-GOLD.jpg'" onclick="downloadQRIS()">
-<p style="font-size:.65rem;color:#ffd700;margin-top:6px">TAP QRIS DOWNLOAD JPG • ALL PAYMENT</p>
+<img id="qris-img" src="qris.jpg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=QRIS-DAP-V50-FIX'" onclick="downloadQRIS()">
+<p style="font-size:11px;color:#ffd700;margin-top:8px;font-weight:700">👆 TAP QRIS UNTUK DOWNLOAD JPG</p>
+<p style="font-size:10px;opacity:.6">QRIS ALL PAYMENT - BISA DIPENCET</p>
 </div>
+
 <div class="dana-box" id="dana-box" style="display:none">
-<div class="dana-num">082312728245</div>
-<div>ATAS NAMA: <b style="color:#ffd700">MIY***N</b></div>
-<div style="font-size:.65rem;opacity:.5">WA: 6283879195047 - BACKUP ALL</div>
-</div>
-<div class="upload" onclick="document.getElementById('fileBukti').click()">
-<div style="font-size:2rem">📸</div><div style="color:#ffd700;font-weight:700">Upload Bukti TF</div><div style="font-size:.7rem;opacity:.6">Auto masuk dashboard gerak</div>
-<input type="file" id="fileBukti" accept="image/jpeg,image/jpg" onchange="previewBukti(this)">
-<img id="previewImg" class="preview"><div id="fileName" style="font-size:.7rem;margin-top:8px;color:#c9a86a"></div>
-</div>
-<button class="btn btn-r" onclick="bayar()">KONFIRMASI → WA 6283879195047</button>
-<button class="btn" style="margin-top:10px;background:#1a160a;color:#c9a86a;border:1px solid #3a2e14" onclick="location.href='index.html'">← KEMBALI KE SHOP</button>
-
-<!-- DASHBOARD GERAK DI PAYMENT JUGA -->
-<div style="margin-top:14px;border:1px solid #2a2310;border-radius:10px;padding:8px;background:#0a0800">
-<div style="text-align:center;color:#ffd700;font-size:11px;font-weight:800">📋 BUKTI TRANSFER GERAK OTOMATIS</div>
-<div class="marquee"><div class="marquee-track" id="marqueeTrack"></div></div>
-</div>
+<div style="font-size:10px;color:#c9a86a;letter-spacing:1px">👇 TAP NOMOR DIBAWAH INI UNTUK AUTO SALIN 👇</div>
+<div class="dana-num" id="danaNum" onclick="copyDana()">082312728245 📋</div>
+<div style="font-size:12px">A/N <b style="color:#ffd700">MIY***N</b> - DANA ONLY</div>
+<div id="toastDana" class="toast">✅ NOMOR DANA 082312728245 TERSALIN! TINGGAL PASTE DI DANA!</div>
+<div style="font-size:10px;opacity:.5;margin-top:6px">Auto salin - gausah manual cuk!</div>
 </div>
 
-<div id="dragNote">💡 Panel bisa di-drag wok!</div>
+<div class="upload" onclick="document.getElementById('fileBukti').click()"><div style="font-size:22px">📸</div><div style="color:#ffd700;font-weight:700;font-size:13px">Upload Bukti TF (JPG)</div><input type="file" id="fileBukti" accept="image/*" style="display:none" onchange="preview(this)"><img id="prev" class="preview"><div id="fname" style="font-size:10px;color:#c9a86a;margin-top:6px"></div></div>
+
+<button class="btn btn-r" onclick="bayar()">KONFIRMASI & KIRIM WA → 6283879195047</button>
+<button class="btn" style="margin-top:8px;background:#1a160a;color:#c9a86a;border:1px solid #3a2e14" onclick="location.href='index.html'">← KEMBALI KE OFFICIAL STORE</button>
+</div>
 
 <script>
-// BG PELANGI GERAK
-const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');let w,h,particles=[];function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}window.addEventListener('resize',resize);resize();for(let i=0;i<70;i++){particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2.5+1,c:`hsl(${Math.random()*60+35},100%,55%)`,vx:(Math.random()-0.5)*0.6,vy:(Math.random()-0.5)*0.6})}function anim(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.shadowBlur=12;ctx.shadowColor=p.c;ctx.fill();});requestAnimationFrame(anim)}anim();
+// BG GOLD
+const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');let w,h,pts=[];function rs(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}addEventListener('resize',rs);rs();for(let i=0;i<50;i++)pts.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+1,c:`hsl(45,100%,50%)`,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4});(function a(){ctx.clearRect(0,0,w,h);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fillStyle=p.c;ctx.shadowBlur=6;ctx.shadowColor=p.c;ctx.fill();});requestAnimationFrame(a)})();
 
-// DRAG PAYMENT BOX
-function makeDraggable(el){let pos1=0,pos2=0,pos3=0,pos4=0;el.onmousedown=dragMouseDown;el.ontouchstart=dragMouseDown;function dragMouseDown(e){e=e||window.event;e.preventDefault();if(e.type==='touchstart'){pos3=e.touches[0].clientX;pos4=e.touches[0].clientY;}else{pos3=e.clientX;pos4=e.clientY;}document.onmouseup=closeDrag;document.ontouchend=closeDrag;document.onmousemove=elementDrag;document.ontouchmove=elementDrag;}function elementDrag(e){e.preventDefault();let cx,cy;if(e.type==='touchmove'){cx=e.touches[0].clientX;cy=e.touches[0].clientY;}else{cx=e.clientX;cy=e.clientY;}pos1=pos3-cx;pos2=pos4-cy;pos3=cx;pos4=cy;el.style.top=(el.offsetTop-pos2)+"px";el.style.left=(el.offsetLeft-pos1)+"px";el.style.position='fixed';el.style.margin='0';}function closeDrag(){document.onmouseup=null;document.onmousemove=null;document.ontouchend=null;document.ontouchmove=null;}}makeDraggable(document.getElementById('paymentBox'));
+let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');let total=cart.reduce((a,b)=>a+b.harga,0);let method='qris';let bukti='';
 
-let cartTotal=localStorage.getItem('dap_total')||0;let cartData=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
-document.getElementById('tot').innerText='Total: Rp '+parseInt(cartTotal).toLocaleString();
-let orderEl=document.getElementById('order');
-if(cartData.length>0){let h='<b style="color:#ffd700">14 PRODUK TERBARU:</b><br>';cartData.forEach(c=>{h+=`<div style="display:flex;justify-content:space-between;margin:4px 0"><span>${c.nama}</span><span style="color:#ffd700">Rp ${c.harga.toLocaleString()}</span></div>`});orderEl.innerHTML=h;}
+function render(){let el=document.getElementById('orderList');if(cart.length===0){el.innerHTML='<div style="opacity:.5;text-align:center;font-size:12px;padding:10px">Keranjang kosong - balik ke store wok!</div>';}else{el.innerHTML=cart.map((c,i)=>`<div class="item-row"><div style="flex:1"><b>${c.nama}</b><br><span style="color:#ffd700">Rp ${c.harga.toLocaleString()}</span></div><div style="display:flex;gap:4px"><button class="small" onclick="kurang(${i})">-</button><button class="small del" onclick="hapus(${i})">Hapus</button><button class="small" onclick="tambah(${i})">+</button></div></div>`).join('');}document.getElementById('tot').innerText='Total: Rp '+total.toLocaleString('id-ID');localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',total);}
+function tambah(i){cart.push({nama:cart[i].nama,harga:cart[i].harga});total+=cart[i].harga;render();}
+function kurang(i){total-=cart[i].harga;cart.splice(i,1);render();}
+function hapus(i){total-=cart[i].harga;cart.splice(i,1);render();}
+function kosongkan(){if(confirm('Kosongkan keranjang?')){cart=[];total=0;render();}}
+function setM(m){method=m;document.querySelectorAll('.m').forEach(x=>x.classList.remove('active'));document.getElementById('m-'+m).classList.add('active');document.getElementById('qris-box').style.display=m==='qris'?'block':'none';document.getElementById('dana-box').style.display=m==='dana'?'block':'none';}
+function downloadQRIS(){let img=document.getElementById('qris-img');let a=document.createElement('a');a.href=img.src;a.download='QRIS-DAP-PAYMENT-ALL-PAY.jpg';document.body.appendChild(a);a.click();document.body.removeChild(a);if(navigator.vibrate)navigator.vibrate(50);}
 
-let method='qris';function setM(m){method=m;document.querySelectorAll('.m').forEach(x=>x.classList.remove('active'));document.getElementById('m-'+m).classList.add('active');document.getElementById('qris-box').style.display=m==='qris'?'block':'none';document.getElementById('dana-box').style.display=m==='dana'?'block':'none';}
-function downloadQRIS(){let img=document.getElementById('qris-img');let a=document.createElement('a');a.href=img.src;a.download='QRIS-DAP-ORDER-GOLD.jpg';document.body.appendChild(a);a.click();document.body.removeChild(a);}
-let buktiBase64='';function previewBukti(input){if(input.files&&input.files[0]){let f=input.files[0];document.getElementById('fileName').innerText=f.name+' JPG - BACKUP';let r=new FileReader();r.onload=e=>{buktiBase64=e.target.result;document.getElementById('previewImg').src=buktiBase64;document.getElementById('previewImg').style.display='block';let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');list.unshift({id:Date.now(),img:buktiBase64,total:cartTotal,method:method.toUpperCase(),time:new Date().toLocaleString('id-ID')});localStorage.setItem('dap_bukti',JSON.stringify(list));renderBukti();};r.readAsDataURL(f);}}
-function bayar(){if(parseInt(cartTotal)===0)return alert('Kosong wok!');if(!buktiBase64)return alert('Upload Bukti TF Dahulu!');let pesan=`Halo DAP OFFICIAL%0ATotal: Rp ${parseInt(cartTotal).toLocaleString()}%0AMetode: ${method.toUpperCase()}%0ADANA: 082312728245%0AProduk: ${cartData.map(c=>c.nama).join(', ')}`;window.open(`https://wa.me/6283879195047?text=${pesan}`,'_blank');}
-let waktu=15*60;setInterval(()=>{let m=Math.floor(waktu/60);let s=waktu%60;document.getElementById('timer').innerText=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;if(waktu<=0)location.href='index.html';waktu--;},1000);
-function renderBukti(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');let track=document.getElementById('marqueeTrack');if(list.length===0){track.innerHTML='<div style="opacity:.5">Belum ada bukti - upload dulu</div>';return;}let html='';list.forEach(b=>{html+=`<div class="bukti-card"><img src="${b.img}"><div style="font-size:9px;color:#ffd700">${b.method} - Rp ${parseInt(b.total).toLocaleString()}</div></div>`;});track.innerHTML=html+html;}
-renderBukti();
+// AUTO SALIN DANA - FIX UTAMA
+function copyDana(){
+  let num="082312728245";
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(num).then(()=>{
+      showToast();
+    }).catch(()=>{fallbackCopy(num)});
+  }else{fallbackCopy(num);}
+}
+function fallbackCopy(num){
+  let ta=document.createElement('textarea');ta.value=num;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast();
+}
+function showToast(){
+  let toast=document.getElementById('toastDana');
+  let numEl=document.getElementById('danaNum');
+  toast.style.display='block';
+  numEl.innerHTML='✅ TERSALIN! 082312728245';
+  numEl.style.background='#ffd700';numEl.style.color='#000';
+  if(navigator.vibrate)navigator.vibrate([80,40,80]);
+  setTimeout(()=>{toast.style.display='none';numEl.innerHTML='082312728245 📋';numEl.style.background='#111';numEl.style.color='#ffd700';},2500);
+}
+
+function preview(input){if(input.files && input.files[0]){let r=new FileReader();r.onload=e=>{bukti=e.target.result;document.getElementById('prev').src=bukti;document.getElementById('prev').style.display='block';document.getElementById('fname').innerText=input.files[0].name+' - siap kirim';};r.readAsDataURL(input.files[0]);}}
+function bayar(){if(total===0)return alert('Keranjang kosong wok! Balik ke OFFICIAL STORE dulu');if(!bukti)return alert('Upload bukti TF dulu wok!');let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');list.unshift({img:bukti,total:total,method:method.toUpperCase(),time:new Date().toLocaleString('id-ID')});localStorage.setItem('dap_bukti',JSON.stringify(list));let txt=`Halo DAP%0A%0ATotal: Rp ${total.toLocaleString()}%0AMetode: ${method.toUpperCase()}%0ADANA: 082312728245 A/N MIY***N%0AProduk: ${cart.map(c=>c.nama).join(', ')}`;window.open('https://wa.me/6283879195047?text='+txt,'_blank');}
+let waktu=5*60;setInterval(()=>{let m=Math.floor(waktu/60);let s=waktu%60;document.getElementById('timer').innerText=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(waktu<=0){alert('Waktu habis 5 menit');location.href='index.html';}waktu--;},1000);
+render();
 </script>
 </body>
 </html>
