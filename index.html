@@ -3,102 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DAP ORDER APK - OFFICIAL STORE GOLD</title>
+<title>DAP ORDER APK - OFFICIAL SHOP</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0800;color:#fff;font-family:Poppins,sans-serif;overflow-x:hidden}
+body{background:#0a0800;color:#fff;font-family:Poppins,sans-serif}
 canvas#bgCanvas{position:fixed;inset:0;z-index:-2}
 .overlay{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% 0%,rgba(255,215,0,.15) 0%,rgba(0,0,0,.95) 70%)}
-.wrap{max-width:720px;margin:0 auto;padding:12px;z-index:2;position:relative}
-.mp3bar{border:1.5px solid #ffd700;background:linear-gradient(90deg,#0f0f0f,#1a1500);border-radius:12px;padding:10px;text-align:center;color:#ffd700;font-weight:800;font-size:11px;box-shadow:0 0 15px #ffd70044;margin-bottom:14px;cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:12px;position:relative;z-index:2}
+.mp3bar{border:1.5px solid #ffd700;background:linear-gradient(90deg,#0f0f0f,#1a1500);border-radius:12px;padding:12px;text-align:center;color:#ffd700;font-weight:800;font-size:11px;cursor:pointer;box-shadow:0 0 15px #ffd70044}
 .hero{text-align:center;padding:12px 0}
-.hero h1{font-family:Orbitron;font-size:30px;background:linear-gradient(90deg,#c9a86a,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
-.card{border:1.5px solid #3a2e14;background:linear-gradient(180deg,#1a160a,#0f0d05);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 0 15px rgba(255,215,0,.12)}
-.card:before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#ffd700,transparent)}
-.card img{width:100%;height:140px;object-fit:cover;background:#000;display:block}
+.hero h1{font-family:Orbitron;font-size:32px;background:linear-gradient(90deg,#c9a86a,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .subtitle{letter-spacing:3px;color:#c9a86a;font-size:12px;font-weight:800;margin-top:4px}
+.banner-info{margin:12px auto;max-width:620px;background:linear-gradient(90deg,#1a160a,#2a2300);border:1.5px solid #ffd70066;border-radius:14px;padding:14px;text-align:center;box-shadow:0 0 18px #ffd70022;position:relative;overflow:hidden}
+.banner-info:before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#ffd700,transparent)}
+.banner-tag{color:#ffd700;font-weight:900;font-size:13px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 0 10px #ffd70066}
+.banner-text{color:#fff;font-size:12px;line-height:1.6;font-weight:600;letter-spacing:.3px}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:14px}
+.card{border:1.5px solid #3a2e14;background:linear-gradient(180deg,#1a160a,#0f0d05);border-radius:16px;overflow:hidden;position:relative}
+.card img{width:100%;height:140px;object-fit:cover;display:block;background:#000}
 .card-info{padding:9px}
 .card-title{font-size:10.5px;font-weight:700;min-height:32px}
 .card-price{color:#ffd700;font-weight:800;font-size:13.5px;margin:5px 0}
 .btn-buy{width:100%;padding:8px;border:none;border-radius:9px;background:linear-gradient(90deg,#c9a86a,#ffd700);color:#000;font-weight:900;font-size:10.5px;cursor:pointer}
-.cat{grid-column:1/-1;background:linear-gradient(90deg,#1a160a,#2a2300);border:1px solid #ffd70044;border-radius:10px;padding:8px;text-align:center;color:#ffd700;font-weight:800;font-size:12px;letter-spacing:2px;margin-top:6px}
-#cartFloat{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:12px;z-index:999;touch-action:none}
-.fbtn{width:56px;height:56px;border-radius:50%;border:1.5px solid #ffd700;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:grab;box-shadow:0 0 20px #ffd70055;user-select:none}
-.fbtn:active{cursor:grabbing;transform:scale(1.1)}
-.f1{background:linear-gradient(180deg,#1a160a,#2a2300)}
-.f2{background:linear-gradient(180deg,#4a3a00,#ffd700);color:#000}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
-.modal-box{background:#111;border:1.5px solid #ffd700;border-radius:16px;padding:16px;max-width:400px;width:100%;max-height:80vh;overflow:auto;position:relative;touch-action:none;cursor:grab}
-.modal-box:active{cursor:grabbing}
-.marquee{overflow:hidden;white-space:nowrap;background:#0f0d05;border:1px solid #2a2310;border-radius:10px;padding:8px;margin:10px 0}
-.marquee-track{display:inline-flex;animation:scroll 20s linear infinite;gap:12px}
-@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.bukti-card{min-width:180px;background:#1a160a;border:1px solid #3a2e14;border-radius:10px;padding:6px}
-.bukti-card img{width:100%;height:100px;object-fit:cover;border-radius:8px}
+.cat{grid-column:1/-1;background:linear-gradient(90deg,#1a160a,#2a2300);border:1px solid #ffd70044;border-radius:10px;padding:8px;text-align:center;color:#ffd700;font-weight:800;letter-spacing:2px}
+.cart-panel{margin-top:16px;border:1.5px solid #3a2e14;background:#111;border-radius:16px;padding:12px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;background:#000;border:1px solid #222;border-radius:10px;padding:8px;margin:6px 0;font-size:12px;gap:8px}
+.small-btn{padding:5px 10px;border-radius:7px;border:1px solid #333;background:#1a160a;color:#fff;font-weight:700;cursor:pointer;font-size:11px}
+.small-btn.del{border-color:#ff4444;color:#ff8888}
+.fbtn{position:fixed;right:16px;width:56px;height:56px;border-radius:50%;border:1.5px solid #ffd700;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;z-index:998;box-shadow:0 0 20px #ffd70055}
+#btnList{bottom:90px;background:linear-gradient(180deg,#1a160a,#2a2300)}
+#btnCart{bottom:20px;background:linear-gradient(180deg,#4a3a00,#ffd700);color:#000}
+.bukti-scroll{display:flex;gap:10px;overflow-x:auto;padding:8px 0;scroll-snap-type:x mandatory}
+.bukti-scroll::-webkit-scrollbar{height:6px}
+.bukti-scroll::-webkit-scrollbar-thumb{background:#ffd700;border-radius:999px}
+.bukti-card{min-width:220px;background:#1a160a;border:1px solid #3a2e14;border-radius:10px;padding:8px;scroll-snap-align:start}
+.bukti-card img{width:100%;height:120px;object-fit:cover;border-radius:8px}
 </style>
 </head>
 <body>
 <canvas id="bgCanvas"></canvas><div class="overlay"></div>
 <div class="wrap">
-<div class="mp3bar" id="mp3Bar" onclick="toggleMusic()" ondblclick="nextMusic()">🔊 MP3 "DAP-ORDER-APK-GOLD.mp3" PLAYING 🟢 - TAP PAUSE - 2X TAP GANTI</div>
-<audio id="audioPlayer" loop autoplay><source src="DAP-ORDER-APK-GOLD.mp3" type="audio/mpeg"><source src="DAP-ORDER-APK-GOLD.mp3" type="audio/mpeg"></audio>
-<div class="hero"><h1>DAP ORDER APK</h1><p style="letter-spacing:4px;color:#c9a86a;font-size:11px">OFFICIAL SHOP • GOLD V49 DRAG</p></div>
+<div class="mp3bar" id="mp3Bar" onclick="playMusic()">🔇 TAP UNTUK PLAY MUSIC - DAP-ORDER-APK-GOLD-V50.1.mp3</div>
+<audio id="audioPlayer" loop preload="auto"><source src="DAP-ORDER-GOLD-V49.mp3" type="audio/mpeg"><source src="DAP-ORDER-GOLD.mp3" type="audio/mpeg"><source src="DAP-ORDER.mp3" type="audio/mpeg"></audio>
+
+<div class="hero">
+<h1>DAP ORDER APK</h1>
+<div class="subtitle">OFFICIAL STORE</div>
+<div class="banner-info">
+<div class="banner-tag">⚡ STABIL - OTOMATIS - AMANAH ⚡</div>
+<div class="banner-text">HAI PENGGUNA WEBSITE, INI ADALAH WEBSITE JUAL BELI APLIKASI BUGS WHATSAPP GACOR, SILAHKAN PILIH APLIKASI YANG ANDA SUKA!!, SEMOGA PUAS DENGAN APK NYA DAN BERLANGGANAN!!</div>
+</div>
+</div>
+
 <div class="prod-grid" id="prodGrid"></div>
-<div style="text-align:center;margin-top:18px;padding:12px;border:1px solid #222;border-radius:12px;background:#0a0a0a"><div style="color:#ffd700;font-weight:800" id="totalEl">Total: Rp 0</div><button onclick="location.href='payment.html'" style="margin-top:10px;width:100%;padding:12px;background:linear-gradient(90deg,#ffd700,#c9a86a);border:none;border-radius:10px;font-weight:800;color:#000">CHECKOUT → PAYMENT GOLD</button></div>
 
-<!-- DASHBOARD BUKTI TRANSFER GERAK -->
+<div class="cart-panel" id="cartPanel">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="color:#ffd700">KERANJANG</b><b id="totalEl" style="color:#ffd700">Total: Rp 0</b></div>
+<div id="cartItems" style="margin-top:8px"><div style="opacity:.5;font-size:12px;text-align:center">Belum ada produk - pilih aplikasi di atas wok!</div></div>
+<div style="display:flex;gap:8px;margin-top:10px"><button onclick="kosongkan()" class="small-btn del" style="flex:1">🗑️ KOSONGKAN</button><button onclick="location.href='payment.html'" style="flex:2;padding:11px;background:linear-gradient(90deg,#ffd700,#c9a86a);border:none;border-radius:10px;font-weight:900;color:#000">CHECKOUT → PAYMENT</button></div>
+</div>
+
 <div style="margin-top:16px;border:1.5px solid #3a2e14;border-radius:12px;background:linear-gradient(180deg,#1a160a,#0f0d05);padding:10px">
-<div style="text-align:center;color:#ffd700;font-weight:800;font-size:12px;letter-spacing:2px">📋 DASHBOARD BUKTI TRANSFER - GERAK OTOMATIS 📋</div>
-<div class="marquee"><div class="marquee-track" id="marqueeTrack"></div></div>
-<div id="dashboardList" style="margin-top:8px"></div>
+<div style="text-align:center;color:#ffd700;font-weight:800;font-size:11px;letter-spacing:1px">📋 DASHBOARD BUKTI TRANSFER (GESER MANUAL)</div>
+<div class="bukti-scroll" id="buktiScroll"></div>
+<div id="buktiSingle" style="margin-top:8px"></div>
 </div>
 </div>
 
-<!-- PANEL KERANJANG DRAG -->
-<div id="cartFloat">
-<div class="fbtn f1" id="dragCart" onclick="showCart()">📋</div>
-<div class="fbtn f2" id="dragBuy" onclick="location.href='payment.html'">🛒</div>
-</div>
-
-<div class="modal" id="cartModal"><div class="modal-box" id="cartBox"><h3 style="color:#ffd700">🛒 Keranjang - DRAG PANEL INI</h3><div id="cartList" style="margin:10px 0"></div><button onclick="location.href='payment.html'" style="width:100%;padding:12px;background:linear-gradient(90deg,#ffd700,#c9a86a);border:none;border-radius:10px;font-weight:800;color:#000">BAYAR SEKARANG</button><button onclick="document.getElementById('cartModal').style.display='none'" style="width:100%;margin-top:8px;background:#222;color:#fff;border:1px solid #333;padding:10px;border-radius:10px">Tutup</button></div></div>
+<div class="fbtn" id="btnList" onclick="scrollToBukti()">📋</div>
+<div class="fbtn" id="btnCart" onclick="scrollToCart()">🛒<span id="badge" style="position:absolute;top:-4px;right:-4px;background:red;color:#fff;font-size:10px;padding:2px 6px;border-radius:999px;display:none">0</span></div>
 
 <script>
-// BACKGROUND PELANGI GERAK
-const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');let w,h,particles=[];function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}window.addEventListener('resize',resize);resize();for(let i=0;i<70;i++){particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+1,c:`hsl(${Math.random()*60+35},100%,50%)`,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5})}function anim(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.shadowBlur=10;ctx.shadowColor=p.c;ctx.fill();});requestAnimationFrame(anim)}anim();
-
-// AUDIO BACKUP
-let audio=document.getElementById('audioPlayer');let isPlay=true;function toggleMusic(){if(isPlay){audio.pause();document.getElementById('mp3Bar').innerText='🔇 MP3 PAUSED - TAP PLAY';}else{audio.play();document.getElementById('mp3Bar').innerText='🔊 MP3 "DAP-ORDER-GOLD-V49.mp3" PLAYING 🟢 - TAP PAUSE';}isPlay=!isPlay;}function nextMusic(){audio.src=audio.src.includes('V49')?'DAP-ORDER-APK-GOLD.mp3':'DAP-ORDER-APK-GOLD-V49.mp3';audio.play();}
-
-// DRAG SYSTEM - KERANJANG
-function makeDraggable(el){
-let pos1=0,pos2=0,pos3=0,pos4=0;
-el.onmousedown=dragMouseDown;el.ontouchstart=dragMouseDown;
-function dragMouseDown(e){e=e||window.event;e.preventDefault();if(e.type==='touchstart'){pos3=e.touches[0].clientX;pos4=e.touches[0].clientY;}else{pos3=e.clientX;pos4=e.clientY;}document.onmouseup=closeDrag;document.ontouchend=closeDrag;document.onmousemove=elementDrag;document.ontouchmove=elementDrag;}
-function elementDrag(e){e=e||window.event;e.preventDefault();let clientX,clientY;if(e.type==='touchmove'){clientX=e.touches[0].clientX;clientY=e.touches[0].clientY;}else{clientX=e.clientX;clientY=e.clientY;}pos1=pos3-clientX;pos2=pos4-clientY;pos3=clientX;pos4=clientY;el.style.top=(el.offsetTop-pos2)+"px";el.style.left=(el.offsetLeft-pos1)+"px";el.style.bottom='auto';el.style.right='auto';el.style.position='fixed';}
-function closeDrag(){document.onmouseup=null;document.onmousemove=null;document.ontouchend=null;document.ontouchmove=null;}
-}
-makeDraggable(document.getElementById('cartFloat'));makeDraggable(document.getElementById('cartBox'));
-
-// PRODUK 14 - JPG
+const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');let w,h,pts=[];function rs(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}addEventListener('resize',rs);rs();for(let i=0;i<60;i++)pts.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+1,c:`hsl(${40+Math.random()*20},100%,50%)`,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4});(function anim(){ctx.clearRect(0,0,w,h);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fillStyle=p.c;ctx.shadowBlur=8;ctx.shadowColor=p.c;ctx.fill();});requestAnimationFrame(anim)})();
+let audio=document.getElementById('audioPlayer');let playing=false;
+function playMusic(){if(!playing){audio.play().then(()=>{document.getElementById('mp3Bar').innerText='🔊 MUSIC PLAYING - DAP-ORDER-APK-GOLD-V50.1.mp3 - TAP PAUSE';playing=true}).catch(()=>{alert('Upload file DAP-ORDER-APK-GOLD-V50.1.mp3 ke github wok!')});}else{audio.pause();document.getElementById('mp3Bar').innerText='🔇 TAP UNTUK PLAY MUSIC - DAP-ORDER-APK-GOLD-V50.1.mp3';playing=false;}}
+document.body.addEventListener('click',function first(){if(!playing){audio.play().catch(()=>{});}document.body.removeEventListener('click',first)},{once:true});
 let produk=[{c:"DarkVerse",n:"DarkVerse - FULL UPDATE",h:50000,i:"darkverse.jpg"},{c:"DarkVerse",n:"DarkVerse - RESELLER",h:80000,i:"darkverse.jpg"},{c:"DarkVerse",n:"DarkVerse - PARTNER",h:150000,i:"darkverse.jpg"},{c:"X-GTR4SH",n:"X-GTR4SH - FULL UPDATE",h:20000,i:"xgtr4sh.jpg"},{c:"X-GTR4SH",n:"X-GTR4SH - RESELLER",h:30000,i:"xgtr4sh.jpg"},{c:"X-GTR4SH",n:"X-GTR4SH - ADMIN",h:50000,i:"xgtr4sh.jpg"},{c:"X-GTR4SH",n:"X-GTR4SH - PARTNER",h:70000,i:"xgtr4sh.jpg"},{c:"X-GTR4SH",n:"X-GTR4SH - MODERATOR",h:100000,i:"xgtr4sh.jpg"},{c:"TRAPENDEN",n:"APK TRAPENDEN - FULL UPDATE",h:25000,i:"trapenden.jpg"},{c:"TRAPENDEN",n:"APK TRAPENDEN - RESELLER",h:45000,i:"trapenden.jpg"},{c:"TRAPENDEN",n:"APK TRAPENDEN - ADMIN",h:55000,i:"trapenden.jpg"},{c:"TRAPENDEN",n:"APK TRAPENDEN - VIP",h:60000,i:"trapenden.jpg"},{c:"TRAPENDEN",n:"APK TRAPENDEN - PT",h:80000,i:"trapenden.jpg"},{c:"TRAPENDEN",n:"APK TRAPENDEN - MODERATOR",h:100000,i:"trapenden.jpg"}];
-let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');let total=parseInt(localStorage.getItem('dap_total')||'0');
-function fmt(n){return 'Rp '+n.toLocaleString('id-ID');}
-function render(){let grid=document.getElementById('prodGrid');let html='';let lastCat='';produk.forEach((p,idx)=>{if(p.c!==lastCat){html+=`<div class="cat">🔥 ${p.c} 🔥</div>`;lastCat=p.c;}let fb=`https://via.placeholder.com/400x300.jpg?text=${encodeURIComponent(p.n)}`;html+=`<div class="card"><img src="${p.i}" onerror="this.src='${fb}'"><div class="card-info"><div class="card-title">${p.n}</div><div class="card-price">${fmt(p.h)}</div><button class="btn-buy" onclick="tambah(${idx})">BELI / BUY</button></div></div>`;});grid.innerHTML=html;document.getElementById('totalEl').innerText='Total: '+fmt(total);renderBukti();}
-function tambah(i){let p=produk[i];cart.push({nama:p.n,harga:p.h});total+=p.h;localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',total);render();if(navigator.vibrate)navigator.vibrate(50);}
-function showCart(){document.getElementById('cartModal').style.display='flex';renderCart();}
-function renderCart(){let el=document.getElementById('cartList');if(cart.length===0)el.innerHTML='<div style="opacity:.5;text-align:center">Kosong</div>';else{let h='';cart.forEach((c,idx)=>{h+=`<div style="display:flex;justify-content:space-between;margin:6px 0;font-size:13px"><span>${c.nama}</span><span>${fmt(c.harga)} <span onclick="hapus(${idx})" style="color:red;cursor:pointer">x</span></span></div>`});el.innerHTML=h;}}
-function hapus(idx){cart.splice(idx,1);total=cart.reduce((a,b)=>a+b.harga,0);localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',total);render();renderCart();}
-function renderBukti(){
-let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');
-let track=document.getElementById('marqueeTrack');
-let listEl=document.getElementById('dashboardList');
-if(list.length===0){track.innerHTML='<div style="opacity:.5">Belum ada bukti transfer - upload di payment.html</div>';listEl.innerHTML='';return;}
-let html='';list.forEach(b=>{html+=`<div class="bukti-card"><div style="font-size:9px;opacity:.7">${b.time}</div><img src="${b.img}"><div style="font-size:10px;color:#ffd700">${b.method} - Rp ${parseInt(b.total).toLocaleString()}</div></div>`;});
-track.innerHTML=html+html; // double for loop gerak
-let html2='';list.slice(0,6).forEach(b=>{html2+=`<div style="background:#1a160a;border:1px solid #2a2310;border-radius:10px;padding:8px;margin:6px 0;display:flex;gap:8px"><img src="${b.img}" style="width:60px;height:60px;border-radius:8px;object-fit:cover"><div><div style="font-size:10px;opacity:.7">${b.time}</div><div style="font-size:11px;color:#ffd700">${b.method}</div><div style="font-size:11px">Rp ${parseInt(b.total).toLocaleString()}</div></div></div>`;});
-listEl.innerHTML=html2;
-}
+let cart=JSON.parse(localStorage.getItem('dap_cart_detail')||'[]');
+function save(){localStorage.setItem('dap_cart_detail',JSON.stringify(cart));localStorage.setItem('dap_total',cart.reduce((a,b)=>a+b.harga,0));render();}
+function render(){let g=document.getElementById('prodGrid');let html='';let last='';produk.forEach((p,i)=>{if(p.c!==last){html+=`<div class="cat">🔥 ${p.c} 🔥</div>`;last=p.c;}let fb=`https://via.placeholder.com/400x300.jpg?text=${encodeURIComponent(p.n)}`;html+=`<div class="card"><img src="${p.i}" onerror="this.src='${fb}'"><div class="card-info"><div class="card-title">${p.n}</div><div class="card-price">Rp ${p.h.toLocaleString('id-ID')}</div><button class="btn-buy" onclick="tambah(${i})">BELI / BUY</button></div></div>`});g.innerHTML=html;let total=cart.reduce((a,b)=>a+b.harga,0);document.getElementById('totalEl').innerText='Total: Rp '+total.toLocaleString('id-ID');let ci=document.getElementById('cartItems');if(cart.length===0)ci.innerHTML='<div style="opacity:.5;font-size:12px;text-align:center">Belum ada produk - pilih aplikasi di atas wok!</div>';else{ci.innerHTML=cart.map((c,idx)=>`<div class="cart-item"><div><b>${c.nama}</b><br><span style="color:#ffd700">Rp ${c.harga.toLocaleString()}</span></div><div style="display:flex;gap:4px"><button class="small-btn" onclick="kurang(${idx})">-</button><button class="small-btn del" onclick="hapus(${idx})">Hapus</button><button class="small-btn" onclick="plusItem(${idx})">+</button></div></div>`).join('');}let badge=document.getElementById('badge');if(cart.length>0){badge.style.display='block';badge.innerText=cart.length;}else badge.style.display='none';renderBukti();}
+function tambah(i){cart.push({nama:produk[i].n,harga:produk[i].h});save();if(navigator.vibrate)navigator.vibrate(40);}
+function plusItem(idx){cart.push({nama:cart[idx].nama,harga:cart[idx].harga});save();}
+function kurang(idx){cart.splice(idx,1);save();}
+function hapus(idx){cart.splice(idx,1);save();}
+function kosongkan(){cart=[];save();}
+function scrollToCart(){document.getElementById('cartPanel').scrollIntoView({behavior:'smooth'})}
+function scrollToBukti(){document.getElementById('buktiScroll').scrollIntoView({behavior:'smooth'})}
+function renderBukti(){let list=JSON.parse(localStorage.getItem('dap_bukti')||'[]');let scroll=document.getElementById('buktiScroll');let single=document.getElementById('buktiSingle');if(list.length===0){scroll.innerHTML='<div style="opacity:.5;font-size:12px">Belum ada bukti transfer - upload di payment</div>';single.innerHTML='';return;}scroll.innerHTML=list.slice(0,5).map(b=>`<div class="bukti-card"><img src="${b.img}"><div style="font-size:10px;margin-top:4px">${b.time}</div><div style="font-size:11px;color:#ffd700">${b.method} - Rp ${parseInt(b.total).toLocaleString()}</div></div>`).join('');let b=list[0];single.innerHTML=`<div style="background:#000;border:1px solid #222;border-radius:10px;padding:8px;display:flex;gap:8px"><img src="${b.img}" style="width:70px;height:70px;border-radius:8px;object-fit:cover"><div><div style="font-size:10px;opacity:.7">${b.time}</div><div style="font-size:12px;color:#ffd700;font-weight:800">${b.method}</div><div>Rp ${parseInt(b.total).toLocaleString()}</div></div></div>`;}
 render();
 </script>
 </body>
